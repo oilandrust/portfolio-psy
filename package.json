@@ -3,13 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://olivier.github.io/portfolio",
   "scripts": {
     "dev": "vite",
     "dev:both": "./launch-both.sh",
     "dev:both:win": "launch-both.bat",
     "build": "vite build",
+    "preview": "vite preview",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "deploy": "npm run build && git add dist -f && git commit -m 'Deploy to GitHub Pages' && git push"
   },
   "dependencies": {
     "@picocss/pico": "^2.1.1",
