@@ -10,7 +10,9 @@ function ProjectAdmin() {
     title: '',
     description: '',
     image: '',
-    tech: ''
+    tech: '',
+    start_date: '',
+    end_date: ''
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -87,7 +89,9 @@ function ProjectAdmin() {
       title: project.title,
       description: project.description,
       image: project.image,
-      tech: Array.isArray(project.tech) ? project.tech.join(', ') : project.tech
+      tech: Array.isArray(project.tech) ? project.tech.join(', ') : project.tech,
+      start_date: project.start_date || '',
+      end_date: project.end_date || ''
     });
     setIsModalOpen(true);
   };
@@ -112,14 +116,14 @@ function ProjectAdmin() {
 
   const openModal = () => {
     setEditingProject(null);
-    setFormData({ title: '', description: '', image: '', tech: '' });
+    setFormData({ title: '', description: '', image: '', tech: '', start_date: '', end_date: '' });
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     setEditingProject(null);
-    setFormData({ title: '', description: '', image: '', tech: '' });
+    setFormData({ title: '', description: '', image: '', tech: '', start_date: '', end_date: '' });
     setError('');
   };
 
@@ -159,6 +163,25 @@ function ProjectAdmin() {
               <p style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--muted-color)' }}>
                 {project.description.substring(0, 100)}...
               </p>
+              
+              {/* Project dates */}
+              {(project.start_date || project.end_date) && (
+                <div style={{ 
+                  margin: '0 0 0.5rem 0', 
+                  fontSize: '0.8rem', 
+                  color: 'var(--muted-color)',
+                  display: 'flex',
+                  gap: '1rem'
+                }}>
+                  {project.start_date && (
+                    <span>📅 Started: {new Date(project.start_date).toLocaleDateString()}</span>
+                  )}
+                  {project.end_date && (
+                    <span>✅ Completed: {new Date(project.end_date).toLocaleDateString()}</span>
+                  )}
+                </div>
+              )}
+              
               <div>
                 {Array.isArray(project.tech) ? project.tech.map((tech, index) => (
                   <span
@@ -263,6 +286,31 @@ function ProjectAdmin() {
                   placeholder="Enter technologies (comma-separated)"
                 />
                 <small>Separate multiple technologies with commas (e.g., React, Node.js, MongoDB)</small>
+              </div>
+
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <div style={{ flex: '1' }}>
+                  <label htmlFor="start_date">Start Date</label>
+                  <input
+                    type="date"
+                    id="start_date"
+                    value={formData.start_date}
+                    onChange={(e) => setFormData({ ...formData, start_date: e.target.value })}
+                    placeholder="Start date"
+                  />
+                  <small>When the project started (optional)</small>
+                </div>
+                <div style={{ flex: '1' }}>
+                  <label htmlFor="end_date">End Date</label>
+                  <input
+                    type="date"
+                    id="end_date"
+                    value={formData.end_date}
+                    onChange={(e) => setFormData({ ...formData, end_date: e.target.value })}
+                    placeholder="End date"
+                  />
+                  <small>When the project was completed (optional)</small>
+                </div>
               </div>
 
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end' }}>

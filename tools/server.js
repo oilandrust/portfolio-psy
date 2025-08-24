@@ -99,7 +99,17 @@ const db = new Database(join(__dirname, '..', 'projects.db'));
 // Function to export projects to JSON
 const exportProjectsToJson = () => {
   try {
-    const projects = db.prepare('SELECT * FROM projects ORDER BY created_at DESC').all();
+    // Sort by end_date DESC (most recent first), then by created_at DESC as fallback
+    const projects = db.prepare(`
+      SELECT * FROM projects 
+      ORDER BY 
+        CASE 
+          WHEN end_date IS NOT NULL THEN end_date 
+          ELSE created_at 
+        END DESC,
+        created_at DESC
+    `).all();
+    
     const projectsWithTechArray = projects.map(project => ({
       ...project,
       tech: project.tech.split(',')
@@ -121,6 +131,8 @@ db.exec(`
     description TEXT NOT NULL,
     image TEXT NOT NULL,
     tech TEXT NOT NULL,
+    start_date DATE,
+    end_date DATE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
   )
@@ -130,8 +142,8 @@ db.exec(`
 const count = db.prepare('SELECT COUNT(*) as count FROM projects').get();
 if (count.count === 0) {
   const insert = db.prepare(`
-    INSERT INTO projects (title, description, image, tech) 
-    VALUES (?, ?, ?, ?)
+    INSERT INTO projects (title, description, image, tech, start_date, end_date) 
+    VALUES (?, ?, ?, ?, ?, ?)
   `);
   
   const initialProjects = [
@@ -139,19 +151,25 @@ if (count.count === 0) {
       'E-Commerce Platform',
       'A full-stack e-commerce application built with React, Node.js, and MongoDB.',
       'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=200&fit=crop',
-      'React,Node.js,MongoDB,Express'
+      'React,Node.js,MongoDB,Express',
+      '2024-01-15',
+      '2024-06-30'
     ],
     [
       'Task Management App',
       'A collaborative task management tool with real-time updates and team features.',
       'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop',
-      'React,Firebase,Tailwind CSS'
+      'React,Firebase,Tailwind CSS',
+      '2024-03-01',
+      '2024-08-15'
     ],
     [
       'Portfolio Website',
       'A modern, responsive portfolio website showcasing my work and skills.',
       'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=200&fit=crop',
-      'React,Vite,Pico CSS'
+      'React,Vite,Pico CSS',
+      '2024-07-01',
+      '2024-08-24'
     ]
   ];
   
@@ -166,7 +184,17 @@ if (count.count === 0) {
 // Get all projects
 app.get('/api/projects', (req, res) => {
   try {
-    const projects = db.prepare('SELECT * FROM projects ORDER BY created_at DESC').all();
+    // Sort by end_date DESC (most recent first), then by created_at DESC as fallback
+    const projects = db.prepare(`
+      SELECT * FROM projects 
+      ORDER BY 
+        CASE 
+          WHEN end_date IS NOT NULL THEN end_date 
+          ELSE created_at 
+        END DESC,
+        created_at DESC
+    `).all();
+    
     res.json(projects.map(project => ({
       ...project,
       tech: project.tech.split(',')
@@ -196,7 +224,7 @@ app.get('/api/projects/:id', (req, res) => {
 // Create new project
 app.post('/api/projects', (req, res) => {
   try {
-    const { title, description, image, tech } = req.body;
+    const { title, description, image, tech, start_date, end_date } = req.body;
     
     if (!title || !description || !image || !tech) {
       return res.status(400).json({ error: 'All fields are required' });
@@ -205,11 +233,11 @@ app.post('/api/projects', (req, res) => {
     const techString = Array.isArray(tech) ? tech.join(',') : tech;
     
     const insert = db.prepare(`
-      INSERT INTO projects (title, description, image, tech) 
-      VALUES (?, ?, ?, ?)
+      INSERT INTO projects (title, description, image, tech, start_date, end_date) 
+      VALUES (?, ?, ?, ?, ?, ?)
     `);
     
-    const result = insert.run(title, description, image, techString);
+    const result = insert.run(title, description, image, techString, start_date || null, end_date || null);
     
     const newProject = db.prepare('SELECT * FROM projects WHERE id = ?').get(result.lastInsertRowid);
     
@@ -228,7 +256,7 @@ app.post('/api/projects', (req, res) => {
 // Update project
 app.put('/api/projects/:id', (req, res) => {
   try {
-    const { title, description, image, tech } = req.body;
+    const { title, description, image, tech, start_date, end_date } = req.body;
     
     if (!title || !description || !image || !tech) {
       return res.status(400).json({ error: 'All fields are required' });
@@ -238,11 +266,11 @@ app.put('/api/projects/:id', (req, res) => {
     
     const update = db.prepare(`
       UPDATE projects 
-      SET title = ?, description = ?, image = ?, tech = ?, updated_at = CURRENT_TIMESTAMP
+      SET title = ?, description = ?, image = ?, tech = ?, start_date = ?, end_date = ?, updated_at = CURRENT_TIMESTAMP
       WHERE id = ?
     `);
     
-    const result = update.run(title, description, image, techString, req.params.id);
+    const result = update.run(title, description, image, techString, start_date || null, end_date || null, req.params.id);
     
     if (result.changes === 0) {
       return res.status(404).json({ error: 'Project not found' });

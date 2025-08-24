@@ -8,14 +8,18 @@ function App() {
       title: "Portfolio Website",
       description: "A modern React portfolio built with Vite and Pico CSS, featuring responsive design and dynamic project showcase.",
       tech: ["React", "Vite", "CSS", "JavaScript"],
-      image: "https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=Portfolio"
+      image: "https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=Portfolio",
+      start_date: "2024-07-01",
+      end_date: "2024-08-24"
     },
     {
       id: 2,
       title: "Project Management Tool",
       description: "Internal tool for managing portfolio projects with SQLite database and JSON export functionality.",
       tech: ["Node.js", "Express", "SQLite", "React"],
-      image: "https://via.placeholder.com/300x200/2196F3/FFFFFF?text=Admin+Tool"
+      image: "https://via.placeholder.com/300x200/2196F3/FFFFFF?text=Admin+Tool",
+      start_date: "2024-08-01",
+      end_date: "2024-08-24"
     }
   ]
   
@@ -24,7 +28,30 @@ function App() {
 
   useEffect(() => {
     fetchProjects()
-  }, [])
+    
+    // Set up file watcher for development (auto-refresh when projects.json changes)
+    if (process.env.NODE_ENV === 'development') {
+      const checkForUpdates = () => {
+        fetch('./projects.json', { cache: 'no-cache' })
+          .then(response => response.json())
+          .then(data => {
+            // Check if projects have changed
+            if (JSON.stringify(data) !== JSON.stringify(projects)) {
+              console.log('Projects updated, refreshing...')
+              setProjects(data)
+            }
+          })
+          .catch(() => {
+            // Ignore errors in development mode
+          })
+      }
+      
+      // Check every 2 seconds in development
+      const interval = setInterval(checkForUpdates, 2000)
+      
+      return () => clearInterval(interval)
+    }
+  }, [projects])
 
   const fetchProjects = async () => {
     try {
@@ -40,30 +67,25 @@ function App() {
       
       for (const strategy of fetchStrategies) {
         try {
-          console.log(`Trying fetch strategy: ${strategy}`)
           const response = await fetch(strategy)
           
           if (response.ok) {
             const data = await response.json()
-            console.log('Projects loaded successfully from:', strategy, data)
             setProjects(data)
             projectsLoaded = true
             break
-          } else {
-            console.log(`Strategy ${strategy} failed with status:`, response.status)
           }
         } catch (strategyError) {
-          console.log(`Strategy ${strategy} failed with error:`, strategyError)
+          // Silently continue to next strategy
         }
       }
       
       if (!projectsLoaded) {
-        console.warn('All fetch strategies failed, using fallback projects')
         setProjects(fallbackProjects)
       }
       
     } catch (err) {
-      console.error('Error in fetchProjects:', err)
+      // Fallback to default projects on any error
     } finally {
       setLoading(false)
     }
@@ -130,6 +152,26 @@ function App() {
                 <div style={{ flex: '1' }}>
                   <h3 style={{ marginBottom: '0.75rem', color: 'var(--primary)' }}>{project.title}</h3>
                   <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>{project.description}</p>
+                  
+                  {/* Project dates */}
+                  {(project.start_date || project.end_date) && (
+                    <div style={{ 
+                      marginBottom: '1rem', 
+                      fontSize: '0.875rem', 
+                      color: 'var(--muted-color)',
+                      display: 'flex',
+                      gap: '1rem',
+                      alignItems: 'center'
+                    }}>
+                      {project.start_date && (
+                        <span>📅 Started: {new Date(project.start_date).toLocaleDateString()}</span>
+                      )}
+                      {project.end_date && (
+                        <span>✅ Completed: {new Date(project.end_date).toLocaleDateString()}</span>
+                      )}
+                    </div>
+                  )}
+                  
                   <div style={{ marginTop: '1rem' }}>
                     {project.tech.map((tech, techIndex) => (
                       <span

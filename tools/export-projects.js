@@ -29,6 +29,8 @@ const exportProjectsToJson = () => {
           description TEXT NOT NULL,
           image TEXT NOT NULL,
           tech TEXT NOT NULL,
+          start_date DATE,
+          end_date DATE,
           created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
           updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )
@@ -36,8 +38,8 @@ const exportProjectsToJson = () => {
       
       // Insert sample data
       const insert = db.prepare(`
-        INSERT INTO projects (title, description, image, tech) 
-        VALUES (?, ?, ?, ?)
+        INSERT INTO projects (title, description, image, tech, start_date, end_date) 
+        VALUES (?, ?, ?, ?, ?, ?)
       `);
       
       const initialProjects = [
@@ -45,19 +47,25 @@ const exportProjectsToJson = () => {
           'E-Commerce Platform',
           'A full-stack e-commerce application built with React, Node.js, and MongoDB.',
           'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=200&fit=crop',
-          'React,Node.js,MongoDB,Express'
+          'React,Node.js,MongoDB,Express',
+          '2024-01-15',
+          '2024-06-30'
         ],
         [
           'Task Management App',
           'A collaborative task management tool with real-time updates and team features.',
           'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop',
-          'React,Firebase,Tailwind CSS'
+          'React,Firebase,Tailwind CSS',
+          '2024-03-01',
+          '2024-08-15'
         ],
         [
           'Portfolio Website',
           'A modern, responsive portfolio website showcasing my work and skills.',
           'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=200&fit=crop',
-          'React,Vite,Pico CSS'
+          'React,Vite,Pico CSS',
+          '2024-07-01',
+          '2024-08-24'
         ]
       ];
       
@@ -65,8 +73,16 @@ const exportProjectsToJson = () => {
       console.log('Sample projects created.');
     }
     
-    // Get all projects
-    const projects = db.prepare('SELECT * FROM projects ORDER BY created_at DESC').all();
+    // Get all projects sorted by end_date DESC (most recent first), then by created_at DESC as fallback
+    const projects = db.prepare(`
+      SELECT * FROM projects 
+      ORDER BY 
+        CASE 
+          WHEN end_date IS NOT NULL THEN end_date 
+          ELSE created_at 
+        END DESC,
+        created_at DESC
+    `).all();
     const projectsWithTechArray = projects.map(project => ({
       ...project,
       tech: project.tech.split(',')
