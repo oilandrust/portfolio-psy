@@ -1,0 +1,98 @@
+import Database from 'better-sqlite3';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import fs from 'fs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Function to export projects to JSON
+const exportProjectsToJson = () => {
+  try {
+    // Initialize SQLite database
+    const db = new Database(join(__dirname, '..', 'projects.db'));
+    
+    // Check if projects table exists
+    const tableExists = db.prepare(`
+      SELECT name FROM sqlite_master 
+      WHERE type='table' AND name='projects'
+    `).get();
+    
+    if (!tableExists) {
+      console.log('Projects table does not exist. Creating with sample data...');
+      
+      // Create projects table
+      db.exec(`
+        CREATE TABLE IF NOT EXISTS projects (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          title TEXT NOT NULL,
+          description TEXT NOT NULL,
+          image TEXT NOT NULL,
+          tech TEXT NOT NULL,
+          created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+          updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+      `);
+      
+      // Insert sample data
+      const insert = db.prepare(`
+        INSERT INTO projects (title, description, image, tech) 
+        VALUES (?, ?, ?, ?)
+      `);
+      
+      const initialProjects = [
+        [
+          'E-Commerce Platform',
+          'A full-stack e-commerce application built with React, Node.js, and MongoDB.',
+          'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=200&fit=crop',
+          'React,Node.js,MongoDB,Express'
+        ],
+        [
+          'Task Management App',
+          'A collaborative task management tool with real-time updates and team features.',
+          'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop',
+          'React,Firebase,Tailwind CSS'
+        ],
+        [
+          'Portfolio Website',
+          'A modern, responsive portfolio website showcasing my work and skills.',
+          'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=200&fit=crop',
+          'React,Vite,Pico CSS'
+        ]
+      ];
+      
+      initialProjects.forEach(project => insert.run(project));
+      console.log('Sample projects created.');
+    }
+    
+    // Get all projects
+    const projects = db.prepare('SELECT * FROM projects ORDER BY created_at DESC').all();
+    const projectsWithTechArray = projects.map(project => ({
+      ...project,
+      tech: project.tech.split(',')
+    }));
+    
+    // Ensure public directory exists
+    const publicDir = join(__dirname, '..', 'public');
+    if (!fs.existsSync(publicDir)) {
+      fs.mkdirSync(publicDir, { recursive: true });
+    }
+    
+    // Write to projects.json
+    const jsonPath = join(publicDir, 'projects.json');
+    fs.writeFileSync(jsonPath, JSON.stringify(projectsWithTechArray, null, 2));
+    
+    console.log(`✅ Projects exported to ${jsonPath}`);
+    console.log(`📊 Total projects: ${projects.length}`);
+    
+    // Close database connection
+    db.close();
+    
+  } catch (error) {
+    console.error('❌ Error exporting projects to JSON:', error);
+    process.exit(1);
+  }
+};
+
+// Run the export
+exportProjectsToJson();
