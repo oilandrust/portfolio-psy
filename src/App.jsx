@@ -1,7 +1,25 @@
 import { useState, useEffect } from 'react'
 
 function App() {
-  const [projects, setProjects] = useState([])
+  // Fallback projects in case fetch fails
+  const fallbackProjects = [
+    {
+      id: 1,
+      title: "Portfolio Website",
+      description: "A modern React portfolio built with Vite and Pico CSS, featuring responsive design and dynamic project showcase.",
+      tech: ["React", "Vite", "CSS", "JavaScript"],
+      image: "https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=Portfolio"
+    },
+    {
+      id: 2,
+      title: "Project Management Tool",
+      description: "Internal tool for managing portfolio projects with SQLite database and JSON export functionality.",
+      tech: ["Node.js", "Express", "SQLite", "React"],
+      image: "https://via.placeholder.com/300x200/2196F3/FFFFFF?text=Admin+Tool"
+    }
+  ]
+  
+  const [projects, setProjects] = useState(fallbackProjects)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -10,16 +28,42 @@ function App() {
 
   const fetchProjects = async () => {
     try {
-      // Read from local projects.json file instead of API
-      const response = await fetch('/projects.json')
-      if (response.ok) {
-        const data = await response.json()
-        setProjects(data)
-      } else {
-        console.error('Failed to fetch projects')
+      // Try multiple fetch strategies for better compatibility
+      const fetchStrategies = [
+        './projects.json',
+        '/portfolio/projects.json',
+        '/projects.json',
+        'projects.json'
+      ]
+      
+      let projectsLoaded = false
+      
+      for (const strategy of fetchStrategies) {
+        try {
+          console.log(`Trying fetch strategy: ${strategy}`)
+          const response = await fetch(strategy)
+          
+          if (response.ok) {
+            const data = await response.json()
+            console.log('Projects loaded successfully from:', strategy, data)
+            setProjects(data)
+            projectsLoaded = true
+            break
+          } else {
+            console.log(`Strategy ${strategy} failed with status:`, response.status)
+          }
+        } catch (strategyError) {
+          console.log(`Strategy ${strategy} failed with error:`, strategyError)
+        }
       }
+      
+      if (!projectsLoaded) {
+        console.warn('All fetch strategies failed, using fallback projects')
+        setProjects(fallbackProjects)
+      }
+      
     } catch (err) {
-      console.error('Error fetching projects:', err)
+      console.error('Error in fetchProjects:', err)
     } finally {
       setLoading(false)
     }
