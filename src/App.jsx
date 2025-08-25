@@ -99,40 +99,26 @@ function App() {
     <div className="App">
       <div className="hero">
         <div className="container">
-          <h1>John Doe</h1>
-          <p>Full-Stack Developer & UI/UX Enthusiast</p>
+          <h1>Olivier Rouiller</h1>
+          <p>I do code, sometimes</p>
           <button className="outline" onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
-            Let's Work Together
+            Get in touch
           </button>
         </div>
       </div>
 
       <div className="container">
         <div className="section">
-          <h2>About Me</h2>
+          <h2>About</h2>
           <p>
-            I'm a passionate full-stack developer with a love for creating beautiful, 
-            functional web applications. With expertise in modern JavaScript frameworks 
-            and a keen eye for design, I bring ideas to life through clean, efficient code.
+            Hi, I'm Olivier, I live in Strasbourg, France, and before I lived around Europe in Germany and Sweden.
+            I worked as a developer for 10 years and I've worked in a few companies and had some pojects.
+            This pages showcases a few of them with some details about how I approached working on those and the technologies I used. 
           </p>
           <p>
-            When I'm not coding, you can find me exploring new technologies, 
-            contributing to open-source projects, or sharing knowledge with the developer community.
+            Right now I study Psychology to become a Psychotherapist, but I might be able to contribute to some new projects.
+            Feel free to get in touch if you have some curiosity.
           </p>
-          <div className="contact-info">
-            <div className="contact-item">
-              <span>📍</span>
-              <span>San Francisco, CA</span>
-            </div>
-            <div className="contact-item">
-              <span>🎓</span>
-              <span>Computer Science Degree</span>
-            </div>
-            <div className="contact-item">
-              <span>💼</span>
-              <span>5+ Years Experience</span>
-            </div>
-          </div>
         </div>
 
         <div className="section">
