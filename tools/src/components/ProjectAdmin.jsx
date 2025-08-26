@@ -89,11 +89,20 @@ function ProjectAdmin() {
 
   const handleEdit = (project) => {
     setEditingProject(project);
+    
+    // Extract technology names from the tech array of objects
+    let techNames = '';
+    if (Array.isArray(project.tech) && project.tech.length > 0) {
+      techNames = project.tech.map(tech => tech.name || tech).join(', ');
+    } else if (project.tech) {
+      techNames = project.tech;
+    }
+    
     setFormData({
       title: project.title,
       description: project.description,
       image: project.image,
-      tech: Array.isArray(project.tech) ? project.tech.join(', ') : project.tech,
+      tech: techNames,
       start_date: project.start_date || '',
       end_date: project.end_date || ''
     });
@@ -265,7 +274,7 @@ function ProjectAdmin() {
                       return (
                         <img
                           key={index}
-                          src={tech.icon}
+                          src={tech.icon.replace('/portfolio/icons/', '/public/icons/')}
                           alt={tech.name}
                           title={tech.name}
                           style={{
