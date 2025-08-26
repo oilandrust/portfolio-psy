@@ -160,9 +160,11 @@ function ProjectAdmin() {
           }}>
             <div style={{ flex: '1' }}>
               <h3 style={{ margin: '0 0 0.5rem 0' }}>{project.title}</h3>
-              <p style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--muted-color)' }}>
-                {project.description.substring(0, 100)}...
-              </p>
+              {project.description && (
+                <p style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--muted-color)' }}>
+                  {project.description.length > 100 ? `${project.description.substring(0, 100)}...` : project.description}
+                </p>
+              )}
               
               {/* Project dates */}
               {(project.start_date || project.end_date) && (
@@ -182,24 +184,26 @@ function ProjectAdmin() {
                 </div>
               )}
               
-              <div>
-                {Array.isArray(project.tech) ? project.tech.map((tech, index) => (
-                  <span
-                    key={index}
-                    style={{
-                      display: 'inline-block',
-                      background: 'var(--primary)',
-                      color: 'white',
-                      padding: '0.2rem 0.5rem',
-                      borderRadius: '15px',
-                      fontSize: '0.8rem',
-                      margin: '0.1rem'
-                    }}
-                  >
-                    {tech}
-                  </span>
-                )) : null}
-              </div>
+              {project.tech && project.tech.length > 0 && (
+                <div>
+                  {Array.isArray(project.tech) ? project.tech.map((tech, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        display: 'inline-block',
+                        background: 'var(--primary)',
+                        color: 'white',
+                        padding: '0.2rem 0.5rem',
+                        borderRadius: '15px',
+                        fontSize: '0.8rem',
+                        margin: '0.1rem'
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  )) : null}
+                </div>
+              )}
             </div>
             <div style={{ display: 'flex', gap: '0.5rem' }}>
               <button className="outline" onClick={() => handleEdit(project)}>
@@ -252,40 +256,39 @@ function ProjectAdmin() {
               </div>
 
               <div style={{ marginBottom: '1rem' }}>
-                <label htmlFor="description">Description *</label>
+                <label htmlFor="description">Description</label>
                 <textarea
                   id="description"
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  required
-                  placeholder="Enter project description"
+                  placeholder="Enter project description (optional)"
                   rows="4"
                 />
+                <small>Optional: Provide a detailed description of your project</small>
               </div>
 
               <div style={{ marginBottom: '1rem' }}>
-                <label htmlFor="image">Image URL *</label>
+                <label htmlFor="image">Image URL</label>
                 <input
                   type="url"
                   id="image"
                   value={formData.image}
                   onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  required
-                  placeholder="Enter image URL"
+                  placeholder="Enter image URL (optional)"
                 />
+                <small>Optional: Provide a URL to an image representing your project</small>
               </div>
 
               <div style={{ marginBottom: '1rem' }}>
-                <label htmlFor="tech">Technologies *</label>
+                <label htmlFor="tech">Technologies</label>
                 <input
                   type="text"
                   id="tech"
                   value={formData.tech}
                   onChange={(e) => setFormData({ ...formData, tech: e.target.value })}
-                  required
-                  placeholder="Enter technologies (comma-separated)"
+                  placeholder="Enter technologies (comma-separated, optional)"
                 />
-                <small>Separate multiple technologies with commas (e.g., React, Node.js, MongoDB)</small>
+                <small>Optional: Separate multiple technologies with commas (e.g., React, Node.js, MongoDB)</small>
               </div>
 
               <div style={{ display: 'flex', gap: '1rem' }}>

@@ -20,6 +20,18 @@ function App() {
       image: "https://via.placeholder.com/300x200/2196F3/FFFFFF?text=Admin+Tool",
       start_date: "2024-08-01",
       end_date: "2024-08-24"
+    },
+    {
+      id: 3,
+      title: "Simple Project",
+      image: "https://via.placeholder.com/300x200/FF9800/FFFFFF?text=Simple",
+      start_date: "2024-09-01",
+      end_date: "2024-10-15"
+    },
+    {
+      id: 4,
+      title: "Minimal Project",
+      start_date: "2024-11-01"
     }
   ]
   
@@ -137,7 +149,9 @@ function App() {
               }}>
                 <div style={{ flex: '1' }}>
                   <h3 style={{ marginBottom: '0.75rem', color: 'var(--primary)' }}>{project.title}</h3>
-                  <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>{project.description}</p>
+                  {project.description && (
+                    <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>{project.description}</p>
+                  )}
                   
                   {/* Project dates */}
                   {(project.start_date || project.end_date) && (
@@ -158,25 +172,27 @@ function App() {
                     </div>
                   )}
                   
-                  <div style={{ marginTop: '1rem' }}>
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        style={{
-                          display: 'inline-block',
-                          background: 'var(--primary)',
-                          color: 'white',
-                          padding: '0.25rem 0.75rem',
-                          borderRadius: '20px',
-                          fontSize: '0.875rem',
-                          margin: '0.25rem 0.25rem 0.25rem 0',
-                          fontWeight: '500'
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                  {project.tech && project.tech.length > 0 && (
+                    <div style={{ marginTop: '1rem' }}>
+                      {project.tech.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          style={{
+                            display: 'inline-block',
+                            background: 'var(--primary)',
+                            color: 'white',
+                            padding: '0.25rem 0.75rem',
+                            borderRadius: '20px',
+                            fontSize: '0.875rem',
+                            margin: '0.25rem 0.25rem 0.25rem 0',
+                            fontWeight: '500'
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 <img 
                   src={project.image} 
