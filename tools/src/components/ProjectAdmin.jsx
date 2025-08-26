@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const API_BASE = '/api'; // Using proxy from Vite config
 
@@ -16,6 +16,10 @@ function ProjectAdmin() {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [uploading, setUploading] = useState(false);
+  const [uploadResults, setUploadResults] = useState([]);
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     fetchProjects();
@@ -127,6 +131,70 @@ function ProjectAdmin() {
     setError('');
   };
 
+  const handleIconUpload = async (files) => {
+    setUploading(true);
+    setUploadResults([]);
+    
+    const formData = new FormData();
+    Array.from(files).forEach(file => {
+      formData.append('icons', file);
+    });
+    
+    try {
+      const response = await fetch(`${API_BASE}/upload-icons`, {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        setUploadResults(result.results);
+        // Refresh projects to show updated technologies
+        await fetchProjects();
+      } else {
+        const errorData = await response.json();
+        setError('Upload failed: ' + errorData.error);
+      }
+    } catch (err) {
+      setError('Upload error: ' + err.message);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.currentTarget.style.borderColor = 'var(--primary)';
+    e.currentTarget.style.backgroundColor = 'var(--primary-hover)';
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    e.currentTarget.style.borderColor = 'var(--muted-border-color)';
+    e.currentTarget.style.backgroundColor = 'transparent';
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.currentTarget.style.borderColor = 'var(--muted-border-color)';
+    e.currentTarget.style.backgroundColor = 'transparent';
+    
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+      handleIconUpload(files);
+    }
+  };
+
+  const openUploadModal = () => {
+    setIsUploadModalOpen(true);
+    setUploadResults([]);
+  };
+
+  const closeUploadModal = () => {
+    setIsUploadModalOpen(false);
+    setUploadResults([]);
+  };
+
   if (loading) {
     return <div className="container">Loading...</div>;
   }
@@ -136,9 +204,14 @@ function ProjectAdmin() {
       <div style={{ marginBottom: '2rem' }}>
         <h1>Project Management</h1>
         <p>Manage your portfolio projects here. Add, edit, or delete projects as needed.</p>
-        <button className="contrast" onClick={openModal}>
-          + Add New Project
-        </button>
+        <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
+          <button className="contrast" onClick={openModal}>
+            + Add New Project
+          </button>
+          <button className="outline" onClick={openUploadModal}>
+            📁 Upload Icons
+          </button>
+        </div>
       </div>
 
       {error && (
@@ -347,6 +420,104 @@ function ProjectAdmin() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Icon Upload Modal */}
+      {isUploadModalOpen && (
+        <div className="modal-overlay" style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0,0,0,0.5)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 1000
+        }}>
+          <div className="modal" style={{
+            background: 'var(--card-background-color)',
+            padding: '2rem',
+            borderRadius: '8px',
+            maxWidth: '600px',
+            width: '90%',
+            maxHeight: '90vh',
+            overflow: 'auto'
+          }}>
+            <h2>📁 Upload Technology Icons</h2>
+            <p style={{ marginBottom: '1rem', color: 'var(--muted-color)' }}>
+              Drag and drop icon files here, or click to select files. Icons will be automatically added as technologies.
+            </p>
+            
+            {/* Drag & Drop Area */}
+            <div
+              ref={fileInputRef}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              onClick={() => fileInputRef.current?.click()}
+              style={{
+                border: '2px dashed var(--muted-border-color)',
+                borderRadius: '8px',
+                padding: '2rem',
+                textAlign: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                marginBottom: '1rem'
+              }}
+            >
+              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📁</div>
+              <p style={{ margin: '0 0 0.5rem 0', fontWeight: 'bold' }}>
+                {uploading ? 'Uploading...' : 'Drop icon files here'}
+              </p>
+              <p style={{ margin: '0', fontSize: '0.9rem', color: 'var(--muted-color)' }}>
+                or click to select files
+              </p>
+              <input
+                ref={fileInputRef}
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={(e) => {
+                  if (e.target.files.length > 0) {
+                    handleIconUpload(e.target.files);
+                  }
+                }}
+                style={{ display: 'none' }}
+              />
+            </div>
+
+            {/* Upload Results */}
+            {uploadResults.length > 0 && (
+              <div style={{ marginTop: '1rem' }}>
+                <h3>Upload Results:</h3>
+                {uploadResults.map((result, index) => (
+                  <div key={index} style={{
+                    padding: '0.5rem',
+                    margin: '0.5rem 0',
+                    borderRadius: '4px',
+                    background: result.error ? 'var(--error-background)' : 'var(--success-background)',
+                    color: result.error ? 'var(--error-color)' : 'var(--success-color)',
+                    border: `1px solid ${result.error ? 'var(--error-border)' : 'var(--success-border)'}`
+                  }}>
+                    {result.error ? (
+                      <span>❌ {result.name}: {result.error}</span>
+                    ) : (
+                      <span>✅ {result.message}</span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
+              <button type="button" className="outline" onClick={closeUploadModal}>
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}

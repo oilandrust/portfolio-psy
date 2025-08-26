@@ -6,6 +6,41 @@ import fs from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Function to copy icons from tools to portfolio public folder
+const copyIconsToPortfolio = () => {
+  try {
+    const toolsIconsDir = join(__dirname, 'public', 'icons');
+    const portfolioIconsDir = join(__dirname, '..', 'public', 'icons');
+    
+    // Create portfolio icons directory if it doesn't exist
+    if (!fs.existsSync(portfolioIconsDir)) {
+      fs.mkdirSync(portfolioIconsDir, { recursive: true });
+    }
+    
+    // Copy all icon files from tools to portfolio
+    if (fs.existsSync(toolsIconsDir)) {
+      const iconFiles = fs.readdirSync(toolsIconsDir);
+      
+      for (const iconFile of iconFiles) {
+        const sourcePath = join(toolsIconsDir, iconFile);
+        const destPath = join(portfolioIconsDir, iconFile);
+        
+        // Only copy if it's a file and doesn't exist or is newer
+        if (fs.statSync(sourcePath).isFile()) {
+          if (!fs.existsSync(destPath) || fs.statSync(sourcePath).mtime > fs.statSync(destPath).mtime) {
+            fs.copyFileSync(sourcePath, destPath);
+            console.log(`Icon copied: ${iconFile}`);
+          }
+        }
+      }
+      
+      console.log(`✅ Icons synchronized to portfolio public folder`);
+    }
+  } catch (error) {
+    console.error('Error copying icons to portfolio:', error);
+  }
+};
+
 // Function to export projects to JSON
 const exportProjectsToJson = () => {
   try {
@@ -43,7 +78,8 @@ const exportProjectsToJson = () => {
             name TEXT UNIQUE NOT NULL,
             icon_path TEXT NOT NULL,
             icon_type TEXT NOT NULL,
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
           )
         `);
 
@@ -212,6 +248,9 @@ const exportProjectsToJson = () => {
     
     console.log(`✅ Projects exported to ${jsonPath}`);
     console.log(`📊 Total projects: ${projects.length}`);
+    
+    // Copy icons from tools to portfolio public folder
+    copyIconsToPortfolio();
     
     // Close database connection
     db.close();

@@ -4,6 +4,7 @@ import Database from 'better-sqlite3';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
+import multer from 'multer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -14,6 +15,36 @@ const PORT = 3001;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const uploadDir = join(__dirname, 'public', 'icons');
+    // Create directory if it doesn't exist
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    cb(null, uploadDir);
+  },
+  filename: (req, file, cb) => {
+    // Keep original filename
+    cb(null, file.originalname);
+  }
+});
+
+const upload = multer({ 
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    // Only allow image files
+    if (file.mimetype.startsWith('image/')) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only image files are allowed'), false);
+    }
+  }
+});
+
+// Static file serving moved to end of file to avoid conflicts with API routes
 
 // Check if dist folder exists, if not, serve a simple message
 const distPath = join(__dirname, 'dist');
@@ -96,6 +127,46 @@ if (fs.existsSync(indexPath)) {
 // Initialize SQLite database
 const db = new Database(join(__dirname, '..', 'projects.db'));
 
+// Migrate existing technologies table if it has timestamp fields
+const migrateTechnologiesTable = () => {
+  try {
+    // Check if the old table structure exists (with timestamp fields)
+    const tableInfo = db.prepare("PRAGMA table_info(technologies)").all();
+    const hasTimestampFields = tableInfo.some(col => col.name === 'created_at' || col.name === 'updated_at');
+    
+    if (hasTimestampFields) {
+      console.log('🔄 Migrating technologies table to remove timestamp fields...');
+      
+      // Create new table with updated schema
+      db.exec(`
+        CREATE TABLE technologies_new (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          name TEXT UNIQUE NOT NULL,
+          icon_path TEXT NOT NULL,
+          icon_type TEXT NOT NULL
+        )
+      `);
+      
+      // Copy data from old table to new table
+      db.exec(`
+        INSERT INTO technologies_new (id, name, icon_path, icon_type)
+        SELECT id, name, icon_path, icon_type FROM technologies
+      `);
+      
+      // Drop old table and rename new one
+      db.exec('DROP TABLE technologies');
+      db.exec('ALTER TABLE technologies_new RENAME TO technologies');
+      
+      console.log('✅ Technologies table migration completed');
+    }
+  } catch (error) {
+    console.error('Error during technologies table migration:', error);
+  }
+};
+
+// Run migration
+migrateTechnologiesTable();
+
 // Function to export projects to JSON
 const exportProjectsToJson = () => {
   try {
@@ -172,8 +243,7 @@ db.exec(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT UNIQUE NOT NULL,
     icon_path TEXT NOT NULL,
-    icon_type TEXT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    icon_type TEXT NOT NULL
   )
 `);
 
@@ -329,6 +399,70 @@ app.post('/api/technologies', (req, res) => {
     }
   }
 });
+
+// Upload icon files and create/update technologies
+app.post('/api/upload-icons', upload.array('icons', 10), (req, res) => {
+  try {
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ error: 'No files uploaded' });
+    }
+
+    const results = [];
+    
+    for (const file of req.files) {
+      try {
+        // Extract technology name from filename (remove extension)
+        const name = file.originalname.replace(/\.[^/.]+$/, '');
+        const icon_path = `/portfolio/icons/${file.originalname}`;
+        const icon_type = file.originalname.split('.').pop().toLowerCase();
+        
+        // Check if technology already exists
+        const existing = db.prepare('SELECT * FROM technologies WHERE name = ?').get(name);
+        
+        if (existing) {
+          // Update existing technology
+          db.prepare('UPDATE technologies SET icon_path = ?, icon_type = ? WHERE name = ?')
+            .run(icon_path, icon_type, name);
+          
+          results.push({
+            name,
+            icon_path,
+            icon_type,
+            action: 'updated',
+            message: `Technology "${name}" updated with new icon`
+          });
+        } else {
+          // Create new technology
+          const result = db.prepare('INSERT INTO technologies (name, icon_path, icon_type) VALUES (?, ?, ?)').run(name, icon_path, icon_type);
+          
+          results.push({
+            id: result.lastInsertRowid,
+            name,
+            icon_path,
+            icon_type,
+            action: 'created',
+            message: `Technology "${name}" created with icon`
+          });
+        }
+      } catch (fileError) {
+        results.push({
+          name: file.originalname,
+          error: fileError.message
+        });
+      }
+    }
+    
+    // Export updated projects to JSON
+    exportProjectsToJson();
+    
+    res.json({
+      message: `Processed ${req.files.length} files`,
+      results
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+ });
 
 // Get all projects
 app.get('/api/projects', (req, res) => {
@@ -537,6 +671,9 @@ app.delete('/api/projects/:id', (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+// Serve static files from public folder (after all API routes to avoid conflicts)
+app.use('/public', express.static(join(__dirname, 'public')));
 
 app.listen(PORT, () => {
   console.log(`Project Manager Server running on http://localhost:${PORT}`);
