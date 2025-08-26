@@ -50,30 +50,7 @@ function App() {
 
   useEffect(() => {
     fetchProjects()
-    
-    // Set up file watcher for development (auto-refresh when projects.json changes)
-    if (process.env.NODE_ENV === 'development') {
-      const checkForUpdates = () => {
-        fetch('./projects.json', { cache: 'no-cache' })
-          .then(response => response.json())
-          .then(data => {
-            // Check if projects have changed
-            if (JSON.stringify(data) !== JSON.stringify(projects)) {
-              console.log('Projects updated, refreshing...')
-              setProjects(data)
-            }
-          })
-          .catch(() => {
-            // Ignore errors in development mode
-          })
-      }
-      
-      // Check every 2 seconds in development
-      const interval = setInterval(checkForUpdates, 2000)
-      
-      return () => clearInterval(interval)
-    }
-  }, [projects])
+  }, [])
 
   const fetchProjects = async () => {
     try {
