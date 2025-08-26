@@ -53,7 +53,7 @@ fi
 echo ""
 echo "🔧 Starting Project Management Tool..."
 cd tools
-npm run server &
+npm run dev:full &
 TOOL_PID=$!
 cd ..
 
