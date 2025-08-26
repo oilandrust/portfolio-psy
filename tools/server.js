@@ -110,10 +110,38 @@ const exportProjectsToJson = () => {
         created_at DESC
     `).all();
     
-    const projectsWithTechArray = projects.map(project => ({
-      ...project,
-      tech: project.tech ? project.tech.split(',') : []
-    }));
+    // Get all technologies for icon mapping
+    const technologies = db.prepare('SELECT * FROM technologies').all();
+    const techMap = new Map(technologies.map(tech => [tech.name.toLowerCase(), tech]));
+    
+    const projectsWithTechArray = projects.map(project => {
+      const techArray = project.tech ? project.tech.split(',') : [];
+      
+      // Map each technology to include icon information
+      const techWithIcons = techArray.map(techName => {
+        const techNameLower = techName.trim().toLowerCase();
+        const techData = techMap.get(techNameLower);
+        
+        if (techData) {
+          return {
+            name: techName.trim(),
+            icon: techData.icon_path,
+            iconType: techData.icon_type
+          };
+        } else {
+          return {
+            name: techName.trim(),
+            icon: null,
+            iconType: null
+          };
+        }
+      });
+      
+      return {
+        ...project,
+        tech: techWithIcons
+      };
+    });
     
     const jsonPath = join(__dirname, '..', 'public', 'projects.json');
     fs.writeFileSync(jsonPath, JSON.stringify(projectsWithTechArray, null, 2));
@@ -135,6 +163,17 @@ db.exec(`
     end_date DATE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )
+`);
+
+// Create technologies table if it doesn't exist
+db.exec(`
+  CREATE TABLE IF NOT EXISTS technologies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT UNIQUE NOT NULL,
+    icon_path TEXT NOT NULL,
+    icon_type TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   )
 `);
 
@@ -181,6 +220,36 @@ try {
   console.log('ℹ️  No migration needed or migration completed already');
 }
 
+// Insert initial technologies if table is empty
+const techCount = db.prepare('SELECT COUNT(*) as count FROM technologies').get();
+if (techCount.count === 0) {
+  const insertTech = db.prepare(`
+    INSERT INTO technologies (name, icon_path, icon_type) 
+    VALUES (?, ?, ?)
+  `);
+  
+  const initialTechnologies = [
+    ['bash', '/portfolio/icons/bash.svg', 'svg'],
+    ['c#', '/portfolio/icons/c#.svg', 'svg'],
+    ['c++', '/portfolio/icons/c++.svg', 'svg'],
+    ['c', '/portfolio/icons/c.svg', 'svg'],
+    ['dart', '/portfolio/icons/dart.svg', 'svg'],
+    ['go', '/portfolio/icons/go.svg', 'svg'],
+    ['haskell', '/portfolio/icons/haskell.svg', 'svg'],
+    ['java', '/portfolio/icons/java.svg', 'svg'],
+    ['javascript', '/portfolio/icons/javascript.svg', 'svg'],
+    ['kotlin', '/portfolio/icons/kotlin.svg', 'svg'],
+    ['php', '/portfolio/icons/php.png', 'png'],
+    ['python', '/portfolio/icons/python.svg', 'svg'],
+    ['ruby', '/portfolio/icons/ruby.svg', 'svg'],
+    ['rust', '/portfolio/icons/rust.svg', 'svg'],
+    ['typescript', '/portfolio/icons/typescript.svg', 'svg']
+  ];
+  
+  initialTechnologies.forEach(tech => insertTech.run(tech));
+  console.log('✅ Initial technologies inserted');
+}
+
 // Insert initial data if table is empty
 const count = db.prepare('SELECT COUNT(*) as count FROM projects').get();
 if (count.count === 0) {
@@ -224,6 +293,43 @@ if (count.count === 0) {
 
 // API Routes
 
+// Get all technologies
+app.get('/api/technologies', (req, res) => {
+  try {
+    const technologies = db.prepare('SELECT * FROM technologies ORDER BY name').all();
+    res.json(technologies);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Create new technology
+app.post('/api/technologies', (req, res) => {
+  try {
+    const { name, icon_path, icon_type } = req.body;
+    
+    if (!name || !icon_path || !icon_type) {
+      return res.status(400).json({ error: 'Name, icon_path, and icon_type are required' });
+    }
+    
+    const result = db.prepare('INSERT INTO technologies (name, icon_path, icon_type) VALUES (?, ?, ?)').run(name, icon_path, icon_type);
+    
+    res.status(201).json({ 
+      id: result.lastInsertRowid, 
+      name, 
+      icon_path, 
+      icon_type,
+      created_at: new Date().toISOString()
+    });
+  } catch (error) {
+    if (error.message.includes('UNIQUE constraint failed')) {
+      res.status(409).json({ error: 'Technology with this name already exists' });
+    } else {
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
 // Get all projects
 app.get('/api/projects', (req, res) => {
   try {
@@ -238,10 +344,40 @@ app.get('/api/projects', (req, res) => {
         created_at DESC
     `).all();
     
-    res.json(projects.map(project => ({
-      ...project,
-      tech: project.tech ? project.tech.split(',') : []
-    })));
+    // Get all technologies for icon mapping
+    const technologies = db.prepare('SELECT * FROM technologies').all();
+    const techMap = new Map(technologies.map(tech => [tech.name.toLowerCase(), tech]));
+    
+    const projectsWithTechIcons = projects.map(project => {
+      const techArray = project.tech ? project.tech.split(',') : [];
+      
+      // Map each technology to include icon information
+      const techWithIcons = techArray.map(techName => {
+        const techNameLower = techName.trim().toLowerCase();
+        const techData = techMap.get(techNameLower);
+        
+        if (techData) {
+          return {
+            name: techName.trim(),
+            icon: techData.icon_path,
+            iconType: techData.icon_type
+          };
+        } else {
+          return {
+            name: techName.trim(),
+            icon: null,
+            iconType: null
+          };
+        }
+      });
+      
+      return {
+        ...project,
+        tech: techWithIcons
+      };
+    });
+    
+    res.json(projectsWithTechIcons);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -252,9 +388,35 @@ app.get('/api/projects/:id', (req, res) => {
   try {
     const project = db.prepare('SELECT * FROM projects WHERE id = ?').get(req.params.id);
     if (project) {
+      // Get all technologies for icon mapping
+      const technologies = db.prepare('SELECT * FROM technologies').all();
+      const techMap = new Map(technologies.map(tech => [tech.name.toLowerCase(), tech]));
+      
+      const techArray = project.tech ? project.tech.split(',') : [];
+      
+      // Map each technology to include icon information
+      const techWithIcons = techArray.map(techName => {
+        const techNameLower = techName.trim().toLowerCase();
+        const techData = techMap.get(techNameLower);
+        
+        if (techData) {
+          return {
+            name: techName.trim(),
+            icon: techData.icon_path,
+            iconType: techData.icon_type
+          };
+        } else {
+          return {
+            name: techName.trim(),
+            icon: null,
+            iconType: null
+          };
+        }
+      });
+      
       res.json({
         ...project,
-        tech: project.tech ? project.tech.split(',') : []
+        tech: techWithIcons
       });
     } else {
       res.status(404).json({ error: 'Project not found' });
@@ -273,7 +435,19 @@ app.post('/api/projects', (req, res) => {
       return res.status(400).json({ error: 'Title is required' });
     }
     
-    const techString = Array.isArray(tech) ? tech.join(',') : tech;
+    // Handle tech input - can be array of strings or array of objects with name property
+    let techString;
+    if (Array.isArray(tech)) {
+      if (tech.length > 0 && typeof tech[0] === 'object' && tech[0].name) {
+        // Extract names from tech objects
+        techString = tech.map(t => t.name).join(',');
+      } else {
+        // Direct array of strings
+        techString = tech.join(',');
+      }
+    } else {
+      techString = tech || '';
+    }
     
     const insert = db.prepare(`
       INSERT INTO projects (title, description, image, tech, start_date, end_date) 
@@ -305,7 +479,19 @@ app.put('/api/projects/:id', (req, res) => {
       return res.status(400).json({ error: 'Title is required' });
     }
     
-    const techString = Array.isArray(tech) ? tech.join(',') : tech;
+    // Handle tech input - can be array of strings or array of objects with name property
+    let techString;
+    if (Array.isArray(tech)) {
+      if (tech.length > 0 && typeof tech[0] === 'object' && tech[0].name) {
+        // Extract names from tech objects
+        techString = tech.map(t => t.name).join(',');
+      } else {
+        // Direct array of strings
+        techString = tech.join(',');
+      }
+    } else {
+      techString = tech || '';
+    }
     
     const update = db.prepare(`
       UPDATE projects 

@@ -186,22 +186,44 @@ function ProjectAdmin() {
               
               {project.tech && project.tech.length > 0 && (
                 <div>
-                  {Array.isArray(project.tech) ? project.tech.map((tech, index) => (
-                    <span
-                      key={index}
-                      style={{
-                        display: 'inline-block',
-                        background: 'var(--primary)',
-                        color: 'white',
-                        padding: '0.2rem 0.5rem',
-                        borderRadius: '15px',
-                        fontSize: '0.8rem',
-                        margin: '0.1rem'
-                      }}
-                    >
-                      {tech}
-                    </span>
-                  )) : null}
+                  {Array.isArray(project.tech) ? project.tech.map((tech, index) => {
+                    if (tech.icon) {
+                      // Display icon if available
+                      return (
+                        <img
+                          key={index}
+                          src={tech.icon}
+                          alt={tech.name}
+                          title={tech.name}
+                          style={{
+                            width: '24px',
+                            height: '24px',
+                            margin: '0.1rem',
+                            borderRadius: '3px',
+                            objectFit: 'contain'
+                          }}
+                        />
+                      );
+                    } else {
+                      // Fallback to badge for technologies without icons
+                      return (
+                        <span
+                          key={index}
+                          style={{
+                            display: 'inline-block',
+                            background: 'var(--primary)',
+                            color: 'white',
+                            padding: '0.2rem 0.5rem',
+                            borderRadius: '15px',
+                            fontSize: '0.8rem',
+                            margin: '0.1rem'
+                          }}
+                        >
+                          {tech.name || tech}
+                        </span>
+                      );
+                    }
+                  }) : null}
                 </div>
               )}
             </div>

@@ -36,6 +36,17 @@ const exportProjectsToJson = () => {
           )
         `);
 
+        // Create technologies table if it doesn't exist
+        db.exec(`
+          CREATE TABLE IF NOT EXISTS technologies (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT UNIQUE NOT NULL,
+            icon_path TEXT NOT NULL,
+            icon_type TEXT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+          )
+        `);
+
         // Migrate existing database if needed
         try {
           // Check if we need to migrate from the old schema
@@ -79,11 +90,41 @@ const exportProjectsToJson = () => {
           console.log('ℹ️  No migration needed or migration completed already');
         }
       
-      // Insert sample data
-      const insert = db.prepare(`
-        INSERT INTO projects (title, description, image, tech, start_date, end_date) 
-        VALUES (?, ?, ?, ?, ?, ?)
-      `);
+              // Insert initial technologies if table is empty
+        const techCount = db.prepare('SELECT COUNT(*) as count FROM technologies').get();
+        if (techCount.count === 0) {
+          const insertTech = db.prepare(`
+            INSERT INTO technologies (name, icon_path, icon_type) 
+            VALUES (?, ?, ?)
+          `);
+          
+          const initialTechnologies = [
+            ['bash', '/portfolio/icons/bash.svg', 'svg'],
+            ['c#', '/portfolio/icons/c#.svg', 'svg'],
+            ['c++', '/portfolio/icons/c++.svg', 'svg'],
+            ['c', '/portfolio/icons/c.svg', 'svg'],
+            ['dart', '/portfolio/icons/dart.svg', 'svg'],
+            ['go', '/portfolio/icons/go.svg', 'svg'],
+            ['haskell', '/portfolio/icons/haskell.svg', 'svg'],
+            ['java', '/portfolio/icons/java.svg', 'svg'],
+            ['javascript', '/portfolio/icons/javascript.svg', 'svg'],
+            ['kotlin', '/portfolio/icons/kotlin.svg', 'svg'],
+            ['php', '/portfolio/icons/php.png', 'png'],
+            ['python', '/portfolio/icons/python.svg', 'svg'],
+            ['ruby', '/portfolio/icons/ruby.svg', 'svg'],
+            ['rust', '/portfolio/icons/rust.svg', 'svg'],
+            ['typescript', '/portfolio/icons/typescript.svg', 'svg']
+          ];
+          
+          initialTechnologies.forEach(tech => insertTech.run(tech));
+          console.log('✅ Initial technologies inserted');
+        }
+
+        // Insert sample data
+        const insert = db.prepare(`
+          INSERT INTO projects (title, description, image, tech, start_date, end_date) 
+          VALUES (?, ?, ?, ?, ?, ?)
+        `);
       
       const initialProjects = [
         [
@@ -126,10 +167,38 @@ const exportProjectsToJson = () => {
         END DESC,
         created_at DESC
     `).all();
-    const projectsWithTechArray = projects.map(project => ({
-      ...project,
-      tech: project.tech ? project.tech.split(',') : []
-    }));
+            // Get all technologies for icon mapping
+        const technologies = db.prepare('SELECT * FROM technologies').all();
+        const techMap = new Map(technologies.map(tech => [tech.name.toLowerCase(), tech]));
+        
+        const projectsWithTechArray = projects.map(project => {
+          const techArray = project.tech ? project.tech.split(',') : [];
+          
+          // Map each technology to include icon information
+          const techWithIcons = techArray.map(techName => {
+            const techNameLower = techName.trim().toLowerCase();
+            const techData = techMap.get(techNameLower);
+            
+            if (techData) {
+              return {
+                name: techName.trim(),
+                icon: techData.icon_path,
+                iconType: techData.icon_type
+              };
+            } else {
+              return {
+                name: techName.trim(),
+                icon: null,
+                iconType: null
+              };
+            }
+          });
+          
+          return {
+            ...project,
+            tech: techWithIcons
+          };
+        });
     
     // Ensure public directory exists
     const publicDir = join(__dirname, '..', 'public');

@@ -7,7 +7,12 @@ function App() {
       id: 1,
       title: "Portfolio Website",
       description: "A modern React portfolio built with Vite and Pico CSS, featuring responsive design and dynamic project showcase.",
-      tech: ["React", "Vite", "CSS", "JavaScript"],
+      tech: [
+        { name: "React", icon: "/portfolio/icons/javascript.svg", iconType: "svg" },
+        { name: "Vite", icon: null, iconType: null },
+        { name: "CSS", icon: null, iconType: null },
+        { name: "JavaScript", icon: "/portfolio/icons/javascript.svg", iconType: "svg" }
+      ],
       image: "https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=Portfolio",
       start_date: "2024-07-01",
       end_date: "2024-08-24"
@@ -16,7 +21,12 @@ function App() {
       id: 2,
       title: "Project Management Tool",
       description: "Internal tool for managing portfolio projects with SQLite database and JSON export functionality.",
-      tech: ["Node.js", "Express", "SQLite", "React"],
+      tech: [
+        { name: "Node.js", icon: "/portfolio/icons/javascript.svg", iconType: "svg" },
+        { name: "Express", icon: null, iconType: null },
+        { name: "SQLite", icon: null, iconType: null },
+        { name: "React", icon: "/portfolio/icons/javascript.svg", iconType: "svg" }
+      ],
       image: "https://via.placeholder.com/300x200/2196F3/FFFFFF?text=Admin+Tool",
       start_date: "2024-08-01",
       end_date: "2024-08-24"
@@ -174,23 +184,45 @@ function App() {
                   
                   {project.tech && project.tech.length > 0 && (
                     <div style={{ marginTop: '1rem' }}>
-                      {project.tech.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          style={{
-                            display: 'inline-block',
-                            background: 'var(--primary)',
-                            color: 'white',
-                            padding: '0.25rem 0.75rem',
-                            borderRadius: '20px',
-                            fontSize: '0.875rem',
-                            margin: '0.25rem 0.25rem 0.25rem 0',
-                            fontWeight: '500'
-                          }}
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                      {project.tech.map((tech, techIndex) => {
+                        if (tech.icon) {
+                          // Display icon if available
+                          return (
+                            <img
+                              key={techIndex}
+                              src={tech.icon}
+                              alt={tech.name}
+                              title={tech.name}
+                              style={{
+                                width: '32px',
+                                height: '32px',
+                                margin: '0.25rem 0.25rem 0.25rem 0',
+                                borderRadius: '4px',
+                                objectFit: 'contain'
+                              }}
+                            />
+                          );
+                        } else {
+                          // Fallback to badge for technologies without icons
+                          return (
+                            <span
+                              key={techIndex}
+                              style={{
+                                display: 'inline-block',
+                                background: 'var(--primary)',
+                                color: 'white',
+                                padding: '0.25rem 0.75rem',
+                                borderRadius: '20px',
+                                fontSize: '0.875rem',
+                                margin: '0.25rem 0.25rem 0.25rem 0',
+                                fontWeight: '500'
+                              }}
+                            >
+                              {tech.name || tech}
+                            </span>
+                          );
+                        }
+                      })}
                     </div>
                   )}
                 </div>
