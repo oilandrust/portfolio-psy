@@ -1,0 +1,18 @@
+title: Portfolio Timeline Website
+description: This is the page you're currently looking at. I built it vibe coding with Cursor.
+start_date: '2025-07-25'
+end_date: '2025-08-31'
+tech:
+  - name: React
+    icon: /portfolio/icons/react.svg
+    iconType: svg
+  - name: nodejs
+    icon: /portfolio/icons/nodejs.svg
+    iconType: svg
+  - name: javascript
+    icon: /portfolio/icons/javascript.svg
+    iconType: svg
+  - name: vite
+    icon: /portfolio/icons/vite.svg
+    iconType: svg
+images: []

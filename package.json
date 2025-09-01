@@ -11,10 +11,13 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "deploy": "npm run build && git add dist -f && git commit -m 'Deploy to GitHub Pages' && git push"
+    "deploy": "npm run build && git add dist -f && git commit -m 'Deploy to GitHub Pages' && git push",
+    "extract-projects": "node extract-projects.js",
+    "build-projects": "node build-projects.js"
   },
   "dependencies": {
     "@picocss/pico": "^2.1.1",
+    "js-yaml": "^4.1.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },

@@ -13,7 +13,7 @@ function App() {
         { name: "CSS", icon: null, iconType: null },
         { name: "JavaScript", icon: "/portfolio/icons/javascript.svg", iconType: "svg" }
       ],
-      image: "https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=Portfolio",
+      images: [],
       start_date: "2024-07-01",
       end_date: "2024-08-24"
     },
@@ -27,20 +27,21 @@ function App() {
         { name: "SQLite", icon: null, iconType: null },
         { name: "React", icon: "/portfolio/icons/javascript.svg", iconType: "svg" }
       ],
-      image: "https://via.placeholder.com/300x200/2196F3/FFFFFF?text=Admin+Tool",
+      images: [],
       start_date: "2024-08-01",
       end_date: "2024-08-24"
     },
     {
       id: 3,
       title: "Simple Project",
-      image: "https://via.placeholder.com/300x200/FF9800/FFFFFF?text=Simple",
+      images: [],
       start_date: "2024-09-01",
       end_date: "2024-10-15"
     },
     {
       id: 4,
       title: "Minimal Project",
+      images: [],
       start_date: "2024-11-01"
     }
   ]
@@ -203,17 +204,44 @@ function App() {
                     </div>
                   )}
                 </div>
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  style={{
+                {project.images && project.images.length > 0 ? (
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                    gap: '0.5rem',
+                    width: '300px',
+                    flexShrink: '0'
+                  }}>
+                    {project.images.map((img, imgIndex) => (
+                      <img 
+                        key={imgIndex}
+                        src={img.thumbnail || img.path} 
+                        alt={`${project.title} - Image ${imgIndex + 1}`} 
+                        style={{
+                          width: '100%',
+                          height: '150px',
+                          objectFit: 'cover',
+                          borderRadius: '6px'
+                        }}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div style={{
                     width: '300px',
                     height: '200px',
-                    objectFit: 'cover',
+                    background: 'var(--card-background-color)',
                     borderRadius: '6px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'var(--muted-color)',
+                    fontSize: '0.875rem',
                     flexShrink: '0'
-                  }}
-                />
+                  }}>
+                    No images available
+                  </div>
+                )}
               </div>
             ))}
           </div>
