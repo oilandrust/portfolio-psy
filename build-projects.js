@@ -44,6 +44,29 @@ function scanProjectImages(projectPath) {
   return images;
 }
 
+// Function to process tech string and find icons
+function processTechString(techString) {
+  if (!techString || typeof techString !== 'string') {
+    return [];
+  }
+  
+  const techNames = techString.split(',').map(t => t.trim()).filter(t => t);
+  const techArray = [];
+  
+  techNames.forEach(techName => {
+    // Look for icon in the icons directory
+    const iconPath = `/portfolio/icons/${techName.toLowerCase()}.svg`;
+    const iconExists = fs.existsSync(path.join('public', iconPath.replace('/portfolio/', '')));
+    
+    techArray.push({
+      name: techName,
+      icon: iconExists ? iconPath : null
+    });
+  });
+  
+  return techArray;
+}
+
 // Main function to build projects.json
 function buildProjectsJson() {
   console.log('🔍 Scanning for projects...');
@@ -75,13 +98,12 @@ function buildProjectsJson() {
           const project = {
             id: projectId++,
             title: projectData.title,
+            subtitle: projectData.subtitle || null,
             description: projectData.description || '',
             start_date: projectData.start_date || '',
             end_date: projectData.end_date || '',
-            tech: projectData.tech || [],
-            images: projectImages,
-            created_at: new Date().toISOString().replace('T', ' ').substring(0, 19),
-            updated_at: new Date().toISOString().replace('T', ' ').substring(0, 19)
+            tech: processTechString(projectData.tech),
+            images: projectImages
           };
           
           projects.push(project);

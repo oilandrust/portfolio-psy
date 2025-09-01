@@ -23,18 +23,19 @@ Each `project.yml` file contains:
 
 ```yaml
 title: Project Title
+subtitle: Optional project subtitle  # Optional - can be omitted
 description: Project description
 start_date: '2025-08-16'
 end_date: '2025-08-24'
-tech:
-  - name: React
-    icon: /portfolio/icons/react.svg
-    iconType: svg
-  - name: Vite
-    icon: /portfolio/icons/vite.svg
-    iconType: svg
-images: []  # Will be auto-populated from project folder
+tech: React, Vite, Pico  # Comma-separated technology names
 ```
+
+**Note**: The `tech` field is now a simple comma-separated string. The build script automatically:
+- Splits the string into individual technology names
+- Looks for matching icons in `/portfolio/icons/`
+- Creates the proper object format for the JSON output
+- Sets `icon: null` if no icon is found
+- Scans the project folder for images and auto-populates the `images` array
 
 ## 🛠️ Scripts
 

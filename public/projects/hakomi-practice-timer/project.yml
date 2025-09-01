@@ -1,15 +1,6 @@
 title: Hakomi Practice Timer
+subtitle: A solution to a quite specific real world problem
 description: A timer to make timing hakomi practice sessions easier.
 start_date: '2025-08-16'
 end_date: '2025-08-24'
-tech:
-  - name: React
-    icon: /portfolio/icons/react.svg
-    iconType: svg
-  - name: Vite
-    icon: /portfolio/icons/vite.svg
-    iconType: svg
-  - name: Pico
-    icon: null
-    iconType: null
-images: []
+tech: React, Vite, Pico

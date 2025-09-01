@@ -2,82 +2,100 @@
   {
     "id": 3,
     "title": "Portfolio Timeline Website",
+    "subtitle": "Personal portfolio built with modern web technologies",
     "description": "This is the page you're currently looking at. I built it vibe coding with Cursor.",
     "start_date": "2025-07-25",
     "end_date": "2025-08-31",
     "tech": [
       {
         "name": "React",
-        "icon": "/portfolio/icons/react.svg",
-        "iconType": "svg"
+        "icon": "/portfolio/icons/react.svg"
       },
       {
         "name": "nodejs",
-        "icon": "/portfolio/icons/nodejs.svg",
-        "iconType": "svg"
+        "icon": "/portfolio/icons/nodejs.svg"
       },
       {
         "name": "javascript",
-        "icon": "/portfolio/icons/javascript.svg",
-        "iconType": "svg"
+        "icon": "/portfolio/icons/javascript.svg"
       },
       {
         "name": "vite",
-        "icon": "/portfolio/icons/vite.svg",
-        "iconType": "svg"
+        "icon": "/portfolio/icons/vite.svg"
       }
     ],
-    "images": [],
-    "created_at": "2025-09-01 08:43:32",
-    "updated_at": "2025-09-01 08:43:32"
+    "images": []
   },
   {
     "id": 2,
     "title": "Hakomi Practice Timer",
+    "subtitle": "A solution to a quite specific real world problem",
     "description": "A timer to make timing hakomi practice sessions easier.",
     "start_date": "2025-08-16",
     "end_date": "2025-08-24",
     "tech": [
       {
         "name": "React",
-        "icon": "/portfolio/icons/react.svg",
-        "iconType": "svg"
+        "icon": "/portfolio/icons/react.svg"
       },
       {
         "name": "Vite",
-        "icon": "/portfolio/icons/vite.svg",
-        "iconType": "svg"
+        "icon": "/portfolio/icons/vite.svg"
       },
       {
         "name": "Pico",
-        "icon": null,
-        "iconType": null
+        "icon": null
       }
     ],
-    "images": [],
-    "created_at": "2025-09-01 08:43:32",
-    "updated_at": "2025-09-01 08:43:32"
+    "images": [
+      {
+        "path": "/portfolio/projects/hakomi-practice-timer/1756207344140-Screenshot_20250826_123126_Chrome.jpg",
+        "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344140-Screenshot_20250826_123126_Chrome.jpg"
+      },
+      {
+        "path": "/portfolio/projects/hakomi-practice-timer/1756207344142-Screenshot_20250826_123146_Chrome.jpg",
+        "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344142-Screenshot_20250826_123146_Chrome.jpg"
+      },
+      {
+        "path": "/portfolio/projects/hakomi-practice-timer/1756207344143-Screenshot_20250826_123156_Chrome.jpg",
+        "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344143-Screenshot_20250826_123156_Chrome.jpg"
+      },
+      {
+        "path": "/portfolio/projects/hakomi-practice-timer/1756207344145-Screenshot_20250826_123203_Chrome.jpg",
+        "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344145-Screenshot_20250826_123203_Chrome.jpg"
+      }
+    ]
   },
   {
     "id": 1,
-    "title": "Game Development in Rust - Study around SnakeBird",
-    "description": "A few projects of game development exploring gameplay inspired by the game SnakeBird",
+    "title": "Game Development in Rust",
+    "subtitle": "Study around SnakeBird",
+    "description": "A few projects of game development exploring gameplay inspired by the game SnakeBird.\nI was attracted to learn Rust. I was drawn to it's strong type system and elegant syntax.\nSince making games was my strongest expertise, I played around with the Bevy game engine which I found really usable with an elegant compoent entity system.\n\nI started with simple terminal games and then explored gameplay inspired by the game SnakeBird. What interested me about this game is that it has a grid logic, like the original snake game, but it also has smouth movement.\nIt's an interesting challenge since the game logic and state is in a discreet grid but we interpolate movements so it feels smooth.\n\nI first implemented a clone of SnakeBird in 2D, replicating the same gameplay, including undo/redo and simple physics.\nTwo of the most interesting systems are the undo/redo system and the renderer used to render the snakes.\n\nThen I extended this game to work in 3D, incorporating novel gameplay ideas on top of the SnakeBird gameplay.\n",
     "start_date": "2025-08-26",
     "end_date": "2023-12-29",
     "tech": [
       {
         "name": "rust",
-        "icon": "/portfolio/icons/rust.svg",
-        "iconType": "svg"
+        "icon": "/portfolio/icons/rust.svg"
       },
       {
         "name": "bevy",
-        "icon": null,
-        "iconType": null
+        "icon": null
       }
     ],
-    "images": [],
-    "created_at": "2025-09-01 08:43:32",
-    "updated_at": "2025-09-01 08:43:32"
+    "images": [
+      {
+        "path": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-06 at 15.27.25.png",
+        "thumbnail": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-06 at 15.27.25.png"
+      },
+      {
+        "path": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-06 at 15.58.01.png",
+        "thumbnail": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-06 at 15.58.01.png"
+      },
+      {
+        "path": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png",
+        "thumbnail": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png"
+      }
+    ]
   }
 ]
