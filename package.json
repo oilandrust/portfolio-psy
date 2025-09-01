@@ -6,7 +6,7 @@
   "homepage": "https://olivier.github.io/portfolio",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build-projects && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "deploy": "npm run build && git add dist -f && git commit -m 'Deploy to GitHub Pages' && git push",
