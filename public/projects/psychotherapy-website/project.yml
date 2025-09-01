@@ -1,0 +1,12 @@
+title: Re-connected.fr
+subtitle: The wordpress website for my psychotherapy practice
+start_date: 2024-09-15
+end_date: 2024-01-28
+tech: wordpress
+image_layout: grid
+github_url: 
+live_url: https://re-connected.fr
+
+description: |
+  I built my first website using wordpress for my small psychotherapy practice. It is a single page and using the basic wordpress template but it does the job.
+  This version is the third iteration of the website. I learned to setup a wordpress website and to host it on Amazon Lightsail. I'm interested in learning more about wordpress.

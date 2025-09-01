@@ -46,10 +46,6 @@
         "icon": "/portfolio/icons/vite.svg"
       },
       {
-        "name": "Pico",
-        "icon": null
-      },
-      {
         "name": "cursor",
         "icon": "/portfolio/icons/cursor.svg"
       }
@@ -75,6 +71,37 @@
     "image_layout": "row",
     "github_url": "https://github.com/oilandrust/hakomi-practice-timer",
     "live_url": "https://oilandrust.github.io/hakomi-practice-timer/"
+  },
+  {
+    "id": 4,
+    "title": "Re-connected.fr",
+    "subtitle": "The wordpress website for my psychotherapy practice",
+    "description": "I built my first website using wordpress for my small psychotherapy practice. It is a single page and using the basic wordpress template but it does the job.\nThis version is the third iteration of the website. I learned to setup a wordpress website and to host it on Amazon Lightsail. I'm interested in learning more about wordpress.\n",
+    "start_date": "2024-09-15T00:00:00.000Z",
+    "end_date": "2025-01-28T00:00:00.000Z",
+    "tech": [
+      {
+        "name": "wordpress",
+        "icon": null
+      }
+    ],
+    "images": [
+      {
+        "path": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.12.png",
+        "thumbnail": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.12.png"
+      },
+      {
+        "path": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.31.png",
+        "thumbnail": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.31.png"
+      },
+      {
+        "path": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.40.png",
+        "thumbnail": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.40.png"
+      }
+    ],
+    "image_layout": "grid",
+    "github_url": null,
+    "live_url": "https://re-connected.fr"
   },
   {
     "id": 1,
@@ -109,6 +136,6 @@
     ],
     "image_layout": "column",
     "github_url": "https://github.com/oilandrust/cat-snake",
-    "live_url": "https://oliver-rust.itch.io/bird-snake"
+    "live_url": "https://oliver-rust.itch.io/cat-snake"
   }
 ]
