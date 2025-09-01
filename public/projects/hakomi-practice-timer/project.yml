@@ -3,6 +3,7 @@ subtitle: A solution to a quite specific real world problem
 description: A timer to make timing hakomi practice sessions easier.
 start_date: '2025-08-16'
 end_date: '2025-08-24'
-tech: React, Vite, Pico
+tech: React, Vite, Pico, cursor
+image_layout: column
 github_url: https://github.com/oilandrust/hakomi-practice-timer
 live_url: https://oilandrust.github.io/hakomi-practice-timer/

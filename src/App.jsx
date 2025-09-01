@@ -327,10 +327,13 @@ function App() {
                 </div>
                 {project.images && project.images.length > 0 ? (
                   <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                    display: project.image_layout === 'column' ? 'flex' : 'grid',
+                    flexDirection: project.image_layout === 'column' ? 'column' : 'row',
+                    gridTemplateColumns: project.image_layout === 'grid' 
+                      ? 'repeat(auto-fit, minmax(150px, 1fr))' 
+                      : 'repeat(auto-fit, minmax(120px, 1fr))',
                     gap: '0.5rem',
-                    width: '300px',
+                    width: project.image_layout === 'column' ? '200px' : '300px',
                     flexShrink: '0'
                   }}>
                     {project.images.map((img, imgIndex) => (
@@ -340,7 +343,7 @@ function App() {
                         alt={`${project.title} - Image ${imgIndex + 1}`} 
                         style={{
                           width: '100%',
-                          height: '150px',
+                          height: project.image_layout === 'column' ? '120px' : '150px',
                           objectFit: 'cover',
                           borderRadius: '6px',
                           cursor: 'pointer',

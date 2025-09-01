@@ -25,6 +25,7 @@
       }
     ],
     "images": [],
+    "image_layout": "grid",
     "github_url": "https://github.com/oilandrust/portfolio",
     "live_url": "https://oilandrust.github.io/portfolio"
   },
@@ -47,6 +48,10 @@
       {
         "name": "Pico",
         "icon": null
+      },
+      {
+        "name": "cursor",
+        "icon": "/portfolio/icons/cursor.svg"
       }
     ],
     "images": [
@@ -67,6 +72,7 @@
         "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344145-Screenshot_20250826_123203_Chrome.jpg"
       }
     ],
+    "image_layout": "row",
     "github_url": "https://github.com/oilandrust/hakomi-practice-timer",
     "live_url": "https://oilandrust.github.io/hakomi-practice-timer/"
   },
@@ -101,7 +107,8 @@
         "thumbnail": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png"
       }
     ],
-    "github_url": "https://github.com/oilandrust/snakebird-clone",
-    "live_url": null
+    "image_layout": "column",
+    "github_url": "https://github.com/oilandrust/cat-snake",
+    "live_url": "https://oliver-rust.itch.io/bird-snake"
   }
 ]

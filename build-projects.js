@@ -104,6 +104,7 @@ function buildProjectsJson() {
             end_date: projectData.end_date || '',
             tech: processTechString(projectData.tech),
             images: projectImages,
+            image_layout: projectData.image_layout || 'grid', // Default to grid
             github_url: projectData.github_url || null,
             live_url: projectData.live_url || null
           };

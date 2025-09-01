@@ -28,6 +28,7 @@ description: Project description
 start_date: '2025-08-16'
 end_date: '2025-08-24'
 tech: React, Vite, Pico  # Comma-separated technology names
+image_layout: grid  # Optional - "row", "grid", or "column" (defaults to "grid")
 github_url: https://github.com/username/project  # Optional - GitHub repository
 live_url: https://project-demo.com  # Optional - Live demo or website
 ```
@@ -40,6 +41,12 @@ live_url: https://project-demo.com  # Optional - Live demo or website
 - Scans the project folder for images and auto-populates the `images` array
 
 **URL Fields**: Both `github_url` and `live_url` are optional. If provided, they will be displayed as clickable buttons below the tech stack in the portfolio.
+
+**Image Layout**: The `image_layout` field controls how project images are displayed:
+- **`row`**: Images in a horizontal row (good for many small images)
+- **`grid`**: Images in a responsive grid (default, good for most cases)
+- **`column`**: Images in a vertical column (good for tall images)
+- **Omit this field** to use the default grid layout
 
 ## 🛠️ Scripts
 
