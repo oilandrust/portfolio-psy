@@ -28,6 +28,8 @@ description: Project description
 start_date: '2025-08-16'
 end_date: '2025-08-24'
 tech: React, Vite, Pico  # Comma-separated technology names
+github_url: https://github.com/username/project  # Optional - GitHub repository
+live_url: https://project-demo.com  # Optional - Live demo or website
 ```
 
 **Note**: The `tech` field is now a simple comma-separated string. The build script automatically:
@@ -36,6 +38,8 @@ tech: React, Vite, Pico  # Comma-separated technology names
 - Creates the proper object format for the JSON output
 - Sets `icon: null` if no icon is found
 - Scans the project folder for images and auto-populates the `images` array
+
+**URL Fields**: Both `github_url` and `live_url` are optional. If provided, they will be displayed as clickable buttons below the tech stack in the portfolio.
 
 ## 🛠️ Scripts
 

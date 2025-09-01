@@ -24,7 +24,9 @@
         "icon": "/portfolio/icons/vite.svg"
       }
     ],
-    "images": []
+    "images": [],
+    "github_url": "https://github.com/oilandrust/portfolio",
+    "live_url": "https://oilandrust.github.io/portfolio"
   },
   {
     "id": 2,
@@ -64,7 +66,9 @@
         "path": "/portfolio/projects/hakomi-practice-timer/1756207344145-Screenshot_20250826_123203_Chrome.jpg",
         "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344145-Screenshot_20250826_123203_Chrome.jpg"
       }
-    ]
+    ],
+    "github_url": "https://github.com/oilandrust/hakomi-practice-timer",
+    "live_url": "https://oilandrust.github.io/hakomi-practice-timer/"
   },
   {
     "id": 1,
@@ -96,6 +100,8 @@
         "path": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png",
         "thumbnail": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png"
       }
-    ]
+    ],
+    "github_url": "https://github.com/oilandrust/snakebird-clone",
+    "live_url": null
   }
 ]

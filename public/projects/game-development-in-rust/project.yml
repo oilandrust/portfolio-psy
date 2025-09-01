@@ -3,6 +3,7 @@ subtitle: Study around SnakeBird
 start_date: '2025-08-26'
 end_date: '2023-12-29'
 tech: rust, bevy
+github_url: https://github.com/oilandrust/snakebird-clone
 description: |
   A few projects of game development exploring gameplay inspired by the game SnakeBird.
   I was attracted to learn Rust. I was drawn to it's strong type system and elegant syntax.

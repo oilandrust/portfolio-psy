@@ -103,7 +103,9 @@ function buildProjectsJson() {
             start_date: projectData.start_date || '',
             end_date: projectData.end_date || '',
             tech: processTechString(projectData.tech),
-            images: projectImages
+            images: projectImages,
+            github_url: projectData.github_url || null,
+            live_url: projectData.live_url || null
           };
           
           projects.push(project);

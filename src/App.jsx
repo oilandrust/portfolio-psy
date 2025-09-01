@@ -251,6 +251,60 @@ function App() {
                     </div>
                   )}
 
+                  {/* Project URLs */}
+                  {(project.github_url || project.live_url) && (
+                    <div style={{ marginTop: '1rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                      {project.github_url && (
+                        <a
+                          href={project.github_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            background: 'var(--primary)',
+                            color: 'white',
+                            padding: '0.5rem 1rem',
+                            borderRadius: '6px',
+                            textDecoration: 'none',
+                            fontSize: '0.875rem',
+                            fontWeight: '500',
+                            transition: 'background 0.2s ease'
+                          }}
+                          onMouseEnter={(e) => e.target.style.background = 'var(--primary-hover, #0056b3)'}
+                          onMouseLeave={(e) => e.target.style.background = 'var(--primary)'}
+                        >
+                          🐙 GitHub
+                        </a>
+                      )}
+                      {project.live_url && (
+                        <a
+                          href={project.live_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            background: 'var(--success)',
+                            color: 'white',
+                            padding: '0.5rem 1rem',
+                            borderRadius: '6px',
+                            textDecoration: 'none',
+                            fontSize: '0.875rem',
+                            fontWeight: '500',
+                            transition: 'background 0.2s ease'
+                          }}
+                          onMouseEnter={(e) => e.target.style.background = 'var(--success-hover, #28a745)'}
+                          onMouseLeave={(e) => e.target.style.background = 'var(--success)'}
+                        >
+                          🌐 Live Demo
+                        </a>
+                      )}
+                    </div>
+                  )}
+
                   {/* Project dates */}
                   {(project.start_date || project.end_date) && (
                     <div style={{ 

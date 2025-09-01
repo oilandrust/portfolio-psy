@@ -4,3 +4,5 @@ description: This is the page you're currently looking at. I built it vibe codin
 start_date: '2025-07-25'
 end_date: '2025-08-31'
 tech: React, nodejs, javascript, vite
+github_url: https://github.com/oilandrust/portfolio
+live_url: https://oilandrust.github.io/portfolio
