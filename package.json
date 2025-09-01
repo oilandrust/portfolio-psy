@@ -6,13 +6,10 @@
   "homepage": "https://olivier.github.io/portfolio",
   "scripts": {
     "dev": "vite",
-    "dev:both": "./launch-both.sh",
-    "dev:both:win": "launch-both.bat",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "deploy": "npm run build && git add dist -f && git commit -m 'Deploy to GitHub Pages' && git push",
-    "extract-projects": "node extract-projects.js",
     "build-projects": "node build-projects.js"
   },
   "dependencies": {
