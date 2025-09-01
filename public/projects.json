@@ -12,16 +12,16 @@
         "icon": "/portfolio/icons/react.svg"
       },
       {
-        "name": "nodejs",
-        "icon": "/portfolio/icons/nodejs.svg"
-      },
-      {
         "name": "javascript",
         "icon": "/portfolio/icons/javascript.svg"
       },
       {
         "name": "vite",
         "icon": "/portfolio/icons/vite.svg"
+      },
+      {
+        "name": "cursor",
+        "icon": "/portfolio/icons/cursor.svg"
       }
     ],
     "images": [],
@@ -90,7 +90,7 @@
       },
       {
         "name": "bevy",
-        "icon": null
+        "icon": "/portfolio/icons/bevy.png"
       }
     ],
     "images": [

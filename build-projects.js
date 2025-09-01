@@ -54,9 +54,15 @@ function processTechString(techString) {
   const techArray = [];
   
   techNames.forEach(techName => {
-    // Look for icon in the icons directory
-    const iconPath = `/portfolio/icons/${techName.toLowerCase()}.svg`;
-    const iconExists = fs.existsSync(path.join('public', iconPath.replace('/portfolio/', '')));
+    // Look for icon in the icons directory (try SVG first, then PNG)
+    let iconPath = `/portfolio/icons/${techName.toLowerCase()}.svg`;
+    let iconExists = fs.existsSync(path.join('public', iconPath.replace('/portfolio/', '')));
+    
+    if (!iconExists) {
+      // Try PNG if SVG doesn't exist
+      iconPath = `/portfolio/icons/${techName.toLowerCase()}.png`;
+      iconExists = fs.existsSync(path.join('public', iconPath.replace('/portfolio/', '')));
+    }
     
     techArray.push({
       name: techName,

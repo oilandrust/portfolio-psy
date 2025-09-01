@@ -199,7 +199,7 @@ function App() {
                 alignItems: 'flex-start'
               }}>
                 <div style={{ flex: '1' }}>
-                  <h3 style={{ marginBottom: '0.5rem', color: 'var(--primary)' }}>{project.title}</h3>
+                  <h3 style={{ marginBottom: '0.5rem', color: '#000000' }}>{project.title}</h3>
                   {project.subtitle && (
                     <p style={{ 
                       marginBottom: '0.75rem', 
@@ -210,10 +210,6 @@ function App() {
                       {project.subtitle}
                     </p>
                   )}
-                  {project.description && (
-                    <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>{project.description}</p>
-                  )}
-                  
                   {project.tech && project.tech.length > 0 && (
                     <div style={{ marginTop: '1rem' }}>
                       {project.tech.map((tech, techIndex) => {
@@ -258,6 +254,10 @@ function App() {
                     </div>
                   )}
 
+                  {project.description && (
+                    <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>{project.description}</p>
+                  )}
+
                   {/* Project URLs */}
                   {(project.github_url || project.live_url) && (
                     <div style={{ marginTop: '1rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
@@ -282,7 +282,12 @@ function App() {
                           onMouseEnter={(e) => e.target.style.background = 'var(--primary-hover, #0056b3)'}
                           onMouseLeave={(e) => e.target.style.background = 'var(--primary)'}
                         >
-                          🐙 GitHub
+                          <img 
+                            src="/portfolio/github-mark.svg" 
+                            alt="GitHub" 
+                            style={{ width: '16px', height: '16px', filter: 'brightness(0) invert(1)' }}
+                          />
+                          GitHub
                         </a>
                       )}
                       {project.live_url && (

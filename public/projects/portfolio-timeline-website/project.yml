@@ -3,7 +3,7 @@ subtitle: Personal portfolio built with modern web technologies
 description: This is the page you're currently looking at. I built it vibe coding with Cursor.
 start_date: '2025-07-25'
 end_date: '2025-08-31'
-tech: React, nodejs, javascript, vite
+tech: React, javascript, vite, cursor
 image_layout: grid
 github_url: https://github.com/oilandrust/portfolio
 live_url: https://oilandrust.github.io/portfolio

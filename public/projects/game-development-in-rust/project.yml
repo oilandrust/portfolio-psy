@@ -5,7 +5,7 @@ end_date: '2023-12-29'
 tech: rust, bevy
 image_layout: column
 github_url: https://github.com/oilandrust/cat-snake
-live_url: https://oliver-rust.itch.io/bird-snake
+live_url: https://oliver-rust.itch.io/cat-snake
 description: |
   A few projects of game development exploring gameplay inspired by the game SnakeBird.
   I was attracted to learn Rust. I was drawn to it's strong type system and elegant syntax.
