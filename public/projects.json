@@ -25,6 +25,7 @@
       }
     ],
     "images": [],
+    "videos": [],
     "image_layout": "grid",
     "github_url": "https://github.com/oilandrust/portfolio",
     "live_url": "https://oilandrust.github.io/portfolio"
@@ -68,6 +69,7 @@
         "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344145-Screenshot_20250826_123203_Chrome.jpg"
       }
     ],
+    "videos": [],
     "image_layout": "row",
     "github_url": "https://github.com/oilandrust/hakomi-practice-timer",
     "live_url": "https://oilandrust.github.io/hakomi-practice-timer/"
@@ -82,7 +84,7 @@
     "tech": [
       {
         "name": "wordpress",
-        "icon": null
+        "icon": "/portfolio/icons/wordpress.svg"
       }
     ],
     "images": [
@@ -99,6 +101,7 @@
         "thumbnail": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.40.png"
       }
     ],
+    "videos": [],
     "image_layout": "grid",
     "github_url": null,
     "live_url": "https://re-connected.fr"
@@ -132,6 +135,12 @@
       {
         "path": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png",
         "thumbnail": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png"
+      }
+    ],
+    "videos": [
+      {
+        "path": "/portfolio/projects/game-development-in-rust/CatSnake.mov",
+        "thumbnail": null
       }
     ],
     "image_layout": "column",

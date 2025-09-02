@@ -44,6 +44,45 @@ function scanProjectImages(projectPath) {
   return images;
 }
 
+// Function to scan for project videos
+function scanProjectVideos(projectPath) {
+  const videos = [];
+  const allowedExtensions = ['.mp4', '.webm', '.mov', '.avi', '.mkv'];
+  
+  try {
+    const files = fs.readdirSync(projectPath);
+    files.forEach(file => {
+      const ext = path.extname(file).toLowerCase();
+      if (allowedExtensions.includes(ext)) {
+        // Look for a thumbnail image with similar name
+        const baseName = path.parse(file).name;
+        const thumbnailExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
+        let thumbnailPath = null;
+        
+        // Try to find a matching thumbnail
+        for (const thumbExt of thumbnailExtensions) {
+          const thumbFile = `${baseName}-thumb${thumbExt}`;
+          const thumbPath = path.join(projectPath, thumbFile);
+          if (fs.existsSync(thumbPath)) {
+            thumbnailPath = `/portfolio/projects/${path.basename(projectPath)}/${thumbFile}`;
+            break;
+          }
+        }
+        
+        // If no custom thumbnail found, use the video's first frame (will be handled by VideoThumbnail component)
+        videos.push({
+          path: `/portfolio/projects/${path.basename(projectPath)}/${file}`,
+          thumbnail: thumbnailPath
+        });
+      }
+    });
+  } catch (error) {
+    console.error(`❌ Error scanning videos in ${projectPath}:`, error.message);
+  }
+  
+  return videos;
+}
+
 // Function to process tech string and find icons
 function processTechString(techString) {
   if (!techString || typeof techString !== 'string') {
@@ -97,8 +136,9 @@ function buildProjectsJson() {
         
         const projectData = readProjectYaml(projectPath);
         if (projectData) {
-          // Scan for images in the project folder
+          // Scan for images and videos in the project folder
           const projectImages = scanProjectImages(projectPath);
+          const projectVideos = scanProjectVideos(projectPath);
           
           // Build the project object
           const project = {
@@ -110,6 +150,7 @@ function buildProjectsJson() {
             end_date: projectData.end_date || '',
             tech: processTechString(projectData.tech),
             images: projectImages,
+            videos: projectVideos,
             image_layout: projectData.image_layout || 'grid', // Default to grid
             github_url: projectData.github_url || null,
             live_url: projectData.live_url || null
@@ -120,6 +161,10 @@ function buildProjectsJson() {
           
           if (projectImages.length > 0) {
             console.log(`  📷 Found ${projectImages.length} images`);
+          }
+          
+          if (projectVideos.length > 0) {
+            console.log(`  🎥 Found ${projectVideos.length} videos`);
           }
         }
       }
@@ -142,7 +187,15 @@ function buildProjectsJson() {
     
     // Display summary
     projects.forEach(project => {
-      console.log(`  • ${project.title} (${project.images.length} images)`);
+      const mediaSummary = [];
+      if (project.images.length > 0) {
+        mediaSummary.push(`${project.images.length} images`);
+      }
+      if (project.videos.length > 0) {
+        mediaSummary.push(`${project.videos.length} videos`);
+      }
+      const mediaText = mediaSummary.length > 0 ? `(${mediaSummary.join(', ')})` : '(no media)';
+      console.log(`  • ${project.title} ${mediaText}`);
     });
     
   } catch (error) {

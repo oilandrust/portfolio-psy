@@ -1,32 +1,69 @@
 import { useState } from 'react'
+import VideoThumbnail from './VideoThumbnail'
+import VideoPlayer from './VideoPlayer'
 
 const ProjectCard = ({ project, onImageClick }) => {
   const [carouselOpen, setCarouselOpen] = useState(false)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [currentMediaIndex, setCurrentMediaIndex] = useState(0)
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
 
-  const openCarousel = (imageIndex = 0) => {
-    setCurrentImageIndex(imageIndex)
+  // Merge images and videos into a single media array for backward compatibility
+  const getMediaArray = () => {
+    const media = []
+    
+    // Add images from the old images field
+    if (project.images && project.images.length > 0) {
+      project.images.forEach(img => {
+        media.push({
+          ...img,
+          type: 'image'
+        })
+      })
+    }
+    
+    // Add videos from the videos field
+    if (project.videos && project.videos.length > 0) {
+      project.videos.forEach(video => {
+        media.push({
+          ...video,
+          type: 'video'
+        })
+      })
+    }
+    
+    // If no media found, return empty array
+    return media
+  }
+
+  const projectMedia = getMediaArray()
+
+  const openCarousel = (mediaIndex = 0) => {
+    setCurrentMediaIndex(mediaIndex)
     setCarouselOpen(true)
+    setIsVideoPlaying(false)
   }
 
   const closeCarousel = () => {
     setCarouselOpen(false)
-    setCurrentImageIndex(0)
+    setCurrentMediaIndex(0)
+    setIsVideoPlaying(false)
   }
 
-  const nextImage = () => {
-    if (project.images && project.images.length > 1) {
-      setCurrentImageIndex((prev) => 
-        prev === project.images.length - 1 ? 0 : prev + 1
+  const nextMedia = () => {
+    if (projectMedia.length > 1) {
+      setCurrentMediaIndex((prev) => 
+        prev === projectMedia.length - 1 ? 0 : prev + 1
       )
+      setIsVideoPlaying(false)
     }
   }
 
-  const prevImage = () => {
-    if (project.images && project.images.length > 1) {
-      setCurrentImageIndex((prev) => 
-        prev === 0 ? project.images.length - 1 : prev - 1
+  const prevMedia = () => {
+    if (projectMedia.length > 1) {
+      setCurrentMediaIndex((prev) => 
+        prev === 0 ? projectMedia.length - 1 : prev - 1
       )
+      setIsVideoPlaying(false)
     }
   }
 
@@ -38,10 +75,10 @@ const ProjectCard = ({ project, onImageClick }) => {
         closeCarousel()
         break
       case 'ArrowLeft':
-        prevImage()
+        prevMedia()
         break
       case 'ArrowRight':
-        nextImage()
+        nextMedia()
         break
     }
   }
@@ -199,7 +236,7 @@ const ProjectCard = ({ project, onImageClick }) => {
 
         </div>
         
-        {project.images && project.images.length > 0 ? (
+        {projectMedia.length > 0 ? (
           <div style={{
             display: project.image_layout === 'column' ? 'flex' : 'grid',
             flexDirection: project.image_layout === 'column' ? 'column' : 'row',
@@ -210,24 +247,40 @@ const ProjectCard = ({ project, onImageClick }) => {
             width: project.image_layout === 'column' ? '200px' : '300px',
             flexShrink: '0'
           }}>
-            {project.images.map((img, imgIndex) => (
-              <img 
-                key={imgIndex}
-                src={img.thumbnail || img.path} 
-                alt={`${project.title} - Image ${imgIndex + 1}`}
-                style={{
-                  width: '100%',
-                  height: '150px',
-                  objectFit: 'cover',
-                  borderRadius: '6px',
-                  cursor: 'pointer',
-                  transition: 'transform 0.2s ease'
-                }}
-                onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
-                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-                onClick={() => openCarousel(imgIndex)}
-              />
-            ))}
+            {projectMedia.map((media, mediaIndex) => {
+              if (media.type === 'video') {
+                return (
+                  <VideoThumbnail
+                    key={mediaIndex}
+                    video={media}
+                    onClick={() => openCarousel(mediaIndex)}
+                    style={{
+                      width: '100%',
+                      height: '150px'
+                    }}
+                  />
+                )
+              } else {
+                return (
+                  <img 
+                    key={mediaIndex}
+                    src={media.thumbnail || media.path} 
+                    alt={`${project.title} - Image ${mediaIndex + 1}`}
+                    style={{
+                      width: '100%',
+                      height: '150px',
+                      objectFit: 'cover',
+                      borderRadius: '6px',
+                      cursor: 'pointer',
+                      transition: 'transform 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                    onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                    onClick={() => openCarousel(mediaIndex)}
+                  />
+                )
+              }
+            })}
           </div>
         ) : (
           <div style={{
@@ -242,12 +295,12 @@ const ProjectCard = ({ project, onImageClick }) => {
             fontSize: '0.875rem',
             flexShrink: '0'
           }}>
-            No images available
+            No media available
           </div>
         )}
       </div>
 
-      {/* Image Carousel Modal */}
+      {/* Media Carousel Modal */}
       {carouselOpen && (
         <div style={{
           position: 'fixed',
@@ -289,10 +342,10 @@ const ProjectCard = ({ project, onImageClick }) => {
           </button>
 
           {/* Navigation arrows */}
-          {project.images.length > 1 && (
+          {projectMedia.length > 1 && (
             <>
               <button
-                onClick={prevImage}
+                onClick={prevMedia}
                 style={{
                   position: 'absolute',
                   left: '2rem',
@@ -317,7 +370,7 @@ const ProjectCard = ({ project, onImageClick }) => {
                 ‹
               </button>
               <button
-                onClick={nextImage}
+                onClick={nextMedia}
                 style={{
                   position: 'absolute',
                   right: '2rem',
@@ -344,20 +397,27 @@ const ProjectCard = ({ project, onImageClick }) => {
             </>
           )}
 
-          {/* Main image */}
-          <img
-            src={project.images[currentImageIndex].path || project.images[currentImageIndex].thumbnail}
-            alt={`${project.title} - Image ${currentImageIndex + 1}`}
-            style={{
-              maxWidth: '90%',
-              maxHeight: '90%',
-              objectFit: 'contain',
-              borderRadius: '8px'
-            }}
-          />
+          {/* Main media display */}
+          {projectMedia[currentMediaIndex].type === 'video' ? (
+            <VideoPlayer
+              video={projectMedia[currentMediaIndex]}
+              onClose={closeCarousel}
+            />
+          ) : (
+            <img
+              src={projectMedia[currentMediaIndex].path || projectMedia[currentMediaIndex].thumbnail}
+              alt={`${project.title} - Image ${currentMediaIndex + 1}`}
+              style={{
+                maxWidth: '90%',
+                maxHeight: '90%',
+                objectFit: 'contain',
+                borderRadius: '8px'
+              }}
+            />
+          )}
 
-          {/* Image counter */}
-          {project.images.length > 1 && (
+          {/* Media counter */}
+          {projectMedia.length > 1 && (
             <div style={{
               position: 'absolute',
               bottom: '2rem',
@@ -369,7 +429,7 @@ const ProjectCard = ({ project, onImageClick }) => {
               borderRadius: '20px',
               fontSize: '0.875rem'
             }}>
-              {currentImageIndex + 1} / {project.images.length}
+              {currentMediaIndex + 1} / {projectMedia.length}
             </div>
           )}
 
