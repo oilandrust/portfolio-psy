@@ -130,34 +130,38 @@ const ProjectCard = ({ project, onImageClick }) => {
 
           {/* Project URLs */}
           {(project.github_url || project.live_url) && (
-            <div style={{ marginTop: '1rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               {project.github_url && (
                 <a
                   href={project.github_url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="View on GitHub"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.5rem',
-                    background: 'var(--primary)',
-                    color: 'white',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '6px',
-                    textDecoration: 'none',
-                    fontSize: '0.875rem',
-                    fontWeight: '500',
-                    transition: 'background 0.2s ease'
+                    justifyContent: 'center',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    background: 'var(--muted-border-color)',
+                    transition: 'all 0.2s ease',
+                    textDecoration: 'none'
                   }}
-                  onMouseEnter={(e) => e.target.style.background = 'var(--primary-hover, #0056b3)'}
-                  onMouseLeave={(e) => e.target.style.background = 'var(--primary)'}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = 'var(--primary)'
+                    e.target.style.transform = 'scale(1.1)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = 'var(--muted-border-color)'
+                    e.target.style.transform = 'scale(1)'
+                  }}
                 >
                   <img 
                     src="/portfolio/github-mark.svg" 
                     alt="GitHub" 
-                    style={{ width: '16px', height: '16px', filter: 'brightness(0) invert(1)' }}
+                    style={{ width: '20px', height: '20px' }}
                   />
-                  GitHub
                 </a>
               )}
               {project.live_url && (
@@ -165,46 +169,34 @@ const ProjectCard = ({ project, onImageClick }) => {
                   href={project.live_url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="View Live Demo"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.5rem',
-                    background: 'var(--success)',
-                    color: 'white',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '6px',
+                    justifyContent: 'center',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    background: 'var(--muted-border-color)',
+                    transition: 'all 0.2s ease',
                     textDecoration: 'none',
-                    fontSize: '0.875rem',
-                    fontWeight: '500',
-                    transition: 'background 0.2s ease'
+                    fontSize: '20px'
                   }}
-                  onMouseEnter={(e) => e.target.style.background = 'var(--success-hover, #28a745)'}
-                  onMouseLeave={(e) => e.target.style.background = 'var(--success)'}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = 'var(--success)'
+                    e.target.style.transform = 'scale(1.1)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = 'var(--muted-border-color)'
+                    e.target.style.transform = 'scale(1)'
+                  }}
                 >
-                  🌐 Live Demo
+                  🌐
                 </a>
               )}
             </div>
           )}
 
-          {/* Project dates */}
-          {(project.start_date || project.end_date) && (
-            <div style={{ 
-              marginBottom: '1rem', 
-              fontSize: '0.875rem', 
-              color: 'var(--muted-color)',
-              display: 'flex',
-              gap: '1rem',
-              alignItems: 'center'
-            }}>
-              {project.start_date && (
-                <span>📅 Started: {new Date(project.start_date).toLocaleDateString()}</span>
-              )}
-              {project.end_date && (
-                <span>✅ Completed: {new Date(project.end_date).toLocaleDateString()}</span>
-              )}
-            </div>
-          )}
         </div>
         
         {project.images && project.images.length > 0 ? (
