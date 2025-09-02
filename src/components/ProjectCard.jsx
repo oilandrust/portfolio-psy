@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import VideoThumbnail from './VideoThumbnail'
-import VideoPlayer from './VideoPlayer'
+import MediaCarousel from './MediaCarousel'
 
 const ProjectCard = ({ project, onImageClick }) => {
   const [carouselOpen, setCarouselOpen] = useState(false)
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0)
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
 
   // Merge images and videos into a single media array for backward compatibility
   const getMediaArray = () => {
@@ -40,56 +39,28 @@ const ProjectCard = ({ project, onImageClick }) => {
   const openCarousel = (mediaIndex = 0) => {
     setCurrentMediaIndex(mediaIndex)
     setCarouselOpen(true)
-    setIsVideoPlaying(false)
   }
 
   const closeCarousel = () => {
     setCarouselOpen(false)
     setCurrentMediaIndex(0)
-    setIsVideoPlaying(false)
   }
 
-  const nextMedia = () => {
+  const navigateMedia = (direction) => {
     if (projectMedia.length > 1) {
-      setCurrentMediaIndex((prev) => 
-        prev === projectMedia.length - 1 ? 0 : prev + 1
-      )
-      setIsVideoPlaying(false)
+      if (direction === 'next') {
+        setCurrentMediaIndex((prev) => 
+          prev === projectMedia.length - 1 ? 0 : prev + 1
+        )
+      } else {
+        setCurrentMediaIndex((prev) => 
+          prev === 0 ? projectMedia.length - 1 : prev - 1
+        )
+      }
     }
   }
 
-  const prevMedia = () => {
-    if (projectMedia.length > 1) {
-      setCurrentMediaIndex((prev) => 
-        prev === 0 ? projectMedia.length - 1 : prev - 1
-      )
-      setIsVideoPlaying(false)
-    }
-  }
 
-  const handleKeyDown = (e) => {
-    if (!carouselOpen) return
-    
-    switch (e.key) {
-      case 'Escape':
-        closeCarousel()
-        break
-      case 'ArrowLeft':
-        prevMedia()
-        break
-      case 'ArrowRight':
-        nextMedia()
-        break
-    }
-  }
-
-  // Add keyboard event listener
-  useState(() => {
-    if (carouselOpen) {
-      document.addEventListener('keydown', handleKeyDown)
-      return () => document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [carouselOpen])
 
   return (
     <>
@@ -300,155 +271,14 @@ const ProjectCard = ({ project, onImageClick }) => {
         )}
       </div>
 
-      {/* Media Carousel Modal */}
-      {carouselOpen && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(0, 0, 0, 0.9)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000,
-          padding: '2rem'
-        }}>
-          {/* Close button */}
-          <button
-            onClick={closeCarousel}
-            style={{
-              position: 'absolute',
-              top: '2rem',
-              right: '2rem',
-              background: 'rgba(255, 255, 255, 0.2)',
-              border: 'none',
-              color: 'white',
-              fontSize: '2rem',
-              cursor: 'pointer',
-              borderRadius: '50%',
-              width: '3rem',
-              height: '3rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'background 0.2s ease'
-            }}
-            onMouseEnter={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.3)'}
-            onMouseLeave={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.2)'}
-          >
-            ×
-          </button>
-
-          {/* Navigation arrows */}
-          {projectMedia.length > 1 && (
-            <>
-              <button
-                onClick={prevMedia}
-                style={{
-                  position: 'absolute',
-                  left: '2rem',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'rgba(255, 255, 255, 0.2)',
-                  border: 'none',
-                  color: 'white',
-                  fontSize: '2rem',
-                  cursor: 'pointer',
-                  borderRadius: '50%',
-                  width: '3rem',
-                  height: '3rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'background 0.2s ease'
-                }}
-                onMouseEnter={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.3)'}
-                onMouseLeave={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.2)'}
-              >
-                ‹
-              </button>
-              <button
-                onClick={nextMedia}
-                style={{
-                  position: 'absolute',
-                  right: '2rem',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'rgba(255, 255, 255, 0.2)',
-                  border: 'none',
-                  color: 'white',
-                  fontSize: '2rem',
-                  cursor: 'pointer',
-                  borderRadius: '50%',
-                  width: '3rem',
-                  height: '3rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'background 0.2s ease'
-                }}
-                onMouseEnter={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.3)'}
-                onMouseLeave={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.2)'}
-              >
-                ›
-              </button>
-            </>
-          )}
-
-          {/* Main media display */}
-          {projectMedia[currentMediaIndex].type === 'video' ? (
-            <VideoPlayer
-              video={projectMedia[currentMediaIndex]}
-              onClose={closeCarousel}
-            />
-          ) : (
-            <img
-              src={projectMedia[currentMediaIndex].path || projectMedia[currentMediaIndex].thumbnail}
-              alt={`${project.title} - Image ${currentMediaIndex + 1}`}
-              style={{
-                maxWidth: '90%',
-                maxHeight: '90%',
-                objectFit: 'contain',
-                borderRadius: '8px'
-              }}
-            />
-          )}
-
-          {/* Media counter */}
-          {projectMedia.length > 1 && (
-            <div style={{
-              position: 'absolute',
-              bottom: '2rem',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              background: 'rgba(0, 0, 0, 0.7)',
-              color: 'white',
-              padding: '0.5rem 1rem',
-              borderRadius: '20px',
-              fontSize: '0.875rem'
-            }}>
-              {currentMediaIndex + 1} / {projectMedia.length}
-            </div>
-          )}
-
-          {/* Project title */}
-          <div style={{
-            position: 'absolute',
-            top: '2rem',
-            left: '2rem',
-            background: 'rgba(0, 0, 0, 0.7)',
-            color: 'white',
-            padding: '0.75rem 1.5rem',
-            borderRadius: '8px',
-            fontSize: '1.125rem',
-            fontWeight: '600'
-          }}>
-            {project.title}
-          </div>
-        </div>
-      )}
+      {/* Media Carousel */}
+      <MediaCarousel
+        isOpen={carouselOpen}
+        onClose={closeCarousel}
+        media={projectMedia}
+        currentIndex={currentMediaIndex}
+        onNavigate={navigateMedia}
+      />
     </>
   )
 }
