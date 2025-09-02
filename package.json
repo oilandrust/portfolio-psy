@@ -9,6 +9,8 @@
     "build": "npm run build-projects && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "deploy": "npm run build && git add dist -f && git commit -m 'Deploy to GitHub Pages' && git push",
     "build-projects": "node build-projects.js"
   },
@@ -28,6 +30,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+    "prettier": "^3.6.2",
     "vite": "^7.1.2"
   }
 }

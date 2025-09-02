@@ -23,17 +23,18 @@ Each `project.yml` file contains:
 
 ```yaml
 title: Project Title
-subtitle: Optional project subtitle  # Optional - can be omitted
+subtitle: Optional project subtitle # Optional - can be omitted
 description: Project description
 start_date: '2025-08-16'
 end_date: '2025-08-24'
-tech: React, Vite, Pico  # Comma-separated technology names
-image_layout: grid  # Optional - "row", "grid", or "column" (defaults to "grid")
-github_url: https://github.com/username/project  # Optional - GitHub repository
-live_url: https://project-demo.com  # Optional - Live demo or website
+tech: React, Vite, Pico # Comma-separated technology names
+image_layout: grid # Optional - "row", "grid", or "column" (defaults to "grid")
+github_url: https://github.com/username/project # Optional - GitHub repository
+live_url: https://project-demo.com # Optional - Live demo or website
 ```
 
 **Note**: The `tech` field is now a simple comma-separated string. The build script automatically:
+
 - Splits the string into individual technology names
 - Looks for matching icons in `/portfolio/icons/`
 - Creates the proper object format for the JSON output
@@ -43,6 +44,7 @@ live_url: https://project-demo.com  # Optional - Live demo or website
 **URL Fields**: Both `github_url` and `live_url` are optional. If provided, they will be displayed as clickable buttons below the tech stack in the portfolio.
 
 **Image Layout**: The `image_layout` field controls how project images are displayed:
+
 - **`row`**: Images in a horizontal row (good for many small images)
 - **`grid`**: Images in a responsive grid (default, good for most cases)
 - **`column`**: Images in a vertical column (good for tall images)
@@ -51,18 +53,22 @@ live_url: https://project-demo.com  # Optional - Live demo or website
 ## 🛠️ Scripts
 
 ### Extract Projects from JSON
+
 ```bash
 node extract-projects.js
 ```
+
 - Reads `public/projects.json`
 - Creates individual project folders
 - Converts each project to YAML format
 - Copies associated images to project folders
 
 ### Build JSON from YAML
+
 ```bash
 node build-projects.js
 ```
+
 - Scans `public/projects/` directory
 - Reads all `project.yml` files
 - Scans for images in each project folder
@@ -106,6 +112,7 @@ You can add these scripts to your `package.json`:
 ```
 
 Then run:
+
 ```bash
 npm run extract-projects  # Extract from JSON
 npm run build-projects    # Build JSON from YAML

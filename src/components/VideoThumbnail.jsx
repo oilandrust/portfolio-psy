@@ -1,14 +1,14 @@
-import { useState, useRef } from 'react'
+import { useState, useRef } from 'react';
 
 const VideoThumbnail = ({ video, onClick, style }) => {
-  const [isHovered, setIsHovered] = useState(false)
-  const videoRef = useRef(null)
+  const [isHovered, setIsHovered] = useState(false);
+  const videoRef = useRef(null);
 
   const handleClick = () => {
     if (onClick) {
-      onClick(video)
+      onClick(video);
     }
-  }
+  };
 
   return (
     <div
@@ -17,7 +17,7 @@ const VideoThumbnail = ({ video, onClick, style }) => {
         cursor: 'pointer',
         borderRadius: '6px',
         overflow: 'hidden',
-        ...style
+        ...style,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -31,18 +31,18 @@ const VideoThumbnail = ({ video, onClick, style }) => {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          borderRadius: '6px'
+          borderRadius: '6px',
         }}
         muted
-        preload="metadata"
+        preload='metadata'
         onLoadedData={() => {
           // Set video to first frame
           if (videoRef.current) {
-            videoRef.current.currentTime = 0
+            videoRef.current.currentTime = 0;
           }
         }}
       />
-      
+
       {/* Play overlay */}
       <div
         style={{
@@ -58,7 +58,7 @@ const VideoThumbnail = ({ video, onClick, style }) => {
           alignItems: 'center',
           justifyContent: 'center',
           transition: 'all 0.2s ease',
-          opacity: isHovered ? 1 : 0.8
+          opacity: isHovered ? 1 : 0.8,
         }}
       >
         <div
@@ -68,29 +68,12 @@ const VideoThumbnail = ({ video, onClick, style }) => {
             borderLeft: '15px solid white',
             borderTop: '10px solid transparent',
             borderBottom: '10px solid transparent',
-            marginLeft: '3px'
+            marginLeft: '3px',
           }}
         />
       </div>
-      
-      {/* Video indicator */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '8px',
-          right: '8px',
-          background: 'rgba(0, 0, 0, 0.8)',
-          color: 'white',
-          padding: '2px 6px',
-          borderRadius: '4px',
-          fontSize: '0.75rem',
-          fontWeight: '500'
-        }}
-      >
-        ▶
-      </div>
     </div>
-  )
-}
+  );
+};
 
-export default VideoThumbnail
+export default VideoThumbnail;

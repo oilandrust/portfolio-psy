@@ -23,6 +23,7 @@ A Node.js script that automatically resizes all images in a folder to 50% of the
 ## Installation
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
@@ -126,14 +127,17 @@ Resizing screenshot2.png: 2560x1440 → 1280x720
 ## Troubleshooting
 
 ### Sharp not found
+
 ```bash
 npm install sharp
 ```
 
 ### Permission errors
+
 Make sure you have write permissions to the target folder.
 
 ### Memory issues
+
 For very large images, the script processes them one at a time to manage memory usage.
 
 ## License

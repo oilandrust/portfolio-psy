@@ -57,17 +57,20 @@ public/projects/your-project/
 ## Features
 
 ### Video Thumbnails
+
 - Videos display with a play button overlay
 - Hover effects show the play button more prominently
 - Video indicator (▶) in the top-right corner
 
 ### Video Player
+
 - Custom video controls with play/pause button
 - Progress bar with click-to-seek functionality
 - Time display showing current position and duration
 - Close button to return to project view
 
 ### Carousel Integration
+
 - Videos integrate seamlessly with existing image carousels
 - Navigation arrows work for both images and videos
 - Media counter shows current position in the carousel

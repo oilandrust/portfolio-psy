@@ -23,23 +23,26 @@ A beautiful, responsive portfolio website built with the latest web technologies
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Installation
 
 1. Clone the repository
+
 ```bash
 git clone <your-repo-url>
 cd portfolio
 ```
 
 2. Install dependencies
+
 ```bash
 npm install
 ```
 
 3. Start development server
+
 ```bash
 npm run dev
 ```
@@ -79,6 +82,7 @@ src/
 ## 📱 Responsive Design
 
 The website is fully responsive and works great on:
+
 - Desktop computers
 - Tablets
 - Mobile phones
@@ -87,6 +91,7 @@ The website is fully responsive and works great on:
 ## 🚀 Deployment
 
 This project can be easily deployed to:
+
 - Vercel
 - Netlify
 - GitHub Pages

@@ -17,7 +17,8 @@ body {
   margin: 0;
   padding: 0;
   color: #1f2937;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .container {
@@ -213,20 +214,20 @@ p {
     text-align: center;
     gap: 1.5rem;
   }
-  
+
   .hero h1 {
     font-size: 2.5rem;
   }
-  
+
   .hero-profile img {
     width: 120px;
     height: 120px;
   }
-  
+
   .container {
     padding: 1rem;
   }
-  
+
   .section {
     padding: 1.5rem;
   }

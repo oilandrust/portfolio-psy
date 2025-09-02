@@ -10,13 +10,7 @@
   "dependencies": {
     "sharp": "^0.33.0"
   },
-  "keywords": [
-    "image",
-    "resize",
-    "sharp",
-    "batch",
-    "processing"
-  ],
+  "keywords": ["image", "resize", "sharp", "batch", "processing"],
   "author": "",
   "license": "MIT"
 }

@@ -18,23 +18,30 @@ async function resizeImage(inputPath, outputPath) {
     const metadata = await sharp(inputPath).metadata();
     const newWidth = Math.floor(metadata.width / 2);
     const newHeight = Math.floor(metadata.height / 2);
-    
-    console.log(`Resizing ${path.basename(inputPath)}: ${metadata.width}x${metadata.height} → ${newWidth}x${newHeight}`);
-    
+
+    console.log(
+      `Resizing ${path.basename(inputPath)}: ${metadata.width}x${metadata.height} → ${newWidth}x${newHeight}`
+    );
+
     await sharp(inputPath)
       .resize(newWidth, newHeight, {
         kernel: sharp.kernel.lanczos3,
-        fit: 'fill'
+        fit: 'fill',
       })
       .toFile(outputPath);
-      
+
     // Replace original with resized version
     fs.unlinkSync(inputPath);
     fs.renameSync(outputPath, inputPath);
-    
-    console.log(`✅ Successfully resized and replaced: ${path.basename(inputPath)}`);
+
+    console.log(
+      `✅ Successfully resized and replaced: ${path.basename(inputPath)}`
+    );
   } catch (error) {
-    console.error(`❌ Error processing ${path.basename(inputPath)}:`, error.message);
+    console.error(
+      `❌ Error processing ${path.basename(inputPath)}:`,
+      error.message
+    );
   }
 }
 
@@ -64,7 +71,9 @@ async function processFolder(folderPath) {
     }
 
     console.log(`📁 Processing ${imageFiles.length} images in "${folderPath}"`);
-    console.log(`📏 All images will be resized to 50% of their original dimensions`);
+    console.log(
+      `📏 All images will be resized to 50% of their original dimensions`
+    );
     console.log('');
 
     // Process each image
@@ -76,7 +85,6 @@ async function processFolder(folderPath) {
 
     console.log('');
     console.log(`🎉 Finished processing ${imageFiles.length} images!`);
-
   } catch (error) {
     console.error('❌ An error occurred:', error.message);
     process.exit(1);
@@ -132,7 +140,3 @@ main().catch(error => {
   console.error('❌ Unexpected error:', error);
   process.exit(1);
 });
-
-
-
-
