@@ -94,12 +94,12 @@
     ],
     "images": [
       {
-        "path": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.12.png",
-        "thumbnail": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.12.png"
+        "path": "/portfolio/projects/psychotherapy-website/0_Screenshot 2025-09-01 at 19.59.31.png",
+        "thumbnail": "/portfolio/projects/psychotherapy-website/0_Screenshot 2025-09-01 at 19.59.31.png"
       },
       {
-        "path": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.31.png",
-        "thumbnail": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.31.png"
+        "path": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.12.png",
+        "thumbnail": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.12.png"
       },
       {
         "path": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.40.png",
@@ -107,7 +107,7 @@
       }
     ],
     "videos": [],
-    "image_layout": "grid",
+    "image_layout": "featured",
     "github_url": null,
     "live_url": "https://re-connected.fr"
   },
@@ -152,8 +152,44 @@
         "thumbnail": null
       }
     ],
-    "image_layout": "grid",
+    "image_layout": "featured",
     "github_url": "https://github.com/oilandrust/cat-snake",
     "live_url": "https://oliver-rust.itch.io/cat-snake"
+  },
+  {
+    "id": 5,
+    "title": "Editor and Graphics Programmer for the RSX Engine",
+    "subtitle": "Professional game engine development role",
+    "description": "Worked as Editor and Graphics Programmer for the RSX Engine, a professional game engine development project.\nDuring this role, I focused on developing and maintaining the engine's editor tools and graphics rendering systems.\n\nKey responsibilities included:\n- Developing and maintaining the engine's editor interface\n- Implementing graphics rendering features using OpenGL and DirectX\n- Optimizing rendering pipelines for better performance\n- Collaborating with the development team on engine architecture\n- Debugging and fixing graphics-related issues\n\nThis position provided valuable experience in professional game engine development and graphics programming.\n",
+    "start_date": "2020-08-01",
+    "end_date": "2021-12-31",
+    "tech": [
+      {
+        "name": "C++",
+        "icon": "/portfolio/icons/c++.svg"
+      },
+      {
+        "name": "OpenGL",
+        "icon": null
+      },
+      {
+        "name": "DirectX",
+        "icon": null
+      },
+      {
+        "name": "Game Engine Development",
+        "icon": null
+      }
+    ],
+    "images": [
+      {
+        "path": "/portfolio/projects/rsx-engine-editor/image.png",
+        "thumbnail": "/portfolio/projects/rsx-engine-editor/image.png"
+      }
+    ],
+    "videos": [],
+    "image_layout": "featured",
+    "github_url": null,
+    "live_url": "https://rsxengine.com/"
   }
 ]

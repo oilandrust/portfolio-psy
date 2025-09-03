@@ -154,6 +154,100 @@ const ProjectMedia = ({ media, imageLayout, projectTitle, onMediaClick }) => {
     );
   }
 
+  if (imageLayout === 'featured') {
+    const featuredItem = media[0];
+    const thumbnailItems = media.slice(1);
+    const thumbnailWidth = thumbnailItems.length > 0 ? `${100 / thumbnailItems.length}%` : '100%';
+    
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem',
+          width: '300px',
+          flexShrink: '0',
+        }}
+      >
+        {/* Featured Image */}
+        {featuredItem && (
+          featuredItem.type === 'video' ? (
+            <VideoThumbnail
+              key={0}
+              video={featuredItem}
+              onClick={() => onMediaClick(0)}
+              style={{
+                width: '100%',
+                height: '200px',
+                objectFit: 'cover',
+              }}
+            />
+          ) : (
+            <img
+              key={0}
+              src={featuredItem.thumbnail || featuredItem.path}
+              alt={`${projectTitle} - Featured Image`}
+              style={{
+                width: '100%',
+                height: '200px',
+                objectFit: 'cover',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                transition: 'transform 0.2s ease',
+              }}
+              onMouseEnter={e => (e.target.style.transform = 'scale(1.05)')}
+              onMouseLeave={e => (e.target.style.transform = 'scale(1)')}
+              onClick={() => onMediaClick(0)}
+            />
+          )
+        )}
+        
+        {/* Thumbnail Row */}
+        {thumbnailItems.length > 0 && (
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.25rem',
+            }}
+          >
+            {thumbnailItems.map((mediaItem, index) => {
+              const mediaIndex = index + 1; // Adjust index for original array
+              return mediaItem.type === 'video' ? (
+                <VideoThumbnail
+                  key={mediaIndex}
+                  video={mediaItem}
+                  onClick={() => onMediaClick(mediaIndex)}
+                  style={{
+                    width: thumbnailWidth,
+                    height: '60px',
+                    objectFit: 'cover',
+                  }}
+                />
+              ) : (
+                <img
+                  key={mediaIndex}
+                  src={mediaItem.thumbnail || mediaItem.path}
+                  alt={`${projectTitle} - Thumbnail ${mediaIndex}`}
+                  style={{
+                    width: thumbnailWidth,
+                    height: '60px',
+                    objectFit: 'cover',
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s ease',
+                  }}
+                  onMouseEnter={e => (e.target.style.transform = 'scale(1.05)')}
+                  onMouseLeave={e => (e.target.style.transform = 'scale(1)')}
+                  onClick={() => onMediaClick(mediaIndex)}
+                />
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div
       style={{
@@ -178,6 +272,7 @@ const ProjectMedia = ({ media, imageLayout, projectTitle, onMediaClick }) => {
               style={{
                 width: '100%',
                 height: '150px',
+                objectFit: 'cover',
               }}
             />
           );

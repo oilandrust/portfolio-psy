@@ -3,7 +3,7 @@ subtitle: Study around SnakeBird
 start_date: '2025-08-26'
 end_date: '2023-12-29'
 tech: rust, bevy
-image_layout: grid
+image_layout: featured
 github_url: https://github.com/oilandrust/cat-snake
 live_url: https://oliver-rust.itch.io/cat-snake
 description: |
