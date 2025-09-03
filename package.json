@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@picocss/pico": "^2.1.1",
+    "dotenv": "^17.2.2",
+    "googleapis": "^159.0.0",
     "js-yaml": "^4.1.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

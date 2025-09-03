@@ -275,11 +275,12 @@ const ProjectCard = ({ project, onImageClick }) => {
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
           background: 'var(--card-background-color, white)',
           display: 'flex',
+          flexDirection: 'column',
           gap: '1.5rem',
-          alignItems: 'flex-start',
         }}
       >
-        <div style={{ flex: '1' }}>
+        {/* Header Section */}
+        <div className='project-header'>
           <h3 style={{ marginBottom: '0.5rem', color: '#000000' }}>
             {project.title}
           </h3>
@@ -299,27 +300,39 @@ const ProjectCard = ({ project, onImageClick }) => {
 
           {/* Project Tech */}
           <ProjectTech tech={project.tech} />
-
-          {project.description && (
-            <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
-              {project.description}
-            </p>
-          )}
-
-          {/* Project URLs */}
-          <ProjectUrls
-            github_url={project.github_url}
-            live_url={project.live_url}
-          />
         </div>
 
-        {/* Project Media */}
-        <ProjectMedia
-          media={projectMedia}
-          imageLayout={project.image_layout}
-          projectTitle={project.title}
-          onMediaClick={openCarousel}
-        />
+        {/* Content Section - Description and Media */}
+        <div 
+          className='project-content'
+          style={{
+            display: 'flex',
+            gap: '1.5rem',
+            alignItems: 'flex-start',
+          }}
+        >
+          <div style={{ flex: '1' }}>
+            {project.description && (
+              <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+                {project.description}
+              </p>
+            )}
+
+            {/* Project URLs */}
+            <ProjectUrls
+              github_url={project.github_url}
+              live_url={project.live_url}
+            />
+          </div>
+
+          {/* Project Media */}
+          <ProjectMedia
+            media={projectMedia}
+            imageLayout={project.image_layout}
+            projectTitle={project.title}
+            onMediaClick={openCarousel}
+          />
+        </div>
       </div>
 
       {/* Media Carousel */}

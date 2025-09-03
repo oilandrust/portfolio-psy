@@ -231,4 +231,18 @@ p {
   .section {
     padding: 1.5rem;
   }
+
+  /* Project card mobile layout */
+  .project-content {
+    flex-direction: column !important;
+  }
+
+  .project-content > div:first-child {
+    flex: none !important;
+    order: 2; /* Description comes after media */
+  }
+
+  .project-content > div:last-child {
+    order: 1; /* Media comes before description */
+  }
 }
