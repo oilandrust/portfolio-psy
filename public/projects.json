@@ -24,13 +24,14 @@
         "icon": "/portfolio/icons/cursor.svg"
       }
     ],
-    "images": [
+    "media": [
       {
+        "type": "image",
         "path": "/portfolio/projects/portfolio-timeline-website/Screenshot 2025-09-02 at 19.42.38.png",
-        "thumbnail": "/portfolio/projects/portfolio-timeline-website/Screenshot 2025-09-02 at 19.42.38.png"
+        "thumbnail": "/portfolio/projects/portfolio-timeline-website/Screenshot 2025-09-02 at 19.42.38.png",
+        "name": "Screenshot 2025-09-02 at 19.42.38"
       }
     ],
-    "videos": [],
     "image_layout": "grid",
     "github_url": "https://github.com/oilandrust/portfolio",
     "live_url": "https://oilandrust.github.io/portfolio"
@@ -56,25 +57,32 @@
         "icon": "/portfolio/icons/cursor.svg"
       }
     ],
-    "images": [
+    "media": [
       {
+        "type": "image",
         "path": "/portfolio/projects/hakomi-practice-timer/1756207344140-Screenshot_20250826_123126_Chrome.jpg",
-        "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344140-Screenshot_20250826_123126_Chrome.jpg"
+        "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344140-Screenshot_20250826_123126_Chrome.jpg",
+        "name": "1756207344140-Screenshot_20250826_123126_Chrome"
       },
       {
+        "type": "image",
         "path": "/portfolio/projects/hakomi-practice-timer/1756207344142-Screenshot_20250826_123146_Chrome.jpg",
-        "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344142-Screenshot_20250826_123146_Chrome.jpg"
+        "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344142-Screenshot_20250826_123146_Chrome.jpg",
+        "name": "1756207344142-Screenshot_20250826_123146_Chrome"
       },
       {
+        "type": "image",
         "path": "/portfolio/projects/hakomi-practice-timer/1756207344143-Screenshot_20250826_123156_Chrome.jpg",
-        "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344143-Screenshot_20250826_123156_Chrome.jpg"
+        "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344143-Screenshot_20250826_123156_Chrome.jpg",
+        "name": "1756207344143-Screenshot_20250826_123156_Chrome"
       },
       {
+        "type": "image",
         "path": "/portfolio/projects/hakomi-practice-timer/1756207344145-Screenshot_20250826_123203_Chrome.jpg",
-        "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344145-Screenshot_20250826_123203_Chrome.jpg"
+        "thumbnail": "/portfolio/projects/hakomi-practice-timer/1756207344145-Screenshot_20250826_123203_Chrome.jpg",
+        "name": "1756207344145-Screenshot_20250826_123203_Chrome"
       }
     ],
-    "videos": [],
     "image_layout": "row",
     "github_url": "https://github.com/oilandrust/hakomi-practice-timer",
     "live_url": "https://oilandrust.github.io/hakomi-practice-timer/"
@@ -92,21 +100,26 @@
         "icon": "/portfolio/icons/wordpress.svg"
       }
     ],
-    "images": [
+    "media": [
       {
+        "type": "image",
         "path": "/portfolio/projects/psychotherapy-website/0_Screenshot 2025-09-01 at 19.59.31.png",
-        "thumbnail": "/portfolio/projects/psychotherapy-website/0_Screenshot 2025-09-01 at 19.59.31.png"
+        "thumbnail": "/portfolio/projects/psychotherapy-website/0_Screenshot 2025-09-01 at 19.59.31.png",
+        "name": "0_Screenshot 2025-09-01 at 19.59.31"
       },
       {
+        "type": "image",
         "path": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.12.png",
-        "thumbnail": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.12.png"
+        "thumbnail": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.12.png",
+        "name": "Screenshot 2025-09-01 at 19.59.12"
       },
       {
+        "type": "image",
         "path": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.40.png",
-        "thumbnail": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.40.png"
+        "thumbnail": "/portfolio/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.40.png",
+        "name": "Screenshot 2025-09-01 at 19.59.40"
       }
     ],
-    "videos": [],
     "image_layout": "featured",
     "github_url": null,
     "live_url": "https://re-connected.fr"
@@ -128,28 +141,36 @@
         "icon": "/portfolio/icons/bevy.png"
       }
     ],
-    "images": [
+    "media": [
       {
-        "path": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-06 at 15.27.25.png",
-        "thumbnail": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-06 at 15.27.25.png"
+        "type": "video",
+        "path": "/portfolio/projects/game-development-in-rust/0_CatSnake.mov",
+        "thumbnail": null,
+        "name": "0_CatSnake"
       },
       {
-        "path": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png",
-        "thumbnail": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png"
-      }
-    ],
-    "videos": [
-      {
+        "type": "video",
         "path": "/portfolio/projects/game-development-in-rust/Bird Snake Gameplay.mp4",
-        "thumbnail": null
+        "thumbnail": null,
+        "name": "Bird Snake Gameplay"
       },
       {
-        "path": "/portfolio/projects/game-development-in-rust/CatSnake.mov",
-        "thumbnail": null
+        "type": "image",
+        "path": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-06 at 15.27.25.png",
+        "thumbnail": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-06 at 15.27.25.png",
+        "name": "Screenshot 2023-02-06 at 15.27.25"
       },
       {
+        "type": "image",
+        "path": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png",
+        "thumbnail": "/portfolio/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png",
+        "name": "Screenshot 2023-02-19 at 01.53.09"
+      },
+      {
+        "type": "video",
         "path": "/portfolio/projects/game-development-in-rust/Snake (online-video-cutter.com) (2).mp4",
-        "thumbnail": null
+        "thumbnail": null,
+        "name": "Snake (online-video-cutter.com) (2)"
       }
     ],
     "image_layout": "featured",
@@ -181,13 +202,14 @@
         "icon": null
       }
     ],
-    "images": [
+    "media": [
       {
+        "type": "image",
         "path": "/portfolio/projects/rsx-engine-editor/image.png",
-        "thumbnail": "/portfolio/projects/rsx-engine-editor/image.png"
+        "thumbnail": "/portfolio/projects/rsx-engine-editor/image.png",
+        "name": "image"
       }
     ],
-    "videos": [],
     "image_layout": "featured",
     "github_url": null,
     "live_url": "https://rsxengine.com/"

@@ -133,6 +133,15 @@ const ProjectTech = ({ tech }) => {
 
 // Project Media component
 const ProjectMedia = ({ media, imageLayout, projectTitle, onMediaClick }) => {
+  // Sort media by filename
+  const sortedMedia = [...media].sort((a, b) => {
+    const filenameA = a.filename || '';
+    const filenameB = b.filename || '';
+    return filenameA.localeCompare(filenameB);
+  });
+  
+  // Use sortedMedia instead of media for the rest of the function
+  media = sortedMedia;
   if (!media || media.length === 0) {
     return (
       <div
@@ -305,35 +314,8 @@ const ProjectCard = ({ project, onImageClick }) => {
   const [carouselOpen, setCarouselOpen] = useState(false);
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
 
-  // Merge images and videos into a single media array for backward compatibility
-  const getMediaArray = () => {
-    const media = [];
-
-    // Add images from the old images field
-    if (project.images && project.images.length > 0) {
-      project.images.forEach(img => {
-        media.push({
-          ...img,
-          type: 'image',
-        });
-      });
-    }
-
-    // Add videos from the videos field
-    if (project.videos && project.videos.length > 0) {
-      project.videos.forEach(video => {
-        media.push({
-          ...video,
-          type: 'video',
-        });
-      });
-    }
-
-    // If no media found, return empty array
-    return media;
-  };
-
-  const projectMedia = getMediaArray();
+  // Get media array (now unified in the new structure)
+  const projectMedia = project.media || [];
 
   const openCarousel = (mediaIndex = 0) => {
     setCurrentMediaIndex(mediaIndex);

@@ -27,41 +27,27 @@ function readProjectYaml(projectPath) {
   }
 }
 
-// Function to scan for project images
-function scanProjectImages(projectPath) {
-  const images = [];
-  const allowedExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
+// Function to scan for project media (images and videos)
+function scanProjectMedia(projectPath) {
+  const media = [];
+  const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
+  const videoExtensions = ['.mp4', '.webm', '.mov', '.avi', '.mkv'];
 
   try {
     const files = fs.readdirSync(projectPath);
     files.forEach(file => {
       const ext = path.extname(file).toLowerCase();
-      if (allowedExtensions.includes(ext)) {
-        images.push({
+      const baseName = path.parse(file).name;
+      
+      if (imageExtensions.includes(ext)) {
+        media.push({
+          type: 'image',
           path: `/portfolio/projects/${path.basename(projectPath)}/${file}`,
           thumbnail: `/portfolio/projects/${path.basename(projectPath)}/${file}`,
+          name: baseName,
         });
-      }
-    });
-  } catch (error) {
-    console.error(`❌ Error scanning images in ${projectPath}:`, error.message);
-  }
-
-  return images;
-}
-
-// Function to scan for project videos
-function scanProjectVideos(projectPath) {
-  const videos = [];
-  const allowedExtensions = ['.mp4', '.webm', '.mov', '.avi', '.mkv'];
-
-  try {
-    const files = fs.readdirSync(projectPath);
-    files.forEach(file => {
-      const ext = path.extname(file).toLowerCase();
-      if (allowedExtensions.includes(ext)) {
+      } else if (videoExtensions.includes(ext)) {
         // Look for a thumbnail image with similar name
-        const baseName = path.parse(file).name;
         const thumbnailExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
         let thumbnailPath = null;
 
@@ -75,18 +61,23 @@ function scanProjectVideos(projectPath) {
           }
         }
 
-        // If no custom thumbnail found, use the video's first frame (will be handled by VideoThumbnail component)
-        videos.push({
+        media.push({
+          type: 'video',
           path: `/portfolio/projects/${path.basename(projectPath)}/${file}`,
           thumbnail: thumbnailPath,
+          name: baseName,
         });
       }
     });
+    
+    // Sort media by name
+    media.sort((a, b) => a.name.localeCompare(b.name));
+    
   } catch (error) {
-    console.error(`❌ Error scanning videos in ${projectPath}:`, error.message);
+    console.error(`❌ Error scanning media in ${projectPath}:`, error.message);
   }
 
-  return videos;
+  return media;
 }
 
 // Function to process tech string and find icons
@@ -149,9 +140,8 @@ function buildProjectsJson() {
 
         const projectData = readProjectYaml(projectPath);
         if (projectData) {
-          // Scan for images and videos in the project folder
-          const projectImages = scanProjectImages(projectPath);
-          const projectVideos = scanProjectVideos(projectPath);
+          // Scan for media (images and videos) in the project folder
+          const projectMedia = scanProjectMedia(projectPath);
 
           // Build the project object
           const project = {
@@ -162,8 +152,7 @@ function buildProjectsJson() {
             start_date: projectData.start_date || '',
             end_date: projectData.end_date || '',
             tech: processTechString(projectData.tech),
-            images: projectImages,
-            videos: projectVideos,
+            media: projectMedia,
             image_layout: projectData.image_layout || 'grid', // Default to grid
             github_url: projectData.github_url || null,
             live_url: projectData.live_url || null,
@@ -172,12 +161,13 @@ function buildProjectsJson() {
           projects.push(project);
           console.log(`  ✅ Added: ${projectData.title}`);
 
-          if (projectImages.length > 0) {
-            console.log(`  📷 Found ${projectImages.length} images`);
-          }
-
-          if (projectVideos.length > 0) {
-            console.log(`  🎥 Found ${projectVideos.length} videos`);
+          if (projectMedia.length > 0) {
+            const imageCount = projectMedia.filter(m => m.type === 'image').length;
+            const videoCount = projectMedia.filter(m => m.type === 'video').length;
+            const mediaSummary = [];
+            if (imageCount > 0) mediaSummary.push(`${imageCount} images`);
+            if (videoCount > 0) mediaSummary.push(`${videoCount} videos`);
+            console.log(`  📷🎥 Found ${mediaSummary.join(', ')}`);
           }
         }
       }
@@ -200,13 +190,11 @@ function buildProjectsJson() {
 
     // Display summary
     projects.forEach(project => {
+      const imageCount = project.media.filter(m => m.type === 'image').length;
+      const videoCount = project.media.filter(m => m.type === 'video').length;
       const mediaSummary = [];
-      if (project.images.length > 0) {
-        mediaSummary.push(`${project.images.length} images`);
-      }
-      if (project.videos.length > 0) {
-        mediaSummary.push(`${project.videos.length} videos`);
-      }
+      if (imageCount > 0) mediaSummary.push(`${imageCount} images`);
+      if (videoCount > 0) mediaSummary.push(`${videoCount} videos`);
       const mediaText =
         mediaSummary.length > 0 ? `(${mediaSummary.join(', ')})` : '(no media)';
       console.log(`  • ${project.title} ${mediaText}`);
