@@ -174,7 +174,8 @@ const ProjectMedia = ({ media, imageLayout, projectTitle, onMediaClick }) => {
           display: 'flex',
           flexDirection: 'column',
           gap: '0.5rem',
-          width: '300px',
+          width: '100%',
+          maxWidth: '350px',
           flexShrink: '0',
         }}
       >
@@ -390,7 +391,7 @@ const ProjectCard = ({ project, onImageClick }) => {
         >
           <div style={{ flex: '1' }}>
             {project.description && (
-              <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+              <p style={{ marginBottom: '1rem', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                 {project.description}
               </p>
             )}
