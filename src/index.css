@@ -5,7 +5,7 @@
 :root {
   --primary: #2563eb;
   --primary-hover: #1d4ed8;
-  --primary-focus: rgba(37, 99, 235, 0.125);
+  --primary-focxus: rgba(37, 99, 235, 0.125);
   --primary-inverse: #fff;
   --success: #059669;
   --success-hover: #047857;
@@ -229,7 +229,9 @@ p {
   }
 
   .section {
-    padding: 1.5rem;
+    padding: 0;
+    border: none;
+    box-shadow: none;
   }
 
   /* Project card mobile layout */
