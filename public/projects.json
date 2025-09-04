@@ -181,7 +181,7 @@
     "id": 5,
     "title": "Editor and Graphics Programmer for the RSX Engine",
     "subtitle": "Professional game engine development role",
-    "description": "Worked as Editor and Graphics Programmer for the RSX Engine, a professional game engine development project.\nDuring this role, I focused on developing and maintaining the engine's editor tools and graphics rendering systems.\n\nKey responsibilities included:\n- Developing and maintaining the engine's editor interface\n- Implementing graphics rendering features using OpenGL and DirectX\n- Optimizing rendering pipelines for better performance\n- Collaborating with the development team on engine architecture\n- Debugging and fixing graphics-related issues\n\nThis position provided valuable experience in professional game engine development and graphics programming.\n",
+    "description": "I worked as a contractor for Abstract to work on their game engine RSX. As I joined the team the engine was already fully functional but needed a lot of polish and bug fixing.\nI contributed in a few areas, mainly the macOS platform layer, the rendering of Gizmo in the editor, scene picking and manupilation tools and editor functionalities such as shortcuts, Undo/Reddo, etc...\nOn the macOS layer I made sure the windowing system was working robustly with multiple windows in multiple monitors, and that events were properly propagated to the engine's UI system.\nI also wrote and maintained some C# code on the UI scripting layer that was built in the engine.\nThe engine since switched to Typescrit to be able to run the editor on the web.\n",
     "start_date": "2020-08-01",
     "end_date": "2021-12-31",
     "tech": [
