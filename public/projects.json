@@ -1,6 +1,6 @@
 [
   {
-    "id": 3,
+    "id": 4,
     "title": "Portfolio Timeline Website",
     "subtitle": "A data driven, static portfolio website for developer",
     "description": "This is the page you're currently looking at. I built it vibe coding with Cursor. It's a static website built with Vite and React, and deployed to GitHub Pages.\nIt's designed to be able to add projects with data while keeping the whole thing static so it can be hosted on GitHub Pages.\n\nTo use it, create a new folder for each project and add a project.yml file with the project details.\nThen add the images and videos to the project folder, and you're good to go.\n\nThe data is extracted from the projects/ and converted to a JSON file that is used to render the content of the static page.\n",
@@ -88,7 +88,7 @@
     "live_url": "https://oilandrust.github.io/hakomi-practice-timer/"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "Re-connected.fr",
     "subtitle": "The wordpress website for my psychotherapy practice",
     "description": "I built my first website using WordPress for my small psychotherapy practice. It is a single page and using the basic WordPress template but it does the job.\nThis version is the third iteration of the website. I learned to set up a WordPress website and to host it on Amazon Lightsail. I'm interested in learning more about WordPress.\n",
@@ -178,7 +178,7 @@
     "live_url": "https://oliver-rust.itch.io/cat-snake"
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "Editor and Graphics Programmer for the RSX Engine",
     "subtitle": "Professional game engine development role",
     "description": "I worked as a contractor for Abstract to work on their game engine RSX. As I joined the team the engine was already fully functional but needed a lot of polish and bug fixing.\nI contributed in a few areas, mainly the macOS platform layer, the rendering of Gizmo in the editor, scene picking and manupilation tools and editor functionalities such as shortcuts, Undo/Reddo, etc...\nOn the macOS layer I made sure the windowing system was working robustly with multiple windows in multiple monitors, and that events were properly propagated to the engine's UI system.\nI also wrote and maintained some C# code on the UI scripting layer that was built in the engine.\nThe engine since switched to Typescrit to be able to run the editor on the web.\n",
@@ -190,11 +190,11 @@
         "icon": "/portfolio/icons/c++.svg"
       },
       {
-        "name": "OpenGL",
-        "icon": null
+        "name": "C#",
+        "icon": "/portfolio/icons/c#.svg"
       },
       {
-        "name": "DirectX",
+        "name": "3D Programming",
         "icon": null
       },
       {
@@ -213,5 +213,34 @@
     "image_layout": "featured",
     "github_url": null,
     "live_url": "https://rsxengine.com/"
+  },
+  {
+    "id": 3,
+    "title": "Tech Programmer at Massive Entertainment",
+    "subtitle": "Working on Avatar, Frontiers of Pandora",
+    "description": "I worked on the tech team for Avatar project for Ubisoft.\nI worked on implementing and maintaining tech feartures for the in house Snowdrop Engine.\n\nSome of the tech I worked on are the impostor system for tree rendering, a GI low res falback system, fog and athmospheric effects and shaders. Tech art tools, etc....\n\nIn that job I worked closely with tech programmers in my team, in other developers using Snowdrop on other projects. as well as tech artists.\n",
+    "start_date": "2017-01-01",
+    "end_date": "2019-07-31",
+    "tech": [
+      {
+        "name": "C++",
+        "icon": "/portfolio/icons/c++.svg"
+      },
+      {
+        "name": "Snowdrop",
+        "icon": null
+      }
+    ],
+    "media": [
+      {
+        "type": "image",
+        "path": "/portfolio/projects/massive-entertainment/Avatar-Hero-9fcfd038d360b252414c.jpg",
+        "thumbnail": "/portfolio/projects/massive-entertainment/Avatar-Hero-9fcfd038d360b252414c.jpg",
+        "name": "Avatar-Hero-9fcfd038d360b252414c"
+      }
+    ],
+    "image_layout": "featured",
+    "github_url": null,
+    "live_url": "https://www.massive.se/project/avatar-frontiers-of-pandora/"
   }
 ]
