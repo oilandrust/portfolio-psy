@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import VideoThumbnail from './VideoThumbnail';
 import MediaCarousel from './MediaCarousel';
 
@@ -314,9 +314,49 @@ const ProjectMedia = ({ media, imageLayout, projectTitle, onMediaClick }) => {
 const ProjectCard = ({ project, onImageClick }) => {
   const [carouselOpen, setCarouselOpen] = useState(false);
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
+  const [mediaHeight, setMediaHeight] = useState(0);
+  const [paragraphHeights, setParagraphHeights] = useState([]);
+  const [splitIndex, setSplitIndex] = useState(null);
+  const paragraphRefs = useRef([]);
+  const mediaRef = useRef(null);
 
   // Get media array (now unified in the new structure)
   const projectMedia = project.media || [];
+
+  // Compute media height and paragraph heights
+  useEffect(() => {
+    if (mediaRef.current) {
+      const height = mediaRef.current.getBoundingClientRect().height;
+      setMediaHeight(height);
+    }
+  }, [projectMedia, project.image_layout]);
+
+  useEffect(() => {
+    if (project.description && paragraphRefs.current.length > 0) {
+      const heights = paragraphRefs.current.map(ref => 
+        ref ? ref.getBoundingClientRect().height : 0
+      );
+      setParagraphHeights(heights);
+    }
+  }, [project.description]);
+
+  // Calculate where to split paragraphs based on media height
+  useEffect(() => {
+    if (paragraphHeights.length > 0 && mediaHeight > 0) {
+      let accumulatedHeight = 0;
+      let splitIdx = null;
+      
+      for (let i = 0; i < paragraphHeights.length; i++) {
+        accumulatedHeight += paragraphHeights[i];
+        if (accumulatedHeight > mediaHeight) {
+          splitIdx = i + 1; // Next index after we've reached the height
+          break;
+        }
+      }
+      
+      setSplitIndex(splitIdx);
+    }
+  }, [paragraphHeights, mediaHeight]);
 
   const openCarousel = (mediaIndex = 0) => {
     setCurrentMediaIndex(mediaIndex);
@@ -353,8 +393,7 @@ const ProjectCard = ({ project, onImageClick }) => {
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
           background: 'var(--card-background-color, white)',
           display: 'flex',
-          flexDirection: 'column',
-          gap: '1.5rem',
+          flexDirection: 'column'
         }}
       >
         {/* Header Section */}
@@ -391,26 +430,66 @@ const ProjectCard = ({ project, onImageClick }) => {
         >
           <div style={{ flex: '1' }}>
             {project.description && (
-              <p style={{ marginBottom: '1rem', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
-                {project.description}
-              </p>
+              <div style={{ marginBottom: '1rem' }}>
+                {project.description.split('\n\n').map((paragraph, index) => {
+                  // Only render paragraphs that should be in the flex section
+                  const shouldRender = splitIndex === null || index < splitIndex;
+                  if (!shouldRender) return null;
+                  
+                  return (
+                    <p 
+                      key={index} 
+                      ref={(el) => (paragraphRefs.current[index] = el)}
+                      style={{ lineHeight: '1.6', marginBottom: index < project.description.split('\n\n').length - 1 ? '1rem' : '0' }}
+                    >
+                      {paragraph}
+                    </p>
+                  );
+                })}
+              </div>
             )}
 
-            {/* Project URLs */}
-            <ProjectUrls
-              github_url={project.github_url}
-              live_url={project.live_url}
-            />
           </div>
 
           {/* Project Media */}
-          <ProjectMedia
-            media={projectMedia}
-            imageLayout={project.image_layout}
-            projectTitle={project.title}
-            onMediaClick={openCarousel}
-          />
+          <div ref={mediaRef}>
+            <ProjectMedia
+              media={projectMedia}
+              imageLayout={project.image_layout}
+              projectTitle={project.title}
+              onMediaClick={openCarousel}
+            />
+          </div>
         </div>
+
+        {/* Additional paragraphs that exceed media height */}
+        {project.description && splitIndex !== null && (
+          <div style={{ marginTop: '0.0rem' }}>
+            {project.description.split('\n\n').map((paragraph, index) => {
+              // Only render paragraphs that should be below the flex section
+              const shouldRender = index >= splitIndex;
+              if (!shouldRender) return null;
+              
+              return (
+                <p 
+                  key={`below-${index}`} 
+                  style={{ 
+                    lineHeight: '1.6', 
+                    marginBottom: index < project.description.split('\n\n').length - 1 ? '1rem' : '0' 
+                  }}
+                >
+                  {paragraph}
+                </p>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Project URLs - after all paragraphs */}
+        <ProjectUrls
+          github_url={project.github_url}
+          live_url={project.live_url}
+        />
       </div>
 
       {/* Media Carousel */}

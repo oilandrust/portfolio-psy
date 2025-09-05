@@ -12,6 +12,8 @@ description: |
   During the trainings we have practice sessions in groups of 3 where we take rounds being therapist, client or observer to practice the skills we are learning.
   In each of these sessions we have to divide the time equally between rounds and we also have to take time for breaks into account.
   In addition in each round we have dedicated time for practice and for feedback.
+
+  
   This is simple math to distribute the time but I made a small app that helps us do this.
   We can set the total time for the session and the app will set the time of each round, then we can launch timers with the set time for each round.
   As the session goes on, the app recalculates the round for the remaining time to account for delays that happen.
