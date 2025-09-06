@@ -190,8 +190,8 @@
         "icon": "/portfolio/icons/c++.svg"
       },
       {
-        "name": "C#",
-        "icon": "/portfolio/icons/c#.svg"
+        "name": "csharp",
+        "icon": "/portfolio/icons/csharp.svg"
       },
       {
         "name": "3D Programming",

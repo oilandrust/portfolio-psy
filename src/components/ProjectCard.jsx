@@ -12,7 +12,9 @@ const ProjectUrls = ({ github_url, live_url }) => {
         display: 'flex',
         gap: '1rem',
         alignItems: 'center',
+        flexDirection: 'row',
       }}
+      className="project-urls"
     >
       {github_url && (
         <a
@@ -410,8 +412,6 @@ const ProjectCard = ({ project, onImageClick }) => {
             />
           </div>
 
-          {/* Project Tech */}
-          <ProjectTech tech={project.tech} />
         </div>
 
         {/* Content Section - Description and Media */}
@@ -477,6 +477,28 @@ const ProjectCard = ({ project, onImageClick }) => {
                 </p>
               );
             })}
+          </div>
+        )}
+
+        {/* Project Tech - after all content */}
+        {project.tech && project.tech.length > 0 && (
+          <div style={{ marginTop: '1.5rem' }}>
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '0.75rem',
+              flexWrap: 'wrap'
+            }}>
+              <span style={{ 
+                fontSize: '0.875rem', 
+                fontWeight: '600', 
+                color: 'var(--muted-color)',
+                letterSpacing: '0.05em'
+              }}>
+                Tech:
+              </span>
+              <ProjectTech tech={project.tech} />
+            </div>
           </div>
         )}
 

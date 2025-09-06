@@ -247,4 +247,10 @@ p {
   .project-content > div:last-child {
     order: 1; /* Media comes before description */
   }
+
+  /* Stack GitHub and live URL icons vertically on mobile */
+  .project-urls {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
 }
