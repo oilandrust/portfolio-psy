@@ -9,10 +9,9 @@ const ProjectUrls = ({ github_url, live_url }) => {
   return (
     <div
       style={{
-        marginTop: '1rem',
         display: 'flex',
         gap: '1rem',
-        flexWrap: 'wrap',
+        alignItems: 'center',
       }}
     >
       {github_url && (
@@ -24,27 +23,20 @@ const ProjectUrls = ({ github_url, live_url }) => {
           style={{
             display: 'inline-flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            width: '40px',
-            height: '40px',
-            borderRadius: '50%',
-            background: 'var(--muted-border-color)',
-            transition: 'all 0.2s ease',
             textDecoration: 'none',
+            transition: 'opacity 0.2s ease',
           }}
           onMouseEnter={e => {
-            e.target.style.background = 'var(--primary)';
-            e.target.style.transform = 'scale(1.1)';
+            e.target.style.opacity = '0.7';
           }}
           onMouseLeave={e => {
-            e.target.style.background = 'var(--muted-border-color)';
-            e.target.style.transform = 'scale(1)';
+            e.target.style.opacity = '1';
           }}
         >
           <img
             src='/portfolio/github-mark.svg'
             alt='GitHub'
-            style={{ width: '20px', height: '20px' }}
+            style={{ width: '24px', height: '24px' }}
           />
         </a>
       )}
@@ -57,22 +49,15 @@ const ProjectUrls = ({ github_url, live_url }) => {
           style={{
             display: 'inline-flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            width: '40px',
-            height: '40px',
-            borderRadius: '50%',
-            background: 'var(--muted-border-color)',
-            transition: 'all 0.2s ease',
             textDecoration: 'none',
-            fontSize: '20px',
+            transition: 'opacity 0.2s ease',
+            fontSize: '24px',
           }}
           onMouseEnter={e => {
-            e.target.style.background = 'var(--success)';
-            e.target.style.transform = 'scale(1.1)';
+            e.target.style.opacity = '0.7';
           }}
           onMouseLeave={e => {
-            e.target.style.background = 'var(--muted-border-color)';
-            e.target.style.transform = 'scale(1)';
+            e.target.style.opacity = '1';
           }}
         >
           🌐
@@ -398,22 +383,32 @@ const ProjectCard = ({ project, onImageClick }) => {
       >
         {/* Header Section */}
         <div className='project-header'>
-          <h3 style={{ marginBottom: '0.5rem', color: '#000000' }}>
-            {project.title}
-          </h3>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
+            <div>
+              <h3 style={{ marginBottom: '0.5rem', color: '#000000' }}>
+                {project.title}
+              </h3>
 
-          {project.subtitle && (
-            <p
-              style={{
-                marginBottom: '0.75rem',
-                fontSize: '1rem',
-                color: 'var(--muted-color)',
-                fontStyle: 'italic',
-              }}
-            >
-              {project.subtitle}
-            </p>
-          )}
+              {project.subtitle && (
+                <p
+                  style={{
+                    marginBottom: '0',
+                    fontSize: '1rem',
+                    color: 'var(--muted-color)',
+                    fontStyle: 'italic',
+                  }}
+                >
+                  {project.subtitle}
+                </p>
+              )}
+            </div>
+
+            {/* Project URLs - moved to header */}
+            <ProjectUrls
+              github_url={project.github_url}
+              live_url={project.live_url}
+            />
+          </div>
 
           {/* Project Tech */}
           <ProjectTech tech={project.tech} />
@@ -485,11 +480,6 @@ const ProjectCard = ({ project, onImageClick }) => {
           </div>
         )}
 
-        {/* Project URLs - after all paragraphs */}
-        <ProjectUrls
-          github_url={project.github_url}
-          live_url={project.live_url}
-        />
       </div>
 
       {/* Media Carousel */}
