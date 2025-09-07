@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import VideoThumbnail from './VideoThumbnail';
 import MediaCarousel from './MediaCarousel';
 
@@ -311,49 +311,9 @@ const ProjectMedia = ({ media, imageLayout, projectTitle, onMediaClick }) => {
 const ProjectCard = ({ project, onImageClick }) => {
   const [carouselOpen, setCarouselOpen] = useState(false);
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
-  const [mediaHeight, setMediaHeight] = useState(0);
-  const [paragraphHeights, setParagraphHeights] = useState([]);
-  const [splitIndex, setSplitIndex] = useState(null);
-  const paragraphRefs = useRef([]);
-  const mediaRef = useRef(null);
 
   // Get media array (now unified in the new structure)
   const projectMedia = project.media || [];
-
-  // Compute media height and paragraph heights
-  useEffect(() => {
-    if (mediaRef.current) {
-      const height = mediaRef.current.getBoundingClientRect().height;
-      setMediaHeight(height);
-    }
-  }, [projectMedia, project.image_layout]);
-
-  useEffect(() => {
-    if (project.description && paragraphRefs.current.length > 0) {
-      const heights = paragraphRefs.current.map(ref => 
-        ref ? ref.getBoundingClientRect().height : 0
-      );
-      setParagraphHeights(heights);
-    }
-  }, [project.description]);
-
-  // Calculate where to split paragraphs based on media height
-  useEffect(() => {
-    if (paragraphHeights.length > 0 && mediaHeight > 0) {
-      let accumulatedHeight = 0;
-      let splitIdx = null;
-      
-      for (let i = 0; i < paragraphHeights.length; i++) {
-        accumulatedHeight += paragraphHeights[i];
-        if (accumulatedHeight > mediaHeight) {
-          splitIdx = i + 1; // Next index after we've reached the height
-          break;
-        }
-      }
-      
-      setSplitIndex(splitIdx);
-    }
-  }, [paragraphHeights, mediaHeight]);
 
   const openCarousel = (mediaIndex = 0) => {
     setCurrentMediaIndex(mediaIndex);
@@ -424,40 +384,17 @@ const ProjectCard = ({ project, onImageClick }) => {
 
         </div>
 
-        {/* Content Section - Description and Media */}
-        <div 
-          className='project-content'
-          style={{
-            display: 'flex',
-            gap: '1.5rem',
-            alignItems: 'flex-start',
-          }}
-        >
-          <div style={{ flex: '1' }}>
-            {project.description && (
-              <div style={{ marginBottom: '1rem' }}>
-                {project.description.split('\n\n').map((paragraph, index) => {
-                  // Only render paragraphs that should be in the flex section
-                  const shouldRender = splitIndex === null || index < splitIndex;
-                  if (!shouldRender) return null;
-                  
-                  return (
-                    <p 
-                      key={index} 
-                      ref={(el) => (paragraphRefs.current[index] = el)}
-                      style={{ lineHeight: '1.6', marginBottom: index < project.description.split('\n\n').length - 1 ? '1rem' : '0' }}
-                    >
-                      {paragraph}
-                    </p>
-                  );
-                })}
-              </div>
-            )}
-
-          </div>
-
-          {/* Project Media */}
-          <div ref={mediaRef}>
+        {/* Content Section - Float Layout */}
+        <div className='project-content'>
+          {/* Project Media - Float on desktop, block on mobile */}
+          <div 
+            className="project-media-float"
+            style={{
+              float: 'right',
+              margin: '0 0 1rem 1.5rem',
+              clear: 'right'
+            }}
+          >
             <ProjectMedia
               media={projectMedia}
               imageLayout={project.image_layout}
@@ -465,19 +402,13 @@ const ProjectCard = ({ project, onImageClick }) => {
               onMediaClick={openCarousel}
             />
           </div>
-        </div>
 
-        {/* Additional paragraphs that exceed media height */}
-        {project.description && splitIndex !== null && (
-          <div style={{ marginTop: '0.0rem' }}>
-            {project.description.split('\n\n').map((paragraph, index) => {
-              // Only render paragraphs that should be below the flex section
-              const shouldRender = index >= splitIndex;
-              if (!shouldRender) return null;
-              
-              return (
+          {/* Project Description - Wraps around floated media */}
+          {project.description && (
+            <div>
+              {project.description.split('\n\n').map((paragraph, index) => (
                 <p 
-                  key={`below-${index}`} 
+                  key={index} 
                   style={{ 
                     lineHeight: '1.6', 
                     marginBottom: index < project.description.split('\n\n').length - 1 ? '1rem' : '0' 
@@ -485,10 +416,13 @@ const ProjectCard = ({ project, onImageClick }) => {
                 >
                   {paragraph}
                 </p>
-              );
-            })}
-          </div>
-        )}
+              ))}
+            </div>
+          )}
+
+          {/* Clearfix to ensure proper float clearing */}
+          <div style={{ clear: 'both' }}></div>
+        </div>
 
         {/* Project Tech - after all content */}
         {project.tech && project.tech.length > 0 && (

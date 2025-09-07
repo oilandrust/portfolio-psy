@@ -208,6 +208,18 @@ p {
   color: #6b7280;
 }
 
+/* Float layout for project media */
+.project-media-float {
+  float: right;
+  margin: 0 0 1rem 1.5rem;
+  clear: right;
+}
+
+/* Ensure project content doesn't interfere with float */
+.project-content {
+  overflow: visible;
+}
+
 @media (max-width: 768px) {
   .hero .container {
     flex-direction: column;
@@ -234,18 +246,23 @@ p {
     box-shadow: none;
   }
 
-  /* Project card mobile layout */
+  /* Project card mobile layout - Float layout */
+  .project-media-float {
+    float: none !important;
+    margin: 0 0 1.5rem 0 !important;
+    clear: none !important;
+    display: block;
+    order: 1; /* Media comes first */
+  }
+
+  /* Ensure media comes before description on mobile */
   .project-content {
-    flex-direction: column !important;
+    display: flex;
+    flex-direction: column;
   }
 
-  .project-content > div:first-child {
-    flex: none !important;
+  .project-content > div:nth-child(2) {
     order: 2; /* Description comes after media */
-  }
-
-  .project-content > div:last-child {
-    order: 1; /* Media comes before description */
   }
 
   /* Stack GitHub and live URL icons vertically on mobile */
