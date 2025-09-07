@@ -66,7 +66,7 @@ const ProjectsList = ({ projects }) => {
             >
               {year}
             </h3>
-            {groupedProjects[year].map((project, index) => (
+            {groupedProjects[year].map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>

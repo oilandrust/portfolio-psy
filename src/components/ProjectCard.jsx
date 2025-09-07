@@ -308,7 +308,7 @@ const ProjectMedia = ({ media, imageLayout, projectTitle, onMediaClick }) => {
   );
 };
 
-const ProjectCard = ({ project, onImageClick }) => {
+const ProjectCard = ({ project }) => {
   const [carouselOpen, setCarouselOpen] = useState(false);
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
 
@@ -394,7 +394,7 @@ const ProjectCard = ({ project, onImageClick }) => {
               margin: '0 0 1rem 1.5rem',
               clear: 'right'
             }}
-          >
+          >   
             <ProjectMedia
               media={projectMedia}
               imageLayout={project.image_layout}

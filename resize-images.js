@@ -125,7 +125,7 @@ async function main() {
   // Check if sharp is available
   try {
     await import('sharp');
-  } catch (error) {
+  } catch {
     console.error('❌ Sharp library not found. Please install it first:');
     console.error('   npm install sharp');
     process.exit(1);

@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import ProjectsList from './components/ProjectsList';
 import Hero from './components/Hero';
 import Contact from './components/Contact';
 
 function App() {
   // Fallback projects in case fetch fails
-  const fallbackProjects = [
+  const fallbackProjects = useMemo(() => [
     {
       id: 1,
       title: 'Portfolio Website',
@@ -65,16 +65,12 @@ function App() {
       images: [],
       start_date: '2024-11-01',
     },
-  ];
+  ], []);
 
   const [projects, setProjects] = useState(fallbackProjects);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchProjects();
-  }, []);
-
-  const fetchProjects = async () => {
+  const fetchProjects = useCallback(async () => {
     try {
       // Try multiple fetch strategies for better compatibility
       const fetchStrategies = [
@@ -96,7 +92,7 @@ function App() {
             projectsLoaded = true;
             break;
           }
-        } catch (strategyError) {
+        } catch {
           // Silently continue to next strategy
         }
       }
@@ -104,12 +100,16 @@ function App() {
       if (!projectsLoaded) {
         setProjects(fallbackProjects);
       }
-    } catch (err) {
+    } catch {
       // Fallback to default projects on any error
     } finally {
       setLoading(false);
     }
-  };
+  }, [fallbackProjects]);
+
+  useEffect(() => {
+    fetchProjects();
+  }, [fetchProjects]);
 
   if (loading) {
     return <div className='container'>Loading...</div>;

@@ -1,75 +1,65 @@
-import { useState, useEffect } from 'react';
-import VideoPlayer from './VideoPlayer';
+import { useEffect, useCallback } from 'react'
+import VideoPlayer from './VideoPlayer'
 
-const MediaCarousel = ({
-  isOpen,
-  onClose,
-  media,
-  currentIndex,
-  onNavigate,
+const MediaCarousel = ({ 
+  isOpen, 
+  onClose, 
+  media, 
+  currentIndex, 
+  onNavigate
 }) => {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-
   // Reset video playing state when carousel opens/closes or media changes
-  useEffect(() => {
-    setIsVideoPlaying(false);
-  }, [isOpen, currentIndex]);
+  const handleClose = useCallback(() => {
+    onClose()
+  }, [onClose])
 
-  const handleClose = () => {
-    setIsVideoPlaying(false);
-    onClose();
-  };
+  const handleNavigate = useCallback((direction) => {
+    onNavigate(direction)
+  }, [onNavigate])
 
-  const handleNavigate = direction => {
-    setIsVideoPlaying(false);
-    onNavigate(direction);
-  };
-
-  const handleKeyDown = e => {
-    if (!isOpen) return;
-
+  const handleKeyDown = useCallback((e) => {
+    if (!isOpen) return
+    
     switch (e.key) {
       case 'Escape':
-        handleClose();
-        break;
+        handleClose()
+        break
       case 'ArrowLeft':
-        handleNavigate('prev');
-        break;
+        handleNavigate('prev')
+        break
       case 'ArrowRight':
-        handleNavigate('next');
-        break;
+        handleNavigate('next')
+        break
     }
-  };
+  }, [isOpen, handleClose, handleNavigate])
 
   // Add keyboard event listener
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown);
-      return () => document.removeEventListener('keydown', handleKeyDown);
+      document.addEventListener('keydown', handleKeyDown)
+      return () => document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [isOpen]);
+  }, [isOpen, handleKeyDown])
 
-  if (!isOpen || !media || media.length === 0) return null;
+  if (!isOpen || !media || media.length === 0) return null
 
-  const currentMedia = media[currentIndex];
-  const hasMultipleMedia = media.length > 1;
+  const currentMedia = media[currentIndex]
+  const hasMultipleMedia = media.length > 1
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: 'rgba(0, 0, 0, 0.9)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 1000,
-        padding: '2rem',
-      }}
-    >
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: 'rgba(0, 0, 0, 0.9)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 1000,
+      padding: '2rem'
+    }}>
       {/* Close button */}
       <button
         onClick={handleClose}
@@ -88,14 +78,10 @@ const MediaCarousel = ({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          transition: 'background 0.2s ease',
+          transition: 'background 0.2s ease'
         }}
-        onMouseEnter={e =>
-          (e.target.style.background = 'rgba(255, 255, 255, 0.3)')
-        }
-        onMouseLeave={e =>
-          (e.target.style.background = 'rgba(255, 255, 255, 0.2)')
-        }
+        onMouseEnter={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.3)'}
+        onMouseLeave={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.2)'}
       >
         ×
       </button>
@@ -121,14 +107,10 @@ const MediaCarousel = ({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'background 0.2s ease',
+              transition: 'background 0.2s ease'
             }}
-            onMouseEnter={e =>
-              (e.target.style.background = 'rgba(255, 255, 255, 0.3)')
-            }
-            onMouseLeave={e =>
-              (e.target.style.background = 'rgba(255, 255, 255, 0.2)')
-            }
+            onMouseEnter={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.3)'}
+            onMouseLeave={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.2)'}
           >
             ‹
           </button>
@@ -150,14 +132,10 @@ const MediaCarousel = ({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'background 0.2s ease',
+              transition: 'background 0.2s ease'
             }}
-            onMouseEnter={e =>
-              (e.target.style.background = 'rgba(255, 255, 255, 0.3)')
-            }
-            onMouseLeave={e =>
-              (e.target.style.background = 'rgba(255, 255, 255, 0.2)')
-            }
+            onMouseEnter={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.3)'}
+            onMouseLeave={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.2)'}
           >
             ›
           </button>
@@ -166,7 +144,10 @@ const MediaCarousel = ({
 
       {/* Main media display */}
       {currentMedia.type === 'video' ? (
-        <VideoPlayer video={currentMedia} onClose={handleClose} />
+        <VideoPlayer
+          video={currentMedia}
+          onClose={handleClose}
+        />
       ) : (
         <img
           src={currentMedia.path || currentMedia.thumbnail}
@@ -175,31 +156,31 @@ const MediaCarousel = ({
             maxWidth: '90%',
             maxHeight: '90%',
             objectFit: 'contain',
-            borderRadius: '8px',
+            borderRadius: '8px'
           }}
         />
       )}
 
       {/* Media counter */}
       {hasMultipleMedia && (
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '2rem',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            background: 'rgba(0, 0, 0, 0.7)',
-            color: 'white',
-            padding: '0.5rem 1rem',
-            borderRadius: '20px',
-            fontSize: '0.875rem',
-          }}
-        >
+        <div style={{
+          position: 'absolute',
+          bottom: '2rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          background: 'rgba(0, 0, 0, 0.7)',
+          color: 'white',
+          padding: '0.5rem 1rem',
+          borderRadius: '20px',
+          fontSize: '0.875rem'
+        }}>
           {currentIndex + 1} / {media.length}
         </div>
       )}
-    </div>
-  );
-};
 
-export default MediaCarousel;
+
+    </div>
+  )
+}
+
+export default MediaCarousel
