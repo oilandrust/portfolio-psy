@@ -8,8 +8,16 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Directories
-const projectsDir = 'public/projects';
-const profileFile = 'public/profile.yml';
+const sourceProjectsDir = 'portfolio/projects';
+const sourceProfileFile = 'portfolio/profile.yml';
+const sourceIconsDir = 'portfolio/icons';
+const sourceProfileDir = 'portfolio/profile';
+const sourceFavicon = 'portfolio/O.svg';
+
+const outputDataDir = 'public/data';
+const outputProjectsDir = 'public/data/projects';
+const outputIconsDir = 'public/data/icons';
+const outputProfileDir = 'public/data/profile';
 
 // Function to read and parse a project.yml file
 function readProjectYaml(projectPath) {
@@ -43,8 +51,8 @@ function scanProjectMedia(projectPath) {
       if (imageExtensions.includes(ext)) {
         media.push({
           type: 'image',
-          path: `/portfolio/projects/${path.basename(projectPath)}/${file}`,
-          thumbnail: `/portfolio/projects/${path.basename(projectPath)}/${file}`,
+          path: `/portfolio/data/projects/${path.basename(projectPath)}/${file}`,
+          thumbnail: `/portfolio/data/projects/${path.basename(projectPath)}/${file}`,
           name: baseName,
         });
       } else if (videoExtensions.includes(ext)) {
@@ -57,14 +65,14 @@ function scanProjectMedia(projectPath) {
           const thumbFile = `${baseName}-thumb${thumbExt}`;
           const thumbPath = path.join(projectPath, thumbFile);
           if (fs.existsSync(thumbPath)) {
-            thumbnailPath = `/portfolio/projects/${path.basename(projectPath)}/${thumbFile}`;
+            thumbnailPath = `/portfolio/data/projects/${path.basename(projectPath)}/${thumbFile}`;
             break;
           }
         }
 
         media.push({
           type: 'video',
-          path: `/portfolio/projects/${path.basename(projectPath)}/${file}`,
+          path: `/portfolio/data/projects/${path.basename(projectPath)}/${file}`,
           thumbnail: thumbnailPath,
           name: baseName,
         });
@@ -95,16 +103,16 @@ function processTechString(techString) {
 
   techNames.forEach(techName => {
     // Look for icon in the icons directory (try SVG first, then PNG)
-    let iconPath = `/portfolio/icons/${techName.toLowerCase()}.svg`;
+    let iconPath = `/portfolio/data/icons/${techName.toLowerCase()}.svg`;
     let iconExists = fs.existsSync(
-      path.join('public', iconPath.replace('/portfolio/', ''))
+      path.join('public', iconPath.replace('/portfolio/data/', 'data/'))
     );
 
     if (!iconExists) {
       // Try PNG if SVG doesn't exist
-      iconPath = `/portfolio/icons/${techName.toLowerCase()}.png`;
+      iconPath = `/portfolio/data/icons/${techName.toLowerCase()}.png`;
       iconExists = fs.existsSync(
-        path.join('public', iconPath.replace('/portfolio/', ''))
+        path.join('public', iconPath.replace('/portfolio/data/', 'data/'))
       );
     }
 
@@ -120,12 +128,12 @@ function processTechString(techString) {
 // Function to read and parse profile.yml
 function readProfileYaml() {
   try {
-    if (!fs.existsSync(profileFile)) {
-      console.error(`❌ Profile file not found: ${profileFile}`);
+    if (!fs.existsSync(sourceProfileFile)) {
+      console.error(`❌ Profile file not found: ${sourceProfileFile}`);
       return null;
     }
     
-    const yamlContent = fs.readFileSync(profileFile, 'utf8');
+    const yamlContent = fs.readFileSync(sourceProfileFile, 'utf8');
     return yaml.load(yamlContent);
   } catch (error) {
     console.error(`❌ Error reading profile.yml:`, error.message);
@@ -133,9 +141,62 @@ function readProfileYaml() {
   }
 }
 
+// Function to copy directory recursively
+function copyDirectory(src, dest) {
+  if (!fs.existsSync(src)) {
+    console.log(`⚠️  Source directory not found: ${src}`);
+    return;
+  }
+  
+  if (!fs.existsSync(dest)) {
+    fs.mkdirSync(dest, { recursive: true });
+  }
+  
+  const items = fs.readdirSync(src);
+  items.forEach(item => {
+    const srcPath = path.join(src, item);
+    const destPath = path.join(dest, item);
+    const stat = fs.statSync(srcPath);
+    
+    if (stat.isDirectory()) {
+      copyDirectory(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  });
+}
+
+// Function to copy file
+function copyFile(src, dest) {
+  if (!fs.existsSync(src)) {
+    console.log(`⚠️  Source file not found: ${src}`);
+    return;
+  }
+  
+  const destDir = path.dirname(dest);
+  if (!fs.existsSync(destDir)) {
+    fs.mkdirSync(destDir, { recursive: true });
+  }
+  
+  fs.copyFileSync(src, dest);
+}
+
 // Main function to build portfolio.json
 function buildPortfolioJson() {
   console.log('🔍 Building portfolio...');
+
+  // Create output directories
+  console.log('📁 Creating output directories...');
+  if (!fs.existsSync(outputDataDir)) {
+    fs.mkdirSync(outputDataDir, { recursive: true });
+  }
+
+  // Copy static assets
+  console.log('📋 Copying static assets...');
+  copyDirectory(sourceIconsDir, outputIconsDir);
+  copyDirectory(sourceProfileDir, outputProfileDir);
+  copyFile(sourceFavicon, 'public/O.svg');
+  console.log('  ✅ Icons, profile images, and favicon copied');
 
   // Read profile data
   console.log('📄 Reading profile data...');
@@ -148,8 +209,8 @@ function buildPortfolioJson() {
 
   // Read projects data
   console.log('🔍 Scanning for projects...');
-  if (!fs.existsSync(projectsDir)) {
-    console.error(`❌ Projects directory not found: ${projectsDir}`);
+  if (!fs.existsSync(sourceProjectsDir)) {
+    console.error(`❌ Projects directory not found: ${sourceProjectsDir}`);
     return;
   }
 
@@ -157,10 +218,10 @@ function buildPortfolioJson() {
   let projectId = 1;
 
   try {
-    const projectFolders = fs.readdirSync(projectsDir);
+    const projectFolders = fs.readdirSync(sourceProjectsDir);
 
     projectFolders.forEach(folder => {
-      const projectPath = path.join(projectsDir, folder);
+      const projectPath = path.join(sourceProjectsDir, folder);
       const stats = fs.statSync(projectPath);
 
       if (stats.isDirectory()) {
@@ -168,6 +229,22 @@ function buildPortfolioJson() {
 
         const projectData = readProjectYaml(projectPath);
         if (projectData) {
+          // Copy project media to output directory (excluding .yml files)
+          const outputProjectPath = path.join(outputProjectsDir, folder);
+          if (!fs.existsSync(outputProjectPath)) {
+            fs.mkdirSync(outputProjectPath, { recursive: true });
+          }
+          
+          // Copy all files except .yml files
+          const projectFiles = fs.readdirSync(projectPath);
+          projectFiles.forEach(file => {
+            if (!file.endsWith('.yml')) {
+              const srcFile = path.join(projectPath, file);
+              const destFile = path.join(outputProjectPath, file);
+              fs.copyFileSync(srcFile, destFile);
+            }
+          });
+
           // Scan for media (images and videos) in the project folder
           const projectMedia = scanProjectMedia(projectPath);
 
@@ -216,11 +293,12 @@ function buildPortfolioJson() {
     };
 
     // Write portfolio.json
-    const outputPath = 'public/portfolio.json';
+    const outputPath = 'public/data/portfolio.json';
     fs.writeFileSync(outputPath, JSON.stringify(portfolio, null, 2));
 
     console.log(`\n🎉 Successfully built portfolio with ${projects.length} projects!`);
     console.log(`📄 Output: ${outputPath}`);
+    console.log(`📁 Data copied to: public/data/`);
 
     // Display summary
     projects.forEach(project => {

@@ -2,10 +2,10 @@
 
 // API and Data Fetching
 export const FETCH_STRATEGIES = [
-  './portfolio.json',
-  '/portfolio/portfolio.json',
-  '/portfolio.json',
-  'portfolio.json',
+  './data/portfolio.json',
+  '/portfolio/data/portfolio.json',
+  '/data/portfolio.json',
+  'data/portfolio.json',
 ];
 
 // Media Configuration

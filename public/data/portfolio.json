@@ -1,0 +1,253 @@
+{
+  "profile": {
+    "title": "Olivier's Developer Portfolio",
+    "subtitle": "Building things fast and slow",
+    "about": "Hi, I'm Olivier, I live in Strasbourg, France, and before I lived around Europe in Germany and Sweden. I worked as a developer for 10 years, with a specialisation on C++, Graphics Programming and Game Development. Notably I worked for Massive Entertainment, a Ubisoft Studio. I also worked with web and built mobile applications. This page showcases some personal projects and work experiences.\n\nRight now I study Psychology to become a Psychotherapist, but I might be able to contribute to some projects. I am interested in building small tools and applications to make the life of small businesses easier. Feel free to get in touch if you have some curiosity.\n"
+  },
+  "projects": [
+    {
+      "id": 4,
+      "title": "Portfolio Timeline Website",
+      "subtitle": "A data driven, static portfolio website for developers",
+      "description": "This is the page you're currently looking at. I built it vibe coding with Cursor. It's a static website built with Vite and React, and deployed to GitHub Pages.\nIt's designed to be able to add projects with data while keeping the whole thing static so it can be hosted on GitHub Pages.\n\nTo use it, create a new folder for each project and add a project.yml file with the project details.\nThen add the images and videos to the project folder, and you're good to go.\n\nThe data is extracted from the projects/ and converted to a JSON file that is used to render the content of the static page.\n",
+      "start_date": "2025-07-25",
+      "end_date": "2025-08-31",
+      "tech": [
+        {
+          "name": "React",
+          "icon": "/portfolio/data/icons/react.svg"
+        },
+        {
+          "name": "javascript",
+          "icon": "/portfolio/data/icons/javascript.svg"
+        },
+        {
+          "name": "vite",
+          "icon": "/portfolio/data/icons/vite.svg"
+        },
+        {
+          "name": "cursor",
+          "icon": "/portfolio/data/icons/cursor.svg"
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "path": "/portfolio/data/projects/portfolio-timeline-website/Screenshot 2025-09-02 at 19.42.38.png",
+          "thumbnail": "/portfolio/data/projects/portfolio-timeline-website/Screenshot 2025-09-02 at 19.42.38.png",
+          "name": "Screenshot 2025-09-02 at 19.42.38"
+        }
+      ],
+      "image_layout": "grid",
+      "github_url": "https://github.com/oilandrust/portfolio",
+      "live_url": "https://oilandrust.github.io/portfolio"
+    },
+    {
+      "id": 2,
+      "title": "Hakomi Practice Timer",
+      "subtitle": "A solution to a quite specific real world problem",
+      "description": "For a few years now, I have been training in Psychotherapy online.\nDuring the trainings we have practice sessions in groups of 3 where we take rounds being therapist, client or observer to practice the skills we are learning.\nIn each of these sessions we have to divide the time equally between rounds and we also have to take time for breaks into account.\nIn addition in each round we have dedicated time for practice and for feedback.\n\n\nThis is simple math to distribute the time but I made a small app that helps us do this.\nWe can set the total time for the session and the app will set the time of each round, then we can launch timers with the set time for each round.\nAs the session goes on, the app recalculates the round for the remaining time to account for delays that happen.\nI haven't used the app yet, but I will this fall as I will be an assistant in a training.\n",
+      "start_date": "2025-08-16",
+      "end_date": "2025-08-24",
+      "tech": [
+        {
+          "name": "React",
+          "icon": "/portfolio/data/icons/react.svg"
+        },
+        {
+          "name": "Vite",
+          "icon": "/portfolio/data/icons/vite.svg"
+        },
+        {
+          "name": "cursor",
+          "icon": "/portfolio/data/icons/cursor.svg"
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "path": "/portfolio/data/projects/hakomi-practice-timer/1756207344140-Screenshot_20250826_123126_Chrome.jpg",
+          "thumbnail": "/portfolio/data/projects/hakomi-practice-timer/1756207344140-Screenshot_20250826_123126_Chrome.jpg",
+          "name": "1756207344140-Screenshot_20250826_123126_Chrome"
+        },
+        {
+          "type": "image",
+          "path": "/portfolio/data/projects/hakomi-practice-timer/1756207344142-Screenshot_20250826_123146_Chrome.jpg",
+          "thumbnail": "/portfolio/data/projects/hakomi-practice-timer/1756207344142-Screenshot_20250826_123146_Chrome.jpg",
+          "name": "1756207344142-Screenshot_20250826_123146_Chrome"
+        },
+        {
+          "type": "image",
+          "path": "/portfolio/data/projects/hakomi-practice-timer/1756207344143-Screenshot_20250826_123156_Chrome.jpg",
+          "thumbnail": "/portfolio/data/projects/hakomi-practice-timer/1756207344143-Screenshot_20250826_123156_Chrome.jpg",
+          "name": "1756207344143-Screenshot_20250826_123156_Chrome"
+        },
+        {
+          "type": "image",
+          "path": "/portfolio/data/projects/hakomi-practice-timer/1756207344145-Screenshot_20250826_123203_Chrome.jpg",
+          "thumbnail": "/portfolio/data/projects/hakomi-practice-timer/1756207344145-Screenshot_20250826_123203_Chrome.jpg",
+          "name": "1756207344145-Screenshot_20250826_123203_Chrome"
+        }
+      ],
+      "image_layout": "row",
+      "github_url": "https://github.com/oilandrust/hakomi-practice-timer",
+      "live_url": "https://oilandrust.github.io/hakomi-practice-timer/"
+    },
+    {
+      "id": 5,
+      "title": "Re-connected.fr",
+      "subtitle": "The wordpress website for my psychotherapy practice",
+      "description": "I built my first website using WordPress for my small psychotherapy practice. It is a single page and using the basic WordPress template but it does the job.\nThis version is the third iteration of the website. I learned to set up a WordPress website and to host it on Amazon Lightsail. I'm interested in learning more about WordPress.\n",
+      "start_date": "2024-09-15T00:00:00.000Z",
+      "end_date": "2024-01-28T00:00:00.000Z",
+      "tech": [
+        {
+          "name": "wordpress",
+          "icon": "/portfolio/data/icons/wordpress.svg"
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "path": "/portfolio/data/projects/psychotherapy-website/0_Screenshot 2025-09-01 at 19.59.31.png",
+          "thumbnail": "/portfolio/data/projects/psychotherapy-website/0_Screenshot 2025-09-01 at 19.59.31.png",
+          "name": "0_Screenshot 2025-09-01 at 19.59.31"
+        },
+        {
+          "type": "image",
+          "path": "/portfolio/data/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.12.png",
+          "thumbnail": "/portfolio/data/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.12.png",
+          "name": "Screenshot 2025-09-01 at 19.59.12"
+        },
+        {
+          "type": "image",
+          "path": "/portfolio/data/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.40.png",
+          "thumbnail": "/portfolio/data/projects/psychotherapy-website/Screenshot 2025-09-01 at 19.59.40.png",
+          "name": "Screenshot 2025-09-01 at 19.59.40"
+        }
+      ],
+      "image_layout": "featured",
+      "github_url": null,
+      "live_url": "https://re-connected.fr"
+    },
+    {
+      "id": 1,
+      "title": "Game Development in Rust",
+      "subtitle": "Study around SnakeBird",
+      "description": "A few projects of game development exploring gameplay inspired by the game SnakeBird.\nI was attracted to learn Rust. I was drawn to its strong type system and elegant syntax.\nSince making games was my strongest expertise, I played around with the Bevy game engine which I found really usable with an elegant component entity system.\n\nI started with simple terminal games and then explored gameplay inspired by the game SnakeBird. What interested me about this game is that it has a grid logic, like the original snake game, but it also has smooth movement.\nIt's an interesting challenge since the game logic and state is in a discrete grid but we interpolate movements so it feels smooth.\n\nI first implemented a clone of SnakeBird in 2D, replicating the same gameplay, including undo/redo and simple physics.\nTwo of the most interesting systems are the undo/redo system and the renderer used to render the snakes.\n\nThen I extended this game to work in 3D, incorporating novel gameplay ideas on top of the SnakeBird gameplay.\n",
+      "start_date": "2023-08-26",
+      "end_date": "2023-12-29",
+      "tech": [
+        {
+          "name": "rust",
+          "icon": "/portfolio/data/icons/rust.svg"
+        },
+        {
+          "name": "bevy",
+          "icon": "/portfolio/data/icons/bevy.png"
+        }
+      ],
+      "media": [
+        {
+          "type": "video",
+          "path": "/portfolio/data/projects/game-development-in-rust/0_CatSnake.mov",
+          "thumbnail": null,
+          "name": "0_CatSnake"
+        },
+        {
+          "type": "video",
+          "path": "/portfolio/data/projects/game-development-in-rust/Bird Snake Gameplay.mp4",
+          "thumbnail": null,
+          "name": "Bird Snake Gameplay"
+        },
+        {
+          "type": "image",
+          "path": "/portfolio/data/projects/game-development-in-rust/Screenshot 2023-02-06 at 15.27.25.png",
+          "thumbnail": "/portfolio/data/projects/game-development-in-rust/Screenshot 2023-02-06 at 15.27.25.png",
+          "name": "Screenshot 2023-02-06 at 15.27.25"
+        },
+        {
+          "type": "image",
+          "path": "/portfolio/data/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png",
+          "thumbnail": "/portfolio/data/projects/game-development-in-rust/Screenshot 2023-02-19 at 01.53.09.png",
+          "name": "Screenshot 2023-02-19 at 01.53.09"
+        },
+        {
+          "type": "video",
+          "path": "/portfolio/data/projects/game-development-in-rust/Snake (online-video-cutter.com) (2).mp4",
+          "thumbnail": null,
+          "name": "Snake (online-video-cutter.com) (2)"
+        }
+      ],
+      "image_layout": "featured",
+      "github_url": "https://github.com/oilandrust/cat-snake",
+      "live_url": "https://oliver-rust.itch.io/cat-snake"
+    },
+    {
+      "id": 6,
+      "title": "Editor and Graphics Programmer for the RSX Engine",
+      "subtitle": "Professional game engine development role",
+      "description": "I worked as a contractor for Abstract to work on their game engine RSX. As I joined the team the engine was already fully functional but needed a lot of polish and bug fixing.\n\nI contributed in a few areas, mainly the macOS platform layer, the rendering of Gizmo in the editor, scene picking and manipulation tools and editor functionalities such as shortcuts, Undo/Redo, etc...\n\nOn the macOS layer I made sure the windowing system was working robustly with multiple windows in multiple monitors, and that events were properly propagated to the engine's UI system.\n\nI also wrote and maintained some C# code on the UI scripting layer that was built in the engine.\nThe engine since switched to TypeScript to be able to run the editor on the web.\n",
+      "start_date": "2020-08-01",
+      "end_date": "2021-12-31",
+      "tech": [
+        {
+          "name": "C++",
+          "icon": "/portfolio/data/icons/c++.svg"
+        },
+        {
+          "name": "csharp",
+          "icon": "/portfolio/data/icons/csharp.svg"
+        },
+        {
+          "name": "3D Programming",
+          "icon": null
+        },
+        {
+          "name": "Game Engine Development",
+          "icon": null
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "path": "/portfolio/data/projects/rsx-engine-editor/image.png",
+          "thumbnail": "/portfolio/data/projects/rsx-engine-editor/image.png",
+          "name": "image"
+        }
+      ],
+      "image_layout": "featured",
+      "github_url": null,
+      "live_url": "https://rsxengine.com/"
+    },
+    {
+      "id": 3,
+      "title": "Tech Programmer at Massive Entertainment",
+      "subtitle": "Working on Avatar, Frontiers of Pandora",
+      "description": "I worked on the tech team for Avatar project for Ubisoft.\nI worked on implementing and maintaining tech features for the in house Snowdrop Engine.\n\nSome of the tech I worked on are the impostor system for tree rendering, a GI low res fallback system, fog and atmospheric effects and shaders. Tech art tools, etc....\n\nIn that job I worked closely with tech programmers in my team, in other developers using Snowdrop on other projects, as well as tech artists.\n",
+      "start_date": "2017-01-01",
+      "end_date": "2019-07-31",
+      "tech": [
+        {
+          "name": "C++",
+          "icon": "/portfolio/data/icons/c++.svg"
+        },
+        {
+          "name": "Snowdrop",
+          "icon": null
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "path": "/portfolio/data/projects/massive-entertainment/Avatar-Hero-9fcfd038d360b252414c.jpg",
+          "thumbnail": "/portfolio/data/projects/massive-entertainment/Avatar-Hero-9fcfd038d360b252414c.jpg",
+          "name": "Avatar-Hero-9fcfd038d360b252414c"
+        }
+      ],
+      "image_layout": "featured",
+      "github_url": null,
+      "live_url": "https://www.massive.se/project/avatar-frontiers-of-pandora/"
+    }
+  ]
+}

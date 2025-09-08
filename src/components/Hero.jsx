@@ -4,7 +4,7 @@ const Hero = ({ profile }) => {
       <div className='container'>
         <div className='hero-profile'>
           <img
-            src='/portfolio/profile/IMG-20250419-WA0003 (2).jpg'
+            src='/portfolio/data/profile/IMG-20250419-WA0003 (2).jpg'
             alt={profile?.title || 'John Doe'}
           />
         </div>
