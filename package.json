@@ -6,13 +6,13 @@
   "homepage": "https://olivier.github.io/portfolio",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build-projects && vite build",
+    "build": "npm run build-portfolio && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "deploy": "npm run build && git add dist -f && git commit -m 'Deploy to GitHub Pages' && git push",
-    "build-projects": "node build-projects.js"
+    "build-portfolio": "node build-portfolio.js"
   },
   "dependencies": {
     "@picocss/pico": "^2.1.1",

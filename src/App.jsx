@@ -2,10 +2,20 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import ProjectsList from './components/ProjectsList';
 import Hero from './components/Hero';
 import Contact from './components/Contact';
+import ErrorBoundary from './components/ErrorBoundary';
+import LoadingSpinner from './components/LoadingSpinner';
+import { FETCH_STRATEGIES, ERROR_MESSAGES, LOADING_STATES } from './config/constants.js';
+import { handleAsyncOperation, retryOperation, fetchWithTimeout } from './utils/errorHandling.js';
 
 function App() {
-  // Fallback projects in case fetch fails
-  const fallbackProjects = useMemo(() => [
+  // Fallback portfolio data in case fetch fails
+  const fallbackPortfolio = useMemo(() => ({
+    profile: {
+      title: "John Doe",
+      subtitle: "Full Stack Developer",
+      about: "Hi, I'm John, a passionate full stack developer with experience in modern web technologies. I enjoy building scalable applications and solving complex problems through clean, efficient code.\n\nThis portfolio showcases some of my recent projects and the technologies I've worked with. Feel free to get in touch if you'd like to collaborate or have any questions."
+    },
+    projects: [
     {
       id: 1,
       title: 'Portfolio Website',
@@ -65,80 +75,120 @@ function App() {
       images: [],
       start_date: '2024-11-01',
     },
-  ], []);
+    ]
+  }), []);
 
-  const [projects, setProjects] = useState(fallbackProjects);
-  const [loading, setLoading] = useState(true);
+  const [portfolio, setPortfolio] = useState(fallbackPortfolio);
+  const [projects, setProjects] = useState(fallbackPortfolio.projects);
+  const [loadingState, setLoadingState] = useState(LOADING_STATES.LOADING);
+  const [error, setError] = useState(null);
 
-  const fetchProjects = useCallback(async () => {
+  const fetchPortfolio = useCallback(async () => {
+    setLoadingState(LOADING_STATES.LOADING);
+    setError(null);
+
     try {
-      // Try multiple fetch strategies for better compatibility
-      const fetchStrategies = [
-        './projects.json',
-        '/portfolio/projects.json',
-        '/projects.json',
-        'projects.json',
-      ];
+      const fetchStrategy = async () => {
+        let portfolioLoaded = false;
+        let lastError = null;
 
-      let projectsLoaded = false;
-
-      for (const strategy of fetchStrategies) {
-        try {
-          const response = await fetch(strategy);
-
-          if (response.ok) {
+        for (const strategy of FETCH_STRATEGIES) {
+          try {
+            const response = await fetchWithTimeout(strategy, {}, 5000);
             const data = await response.json();
-            setProjects(data);
-            projectsLoaded = true;
-            break;
+            
+            if (data && data.profile && data.projects && Array.isArray(data.projects)) {
+              setPortfolio(data);
+              setProjects(data.projects);
+              portfolioLoaded = true;
+              break;
+            }
+          } catch (strategyError) {
+            lastError = strategyError;
+            // Continue to next strategy
           }
-        } catch {
-          // Silently continue to next strategy
         }
-      }
 
-      if (!projectsLoaded) {
-        setProjects(fallbackProjects);
-      }
-    } catch {
-      // Fallback to default projects on any error
-    } finally {
-      setLoading(false);
+        if (!portfolioLoaded) {
+          throw lastError || new Error(ERROR_MESSAGES.FETCH_PROJECTS_FAILED);
+        }
+      };
+
+      await retryOperation(fetchStrategy, 2, 1000);
+      setLoadingState(LOADING_STATES.SUCCESS);
+    } catch (error) {
+      const userFriendlyError = await handleAsyncOperation(
+        () => Promise.reject(error),
+        'fetchPortfolio',
+        {
+          fallbackMessage: ERROR_MESSAGES.FETCH_PROJECTS_FAILED,
+          additionalInfo: { fallbackUsed: true }
+        }
+      ).catch(e => e);
+      
+      setError(userFriendlyError);
+      setPortfolio(fallbackPortfolio);
+      setProjects(fallbackPortfolio.projects);
+      setLoadingState(LOADING_STATES.ERROR);
     }
-  }, [fallbackProjects]);
+  }, [fallbackPortfolio]);
 
   useEffect(() => {
-    fetchProjects();
-  }, [fetchProjects]);
+    fetchPortfolio();
+  }, [fetchPortfolio]);
 
-  if (loading) {
-    return <div className='container'>Loading...</div>;
+  if (loadingState === LOADING_STATES.LOADING) {
+    return (
+      <div className='container'>
+        <LoadingSpinner 
+          size="large" 
+          message="Loading portfolio..." 
+        />
+      </div>
+    );
   }
 
   return (
     <div className='App'>
-      <Hero />
+      <ErrorBoundary fallbackMessage={ERROR_MESSAGES.FALLBACK_MESSAGES.COMPONENT}>
+        <Hero profile={portfolio.profile} />
+      </ErrorBoundary>
 
       <div className='container'>
-        <div className='section'>
-          <h2>About</h2>
-          <p>
-            Hi, I'm Olivier, I live in Strasbourg, France, and before I lived
-            around Europe in Germany and Sweden. I worked as a developer for 10
-            years and I've worked in a few companies and had some pojects. This
-            pages showcases a few of them with some details about how I
-            approached working on those and the technologies I used.
-          </p>
-          <p>
-            Right now I study Psychology to become a Psychotherapist, but I
-            might be able to contribute to some new projects. Feel free to get
-            in touch if you have some curiosity.
-          </p>
-        </div>
+        <ErrorBoundary fallbackMessage="Unable to load about section. Please refresh the page.">
+          <div className='section'>
+            <h2>About</h2>
+            <div style={{ whiteSpace: 'pre-line' }}>
+              {portfolio.profile.about}
+            </div>
+          </div>
+        </ErrorBoundary>
 
-        <ProjectsList projects={projects} />
+        {error && (
+          <div style={{
+            padding: '1rem',
+            margin: '1rem 0',
+            backgroundColor: '#fef2f2',
+            border: '1px solid #fecaca',
+            borderRadius: '8px',
+            color: '#991b1b'
+          }}>
+            <p style={{ margin: '0 0 0.5rem 0', fontWeight: 'bold' }}>
+              ⚠️ {error.message}
+            </p>
+            <p style={{ margin: 0, fontSize: '0.875rem' }}>
+              Showing fallback projects. You can try refreshing the page.
+            </p>
+          </div>
+        )}
 
-        <Contact />
+        <ErrorBoundary fallbackMessage={ERROR_MESSAGES.FALLBACK_MESSAGES.PROJECTS}>
+          <ProjectsList projects={projects} />
+        </ErrorBoundary>
+
+        <ErrorBoundary fallbackMessage="Unable to load contact section. Please refresh the page.">
+          <Contact />
+        </ErrorBoundary>
       </div>
     </div>
   );

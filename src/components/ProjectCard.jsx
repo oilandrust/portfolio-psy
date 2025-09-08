@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import VideoThumbnail from './VideoThumbnail';
 import MediaCarousel from './MediaCarousel';
+import ErrorBoundary from './ErrorBoundary';
+import { STYLES, ERROR_MESSAGES } from '../config/constants.js';
 
 // Project URLs component
 const ProjectUrls = ({ github_url, live_url }) => {
@@ -341,18 +343,19 @@ const ProjectCard = ({ project }) => {
 
   return (
     <>
-      <div
-        className='project-card'
-        style={{
-          border: '1px solid var(--muted-border-color)',
-          borderRadius: '8px',
-          padding: '1.5rem',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-          background: 'var(--card-background-color, white)',
-          display: 'flex',
-          flexDirection: 'column'
-        }}
-      >
+      <ErrorBoundary fallbackMessage={`Unable to load project: ${project.title}`}>
+        <div
+          className='project-card'
+          style={{
+            border: `1px solid ${STYLES.COLORS.MUTED_BORDER}`,
+            borderRadius: STYLES.BORDER_RADIUS.LG,
+            padding: STYLES.SPACING.LG,
+            boxShadow: STYLES.SHADOWS.SM,
+            background: 'var(--card-background-color, white)',
+            display: 'flex',
+            flexDirection: 'column'
+          }}
+        >
         {/* Header Section */}
         <div className='project-header'>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
@@ -446,16 +449,19 @@ const ProjectCard = ({ project }) => {
           </div>
         )}
 
-      </div>
+        </div>
+      </ErrorBoundary>
 
       {/* Media Carousel */}
-      <MediaCarousel
-        isOpen={carouselOpen}
-        onClose={closeCarousel}
-        media={projectMedia}
-        currentIndex={currentMediaIndex}
-        onNavigate={navigateMedia}
-      />
+      <ErrorBoundary fallbackMessage={ERROR_MESSAGES.FALLBACK_MESSAGES.MEDIA}>
+        <MediaCarousel
+          isOpen={carouselOpen}
+          onClose={closeCarousel}
+          media={projectMedia}
+          currentIndex={currentMediaIndex}
+          onNavigate={navigateMedia}
+        />
+      </ErrorBoundary>
     </>
   );
 };

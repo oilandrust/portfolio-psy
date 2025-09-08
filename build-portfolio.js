@@ -7,8 +7,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Projects directory
+// Directories
 const projectsDir = 'public/projects';
+const profileFile = 'public/profile.yml';
 
 // Function to read and parse a project.yml file
 function readProjectYaml(projectPath) {
@@ -116,10 +117,37 @@ function processTechString(techString) {
   return techArray;
 }
 
-// Main function to build projects.json
-function buildProjectsJson() {
-  console.log('🔍 Scanning for projects...');
+// Function to read and parse profile.yml
+function readProfileYaml() {
+  try {
+    if (!fs.existsSync(profileFile)) {
+      console.error(`❌ Profile file not found: ${profileFile}`);
+      return null;
+    }
+    
+    const yamlContent = fs.readFileSync(profileFile, 'utf8');
+    return yaml.load(yamlContent);
+  } catch (error) {
+    console.error(`❌ Error reading profile.yml:`, error.message);
+    return null;
+  }
+}
 
+// Main function to build portfolio.json
+function buildPortfolioJson() {
+  console.log('🔍 Building portfolio...');
+
+  // Read profile data
+  console.log('📄 Reading profile data...');
+  const profileData = readProfileYaml();
+  if (!profileData) {
+    console.error('❌ Failed to read profile data');
+    return;
+  }
+  console.log(`  ✅ Profile loaded: ${profileData.title}`);
+
+  // Read projects data
+  console.log('🔍 Scanning for projects...');
   if (!fs.existsSync(projectsDir)) {
     console.error(`❌ Projects directory not found: ${projectsDir}`);
     return;
@@ -181,11 +209,17 @@ function buildProjectsJson() {
       return new Date(b.end_date) - new Date(a.end_date);
     });
 
-    // Write projects.json
-    const outputPath = 'public/projects.json';
-    fs.writeFileSync(outputPath, JSON.stringify(projects, null, 2));
+    // Build portfolio object
+    const portfolio = {
+      profile: profileData,
+      projects: projects
+    };
 
-    console.log(`\n🎉 Successfully built ${projects.length} projects!`);
+    // Write portfolio.json
+    const outputPath = 'public/portfolio.json';
+    fs.writeFileSync(outputPath, JSON.stringify(portfolio, null, 2));
+
+    console.log(`\n🎉 Successfully built portfolio with ${projects.length} projects!`);
     console.log(`📄 Output: ${outputPath}`);
 
     // Display summary
@@ -200,9 +234,9 @@ function buildProjectsJson() {
       console.log(`  • ${project.title} ${mediaText}`);
     });
   } catch (error) {
-    console.error('❌ Error building projects.json:', error.message);
+    console.error('❌ Error building portfolio.json:', error.message);
   }
 }
 
 // Run the build
-buildProjectsJson();
+buildPortfolioJson();

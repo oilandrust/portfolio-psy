@@ -1,16 +1,16 @@
-const Hero = () => {
+const Hero = ({ profile }) => {
   return (
     <div className='hero'>
       <div className='container'>
         <div className='hero-profile'>
           <img
             src='/portfolio/profile/IMG-20250419-WA0003 (2).jpg'
-            alt='Olivier Rouiller'
+            alt={profile?.title || 'John Doe'}
           />
         </div>
         <div className='hero-content'>
-          <h1>Olivier Rouiller</h1>
-          <p>Building things fast and slow</p>
+          <h1>{profile?.title || 'John Doe'}</h1>
+          <p>{profile?.subtitle || 'Full Stack Developer'}</p>
         </div>
         <div className='hero-button'>
           <button
