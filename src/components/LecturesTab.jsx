@@ -45,39 +45,13 @@ const LecturesTab = ({ readings = [] }) => {
                 {reading.title}
               </h4>
               <p style={{ 
-                margin: '0 0 0.75rem 0', 
+                margin: '0', 
                 fontSize: '0.8rem', 
                 color: '#666',
                 fontStyle: 'italic'
               }}>
                 {reading.author}
               </p>
-              {reading.amazon && reading.amazon.found && (
-                <a 
-                  href={reading.amazon.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-block',
-                    backgroundColor: '#ff9500',
-                    color: 'white',
-                    textDecoration: 'none',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '4px',
-                    fontSize: '0.8rem',
-                    fontWeight: '500',
-                    transition: 'background-color 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = '#e6850e';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.backgroundColor = '#ff9500';
-                  }}
-                >
-                  Voir sur Amazon
-                </a>
-              )}
             </div>
           ))}
         </div>
