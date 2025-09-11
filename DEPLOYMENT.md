@@ -10,48 +10,32 @@ This guide will help you deploy your portfolio to GitHub Pages.
 
 ## 🔧 Setup Steps
 
-### 1. Create GitHub Repository
+### 1. Repository Information
 
-1. Go to [GitHub](https://github.com) and sign in
-2. Click the "+" icon and select "New repository"
-3. Name it `portfolio` (or your preferred name)
-4. Make it **Public** (required for free GitHub Pages)
-5. Don't initialize with README (we already have one)
-6. Click "Create repository"
+- **Repository**: `portfolio-psy`
+- **GitHub URL**: https://github.com/oilandrust/portfolio-psy
+- **Live URL**: https://oilandrust.github.io/portfolio-psy
 
-### 2. Add Remote Origin
+### 2. Repository Setup (Already Done)
 
-```bash
-# Replace YOUR_USERNAME with your actual GitHub username
-git remote add origin https://github.com/YOUR_USERNAME/portfolio.git
+The repository is already configured with:
+- ✅ Public repository (required for free GitHub Pages)
+- ✅ Remote origin set to `https://github.com/oilandrust/portfolio-psy.git`
+- ✅ Main branch with all code pushed
 
-# Verify remote was added
-git remote -v
-```
+### 3. Enable GitHub Pages
 
-### 3. Push to GitHub
-
-```bash
-# Push your code to GitHub
-git push -u origin master
-
-# Or if you're using 'main' branch:
-git push -u origin main
-```
-
-### 4. Enable GitHub Pages
-
-1. Go to your repository on GitHub
+1. Go to your repository on GitHub: https://github.com/oilandrust/portfolio-psy
 2. Click **Settings** tab
 3. Scroll down to **Pages** section (left sidebar)
 4. Under **Source**, select **GitHub Actions**
-5. Click **Configure** button
+5. The workflow is already configured in `.github/workflows/deploy.yml`
 
-### 5. Configure GitHub Pages
+### 4. Automatic Deployment
 
 The GitHub Actions workflow will automatically:
 
-- Build your portfolio when you push to main/master
+- Build your portfolio when you push to main branch
 - Deploy to GitHub Pages
 - Update your site on every push
 
@@ -60,7 +44,7 @@ The GitHub Actions workflow will automatically:
 After deployment, your portfolio will be available at:
 
 ```
-https://YOUR_USERNAME.github.io/portfolio
+https://oilandrust.github.io/portfolio-psy
 ```
 
 ## 🔄 Deployment Workflow
@@ -81,12 +65,12 @@ npm run deploy
 ## 📁 Repository Structure for GitHub Pages
 
 ```
-portfolio/
+portfolio-psy/
 ├── .github/workflows/     # GitHub Actions deployment
 ├── src/                   # Portfolio source code
 ├── public/                # Static assets
 ├── dist/                  # Built files (auto-generated)
-├── tools/                 # Project management tool (not deployed)
+├── portfolio/             # Content data (YAML files)
 └── package.json           # Build configuration
 ```
 
@@ -94,7 +78,7 @@ portfolio/
 
 ### Vite Config
 
-- **Base path**: `/portfolio/` (matches repository name)
+- **Base path**: `/portfolio-psy/` (matches repository name)
 - **Build output**: `dist/` folder
 - **Assets**: Optimized for production
 
@@ -109,9 +93,9 @@ portfolio/
 
 ### Repository Name
 
-- **Must match** the base path in `vite.config.js`
-- If you change repository name, update `base: '/new-name/'`
-- Update `homepage` in `package.json`
+- **Current**: `portfolio-psy` (matches base path in `vite.config.js`)
+- **Base path**: `/portfolio-psy/` in `vite.config.js`
+- **Homepage**: `https://oilandrust.github.io/portfolio-psy` in `package.json`
 
 ### Branch Names
 
@@ -161,7 +145,7 @@ ls -la dist/
 ## 🎉 Success Indicators
 
 - ✅ GitHub Actions workflow completes successfully
-- ✅ Portfolio accessible at `https://username.github.io/portfolio`
+- ✅ Portfolio accessible at `https://oilandrust.github.io/portfolio-psy`
 - ✅ All assets and pages load correctly
 - ✅ Responsive design works on mobile/desktop
 
