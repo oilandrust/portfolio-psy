@@ -3,7 +3,7 @@
 // API and Data Fetching
 export const FETCH_STRATEGIES = [
   './data/portfolio.json',
-  '/portfolio/data/portfolio.json',
+  '/portfolio-psy/data/portfolio.json',
   '/data/portfolio.json',
   'data/portfolio.json',
 ];
@@ -66,10 +66,12 @@ export const STYLES = {
 export const ERROR_MESSAGES = {
   NETWORK_ERROR: 'Network error. Please check your connection and try again.',
   FETCH_PROJECTS_FAILED: 'Failed to load portfolio. Please try refreshing the page.',
+  FETCH_INTERESTS_FAILED: 'Failed to load interests. Please try refreshing the page.',
   MEDIA_LOAD_ERROR: 'Failed to load media. The file may be corrupted or missing.',
   GENERIC_ERROR: 'An unexpected error occurred. Please try again.',
   FALLBACK_MESSAGES: {
     PROJECTS: 'Unable to load projects. Showing fallback content.',
+    INTERESTS: 'Unable to load interests. Showing fallback content.',
     MEDIA: 'Media failed to load. Please try again later.',
     COMPONENT: 'This component encountered an error. Please refresh the page.',
   },

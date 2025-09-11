@@ -1,7 +1,12 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import ProjectsList from './components/ProjectsList';
+import Tabs from './components/Tabs';
+import AboutTab from './components/AboutTab';
+import InterestsTab from './components/InterestsTab';
+import FormationsTab from './components/FormationsTab';
+import ExperienceTab from './components/ExperienceTab';
+import LecturesTab from './components/LecturesTab';
+import ContactTab from './components/ContactTab';
 import Hero from './components/Hero';
-import Contact from './components/Contact';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingSpinner from './components/LoadingSpinner';
 import { FETCH_STRATEGIES, ERROR_MESSAGES, LOADING_STATES } from './config/constants.js';
@@ -11,75 +16,78 @@ function App() {
   // Fallback portfolio data in case fetch fails
   const fallbackPortfolio = useMemo(() => ({
     profile: {
-      title: "John Doe",
-      subtitle: "Full Stack Developer",
-      about: "Hi, I'm John, a passionate full stack developer with experience in modern web technologies. I enjoy building scalable applications and solving complex problems through clean, efficient code.\n\nThis portfolio showcases some of my recent projects and the technologies I've worked with. Feel free to get in touch if you'd like to collaborate or have any questions."
+      title: "Olivier Rouiller",
+      subtitle: "Étudiant en L3 de Psychologie en reprise d'études",
+      about: "Bonjour, je suis étudiant en Psychologie à l'université de Strasbourg. J'ai un fort intérêt pour la psychothérapie et je souhaite compléter un Master en psychologie clinique pour devenir psychologue."
     },
-    projects: [
-    {
-      id: 1,
-      title: 'Portfolio Website',
-      description:
-        'A modern React portfolio built with Vite and Pico CSS, featuring responsive design and dynamic project showcase.',
-      tech: [
-        {
-          name: 'React',
-          icon: '/portfolio/icons/javascript.svg',
-          iconType: 'svg',
-        },
-        { name: 'Vite', icon: null, iconType: null },
-        { name: 'CSS', icon: null, iconType: null },
-        {
-          name: 'JavaScript',
-          icon: '/portfolio/icons/javascript.svg',
-          iconType: 'svg',
-        },
-      ],
-      images: [],
-      start_date: '2024-07-01',
-      end_date: '2024-08-24',
-    },
-    {
-      id: 2,
-      title: 'Project Management Tool',
-      description:
-        'Internal tool for managing portfolio projects with SQLite database and JSON export functionality.',
-      tech: [
-        {
-          name: 'Node.js',
-          icon: '/portfolio/icons/javascript.svg',
-          iconType: 'svg',
-        },
-        { name: 'Express', icon: null, iconType: null },
-        { name: 'SQLite', icon: null, iconType: null },
-        {
-          name: 'React',
-          icon: '/portfolio/icons/javascript.svg',
-          iconType: 'svg',
-        },
-      ],
-      images: [],
-      start_date: '2024-08-01',
-      end_date: '2024-08-24',
-    },
-    {
-      id: 3,
-      title: 'Simple Project',
-      images: [],
-      start_date: '2024-09-01',
-      end_date: '2024-10-15',
-    },
-    {
-      id: 4,
-      title: 'Minimal Project',
-      images: [],
-      start_date: '2024-11-01',
-    },
-    ]
+    interests: [
+      {
+        id: 1,
+        title: "Psychothérapie Somatique",
+        description: "Approches thérapeutiques intégrant le corps et l'esprit"
+      },
+      {
+        id: 2,
+        title: "Neuropsychologie",
+        description: "Compréhension des mécanismes cérébraux en thérapie"
+      },
+      {
+        id: 3,
+        title: "Approches Psychodynamiques",
+        description: "Exploration des processus inconscients et relationnels"
+      },
+      {
+        id: 4,
+        title: "Pleine Conscience",
+        description: "Pratiques de méditation et d'attention consciente"
+      },
+      {
+        id: 5,
+        title: "Pratiques Relationnelles",
+        description: "Développement de compétences thérapeutiques relationnelles"
+      },
+      {
+        id: 6,
+        title: "États de Conscience en Psychothérapie",
+        description: "Exploration des états modifiés de conscience thérapeutiques"
+      }
+    ],
+    formations: [
+      {
+        title: "Licence 3 Psychologie",
+        institution: "Université de Strasbourg",
+        period: "2023 - 2026",
+        description: "Formation en psychologie générale avec orientation clinique"
+      },
+      {
+        title: "Hakomi Somatic Mindful Psychotherapy - Niveau 1",
+        institution: "Hakomi Institute of California",
+        period: "2023",
+        description: "Formation en psychothérapie somatique et pleine conscience"
+      },
+      {
+        title: "Hakomi Somatic Mindful Psychotherapy - Niveau 2",
+        institution: "Hakomi Institute of California",
+        period: "2024",
+        description: "Approfondissement des techniques de psychothérapie somatique"
+      }
+    ],
+    experience: [
+      {
+        title: "Stagiaire en Psychologie",
+        company: "Cabinet de psychothérapie",
+        period: "2024 - Présent",
+        description: "Observation et participation aux séances de psychothérapie"
+      }
+    ],
+    readings: []
   }), []);
 
   const [portfolio, setPortfolio] = useState(fallbackPortfolio);
-  const [projects, setProjects] = useState(fallbackPortfolio.projects);
+  const [interests, setInterests] = useState(fallbackPortfolio.interests);
+  const [formations, setFormations] = useState(fallbackPortfolio.formations);
+  const [experience, setExperience] = useState(fallbackPortfolio.experience);
+  const [readings, setReadings] = useState(fallbackPortfolio.readings);
   const [loadingState, setLoadingState] = useState(LOADING_STATES.LOADING);
   const [error, setError] = useState(null);
 
@@ -97,9 +105,11 @@ function App() {
             const response = await fetchWithTimeout(strategy, {}, 5000);
             const data = await response.json();
             
-            if (data && data.profile && data.projects && Array.isArray(data.projects)) {
+            if (data && data.profile && data.interests && Array.isArray(data.interests)) {
               setPortfolio(data);
-              setProjects(data.projects);
+              setInterests(data.interests);
+              setFormations(data.formations || []);
+              setExperience(data.experience || []);
               portfolioLoaded = true;
               break;
             }
@@ -110,7 +120,7 @@ function App() {
         }
 
         if (!portfolioLoaded) {
-          throw lastError || new Error(ERROR_MESSAGES.FETCH_PROJECTS_FAILED);
+          throw lastError || new Error(ERROR_MESSAGES.FETCH_INTERESTS_FAILED);
         }
       };
 
@@ -121,21 +131,51 @@ function App() {
         () => Promise.reject(error),
         'fetchPortfolio',
         {
-          fallbackMessage: ERROR_MESSAGES.FETCH_PROJECTS_FAILED,
+          fallbackMessage: ERROR_MESSAGES.FETCH_INTERESTS_FAILED,
           additionalInfo: { fallbackUsed: true }
         }
       ).catch(e => e);
       
       setError(userFriendlyError);
       setPortfolio(fallbackPortfolio);
-      setProjects(fallbackPortfolio.projects);
+      setInterests(fallbackPortfolio.interests);
+      setFormations(fallbackPortfolio.formations);
+      setExperience(fallbackPortfolio.experience);
       setLoadingState(LOADING_STATES.ERROR);
     }
   }, [fallbackPortfolio]);
 
+  // Function to fetch readings data
+  const fetchReadings = useCallback(async () => {
+    try {
+      const response = await fetch('/portfolio-psy/data/readings.json');
+      if (response.ok) {
+        const readingsData = await response.json();
+        setReadings(readingsData);
+      }
+    } catch (error) {
+      console.warn('Could not fetch readings data:', error);
+    }
+  }, []);
+
+  // Function to fetch formations data
+  const fetchFormations = useCallback(async () => {
+    try {
+      const response = await fetch('/portfolio-psy/data/formations.json');
+      if (response.ok) {
+        const formationsData = await response.json();
+        setFormations(formationsData);
+      }
+    } catch (error) {
+      console.warn('Could not fetch formations data:', error);
+    }
+  }, []);
+
   useEffect(() => {
     fetchPortfolio();
-  }, [fetchPortfolio]);
+    fetchReadings();
+    fetchFormations();
+  }, [fetchPortfolio, fetchReadings, fetchFormations]);
 
   if (loadingState === LOADING_STATES.LOADING) {
     return (
@@ -155,15 +195,6 @@ function App() {
       </ErrorBoundary>
 
       <div className='container'>
-        <ErrorBoundary fallbackMessage="Unable to load about section. Please refresh the page.">
-          <div className='section'>
-            <h2>About</h2>
-            <div style={{ whiteSpace: 'pre-line' }}>
-              {portfolio.profile.about}
-            </div>
-          </div>
-        </ErrorBoundary>
-
         {error && (
           <div style={{
             padding: '1rem',
@@ -177,17 +208,20 @@ function App() {
               ⚠️ {error.message}
             </p>
             <p style={{ margin: 0, fontSize: '0.875rem' }}>
-              Showing fallback projects. You can try refreshing the page.
+              Showing fallback data. You can try refreshing the page.
             </p>
           </div>
         )}
 
-        <ErrorBoundary fallbackMessage={ERROR_MESSAGES.FALLBACK_MESSAGES.PROJECTS}>
-          <ProjectsList projects={projects} />
-        </ErrorBoundary>
-
-        <ErrorBoundary fallbackMessage="Unable to load contact section. Please refresh the page.">
-          <Contact />
+        <ErrorBoundary fallbackMessage="Unable to load tabs. Please refresh the page.">
+          <Tabs>
+            <AboutTab profile={portfolio.profile} />
+            <InterestsTab interests={interests} />
+            <FormationsTab formations={formations} />
+            <ExperienceTab experience={experience} />
+            <LecturesTab readings={readings} />
+            <ContactTab />
+          </Tabs>
         </ErrorBoundary>
       </div>
     </div>

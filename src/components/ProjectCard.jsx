@@ -38,7 +38,7 @@ const ProjectUrls = ({ github_url, live_url }) => {
           }}
         >
           <img
-            src='/portfolio/github-mark.svg'
+            src='/portfolio-psy/github-mark.svg'
             alt='GitHub'
             style={{ width: '24px', height: '24px' }}
           />

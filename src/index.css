@@ -11,6 +11,135 @@
   --success-hover: #047857;
 }
 
+/* Tabs styles */
+.tabs-container {
+  margin-top: 2rem;
+}
+
+.tabs-header {
+  display: flex;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+.tab-button:hover {
+  color: #374151;
+  background-color: #f9fafb;
+}
+
+.tab-button.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background-color: #f8fafc;
+}
+
+.tab-content {
+  min-height: 400px;
+}
+
+/* Formations and Experience styles */
+.formations-list,
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formation-item,
+.experience-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: #fafafa;
+}
+
+.formation-item h3,
+.experience-item h3 {
+  margin: 0 0 0.5rem 0;
+  color: #1f2937;
+  font-size: 1.1rem;
+}
+
+.formation-institution,
+.formation-period,
+.experience-company,
+.experience-period {
+  margin: 0.25rem 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.formation-description,
+.experience-description {
+  margin: 0.75rem 0 0 0;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.formation-instructor,
+.formation-links {
+  margin: 0.5rem 0 0 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.formation-links ul {
+  margin: 0.25rem 0 0 1rem;
+  padding: 0;
+}
+
+.formation-links li {
+  margin: 0.25rem 0;
+}
+
+.formation-links a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.formation-links a:hover {
+  text-decoration: underline;
+}
+
+/* Markdown-style formations list */
+.formations-markdown-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.formation-markdown-item {
+  margin: 1rem 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.formation-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.formation-link:hover {
+  text-decoration: underline;
+}
+
 body {
   background: #ffffff;
   min-height: 100vh;

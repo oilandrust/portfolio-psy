@@ -8,42 +8,42 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Directories
-const sourceProjectsDir = 'portfolio/projects';
+const sourceInterestsDir = 'portfolio/interests';
 const sourceProfileFile = 'portfolio/profile.yml';
 const sourceIconsDir = 'portfolio/icons';
 const sourceProfileDir = 'portfolio/profile';
 const sourceFavicon = 'portfolio/O.svg';
 
 const outputDataDir = 'public/data';
-const outputProjectsDir = 'public/data/projects';
+const outputInterestsDir = 'public/data/interests';
 const outputIconsDir = 'public/data/icons';
 const outputProfileDir = 'public/data/profile';
 
-// Function to read and parse a project.yml file
-function readProjectYaml(projectPath) {
+// Function to read and parse an interest.yml file
+function readInterestYaml(interestPath) {
   try {
     const yamlContent = fs.readFileSync(
-      path.join(projectPath, 'project.yml'),
+      path.join(interestPath, 'interest.yml'),
       'utf8'
     );
     return yaml.load(yamlContent);
   } catch (error) {
     console.error(
-      `❌ Error reading project.yml in ${projectPath}:`,
+      `❌ Error reading interest.yml in ${interestPath}:`,
       error.message
     );
     return null;
   }
 }
 
-// Function to scan for project media (images and videos)
-function scanProjectMedia(projectPath) {
+// Function to scan for interest media (images and videos)
+function scanInterestMedia(interestPath) {
   const media = [];
   const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
   const videoExtensions = ['.mp4', '.webm', '.mov', '.avi', '.mkv'];
 
   try {
-    const files = fs.readdirSync(projectPath);
+    const files = fs.readdirSync(interestPath);
     files.forEach(file => {
       const ext = path.extname(file).toLowerCase();
       const baseName = path.parse(file).name;
@@ -51,8 +51,8 @@ function scanProjectMedia(projectPath) {
       if (imageExtensions.includes(ext)) {
         media.push({
           type: 'image',
-          path: `/portfolio/data/projects/${path.basename(projectPath)}/${file}`,
-          thumbnail: `/portfolio/data/projects/${path.basename(projectPath)}/${file}`,
+          path: `/portfolio-psy/data/interests/${path.basename(interestPath)}/${file}`,
+          thumbnail: `/portfolio-psy/data/interests/${path.basename(interestPath)}/${file}`,
           name: baseName,
         });
       } else if (videoExtensions.includes(ext)) {
@@ -63,16 +63,16 @@ function scanProjectMedia(projectPath) {
         // Try to find a matching thumbnail
         for (const thumbExt of thumbnailExtensions) {
           const thumbFile = `${baseName}-thumb${thumbExt}`;
-          const thumbPath = path.join(projectPath, thumbFile);
+          const thumbPath = path.join(interestPath, thumbFile);
           if (fs.existsSync(thumbPath)) {
-            thumbnailPath = `/portfolio/data/projects/${path.basename(projectPath)}/${thumbFile}`;
+            thumbnailPath = `/portfolio-psy/data/interests/${path.basename(interestPath)}/${thumbFile}`;
             break;
           }
         }
 
         media.push({
           type: 'video',
-          path: `/portfolio/data/projects/${path.basename(projectPath)}/${file}`,
+          path: `/portfolio-psy/data/interests/${path.basename(interestPath)}/${file}`,
           thumbnail: thumbnailPath,
           name: baseName,
         });
@@ -83,7 +83,7 @@ function scanProjectMedia(projectPath) {
     media.sort((a, b) => a.name.localeCompare(b.name));
     
   } catch (error) {
-    console.error(`❌ Error scanning media in ${projectPath}:`, error.message);
+    console.error(`❌ Error scanning media in ${interestPath}:`, error.message);
   }
 
   return media;
@@ -103,16 +103,16 @@ function processTechString(techString) {
 
   techNames.forEach(techName => {
     // Look for icon in the icons directory (try SVG first, then PNG)
-    let iconPath = `/portfolio/data/icons/${techName.toLowerCase()}.svg`;
+    let iconPath = `/portfolio-psy/data/icons/${techName.toLowerCase()}.svg`;
     let iconExists = fs.existsSync(
-      path.join('public', iconPath.replace('/portfolio/data/', 'data/'))
+      path.join('public', iconPath.replace('/portfolio-psy/data/', 'data/'))
     );
 
     if (!iconExists) {
       // Try PNG if SVG doesn't exist
-      iconPath = `/portfolio/data/icons/${techName.toLowerCase()}.png`;
+      iconPath = `/portfolio-psy/data/icons/${techName.toLowerCase()}.png`;
       iconExists = fs.existsSync(
-        path.join('public', iconPath.replace('/portfolio/data/', 'data/'))
+        path.join('public', iconPath.replace('/portfolio-psy/data/', 'data/'))
       );
     }
 
@@ -207,68 +207,61 @@ function buildPortfolioJson() {
   }
   console.log(`  ✅ Profile loaded: ${profileData.title}`);
 
-  // Read projects data
-  console.log('🔍 Scanning for projects...');
-  if (!fs.existsSync(sourceProjectsDir)) {
-    console.error(`❌ Projects directory not found: ${sourceProjectsDir}`);
+  // Read interests data
+  console.log('🔍 Scanning for interests...');
+  if (!fs.existsSync(sourceInterestsDir)) {
+    console.error(`❌ Interests directory not found: ${sourceInterestsDir}`);
     return;
   }
 
-  const projects = [];
-  let projectId = 1;
+  const interests = [];
+  let interestId = 1;
 
   try {
-    const projectFolders = fs.readdirSync(sourceProjectsDir);
+    const interestFolders = fs.readdirSync(sourceInterestsDir);
 
-    projectFolders.forEach(folder => {
-      const projectPath = path.join(sourceProjectsDir, folder);
-      const stats = fs.statSync(projectPath);
+    interestFolders.forEach(folder => {
+      const interestPath = path.join(sourceInterestsDir, folder);
+      const stats = fs.statSync(interestPath);
 
       if (stats.isDirectory()) {
-        console.log(`📁 Processing project: ${folder}`);
+        console.log(`📁 Processing interest: ${folder}`);
 
-        const projectData = readProjectYaml(projectPath);
-        if (projectData) {
-          // Copy project media to output directory (excluding .yml files)
-          const outputProjectPath = path.join(outputProjectsDir, folder);
-          if (!fs.existsSync(outputProjectPath)) {
-            fs.mkdirSync(outputProjectPath, { recursive: true });
+        const interestData = readInterestYaml(interestPath);
+        if (interestData) {
+          // Copy interest media to output directory (excluding .yml files)
+          const outputInterestPath = path.join(outputInterestsDir, folder);
+          if (!fs.existsSync(outputInterestPath)) {
+            fs.mkdirSync(outputInterestPath, { recursive: true });
           }
           
           // Copy all files except .yml files
-          const projectFiles = fs.readdirSync(projectPath);
-          projectFiles.forEach(file => {
+          const interestFiles = fs.readdirSync(interestPath);
+          interestFiles.forEach(file => {
             if (!file.endsWith('.yml')) {
-              const srcFile = path.join(projectPath, file);
-              const destFile = path.join(outputProjectPath, file);
+              const srcFile = path.join(interestPath, file);
+              const destFile = path.join(outputInterestPath, file);
               fs.copyFileSync(srcFile, destFile);
             }
           });
 
-          // Scan for media (images and videos) in the project folder
-          const projectMedia = scanProjectMedia(projectPath);
+          // Scan for media (images and videos) in the interest folder
+          const interestMedia = scanInterestMedia(interestPath);
 
-          // Build the project object
-          const project = {
-            id: projectId++,
-            title: projectData.title,
-            subtitle: projectData.subtitle || null,
-            description: projectData.description || '',
-            start_date: projectData.start_date || '',
-            end_date: projectData.end_date || '',
-            tech: processTechString(projectData.tech),
-            media: projectMedia,
-            image_layout: projectData.image_layout || 'grid', // Default to grid
-            github_url: projectData.github_url || null,
-            live_url: projectData.live_url || null,
+          // Build the interest object
+          const interest = {
+            id: interestId++,
+            title: interestData.title,
+            description: interestData.description || '',
+            media: interestMedia,
           };
 
-          projects.push(project);
-          console.log(`  ✅ Added: ${projectData.title}`);
+          interests.push(interest);
+          console.log(`  ✅ Added: ${interestData.title}`);
 
-          if (projectMedia.length > 0) {
-            const imageCount = projectMedia.filter(m => m.type === 'image').length;
-            const videoCount = projectMedia.filter(m => m.type === 'video').length;
+          if (interestMedia.length > 0) {
+            const imageCount = interestMedia.filter(m => m.type === 'image').length;
+            const videoCount = interestMedia.filter(m => m.type === 'video').length;
             const mediaSummary = [];
             if (imageCount > 0) mediaSummary.push(`${imageCount} images`);
             if (videoCount > 0) mediaSummary.push(`${videoCount} videos`);
@@ -278,38 +271,30 @@ function buildPortfolioJson() {
       }
     });
 
-    // Sort projects by end_date (most recent first)
-    projects.sort((a, b) => {
-      if (!a.end_date && !b.end_date) return 0;
-      if (!a.end_date) return 1;
-      if (!b.end_date) return -1;
-      return new Date(b.end_date) - new Date(a.end_date);
-    });
-
     // Build portfolio object
     const portfolio = {
       profile: profileData,
-      projects: projects
+      interests: interests
     };
 
     // Write portfolio.json
     const outputPath = 'public/data/portfolio.json';
     fs.writeFileSync(outputPath, JSON.stringify(portfolio, null, 2));
 
-    console.log(`\n🎉 Successfully built portfolio with ${projects.length} projects!`);
+    console.log(`\n🎉 Successfully built portfolio with ${interests.length} interests!`);
     console.log(`📄 Output: ${outputPath}`);
     console.log(`📁 Data copied to: public/data/`);
 
     // Display summary
-    projects.forEach(project => {
-      const imageCount = project.media.filter(m => m.type === 'image').length;
-      const videoCount = project.media.filter(m => m.type === 'video').length;
+    interests.forEach(interest => {
+      const imageCount = interest.media.filter(m => m.type === 'image').length;
+      const videoCount = interest.media.filter(m => m.type === 'video').length;
       const mediaSummary = [];
       if (imageCount > 0) mediaSummary.push(`${imageCount} images`);
       if (videoCount > 0) mediaSummary.push(`${videoCount} videos`);
       const mediaText =
         mediaSummary.length > 0 ? `(${mediaSummary.join(', ')})` : '(no media)';
-      console.log(`  • ${project.title} ${mediaText}`);
+      console.log(`  • ${interest.title} ${mediaText}`);
     });
   } catch (error) {
     console.error('❌ Error building portfolio.json:', error.message);
