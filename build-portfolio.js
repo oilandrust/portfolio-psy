@@ -11,6 +11,7 @@ const __dirname = path.dirname(__filename);
 const sourceInterestsDir = 'portfolio/interests';
 const sourceExperiencesDir = 'portfolio/experiences';
 const sourceProfileFile = 'portfolio/profile.yml';
+const sourceQuotesFile = 'portfolio/quotes.json';
 const sourceIconsDir = 'portfolio/icons';
 const sourceProfileDir = 'portfolio/profile';
 const sourceFavicon = 'portfolio/O.svg';
@@ -153,6 +154,22 @@ function readProfileYaml() {
   } catch (error) {
     console.error(`❌ Error reading profile.yml:`, error.message);
     return null;
+  }
+}
+
+// Function to read quotes JSON file
+function readQuotesJson() {
+  try {
+    if (!fs.existsSync(sourceQuotesFile)) {
+      console.log(`⚠️  Quotes file not found: ${sourceQuotesFile}, using empty array`);
+      return [];
+    }
+    
+    const jsonContent = fs.readFileSync(sourceQuotesFile, 'utf8');
+    return JSON.parse(jsonContent);
+  } catch (error) {
+    console.error(`❌ Error reading quotes.json:`, error.message);
+    return [];
   }
 }
 
@@ -323,9 +340,15 @@ function buildPortfolioJson() {
       console.log('⚠️  Experiences directory not found, skipping...');
     }
 
+    // Read quotes data
+    console.log('📖 Reading quotes data...');
+    const quotes = readQuotesJson();
+    console.log(`  ✅ Loaded ${quotes.length} quotes`);
+
     // Build portfolio object
     const portfolio = {
       profile: profileData,
+      quotes: quotes,
       interests: interests,
       experiences: experiences
     };
@@ -334,7 +357,7 @@ function buildPortfolioJson() {
     const outputPath = 'public/data/portfolio.json';
     fs.writeFileSync(outputPath, JSON.stringify(portfolio, null, 2));
 
-    console.log(`\n🎉 Successfully built portfolio with ${interests.length} interests and ${experiences.length} experiences!`);
+    console.log(`\n🎉 Successfully built portfolio with ${interests.length} interests, ${experiences.length} experiences, and ${quotes.length} quotes!`);
     console.log(`📄 Output: ${outputPath}`);
     console.log(`📁 Data copied to: public/data/`);
 
@@ -357,6 +380,11 @@ function buildPortfolioJson() {
         ? `${experience.start_date} - ${experience.end_date}`
         : experience.start_date || 'Date non spécifiée';
       console.log(`  • ${experience.title} (${dateRange})`);
+    });
+
+    console.log('\n💬 Quotes:');
+    quotes.forEach(quote => {
+      console.log(`  • "${quote.text}" - ${quote.author}`);
     });
   } catch (error) {
     console.error('❌ Error building portfolio.json:', error.message);

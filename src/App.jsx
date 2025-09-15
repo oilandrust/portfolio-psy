@@ -192,7 +192,7 @@ function App() {
   return (
     <div className='App'>
       <ErrorBoundary fallbackMessage={ERROR_MESSAGES.FALLBACK_MESSAGES.COMPONENT}>
-        <Hero profile={portfolio.profile} />
+        <Hero profile={portfolio.profile} quotes={portfolio.quotes || []} />
       </ErrorBoundary>
 
       <div className='container'>

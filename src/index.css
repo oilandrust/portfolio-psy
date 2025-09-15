@@ -279,6 +279,17 @@ body {
 
 /* Hero Quote Section */
 .hero-quote {
+
+}
+
+.quote-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .quote-content {
@@ -287,9 +298,11 @@ body {
   padding: 0;
   border: none;
   background: none;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  flex: 1;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .quote-text {
@@ -307,6 +320,43 @@ body {
   font-weight: 500;
   display: block;
 }
+
+.quote-nav {
+  background: none !important;
+  border: none !important;
+  font-size: 2rem;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.quote-nav:focus,
+.quote-nav:active,
+.quote-nav:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.quote-nav:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.quote-nav:active {
+  transform: scale(0.95);
+}
+
 
 .section {
   background: #ffffff;
@@ -473,6 +523,16 @@ p {
   .hero-quote {
     padding: 1.5rem 0;
     margin-top: 1.5rem;
+  }
+
+  .quote-carousel {
+    gap: 1rem;
+  }
+
+  .quote-nav {
+    font-size: 1.5rem;
+    width: 35px;
+    height: 35px;
   }
 
   .quote-text {

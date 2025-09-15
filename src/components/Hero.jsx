@@ -1,4 +1,18 @@
-const Hero = ({ profile }) => {
+import { useState } from 'react';
+
+const Hero = ({ profile, quotes = [] }) => {
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+
+  const nextQuote = () => {
+    setCurrentQuoteIndex((prev) => (prev + 1) % quotes.length);
+  };
+
+  const prevQuote = () => {
+    setCurrentQuoteIndex((prev) => (prev - 1 + quotes.length) % quotes.length);
+  };
+
+  const currentQuote = quotes[currentQuoteIndex];
+
   return (
     <div className='hero'>
       <div className='container'>
@@ -13,16 +27,34 @@ const Hero = ({ profile }) => {
           <p>{profile?.subtitle || 'Full Stack Developer'}</p>
         </div>
       </div>
-      <div className='hero-quote'>
-        <div className='container'>
-          <blockquote className='quote-content'>
-            <p className='quote-text'>
-              "Intersubjective, relational affect-focused psychotherapy is not the 'talking cure' but the 'affect communicating cure.'"
-            </p>
-            <cite className='quote-author'>— Allan Schore</cite>
-          </blockquote>
+      {quotes.length > 0 && (
+        <div className='hero-quote'>
+          <div className='container'>
+            <div className='quote-carousel'>
+              <button 
+                className='quote-nav quote-nav-left' 
+                onClick={prevQuote}
+                aria-label="Quote précédente"
+              >
+                ‹
+              </button>
+              <blockquote className='quote-content'>
+                <p className='quote-text'>
+                  "{currentQuote?.text}"
+                </p>
+                <cite className='quote-author'>— {currentQuote?.author}</cite>
+              </blockquote>
+              <button 
+                className='quote-nav quote-nav-right' 
+                onClick={nextQuote}
+                aria-label="Quote suivante"
+              >
+                ›
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
