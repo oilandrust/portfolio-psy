@@ -6,10 +6,9 @@ const InterestsGrid = ({ interests }) => {
       <h2 style={{ 
         marginBottom: '2rem', 
         color: '#000000',
-        fontSize: '2rem',
-        textAlign: 'center'
+        fontSize: '2rem'
       }}>
-        Mes Centres d'Intérêt
+        Intérêts
       </h2>
       
       <div

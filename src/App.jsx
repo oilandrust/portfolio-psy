@@ -80,13 +80,14 @@ function App() {
         description: "Observation et participation aux séances de psychothérapie"
       }
     ],
+    experiences: [],
     readings: []
   }), []);
 
   const [portfolio, setPortfolio] = useState(fallbackPortfolio);
   const [interests, setInterests] = useState(fallbackPortfolio.interests);
   const [formations, setFormations] = useState(fallbackPortfolio.formations);
-  const [experience, setExperience] = useState(fallbackPortfolio.experience);
+  const [experiences, setExperiences] = useState(fallbackPortfolio.experiences || []);
   const [readings, setReadings] = useState(fallbackPortfolio.readings);
   const [loadingState, setLoadingState] = useState(LOADING_STATES.LOADING);
   const [error, setError] = useState(null);
@@ -109,7 +110,7 @@ function App() {
               setPortfolio(data);
               setInterests(data.interests);
               setFormations(data.formations || []);
-              setExperience(data.experience || []);
+              setExperiences(data.experiences || []);
               portfolioLoaded = true;
               break;
             }
@@ -140,7 +141,7 @@ function App() {
       setPortfolio(fallbackPortfolio);
       setInterests(fallbackPortfolio.interests);
       setFormations(fallbackPortfolio.formations);
-      setExperience(fallbackPortfolio.experience);
+      setExperiences(fallbackPortfolio.experiences || []);
       setLoadingState(LOADING_STATES.ERROR);
     }
   }, [fallbackPortfolio]);
@@ -218,7 +219,7 @@ function App() {
             <AboutTab profile={portfolio.profile} />
             <InterestsTab interests={interests} />
             <FormationsTab formations={formations} />
-            <ExperienceTab experience={experience} />
+            <ExperienceTab experiences={experiences} />
             <LecturesTab readings={readings} />
             <ContactTab />
           </Tabs>

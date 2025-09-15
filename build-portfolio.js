@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // Directories
 const sourceInterestsDir = 'portfolio/interests';
+const sourceExperiencesDir = 'portfolio/experiences';
 const sourceProfileFile = 'portfolio/profile.yml';
 const sourceIconsDir = 'portfolio/icons';
 const sourceProfileDir = 'portfolio/profile';
@@ -30,6 +31,20 @@ function readInterestYaml(interestPath) {
   } catch (error) {
     console.error(
       `❌ Error reading interest.yml in ${interestPath}:`,
+      error.message
+    );
+    return null;
+  }
+}
+
+// Function to read and parse an experience YAML file
+function readExperienceYaml(experiencePath) {
+  try {
+    const yamlContent = fs.readFileSync(experiencePath, 'utf8');
+    return yaml.load(yamlContent);
+  } catch (error) {
+    console.error(
+      `❌ Error reading experience file ${experiencePath}:`,
       error.message
     );
     return null;
@@ -271,21 +286,60 @@ function buildPortfolioJson() {
       }
     });
 
+    // Read experiences data
+    console.log('🔍 Scanning for experiences...');
+    const experiences = [];
+    let experienceId = 1;
+
+    if (fs.existsSync(sourceExperiencesDir)) {
+      try {
+        const experienceFiles = fs.readdirSync(sourceExperiencesDir);
+        
+        experienceFiles.forEach(file => {
+          if (file.endsWith('.yml')) {
+            const experiencePath = path.join(sourceExperiencesDir, file);
+            console.log(`📁 Processing experience: ${file}`);
+            
+            const experienceData = readExperienceYaml(experiencePath);
+            if (experienceData) {
+              const experience = {
+                id: experienceId++,
+                title: experienceData.title,
+                subtitle: experienceData.subtitle || '',
+                start_date: experienceData.start_date || null,
+                end_date: experienceData.end_date || null,
+                description: experienceData.description || ''
+              };
+              
+              experiences.push(experience);
+              console.log(`  ✅ Added: ${experienceData.title}`);
+            }
+          }
+        });
+      } catch (error) {
+        console.error('❌ Error processing experiences:', error.message);
+      }
+    } else {
+      console.log('⚠️  Experiences directory not found, skipping...');
+    }
+
     // Build portfolio object
     const portfolio = {
       profile: profileData,
-      interests: interests
+      interests: interests,
+      experiences: experiences
     };
 
     // Write portfolio.json
     const outputPath = 'public/data/portfolio.json';
     fs.writeFileSync(outputPath, JSON.stringify(portfolio, null, 2));
 
-    console.log(`\n🎉 Successfully built portfolio with ${interests.length} interests!`);
+    console.log(`\n🎉 Successfully built portfolio with ${interests.length} interests and ${experiences.length} experiences!`);
     console.log(`📄 Output: ${outputPath}`);
     console.log(`📁 Data copied to: public/data/`);
 
     // Display summary
+    console.log('\n📚 Interests:');
     interests.forEach(interest => {
       const imageCount = interest.media.filter(m => m.type === 'image').length;
       const videoCount = interest.media.filter(m => m.type === 'video').length;
@@ -295,6 +349,14 @@ function buildPortfolioJson() {
       const mediaText =
         mediaSummary.length > 0 ? `(${mediaSummary.join(', ')})` : '(no media)';
       console.log(`  • ${interest.title} ${mediaText}`);
+    });
+
+    console.log('\n💼 Experiences:');
+    experiences.forEach(experience => {
+      const dateRange = experience.end_date 
+        ? `${experience.start_date} - ${experience.end_date}`
+        : experience.start_date || 'Date non spécifiée';
+      console.log(`  • ${experience.title} (${dateRange})`);
     });
   } catch (error) {
     console.error('❌ Error building portfolio.json:', error.message);

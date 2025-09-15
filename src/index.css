@@ -21,31 +21,46 @@
   border-bottom: 2px solid #e2e8f0;
   margin-bottom: 2rem;
   overflow-x: auto;
+  width: 100%;
 }
 
 .tab-button {
-  background: none;
-  border: none;
+  background: none !important;
+  border: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 3px solid transparent !important;
   padding: 1rem 1.5rem;
   font-size: 1rem;
   font-weight: 500;
   color: #6b7280;
   cursor: pointer;
-  border-bottom: 3px solid transparent;
   transition: all 0.2s ease;
   white-space: nowrap;
-  min-width: fit-content;
+  flex: 1;
+  text-align: center;
+  border-radius: 0;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  box-shadow: none;
 }
 
 .tab-button:hover {
   color: #374151;
-  background-color: #f9fafb;
+  background-color: transparent;
 }
 
 .tab-button.active {
   color: var(--primary);
-  border-bottom-color: var(--primary);
-  background-color: #f8fafc;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 3px solid var(--primary) !important;
+  background-color: transparent !important;
 }
 
 .tab-content {
@@ -66,6 +81,14 @@
   border-radius: 8px;
   padding: 1.5rem;
   background: #fafafa;
+  transition: all 0.2s ease;
+}
+
+.formation-item:hover,
+.experience-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary);
 }
 
 .formation-item h3,
@@ -89,6 +112,57 @@
   margin: 0.75rem 0 0 0;
   color: #374151;
   line-height: 1.5;
+}
+
+/* New Experience Timeline Styles */
+.experiences-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.experience-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.experience-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary);
+}
+
+.experience-header {
+  margin-bottom: 1rem;
+}
+
+.experience-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.experience-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.experience-subtitle {
+  font-size: 1rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.experience-description {
+  margin: 0 0 1rem 0;
+  color: #374151;
+  line-height: 1.6;
 }
 
 .formation-instructor,
@@ -201,6 +275,37 @@ body {
 
 .hero-button {
   flex-shrink: 0;
+}
+
+/* Hero Quote Section */
+.hero-quote {
+}
+
+.quote-content {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quote-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #374151;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.quote-author {
+  font-size: 0.95rem;
+  color: #6b7280;
+  font-style: normal;
+  font-weight: 500;
+  display: block;
 }
 
 .section {
@@ -363,6 +468,20 @@ p {
   .hero-profile img {
     width: 120px;
     height: 120px;
+  }
+
+  .hero-quote {
+    padding: 1.5rem 0;
+    margin-top: 1.5rem;
+  }
+
+  .quote-text {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .quote-author {
+    font-size: 0.9rem;
   }
 
   .container {

@@ -2,7 +2,7 @@
   "profile": {
     "title": "Olivier Rouiller",
     "subtitle": "Étudiant en L3 de Psychologie et Psychopraticien en Formation",
-    "about": "Bonjour, je suis étudiant en Psychologie à l'université de Strasbourg. J'ai un fort intérêt pour la psychothérapie et je souhaite compléter un Master en psychologie clinique pour devenir psychologue.\n\nEn parallèle de mon cursus universitaire, j'ai suivi des formations professionnelles en psychothérapie. Notamment j'ai suivi les niveaux 1 et 2 de formation en 'Hakomi Somatic Mindful Psychotherapy' avec l'institut Hakomi de Californie.\nOn peut traduire 'Somatic Mindful Psychotherapy' par 'Thérapie Psycho-corporelle en Pleine Conscience', ou peut etre 'Psychothérapie Somatique en Pleine Conscience'. Voir plus bas pour une définition plus complète.\n\nMon orientation clinique est influencée par les approches psychanalytiques et psychodynamiques, qui fournissent une base aux approches somatiques. Je suis aussi intéressé par les apports des neurosciences pour comprendre les mécanismes de changement dans les thérapies somatiques et relationnelles. Je m'intéresse à comprendre les fondements neuropsychologiques et développementaux de ces thérapies.\n\nBien que j'ai un esprit scientifique et un interet pour la recherche en neuropsychologie, mon interet est d'utiliser ces modeles pour eclairer une pratique de psychotherapie dont l'essence est experientielle.\n"
+    "about": "Bonjour, ici Olivier, j'ai 38 ans. Je suis étudiant en Psychologie à l'université de Strasbourg en reprise d'études. Avant cela j'étais ingénieur en informatique, notamment dans le jeu vidéo. J'ai un fort intérêt pour la psychothérapie et je souhaite compléter un Master en psychologie clinique pour devenir psychologue.\n\nEn parallèle de mon cursus universitaire, j'ai suivi des formations professionnelles en psychothérapie. Notamment j'ai suivi les niveaux 1 et 2 de formation en 'Hakomi Somatic Mindful Psychotherapy' avec l'institut Hakomi de Californie.\nOn peut traduire 'Somatic Mindful Psychotherapy' par 'Thérapie Psycho-corporelle en Pleine Conscience', ou peut-être 'Psychothérapie Somatique en Pleine Conscience'. Voir dans la section 'Intérêts' pour une définition.\n\nMon orientation clinique est influencée par les approches psychanalytiques et psychodynamiques, qui fournissent une base aux approches somatiques. Je suis aussi intéressé par les apports des neurosciences pour comprendre les mécanismes de changement dans les thérapies somatiques et relationnelles. Je m'intéresse à comprendre les fondements neuropsychologiques et développementaux de ces thérapies.\n\nBien que j'aie un esprit scientifique et un intérêt pour la recherche en neuropsychologie, mon intérêt est d'utiliser ces modèles pour éclairer une pratique de psychothérapie dont l'essence est expérientielle.\n"
   },
   "interests": [
     {
@@ -61,6 +61,24 @@
           "name": "meditation"
         }
       ]
+    }
+  ],
+  "experiences": [
+    {
+      "id": 1,
+      "title": "Psychothérapie Focusing et 'Parts Work'",
+      "subtitle": "Premiers essais en psychothérapie",
+      "start_date": "2022-03-01",
+      "end_date": "2022-12-31",
+      "description": "Après avoir complété un certificat en Thérapie Somatique de l'Attachement, j'ai travaillé avec mon premier client 'K'.\nNous avons travaillé ensemble pendant un an et demi de manière régulière et hebdomadaire.\n"
+    },
+    {
+      "id": 2,
+      "title": "Psychothérapie Somatique Hakomi",
+      "subtitle": "Pratique de la thérapie Hakomi en conditions réelles",
+      "start_date": "2024-09-01",
+      "end_date": "2025-06-30",
+      "description": "Alors que je complétais le premier niveau de ma formation en psychothérapie somatique Hakomi, j'ai commencé à travailler avec des clients en conditions réelles.\nMa pratique est restée modeste, à la hauteur de mes capacités mais j'ai eu l'honneur de rencontrer de nombreux systèmes différents et de suivre deux patients de manière régulière.\nLes clients avec qui j'ai travaillé sont en général des personnes ayant une expérience extensive de la psychothérapie, parfois eux-mêmes psychologues et qui se tournent vers la thérapie somatique.\n\nNotamment 'M', que j'ai suivi pendant plus d'un an avec des sessions quasi hebdomadaires.\n\nJ'ai aussi travaillé régulièrement avec 'G' qui est à la fois un ami, méditant et apprenti en thérapie et autres pratiques somatiques.\n"
     }
   ]
 }

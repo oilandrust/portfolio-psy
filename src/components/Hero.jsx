@@ -13,6 +13,16 @@ const Hero = ({ profile }) => {
           <p>{profile?.subtitle || 'Full Stack Developer'}</p>
         </div>
       </div>
+      <div className='hero-quote'>
+        <div className='container'>
+          <blockquote className='quote-content'>
+            <p className='quote-text'>
+              "Intersubjective, relational affect-focused psychotherapy is not the 'talking cure' but the 'affect communicating cure.'"
+            </p>
+            <cite className='quote-author'>— Allan Schore</cite>
+          </blockquote>
+        </div>
+      </div>
     </div>
   );
 };
