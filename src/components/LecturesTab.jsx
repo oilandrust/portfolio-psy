@@ -30,11 +30,11 @@ const LecturesTab = ({ readings = [] }) => {
                 src={reading.path} 
                 alt={reading.title}
                 style={{
-                  width: '100%',
                   height: '200px',
-                  objectFit: 'cover',
+                  objectFit: 'contain',
                   borderRadius: '4px',
-                  marginBottom: '0.75rem'
+                  marginBottom: '0.75rem',
+                  backgroundColor: '#f8f9fa'
                 }}
               />
               <h4 style={{ 
