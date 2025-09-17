@@ -1,6 +1,6 @@
 import { STYLES } from '../config/constants.js';
 
-const InterestCard = ({ interest }) => {
+const InterestCard = ({ interest, onClick }) => {
   return (
     <div
       className='interest-card'
@@ -11,46 +11,75 @@ const InterestCard = ({ interest }) => {
         boxShadow: STYLES.SHADOWS.SM,
         background: 'var(--card-background-color, white)',
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         alignItems: 'center',
-        textAlign: 'center',
+        textAlign: 'left',
         transition: 'transform 0.2s ease, box-shadow 0.2s ease',
         cursor: 'pointer',
-        minHeight: '150px',
-        justifyContent: 'center'
+        minHeight: '80px',
+        gap: '1rem'
       }}
+      onClick={onClick}
       onMouseEnter={e => {
-        e.target.style.transform = 'translateY(-4px)';
-        e.target.style.boxShadow = STYLES.SHADOWS.MD;
+        if (e.target === e.currentTarget) {
+          e.target.style.transform = 'translateY(-2px)';
+          e.target.style.boxShadow = STYLES.SHADOWS.MD;
+        }
       }}
       onMouseLeave={e => {
-        e.target.style.transform = 'translateY(0)';
-        e.target.style.boxShadow = STYLES.SHADOWS.SM;
+        if (e.target === e.currentTarget) {
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = STYLES.SHADOWS.SM;
+        }
       }}
     >
-      <h3 
-        style={{ 
-          marginBottom: '0.5rem', 
-          color: '#000000',
-          fontSize: '1.1rem',
-          fontWeight: '600'
-        }}
-      >
-        {interest.title}
-      </h3>
-      
-      {interest.description && (
-        <p
+      {interest.thumbnail && (
+        <img
+          src={interest.thumbnail}
+          alt={interest.title}
           style={{
-            margin: '0',
-            fontSize: '0.9rem',
-            color: 'var(--muted-color)',
-            lineHeight: '1.4'
+            height: '150px',
+            objectFit: 'contain',
+            borderRadius: '8px',
+            flexShrink: 0
+          }}
+        />
+      )}
+      
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <h3 
+          style={{ 
+            margin: '0 0 0.25rem 0', 
+            color: '#000000',
+            fontSize: '1.1rem',
+            fontWeight: '600',
+            lineHeight: '1.3',
+            textShadow: 'none',
+            boxShadow: 'none'
           }}
         >
-          {interest.description}
-        </p>
-      )}
+          {interest.title}
+        </h3>
+        
+        {interest.description && (
+          <p
+            style={{
+              margin: '0',
+              fontSize: '0.85rem',
+              color: 'var(--muted-color)',
+              lineHeight: '1.4',
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              textShadow: 'none',
+              boxShadow: 'none'
+            }}
+          >
+            {interest.description}
+          </p>
+        )}
+      </div>
     </div>
   );
 };

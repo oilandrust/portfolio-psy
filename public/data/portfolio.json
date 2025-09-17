@@ -24,60 +24,15 @@
   "interests": [
     {
       "id": 1,
-      "title": "Approches Psychodynamiques",
-      "description": "Exploration des processus inconscients et relationnels. Ces approches considèrent que les difficultés actuelles sont influencées par des expériences passées et des dynamiques relationnelles inconscientes.",
-      "media": []
+      "title": "Approches Psychanalytiques",
+      "description": "Mon interet actuel en Psychotherapie est nourri par les approches psychanalytiques et psychodunamiques bien que ma conception de la psychotherapie peut diverger de ces approches sur certains aspect.\n\nCes approches ont selon moi mis en lumieres des aspcet centraux pour la guerison, premierement la notion d’inconscient affectif, d’abord mis en avant par Freud puis repris dans des contextes plus modernes.\n\nLa psychanalyse a donne lieu a la therorie de l’attachement de Bowlby qui a clairement montre l’importance de la qualite du lien dans les premieres annees de la vie pour la mise en place des “Inner Working Models”.\n\nJe suis aussi particulierement interesse par les apport modernes fait par Allan Score, Psychanalyste americain qui explique l’inconscient affectif relationel comme une maniere d’etre avec l’autre implicite, non-verbal et donc inconsciente.\n\nUn autre apport fondamental de l’oeuvre freudienne est la notion de transfer, ou ces modeles implicites et inconscients se jouent dans la relation dyadique patient therapeute, offrant ainsi la possibilite our une experience corrective menant a une nouvelle maniere d’etre avec l’autre et l’emergence du moi ou “self”.\n\nEnfin, Freud a aporte ses descriptions d’organisations psychiques, nevrotiques, narcissistiques, psychotiques, etc.. qui sont selon moi incontournable quand on travaile avec un patient en psychotherapie. Combien cette persone a acces a un moi solide?\n\nSelon moi il serait irresponsable de prendre le role de psychotherapeute sans avoir une experience de ces conceptes: inconscient, modeles d’attachement, transfert structures psychiques.",
+      "thumbnail": "/portfolio-psy/data/interests/Approches Psychanalytiques/unconscious.png"
     },
     {
       "id": 2,
-      "title": "États de Conscience en Psychothérapie",
-      "description": "Exploration des états modifiés de conscience thérapeutiques. L'utilisation d'états de conscience particuliers peut faciliter l'accès à des contenus psychiques et favoriser des expériences de guérison profondes.",
-      "media": []
-    },
-    {
-      "id": 3,
-      "title": "Neuropsychologie",
-      "description": "Compréhension des mécanismes cérébraux en thérapie. L'étude des bases neurologiques des processus psychologiques permet d'éclairer les interventions thérapeutiques et de mieux comprendre les mécanismes de changement.",
-      "media": [
-        {
-          "type": "image",
-          "path": "/portfolio-psy/data/interests/neuropsychologie/brain.svg",
-          "thumbnail": "/portfolio-psy/data/interests/neuropsychologie/brain.svg",
-          "name": "brain"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "title": "Pleine Conscience",
-      "description": "Pratiques de méditation et d'attention consciente. La pleine conscience permet de développer une relation plus consciente avec ses pensées, émotions et sensations corporelles, favorisant la régulation émotionnelle et la présence thérapeutique.",
-      "media": [
-        {
-          "type": "image",
-          "path": "/portfolio-psy/data/interests/pleine-conscience/mindfulness.svg",
-          "thumbnail": "/portfolio-psy/data/interests/pleine-conscience/mindfulness.svg",
-          "name": "mindfulness"
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "title": "Pratiques Relationnelles",
-      "description": "Développement de compétences thérapeutiques relationnelles. La qualité de la relation thérapeutique est fondamentale dans le processus de guérison et nécessite des compétences spécifiques en communication et en présence.",
-      "media": []
-    },
-    {
-      "id": 6,
-      "title": "Psychothérapie Somatique",
-      "description": "Approches thérapeutiques intégrant le corps et l'esprit pour une compréhension holistique de la personne. Cette approche considère que les expériences traumatiques et les émotions sont stockées dans le corps et peuvent être traitées par des techniques somatiques.",
-      "media": [
-        {
-          "type": "image",
-          "path": "/portfolio-psy/data/interests/psychotherapie-somatique/meditation.svg",
-          "thumbnail": "/portfolio-psy/data/interests/psychotherapie-somatique/meditation.svg",
-          "name": "meditation"
-        }
-      ]
+      "title": "Pleine Conscience en Psychotherapie",
+      "description": "## Ou Psychotherapie en Pleine Conscience?\n\nDepuis la troisieme vague des TCC, la pleine conscience a ete largement adoptee comme un des outils pour la psychotherapie. On a put montere que la pratique de la pleine conscience ou Mindfulness avait des effets positifs sur la regulation emotionelle, et en TCC, ces outils sont utilises pour permnetre aux patients de prendre du recul par rapport a leur experience, de nomer leurs emotions, d'accepter l'inconfort et de recionnaitre leurs pensees comme ce qu'elles sont, des pensees et non des realites.\n\nCependant je voudrais mettre en avant que ces apports, certes importants ne sont qu'une partie de ce que peut apporter la pleine conscience a la Psychotherapie.\n\nDans les psychotherapies en pleine conscience, on utilise pas la mindfulness comme outils de gestion du stress que les patients peuvent apprendre et utiliser eux meme, mais on procede a la psychotherapie meme dans un etat de pleine conscience.\n\nCette pleine conscience \"a deux\" fut entrevue par Freud dans l'association libre. En associant les idees librement et en remarquant simplement ce qui survient, pensees, emotions, etc.. on pratique en effet la mindfulness.\n\nQui plus est l'apport de la presence du therapeute permet de donner plus de capacite au patient d'etre en contact avec son experience. Le therapeute operant comme le caregiver qui aide l'enfant a reguler ses emotions.\n\nCette approche de la therapie, notament proposee par Hakomi, Daniel Segel, permet l'etude de l'appareil psycho-chorporel comme Freud en aurait reve, non dans l'analyse apres coup mais dans l'instant present incarne. Cela donne aussi access a des etats modifies de conscience et une neuroplasticite qui permet une transformation rapide du materiel inconscients, des schemas limitants et des working models d'attachement.",
+      "thumbnail": null
     }
   ],
   "experiences": [

@@ -21,17 +21,33 @@ const outputInterestsDir = 'public/data/interests';
 const outputIconsDir = 'public/data/icons';
 const outputProfileDir = 'public/data/profile';
 
-// Function to read and parse an interest.yml file
-function readInterestYaml(interestPath) {
+// Function to read and parse a markdown file with YAML front matter
+function readInterestMarkdown(markdownPath) {
   try {
-    const yamlContent = fs.readFileSync(
-      path.join(interestPath, 'interest.yml'),
-      'utf8'
-    );
-    return yaml.load(yamlContent);
+    const markdownContent = fs.readFileSync(markdownPath, 'utf8');
+    
+    // Split content by YAML front matter
+    const frontMatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+    const match = markdownContent.match(frontMatterRegex);
+    
+    if (!match) {
+      console.error(`❌ No YAML front matter found in ${markdownPath}`);
+      return null;
+    }
+    
+    const yamlContent = match[1];
+    const markdownBody = match[2];
+    
+    // Parse YAML front matter
+    const frontMatter = yaml.load(yamlContent);
+    
+    return {
+      ...frontMatter,
+      content: markdownBody.trim()
+    };
   } catch (error) {
     console.error(
-      `❌ Error reading interest.yml in ${interestPath}:`,
+      `❌ Error reading markdown file ${markdownPath}:`,
       error.message
     );
     return null;
@@ -250,55 +266,47 @@ function buildPortfolioJson() {
   let interestId = 1;
 
   try {
-    const interestFolders = fs.readdirSync(sourceInterestsDir);
+    const interestFiles = fs.readdirSync(sourceInterestsDir);
 
-    interestFolders.forEach(folder => {
-      const interestPath = path.join(sourceInterestsDir, folder);
-      const stats = fs.statSync(interestPath);
+    interestFiles.forEach(file => {
+      if (file.endsWith('.md')) {
+        console.log(`📄 Processing interest: ${file}`);
 
-      if (stats.isDirectory()) {
-        console.log(`📁 Processing interest: ${folder}`);
-
-        const interestData = readInterestYaml(interestPath);
+        const markdownPath = path.join(sourceInterestsDir, file);
+        const interestData = readInterestMarkdown(markdownPath);
+        
         if (interestData) {
-          // Copy interest media to output directory (excluding .yml files)
-          const outputInterestPath = path.join(outputInterestsDir, folder);
+          // Create output directory for this interest
+          const interestName = path.basename(file, '.md');
+          const outputInterestPath = path.join(outputInterestsDir, interestName);
           if (!fs.existsSync(outputInterestPath)) {
             fs.mkdirSync(outputInterestPath, { recursive: true });
           }
-          
-          // Copy all files except .yml files
-          const interestFiles = fs.readdirSync(interestPath);
-          interestFiles.forEach(file => {
-            if (!file.endsWith('.yml')) {
-              const srcFile = path.join(interestPath, file);
-              const destFile = path.join(outputInterestPath, file);
-              fs.copyFileSync(srcFile, destFile);
-            }
-          });
 
-          // Scan for media (images and videos) in the interest folder
-          const interestMedia = scanInterestMedia(interestPath);
+          // Copy thumbnail if specified
+          let thumbnailPath = null;
+          if (interestData.thumbnail) {
+            const thumbnailSrc = path.join(sourceInterestsDir, interestData.thumbnail);
+            if (fs.existsSync(thumbnailSrc)) {
+              const thumbnailDest = path.join(outputInterestPath, path.basename(interestData.thumbnail));
+              fs.copyFileSync(thumbnailSrc, thumbnailDest);
+              thumbnailPath = `/portfolio-psy/data/interests/${interestName}/${path.basename(interestData.thumbnail)}`;
+              console.log(`  📸 Copied thumbnail: ${interestData.thumbnail}`);
+            } else {
+              console.warn(`  ⚠️  Thumbnail not found: ${interestData.thumbnail}`);
+            }
+          }
 
           // Build the interest object
           const interest = {
             id: interestId++,
-            title: interestData.title,
-            description: interestData.description || '',
-            media: interestMedia,
+            title: interestName, // Use filename as title
+            description: interestData.content || '',
+            thumbnail: thumbnailPath,
           };
 
           interests.push(interest);
-          console.log(`  ✅ Added: ${interestData.title}`);
-
-          if (interestMedia.length > 0) {
-            const imageCount = interestMedia.filter(m => m.type === 'image').length;
-            const videoCount = interestMedia.filter(m => m.type === 'video').length;
-            const mediaSummary = [];
-            if (imageCount > 0) mediaSummary.push(`${imageCount} images`);
-            if (videoCount > 0) mediaSummary.push(`${videoCount} videos`);
-            console.log(`  📷🎥 Found ${mediaSummary.join(', ')}`);
-          }
+          console.log(`  ✅ Added: ${interestName}`);
         }
       }
     });
@@ -364,14 +372,8 @@ function buildPortfolioJson() {
     // Display summary
     console.log('\n📚 Interests:');
     interests.forEach(interest => {
-      const imageCount = interest.media.filter(m => m.type === 'image').length;
-      const videoCount = interest.media.filter(m => m.type === 'video').length;
-      const mediaSummary = [];
-      if (imageCount > 0) mediaSummary.push(`${imageCount} images`);
-      if (videoCount > 0) mediaSummary.push(`${videoCount} videos`);
-      const mediaText =
-        mediaSummary.length > 0 ? `(${mediaSummary.join(', ')})` : '(no media)';
-      console.log(`  • ${interest.title} ${mediaText}`);
+      const thumbnailText = interest.thumbnail ? '(with thumbnail)' : '(no thumbnail)';
+      console.log(`  • ${interest.title} ${thumbnailText}`);
     });
 
     console.log('\n💼 Experiences:');
