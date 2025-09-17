@@ -61,7 +61,7 @@ const InterestCard = ({ interest, onClick }) => {
           {interest.title}
         </h3>
         
-        {interest.description && (
+        {(interest.subtitle || interest.description) && (
           <p
             style={{
               margin: '0',
@@ -76,7 +76,7 @@ const InterestCard = ({ interest, onClick }) => {
               boxShadow: 'none'
             }}
           >
-            {interest.description}
+            {interest.subtitle || interest.description}
           </p>
         )}
       </div>

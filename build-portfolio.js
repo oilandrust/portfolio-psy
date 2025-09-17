@@ -41,9 +41,19 @@ function readInterestMarkdown(markdownPath) {
     // Parse YAML front matter
     const frontMatter = yaml.load(yamlContent);
     
+    // Extract subtitle from ## heading
+    const subtitleMatch = markdownBody.match(/^##\s+(.+)$/m);
+    const subtitle = subtitleMatch ? subtitleMatch[1].trim() : null;
+    
+    // Remove the ## heading from content if it exists
+    const contentWithoutSubtitle = subtitle 
+      ? markdownBody.replace(/^##\s+.*$/m, '').trim()
+      : markdownBody.trim();
+    
     return {
       ...frontMatter,
-      content: markdownBody.trim()
+      content: contentWithoutSubtitle,
+      subtitle: subtitle
     };
   } catch (error) {
     console.error(
@@ -301,6 +311,7 @@ function buildPortfolioJson() {
           const interest = {
             id: interestId++,
             title: interestName, // Use filename as title
+            subtitle: interestData.subtitle || null,
             description: interestData.content || '',
             thumbnail: thumbnailPath,
           };
