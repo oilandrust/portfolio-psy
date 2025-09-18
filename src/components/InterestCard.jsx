@@ -1,6 +1,6 @@
 import { STYLES } from '../config/constants.js';
 
-const InterestCard = ({ interest, onClick }) => {
+const InterestCard = ({ interest, onClick, isExpanded = false }) => {
   return (
     <div
       className='interest-card'
@@ -14,7 +14,7 @@ const InterestCard = ({ interest, onClick }) => {
         flexDirection: 'row',
         alignItems: 'center',
         textAlign: 'left',
-        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-radius 0.3s ease',
         cursor: 'pointer',
         minHeight: '80px',
         gap: '1rem'

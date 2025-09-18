@@ -579,3 +579,16 @@ p {
     gap: 0.5rem !important;
   }
 }
+
+/* Interests Grid Responsive */
+.interests-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .interests-row {
+    flex-direction: column;
+  }
+}
