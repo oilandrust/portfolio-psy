@@ -45,10 +45,10 @@ const InterestModal = ({ isOpen, onClose, interest }) => {
         style={{
           backgroundColor: 'white',
           borderRadius: STYLES.BORDER_RADIUS.LG,
-          padding: '2rem',
-          maxWidth: '600px',
+          padding: '2.5rem',
+          maxWidth: '900px',
           width: '100%',
-          maxHeight: '80vh',
+          maxHeight: '85vh',
           overflow: 'auto',
           boxShadow: STYLES.SHADOWS.XL,
           position: 'relative'
@@ -87,7 +87,7 @@ const InterestModal = ({ isOpen, onClose, interest }) => {
         </button>
 
         {/* Modal content */}
-        <div style={{ paddingRight: '2rem' }}>
+        <div style={{ paddingRight: '2.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.5rem', gap: '1rem' }}>
             {interest.thumbnail && (
               <img
