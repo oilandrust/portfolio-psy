@@ -81,7 +81,8 @@ function App() {
       }
     ],
     experiences: [],
-    readings: []
+    readings: [],
+    formations: ''
   }), []);
 
   const [portfolio, setPortfolio] = useState(fallbackPortfolio);
@@ -109,7 +110,7 @@ function App() {
             if (data && data.profile && data.interests && Array.isArray(data.interests)) {
               setPortfolio(data);
               setInterests(data.interests);
-              setFormations(data.formations || []);
+              setFormations(data.formations || '');
               setExperiences(data.experiences || []);
               portfolioLoaded = true;
               break;

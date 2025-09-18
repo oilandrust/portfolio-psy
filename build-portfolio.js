@@ -12,6 +12,7 @@ const sourceInterestsDir = 'portfolio/interests';
 const sourceExperiencesDir = 'portfolio/experiences';
 const sourceProfileFile = 'portfolio/profile.yml';
 const sourceQuotesFile = 'portfolio/quotes.json';
+const sourceFormationsFile = 'portfolio/Formations.md';
 const sourceIconsDir = 'portfolio/icons';
 const sourceProfileDir = 'portfolio/profile';
 const sourceFavicon = 'portfolio/O.svg';
@@ -199,6 +200,22 @@ function readQuotesJson() {
   }
 }
 
+// Function to read formations markdown file
+function readFormationsMarkdown() {
+  try {
+    if (!fs.existsSync(sourceFormationsFile)) {
+      console.log(`⚠️  Formations file not found: ${sourceFormationsFile}, using empty string`);
+      return '';
+    }
+    
+    const markdownContent = fs.readFileSync(sourceFormationsFile, 'utf8');
+    return markdownContent.trim();
+  } catch (error) {
+    console.error(`❌ Error reading Formations.md:`, error.message);
+    return '';
+  }
+}
+
 // Function to copy directory recursively
 function copyDirectory(src, dest) {
   if (!fs.existsSync(src)) {
@@ -364,19 +381,25 @@ function buildPortfolioJson() {
     const quotes = readQuotesJson();
     console.log(`  ✅ Loaded ${quotes.length} quotes`);
 
+    // Read formations data
+    console.log('🎓 Reading formations data...');
+    const formations = readFormationsMarkdown();
+    console.log(`  ✅ Loaded formations content`);
+
     // Build portfolio object
     const portfolio = {
       profile: profileData,
       quotes: quotes,
       interests: interests,
-      experiences: experiences
+      experiences: experiences,
+      formations: formations
     };
 
     // Write portfolio.json
     const outputPath = 'public/data/portfolio.json';
     fs.writeFileSync(outputPath, JSON.stringify(portfolio, null, 2));
 
-    console.log(`\n🎉 Successfully built portfolio with ${interests.length} interests, ${experiences.length} experiences, and ${quotes.length} quotes!`);
+    console.log(`\n🎉 Successfully built portfolio with ${interests.length} interests, ${experiences.length} experiences, ${quotes.length} quotes, and formations!`);
     console.log(`📄 Output: ${outputPath}`);
     console.log(`📁 Data copied to: public/data/`);
 
