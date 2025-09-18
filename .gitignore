@@ -45,3 +45,6 @@ out/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# Obsidian files
+portfolio/.obsidian/

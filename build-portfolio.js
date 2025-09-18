@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 // Directories
 const sourceInterestsDir = 'portfolio/interests';
 const sourceExperiencesDir = 'portfolio/experiences';
-const sourceProfileFile = 'portfolio/profile.yml';
+const sourceAboutFile = 'portfolio/About.md';
 const sourceQuotesFile = 'portfolio/quotes.json';
 const sourceFormationsFile = 'portfolio/Formations.md';
 const sourceIconsDir = 'portfolio/icons';
@@ -65,11 +65,52 @@ function readInterestMarkdown(markdownPath) {
   }
 }
 
-// Function to read and parse an experience YAML file
-function readExperienceYaml(experiencePath) {
+// Function to read and parse an experience Markdown file
+function readExperienceMarkdown(experiencePath) {
   try {
-    const yamlContent = fs.readFileSync(experiencePath, 'utf8');
-    return yaml.load(yamlContent);
+    const markdownContent = fs.readFileSync(experiencePath, 'utf8');
+    
+    // Split content by YAML front matter
+    const frontMatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+    const match = markdownContent.match(frontMatterRegex);
+    
+    if (!match) {
+      console.error(`❌ No YAML front matter found in ${experiencePath}`);
+      return null;
+    }
+    
+    const yamlContent = match[1];
+    const markdownBody = match[2];
+    
+    // Parse YAML front matter
+    const frontMatter = yaml.load(yamlContent);
+    
+    // Extract title from first # heading
+    const titleMatch = markdownBody.match(/^#\s+(.+)$/m);
+    const title = titleMatch ? titleMatch[1].trim() : 'Experience';
+    
+    // Extract subtitle from first ## heading
+    const subtitleMatch = markdownBody.match(/^##\s+(.+)$/m);
+    const subtitle = subtitleMatch ? subtitleMatch[1].trim() : '';
+    
+    // Extract content after the first ## heading
+    let description = markdownBody;
+    
+    // Remove the first # heading line
+    description = description.replace(/^#\s+.*$/m, '');
+    
+    // Remove the first ## heading line
+    description = description.replace(/^##\s+.*$/m, '');
+    
+    // Clean up extra newlines
+    description = description.replace(/^\n+/, '').trim();
+    
+    return {
+      ...frontMatter,
+      title: title,
+      subtitle: subtitle,
+      description: description
+    };
   } catch (error) {
     console.error(
       `❌ Error reading experience file ${experiencePath}:`,
@@ -168,18 +209,45 @@ function processTechString(techString) {
   return techArray;
 }
 
-// Function to read and parse profile.yml
-function readProfileYaml() {
+// Function to read and parse About.md
+function readAboutMarkdown() {
   try {
-    if (!fs.existsSync(sourceProfileFile)) {
-      console.error(`❌ Profile file not found: ${sourceProfileFile}`);
+    if (!fs.existsSync(sourceAboutFile)) {
+      console.error(`❌ About file not found: ${sourceAboutFile}`);
       return null;
     }
     
-    const yamlContent = fs.readFileSync(sourceProfileFile, 'utf8');
-    return yaml.load(yamlContent);
+    const markdownContent = fs.readFileSync(sourceAboutFile, 'utf8');
+    
+    // Extract title from first # heading, removing image references
+    const titleMatch = markdownContent.match(/^#\s+(.+)$/m);
+    let title = titleMatch ? titleMatch[1].trim() : 'Olivier Rouiller';
+    // Remove image references like ![[image.jpg]]
+    title = title.replace(/!\[\[.*?\]\]/g, '').trim();
+    
+    // Extract subtitle from first ## heading
+    const subtitleMatch = markdownContent.match(/^##\s+(.+)$/m);
+    const subtitle = subtitleMatch ? subtitleMatch[1].trim() : 'Étudiant en L3 de Psychologie';
+    
+    // Extract content after the first ## heading, removing the # and ## headings
+    let about = markdownContent;
+    
+    // Remove the first # heading line
+    about = about.replace(/^#\s+.*$/m, '');
+    
+    // Remove the first ## heading line
+    about = about.replace(/^##\s+.*$/m, '');
+    
+    // Clean up extra newlines
+    about = about.replace(/^\n+/, '').trim();
+    
+    return {
+      title: title,
+      subtitle: subtitle,
+      about: about
+    };
   } catch (error) {
-    console.error(`❌ Error reading profile.yml:`, error.message);
+    console.error(`❌ Error reading About.md:`, error.message);
     return null;
   }
 }
@@ -273,14 +341,14 @@ function buildPortfolioJson() {
   copyFile(sourceFavicon, 'public/O.svg');
   console.log('  ✅ Icons, profile images, and favicon copied');
 
-  // Read profile data
-  console.log('📄 Reading profile data...');
-  const profileData = readProfileYaml();
+  // Read about data
+  console.log('📄 Reading about data...');
+  const profileData = readAboutMarkdown();
   if (!profileData) {
-    console.error('❌ Failed to read profile data');
+    console.error('❌ Failed to read about data');
     return;
   }
-  console.log(`  ✅ Profile loaded: ${profileData.title}`);
+  console.log(`  ✅ About loaded: ${profileData.title}`);
 
   // Read interests data
   console.log('🔍 Scanning for interests...');
@@ -349,11 +417,11 @@ function buildPortfolioJson() {
         const experienceFiles = fs.readdirSync(sourceExperiencesDir);
         
         experienceFiles.forEach(file => {
-          if (file.endsWith('.yml')) {
+          if (file.endsWith('.md')) {
             const experiencePath = path.join(sourceExperiencesDir, file);
-            console.log(`📁 Processing experience: ${file}`);
-            
-            const experienceData = readExperienceYaml(experiencePath);
+            console.log(`📄 Processing experience: ${file}`);
+
+            const experienceData = readExperienceMarkdown(experiencePath);
             if (experienceData) {
               const experience = {
                 id: experienceId++,
@@ -363,7 +431,7 @@ function buildPortfolioJson() {
                 end_date: experienceData.end_date || null,
                 description: experienceData.description || ''
               };
-              
+
               experiences.push(experience);
               console.log(`  ✅ Added: ${experienceData.title}`);
             }

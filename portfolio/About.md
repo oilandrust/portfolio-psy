@@ -1,4 +1,4 @@
-# ![[IMG-20250419-WA0003 (2).jpg]]Olivier Rouiller
+# Olivier Rouiller
 
 ## Étudiant en L3 de Psychologie et Psychopraticien en Formation
 
@@ -6,7 +6,7 @@ Bonjour, ici Olivier, j'ai 38 ans. Je suis étudiant en Psychologie à l'**Unive
 
 En parallèle de mon cursus universitaire, j'ai suivi des formations professionnelles en psychothérapie. Notamment j'ai suivi les niveaux 1 et 2 de formation en **'Hakomi Somatic Mindful Psychotherapy'** avec l'institut Hakomi de Californie.
 
-On peut traduire 'Somatic Mindful Psychotherapy' par **'Thérapie Psycho-corporelle en Pleine Conscience'**, ou peut-être 'Psychothérapie Somatique en Pleine Conscience'. Voir dans la section 'Intérêts' pour plus a ce sujet.
+On peut traduire 'Somatic Mindful Psychotherapy' par **'Thérapie Psycho-corporelle en Pleine Conscience'**, ou peut-être 'Psychothérapie Somatique en Pleine Conscience'. Voir dans la section 'Intérêts' pour plus à ce sujet.
 
 Mon orientation clinique est influencée par les **Approches Psychanalytiques et Psychodynamiques**, qui fournissent une base aux approches somatiques. Je suis aussi intéressé par les apports des **Neurosciences** pour comprendre les mécanismes de changement dans les thérapies somatiques et relationnelles. Je m'intéresse à comprendre les fondements neuropsychologiques et développementaux de ces thérapies.
 

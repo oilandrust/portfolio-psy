@@ -52,26 +52,6 @@ function App() {
         description: "Exploration des états modifiés de conscience thérapeutiques"
       }
     ],
-    formations: [
-      {
-        title: "Licence 3 Psychologie",
-        institution: "Université de Strasbourg",
-        period: "2023 - 2026",
-        description: "Formation en psychologie générale avec orientation clinique"
-      },
-      {
-        title: "Hakomi Somatic Mindful Psychotherapy - Niveau 1",
-        institution: "Hakomi Institute of California",
-        period: "2023",
-        description: "Formation en psychothérapie somatique et pleine conscience"
-      },
-      {
-        title: "Hakomi Somatic Mindful Psychotherapy - Niveau 2",
-        institution: "Hakomi Institute of California",
-        period: "2024",
-        description: "Approfondissement des techniques de psychothérapie somatique"
-      }
-    ],
     experience: [
       {
         title: "Stagiaire en Psychologie",
