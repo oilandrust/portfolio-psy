@@ -6,7 +6,7 @@ cover: 71QlD7qq+ZL._AC_UL640_FMwebp_QL65_.webp
 ---
 # Right Brain Psychotherapy
 
-Cet ouvrage assez dense de Allan Schore est l’une de mes plus importantes inspirations pour mon orientation therapeutique. Il me permet de me reconscilier avec les approches psychanalytiques qui parfois parraissent obscures et anciennes.
+Cet ouvrage assez dense de Allan Schore est une insporation importante pour mon orientation therapeutique. Il me permet de me reconscilier avec les approches psychanalytiques qui parfois parraissent obscures et anciennes.
 
 Allan presente la therapie comme un processus de synchronisation de nos cerveaux droit, en mettant en avant le fait que les aspects affectifs et non-verbeaux dans une relation sont traites par les parties droites du cortex frontal.
 

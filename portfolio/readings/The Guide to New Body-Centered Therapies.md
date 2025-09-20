@@ -6,10 +6,10 @@ cover: 510Eukn4b3L._AC_UL640_FMwebp_QL65_.webp
 ---
 # The Guide to New Body-Centered Therapies
 
-Cet ouvrage de Christine Caldwell est une bonne introduction pour se faire une idee de ce que peuvent etre les therapies somtiques.
+Cet ouvrage de Christine Caldwell est une bonne introduction pour se faire une idée de ce que peuvent être les thérapies somatiques.
 
-Christine Caldwell est notament fondatrice du departement de psychologie somatique a l'universite Naropa de Boulder, Colorado, qui offre un des rares Masters en Psychotherapie Somatique. J'ai lu cet ouvrage quand je preparais une candidature pour ce Master il y a quelques annees. Malheureusement je n'ai pas reussi a financer cette education.
+Christine Caldwell est notamment fondatrice du département de psychologie somatique à l'université Naropa de Boulder, Colorado, qui offre un des rares Masters en Psychothérapie Somatique. J'ai lu cet ouvrage quand je préparais une candidature pour ce Master il y a quelques années. Malheureusement je n'ai pas réussi à financer cette éducation.
 
-Quoi qu'il en soit, cet ouvrage presente la diversite de ces therapies, celles etant plus proches du *body-work*, celles plus proches de la therapie par la parole. Celles qui sont plus orientees vers les aspects relationels, celles qui font appel a l'imagerie, ...
+Quoi qu'il en soit, cet ouvrage présente la diversité de ces thérapies, celles étant plus proches du *body-work*, celles plus proches de la thérapie par la parole. Celles qui sont plus orientées vers les aspects relationnels, celles qui font appel à l'imagerie, ...
 
-Quelquechose qui rassemble toutes ces approches c'est qu'elles sont experientielles et qu'elles font intervenir le corps/
+Quelque chose qui rassemble toutes ces approches c'est qu'elles sont expérientielles et qu'elles font intervenir le corps.

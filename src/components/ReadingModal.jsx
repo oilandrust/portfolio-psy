@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { parseMarkdown } from '../utils/markdown.jsx';
 
 const ReadingModal = ({ 
@@ -6,9 +6,22 @@ const ReadingModal = ({
   onClose, 
   reading 
 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
   const handleClose = useCallback(() => {
     onClose();
   }, [onClose]);
+
+  // Check if screen is mobile size
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
 
   const handleKeyDown = useCallback((e) => {
     if (!isOpen) return;
@@ -50,7 +63,7 @@ const ReadingModal = ({
       alignItems: 'center',
       justifyContent: 'center',
       zIndex: 1000,
-      padding: '2rem'
+      padding: isMobile ? '0.5rem' : '2rem'
     }}
     onClick={(e) => {
       if (e.target === e.currentTarget) {
@@ -61,7 +74,7 @@ const ReadingModal = ({
       <div style={{
         backgroundColor: 'white',
         borderRadius: '12px',
-        maxWidth: '800px',
+        maxWidth: isMobile ? '95vw' : '800px',
         width: '100%',
         maxHeight: '90vh',
         overflow: 'auto',
@@ -100,7 +113,9 @@ const ReadingModal = ({
         </button>
 
         {/* Modal content */}
-        <div style={{ padding: '2rem' }}>
+        <div style={{ 
+          padding: isMobile ? '0.3rem' : '2rem'
+        }}>
           {/* Float layout: Cover floats left, title/author on right, text wraps around cover */}
           <div style={{
             fontSize: '1rem',
