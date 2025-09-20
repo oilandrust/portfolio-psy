@@ -4,7 +4,6 @@ author: Allan Schore
 id: 1
 cover: 71QlD7qq+ZL._AC_UL640_FMwebp_QL65_.webp
 ---
-![[71QlD7qq+ZL._AC_UL640_FMwebp_QL65_.webp]]
 # Right Brain Psychotherapy
 
 Cet ouvrage assez dense de Allan Schore est l’une de mes plus importantes inspirations pour mon orientation therapeutique. Il me permet de me reconscilier avec les approches psychanalytiques qui parfois parraissent obscures et anciennes.

@@ -1,10 +1,26 @@
+import { useState } from 'react';
+import ReadingModal from './ReadingModal';
+
 const LecturesTab = ({ readings = [] }) => {
+  const [selectedReading, setSelectedReading] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Sort readings by ID (ascending order)
   const sortedReadings = [...readings].sort((a, b) => {
     const idA = a.id || 0;
     const idB = b.id || 0;
     return idA - idB;
   });
+
+  const handleReadingClick = (reading) => {
+    setSelectedReading(reading);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedReading(null);
+  };
 
   return (
     <div className='section'>
@@ -17,22 +33,27 @@ const LecturesTab = ({ readings = [] }) => {
           marginTop: '1rem'
         }}>
           {sortedReadings.map((reading, index) => (
-            <div key={index} className="reading-item" style={{
-              border: '1px solid #e2e8f0',
-              borderRadius: '8px',
-              padding: '1rem',
-              textAlign: 'center',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-              cursor: 'pointer'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = 'none';
-            }}>
+            <div 
+              key={index} 
+              className="reading-item" 
+              style={{
+                border: '1px solid #e2e8f0',
+                borderRadius: '8px',
+                padding: '1rem',
+                textAlign: 'center',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                cursor: 'pointer'
+              }}
+              onClick={() => handleReadingClick(reading)}
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = 'none';
+              }}
+            >
               <img 
                 src={reading.cover || '/portfolio-psy/data/readings/placeholder.jpg'} 
                 alt={reading.title}
@@ -65,6 +86,13 @@ const LecturesTab = ({ readings = [] }) => {
       ) : (
         <p>Aucune lecture disponible.</p>
       )}
+
+      {/* Reading Modal */}
+      <ReadingModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        reading={selectedReading}
+      />
     </div>
   );
 };
