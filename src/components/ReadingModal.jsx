@@ -101,21 +101,17 @@ const ReadingModal = ({
 
         {/* Modal content */}
         <div style={{ padding: '2rem' }}>
-          {/* Float layout: Cover and title float left, text wraps around */}
+          {/* Float layout: Cover floats left, title/author on right, text wraps around cover */}
           <div style={{
             fontSize: '1rem',
             lineHeight: '1.6',
             color: '#374151'
           }}>
-            {/* Floating cover and title section */}
+            {/* Floating cover image only */}
             <div style={{
               float: 'left',
               marginRight: '2rem',
-              marginBottom: '1rem',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              maxWidth: '200px'
+              marginBottom: '1rem'
             }}>
               <img 
                 src={reading.cover || '/portfolio-psy/data/readings/placeholder.jpg'} 
@@ -125,31 +121,34 @@ const ReadingModal = ({
                   height: '280px',
                   objectFit: 'contain',
                   borderRadius: '8px',
-                  backgroundColor: '#f8f9fa',
-                  marginBottom: '1rem'
+                  backgroundColor: '#f8f9fa'
                 }}
               />
+            </div>
+
+            {/* Title and author on the right, before text starts */}
+            <div style={{
+              marginBottom: '2rem'
+            }}>
               <h2 style={{
                 margin: '0 0 0.5rem 0',
-                fontSize: '1.5rem',
+                fontSize: '1.8rem',
                 lineHeight: '1.3',
-                color: '#000',
-                textAlign: 'center'
+                color: '#000'
               }}>
                 {reading.title}
               </h2>
               <p style={{
                 margin: '0',
-                fontSize: '1rem',
+                fontSize: '1.1rem',
                 color: '#666',
-                fontStyle: 'italic',
-                textAlign: 'center'
+                fontStyle: 'italic'
               }}>
                 {reading.author}
               </p>
             </div>
 
-            {/* Review content that wraps around the floated content */}
+            {/* Review content that wraps around the floated cover */}
             <div>
               {reading.description ? parseMarkdown(reading.description) : (
                 <p style={{ fontStyle: 'italic', color: '#666' }}>

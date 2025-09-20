@@ -7,6 +7,7 @@ import ExperienceTab from './components/ExperienceTab';
 import LecturesTab from './components/LecturesTab';
 import ContactTab from './components/ContactTab';
 import Hero from './components/Hero';
+import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingSpinner from './components/LoadingSpinner';
 import { FETCH_STRATEGIES, ERROR_MESSAGES, LOADING_STATES } from './config/constants.js';
@@ -179,6 +180,8 @@ function App() {
             <ContactTab />
           </Tabs>
         </ErrorBoundary>
+
+        <Footer />
       </div>
     </div>
   );

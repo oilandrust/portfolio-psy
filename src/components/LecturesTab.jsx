@@ -46,12 +46,16 @@ const LecturesTab = ({ readings = [] }) => {
               }}
               onClick={() => handleReadingClick(reading)}
               onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+                if (e.target === e.currentTarget) {
+                  e.target.style.transform = 'translateY(-2px)';
+                  e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+                }
               }}
               onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = 'none';
+                if (e.target === e.currentTarget) {
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.boxShadow = 'none';
+                }
               }}
             >
               <img 
@@ -85,6 +89,19 @@ const LecturesTab = ({ readings = [] }) => {
         </div>
       ) : (
         <p>Aucune lecture disponible.</p>
+      )}
+
+      {/* Copyright notice */}
+      {sortedReadings.length > 0 && (
+        <p style={{
+          marginTop: '2rem',
+          fontSize: '0.8rem',
+          color: '#888',
+          textAlign: 'center',
+          fontStyle: 'italic'
+        }}>
+          Toutes les couvertures © leurs éditeurs respectifs, utilisées à des fins de citation et de critique
+        </p>
       )}
 
       {/* Reading Modal */}
