@@ -2,7 +2,10 @@ import React from 'react';
 
 /**
  * Parse markdown text and convert to JSX elements
- * Automatically detects list items and supports bold text (**text**) and links ([text](url))
+ * Automatically detects list items and supports:
+ * - Bold text: **text**
+ * - Italic text: *text*
+ * - Links: [text](url)
  * @param {string} text - The markdown text to parse
  * @param {string} fallbackText - Text to show when input is empty (default: 'Aucune information disponible.')
  * @returns {Array} Array of JSX elements (paragraphs or list items)
@@ -31,8 +34,9 @@ export const parseMarkdown = (text, fallbackText = 'Aucune information disponibl
     let lastIndex = 0;
     let match;
 
-    // Process both links and bold text in the same pass
-    const combinedRegex = /(\[([^\]]+)\]\(([^)]+)\)|\*\*(.*?)\*\*)/g;
+    // Process links, bold text, and italic text in the same pass
+    // Order matters: links first, then bold, then italic (to avoid conflicts)
+    const combinedRegex = /(\[([^\]]+)\]\(([^)]+)\)|\*\*(.*?)\*\*|\*([^*]+)\*)/g;
     
     while ((match = combinedRegex.exec(cleanLine)) !== null) {
       // Add text before the match
@@ -40,7 +44,7 @@ export const parseMarkdown = (text, fallbackText = 'Aucune information disponibl
         parts.push(cleanLine.slice(lastIndex, match.index));
       }
       
-      // Check if this is a link or bold text
+      // Check what type of match this is
       if (match[0].startsWith('[')) {
         // It's a link [text](url)
         parts.push(
@@ -60,6 +64,13 @@ export const parseMarkdown = (text, fallbackText = 'Aucune information disponibl
           <strong key={`bold-${index}-${match.index}`}>
             {match[4]}
           </strong>
+        );
+      } else if (match[0].startsWith('*') && match[0].endsWith('*') && match[0].length > 2) {
+        // It's italic text *text* (but not **bold**)
+        parts.push(
+          <em key={`italic-${index}-${match.index}`}>
+            {match[5]}
+          </em>
         );
       }
       

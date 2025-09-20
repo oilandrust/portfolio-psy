@@ -1,15 +1,22 @@
 const LecturesTab = ({ readings = [] }) => {
+  // Sort readings by ID (ascending order)
+  const sortedReadings = [...readings].sort((a, b) => {
+    const idA = a.id || 0;
+    const idB = b.id || 0;
+    return idA - idB;
+  });
+
   return (
     <div className='section'>
       <h2>Lectures</h2>
-      {readings.length > 0 ? (
+      {sortedReadings.length > 0 ? (
         <div className="readings-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
           gap: '1.5rem',
           marginTop: '1rem'
         }}>
-          {readings.map((reading, index) => (
+          {sortedReadings.map((reading, index) => (
             <div key={index} className="reading-item" style={{
               border: '1px solid #e2e8f0',
               borderRadius: '8px',
@@ -27,7 +34,7 @@ const LecturesTab = ({ readings = [] }) => {
               e.target.style.boxShadow = 'none';
             }}>
               <img 
-                src={reading.path} 
+                src={reading.cover || '/portfolio-psy/data/readings/placeholder.jpg'} 
                 alt={reading.title}
                 style={{
                   height: '200px',

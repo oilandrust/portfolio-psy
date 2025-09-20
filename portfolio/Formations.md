@@ -1,4 +1,4 @@
-- 2025 – The Briliant Lab - Somatic Relational Trauma-informed Practices for Medicine - Assisted Facilitation. Taught by [Rita Bozi](https://linktr.ee/ritabozi)
+- 2025 – The Briliant Lab - Somatic Relational Trauma-informed Practices for Medicine-assisted Facilitation. Taught by [Rita Bozi](https://linktr.ee/ritabozi)
 - 2024-2025 – [Hakomi Professional Training level 2](https://embodywise.com/hakomi-trainings/pro-skills-level-2/) with the Hakomi Institute of California. Hakomi Somatic Mindful Psychotherapy
 - 2023-2024 – [Hakomi Professional Training level 1](https://embodywise.com/hakomi-trainings/pro-skills-level-1/) with the Hakomi Institute of California. Hakomi Somatic Mindful Psychotherapy
 - 2022 – Somatic Attachment Therapy Certificate with [Embody Lab](https://www.theembodylab.com/).

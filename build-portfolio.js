@@ -10,6 +10,7 @@ const __dirname = path.dirname(__filename);
 // Directories
 const sourceInterestsDir = 'portfolio/interests';
 const sourceExperiencesDir = 'portfolio/experiences';
+const sourceReadingsDir = 'portfolio/readings';
 const sourceAboutFile = 'portfolio/About.md';
 const sourceQuotesFile = 'portfolio/quotes.json';
 const sourceFormationsFile = 'portfolio/Formations.md';
@@ -19,6 +20,8 @@ const sourceFavicon = 'portfolio/O.svg';
 
 const outputDataDir = 'public/data';
 const outputInterestsDir = 'public/data/interests';
+const outputReadingsDir = 'public/data/readings';
+const outputReadingsCoversDir = 'public/data/readings/covers';
 const outputIconsDir = 'public/data/icons';
 const outputProfileDir = 'public/data/profile';
 
@@ -173,40 +176,43 @@ function scanInterestMedia(interestPath) {
   return media;
 }
 
-// Function to process tech string and find icons
-function processTechString(techString) {
-  if (!techString || typeof techString !== 'string') {
-    return [];
-  }
-
-  const techNames = techString
-    .split(',')
-    .map(t => t.trim())
-    .filter(t => t);
-  const techArray = [];
-
-  techNames.forEach(techName => {
-    // Look for icon in the icons directory (try SVG first, then PNG)
-    let iconPath = `/portfolio-psy/data/icons/${techName.toLowerCase()}.svg`;
-    let iconExists = fs.existsSync(
-      path.join('public', iconPath.replace('/portfolio-psy/data/', 'data/'))
-    );
-
-    if (!iconExists) {
-      // Try PNG if SVG doesn't exist
-      iconPath = `/portfolio-psy/data/icons/${techName.toLowerCase()}.png`;
-      iconExists = fs.existsSync(
-        path.join('public', iconPath.replace('/portfolio-psy/data/', 'data/'))
-      );
+// Function to read and parse a reading markdown file
+function readReadingMarkdown(markdownPath) {
+  try {
+    const markdownContent = fs.readFileSync(markdownPath, 'utf8');
+    
+    // Split content by YAML front matter
+    const frontMatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+    const match = markdownContent.match(frontMatterRegex);
+    
+    if (!match) {
+      console.error(`❌ No YAML front matter found in ${markdownPath}`);
+      return null;
     }
-
-    techArray.push({
-      name: techName,
-      icon: iconExists ? iconPath : null,
-    });
-  });
-
-  return techArray;
+    
+    const yamlContent = match[1];
+    const markdownBody = match[2];
+    
+    // Parse YAML front matter
+    const frontMatter = yaml.load(yamlContent);
+    
+    // Extract the content after front matter (description/review)
+    let description = markdownBody.trim();
+    
+    // Remove the main heading if it exists
+    description = description.replace(/^#\s+.*$/m, '');
+    
+    // Clean up extra newlines
+    description = description.replace(/^\n+/, '').trim();
+    
+    return {
+      ...frontMatter,
+      description: description
+    };
+  } catch (error) {
+    console.error(`❌ Error reading reading file ${markdownPath}:`, error.message);
+    return null;
+  }
 }
 
 // Function to read and parse About.md
@@ -339,6 +345,12 @@ function buildPortfolioJson() {
   copyDirectory(sourceIconsDir, outputIconsDir);
   copyDirectory(sourceProfileDir, outputProfileDir);
   copyFile(sourceFavicon, 'public/O.svg');
+  
+  // Create readings covers directory
+  if (!fs.existsSync(outputReadingsCoversDir)) {
+    fs.mkdirSync(outputReadingsCoversDir, { recursive: true });
+  }
+  
   console.log('  ✅ Icons, profile images, and favicon copied');
 
   // Read about data
@@ -454,20 +466,80 @@ function buildPortfolioJson() {
     const formations = readFormationsMarkdown();
     console.log(`  ✅ Loaded formations content`);
 
+    // Read readings data
+    console.log('📚 Reading readings data...');
+    const readings = [];
+    
+    if (fs.existsSync(sourceReadingsDir)) {
+      try {
+        const readingFiles = fs.readdirSync(sourceReadingsDir);
+        
+        readingFiles.forEach(file => {
+          if (file.endsWith('.md')) {
+            const readingPath = path.join(sourceReadingsDir, file);
+            console.log(`📄 Processing reading: ${file}`);
+
+            const readingData = readReadingMarkdown(readingPath);
+            if (readingData) {
+              // Handle cover image
+              let coverPath = null;
+              if (readingData.cover) {
+                const coverSrcPath = path.join(sourceReadingsDir, 'covers', readingData.cover);
+                const coverDestPath = path.join(outputReadingsCoversDir, readingData.cover);
+                
+                if (fs.existsSync(coverSrcPath)) {
+                  fs.copyFileSync(coverSrcPath, coverDestPath);
+                  coverPath = `/portfolio-psy/data/readings/covers/${readingData.cover}`;
+                  console.log(`  📸 Copied cover: ${readingData.cover}`);
+                } else {
+                  console.warn(`  ⚠️  Cover not found: ${readingData.cover}`);
+                }
+              }
+
+              const reading = {
+                id: readingData.id || 0,
+                title: readingData.title || path.basename(file, '.md'),
+                author: readingData.author || '',
+                description: readingData.description || '',
+                cover: coverPath,
+                // Add any other fields from front matter (excluding cover to avoid override)
+                ...Object.fromEntries(
+                  Object.entries(readingData).filter(([key]) => key !== 'cover')
+                )
+              };
+
+              readings.push(reading);
+              console.log(`  ✅ Added: ${reading.title}`);
+            }
+          }
+        });
+        
+        // Sort readings by ID
+        readings.sort((a, b) => (a.id || 0) - (b.id || 0));
+        console.log(`  ✅ Loaded ${readings.length} readings`);
+        
+      } catch (error) {
+        console.error('❌ Error processing readings:', error.message);
+      }
+    } else {
+      console.log('⚠️  Readings directory not found, skipping...');
+    }
+
     // Build portfolio object
     const portfolio = {
       profile: profileData,
       quotes: quotes,
       interests: interests,
       experiences: experiences,
-      formations: formations
+      formations: formations,
+      readings: readings
     };
 
     // Write portfolio.json
     const outputPath = 'public/data/portfolio.json';
     fs.writeFileSync(outputPath, JSON.stringify(portfolio, null, 2));
 
-    console.log(`\n🎉 Successfully built portfolio with ${interests.length} interests, ${experiences.length} experiences, ${quotes.length} quotes, and formations!`);
+    console.log(`\n🎉 Successfully built portfolio with ${interests.length} interests, ${experiences.length} experiences, ${readings.length} readings, ${quotes.length} quotes, and formations!`);
     console.log(`📄 Output: ${outputPath}`);
     console.log(`📁 Data copied to: public/data/`);
 
@@ -484,6 +556,11 @@ function buildPortfolioJson() {
         ? `${experience.start_date} - ${experience.end_date}`
         : experience.start_date || 'Date non spécifiée';
       console.log(`  • ${experience.title} (${dateRange})`);
+    });
+
+    console.log('\n📖 Readings:');
+    readings.forEach(reading => {
+      console.log(`  • ${reading.title} by ${reading.author} (ID: ${reading.id})`);
     });
 
     console.log('\n💬 Quotes:');

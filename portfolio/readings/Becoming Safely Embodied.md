@@ -1,8 +1,9 @@
 ---
-title: "Becoming Safely Embodied"
-author: "Deirdre Fay"
+title: Becoming Safely Embodied
+author: Deirdre Fay
+id: 5
+cover: 81eSmzsZoML._AC_UL640_FMwebp_QL65_.webp
 ---
-
 # Becoming Safely Embodied
 
 Les mots me manquent pour commencer a parler de cet ouvrage. Commencont par un peu de vocabulaire:

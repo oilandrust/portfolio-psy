@@ -92,6 +92,7 @@ function App() {
               setInterests(data.interests);
               setFormations(data.formations || '');
               setExperiences(data.experiences || []);
+              setReadings(data.readings || []);
               portfolioLoaded = true;
               break;
             }
@@ -123,41 +124,14 @@ function App() {
       setInterests(fallbackPortfolio.interests);
       setFormations(fallbackPortfolio.formations);
       setExperiences(fallbackPortfolio.experiences || []);
+      setReadings(fallbackPortfolio.readings || []);
       setLoadingState(LOADING_STATES.ERROR);
     }
   }, [fallbackPortfolio]);
 
-  // Function to fetch readings data
-  const fetchReadings = useCallback(async () => {
-    try {
-      const response = await fetch('/portfolio-psy/data/readings.json');
-      if (response.ok) {
-        const readingsData = await response.json();
-        setReadings(readingsData);
-      }
-    } catch (error) {
-      console.warn('Could not fetch readings data:', error);
-    }
-  }, []);
-
-  // Function to fetch formations data
-  const fetchFormations = useCallback(async () => {
-    try {
-      const response = await fetch('/portfolio-psy/data/formations.json');
-      if (response.ok) {
-        const formationsData = await response.json();
-        setFormations(formationsData);
-      }
-    } catch (error) {
-      console.warn('Could not fetch formations data:', error);
-    }
-  }, []);
-
   useEffect(() => {
     fetchPortfolio();
-    fetchReadings();
-    fetchFormations();
-  }, [fetchPortfolio, fetchReadings, fetchFormations]);
+  }, [fetchPortfolio]);
 
   if (loadingState === LOADING_STATES.LOADING) {
     return (
