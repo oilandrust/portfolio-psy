@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import InterestCard from './InterestCard';
+import { parseMarkdown } from '../utils/markdown.jsx';
 
 const InterestsGrid = ({ interests }) => {
   const [expandedInterest, setExpandedInterest] = useState(null);
@@ -89,11 +90,10 @@ const InterestsGrid = ({ interests }) => {
                   style={{
                     fontSize: '1rem',
                     lineHeight: '1.6',
-                    color: '#374151',
-                    whiteSpace: 'pre-wrap'
+                    color: '#374151'
                   }}
                 >
-                  {interests.find(interest => expandedInterest === interest.id)?.description}
+                  {parseMarkdown(interests.find(interest => expandedInterest === interest.id)?.description)}
                 </div>
               </div>
             </div>
