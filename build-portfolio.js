@@ -25,8 +25,9 @@ const outputReadingsCoversDir = 'public/data/readings/covers';
 const outputIconsDir = 'public/data/icons';
 const outputProfileDir = 'public/data/profile';
 
-// Function to read and parse a markdown file with YAML front matter
-function readInterestMarkdown(markdownPath) {
+// Unified function to read and parse any markdown file with optional YAML front matter
+function readMarkdownFile(markdownPath) {
+
   try {
     const markdownContent = fs.readFileSync(markdownPath, 'utf8');
     
@@ -34,89 +35,58 @@ function readInterestMarkdown(markdownPath) {
     const frontMatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
     const match = markdownContent.match(frontMatterRegex);
     
-    if (!match) {
-      console.error(`❌ No YAML front matter found in ${markdownPath}`);
-      return null;
+    let frontMatter = {};
+    let markdownBody = markdownContent;
+    
+    if (match) {
+      // Has YAML front matter
+      const yamlContent = match[1];
+      markdownBody = match[2];
+      
+      // Parse YAML front matter
+      frontMatter = yaml.load(yamlContent) || {};
     }
+    // If no front matter, use the entire content as markdown body
     
-    const yamlContent = match[1];
-    const markdownBody = match[2];
-    
-    // Parse YAML front matter
-    const frontMatter = yaml.load(yamlContent);
-    
-    // Extract subtitle from ## heading
-    const subtitleMatch = markdownBody.match(/^##\s+(.+)$/m);
-    const subtitle = subtitleMatch ? subtitleMatch[1].trim() : null;
-    
-    // Remove the ## heading from content if it exists
-    const contentWithoutSubtitle = subtitle 
-      ? markdownBody.replace(/^##\s+.*$/m, '').trim()
-      : markdownBody.trim();
-    
-    return {
-      ...frontMatter,
-      content: contentWithoutSubtitle,
-      subtitle: subtitle
-    };
-  } catch (error) {
-    console.error(
-      `❌ Error reading markdown file ${markdownPath}:`,
-      error.message
-    );
-    return null;
-  }
-}
-
-// Function to read and parse an experience Markdown file
-function readExperienceMarkdown(experiencePath) {
-  try {
-    const markdownContent = fs.readFileSync(experiencePath, 'utf8');
-    
-    // Split content by YAML front matter
-    const frontMatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
-    const match = markdownContent.match(frontMatterRegex);
-    
-    if (!match) {
-      console.error(`❌ No YAML front matter found in ${experiencePath}`);
-      return null;
-    }
-    
-    const yamlContent = match[1];
-    const markdownBody = match[2];
-    
-    // Parse YAML front matter
-    const frontMatter = yaml.load(yamlContent);
+    let result = { ...frontMatter };
     
     // Extract title from first # heading
     const titleMatch = markdownBody.match(/^#\s+(.+)$/m);
-    const title = titleMatch ? titleMatch[1].trim() : 'Experience';
+    const title = titleMatch ? titleMatch[1].trim() : null;
+    
+    // Remove image references like ![[image.jpg]]
+    const cleanTitle = title ? title.replace(/!\[\[.*?\]\]/g, '').trim() : null;
+    
+    if (cleanTitle) {
+      result.title = cleanTitle;
+    }
     
     // Extract subtitle from first ## heading
     const subtitleMatch = markdownBody.match(/^##\s+(.+)$/m);
-    const subtitle = subtitleMatch ? subtitleMatch[1].trim() : '';
+    const subtitle = subtitleMatch ? subtitleMatch[1].trim() : null;
     
-    // Extract content after the first ## heading
-    let description = markdownBody;
+    if (subtitle) {
+      result.subtitle = subtitle;
+    }
     
-    // Remove the first # heading line
-    description = description.replace(/^#\s+.*$/m, '');
+    // Process content - remove extracted headings
+    let content = markdownBody;
     
-    // Remove the first ## heading line
-    description = description.replace(/^##\s+.*$/m, '');
+    // Remove the first # heading line if it exists
+    content = content.replace(/^#\s+.*$/m, '');
+    // Remove the first ## heading line if it exists
+    content = content.replace(/^##\s+.*$/m, '');
     
     // Clean up extra newlines
-    description = description.replace(/^\n+/, '').trim();
+    content = content.replace(/^\n+/, '').trim();
     
-    return {
-      ...frontMatter,
-      title: title,
-      subtitle: subtitle,
-      description: description
-    };
+    // Set content field
+    result.content = content;
+    
+    return result;
   } catch (error) {
     console.error(
-      `❌ Error reading experience file ${experiencePath}:`,
+      `❌ Error reading markdown file ${markdownPath}:`,
       error.message
     );
     return null;
@@ -176,87 +146,6 @@ function scanInterestMedia(interestPath) {
   return media;
 }
 
-// Function to read and parse a reading markdown file
-function readReadingMarkdown(markdownPath) {
-  try {
-    const markdownContent = fs.readFileSync(markdownPath, 'utf8');
-    
-    // Split content by YAML front matter
-    const frontMatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
-    const match = markdownContent.match(frontMatterRegex);
-    
-    if (!match) {
-      console.error(`❌ No YAML front matter found in ${markdownPath}`);
-      return null;
-    }
-    
-    const yamlContent = match[1];
-    const markdownBody = match[2];
-    
-    // Parse YAML front matter
-    const frontMatter = yaml.load(yamlContent);
-    
-    // Extract the content after front matter (description/review)
-    let description = markdownBody.trim();
-    
-    // Remove the main heading if it exists
-    description = description.replace(/^#\s+.*$/m, '');
-    
-    // Clean up extra newlines
-    description = description.replace(/^\n+/, '').trim();
-    
-    return {
-      ...frontMatter,
-      description: description
-    };
-  } catch (error) {
-    console.error(`❌ Error reading reading file ${markdownPath}:`, error.message);
-    return null;
-  }
-}
-
-// Function to read and parse About.md
-function readAboutMarkdown() {
-  try {
-    if (!fs.existsSync(sourceAboutFile)) {
-      console.error(`❌ About file not found: ${sourceAboutFile}`);
-      return null;
-    }
-    
-    const markdownContent = fs.readFileSync(sourceAboutFile, 'utf8');
-    
-    // Extract title from first # heading, removing image references
-    const titleMatch = markdownContent.match(/^#\s+(.+)$/m);
-    let title = titleMatch ? titleMatch[1].trim() : 'Olivier Rouiller';
-    // Remove image references like ![[image.jpg]]
-    title = title.replace(/!\[\[.*?\]\]/g, '').trim();
-    
-    // Extract subtitle from first ## heading
-    const subtitleMatch = markdownContent.match(/^##\s+(.+)$/m);
-    const subtitle = subtitleMatch ? subtitleMatch[1].trim() : 'Étudiant en L3 de Psychologie';
-    
-    // Extract content after the first ## heading, removing the # and ## headings
-    let about = markdownContent;
-    
-    // Remove the first # heading line
-    about = about.replace(/^#\s+.*$/m, '');
-    
-    // Remove the first ## heading line
-    about = about.replace(/^##\s+.*$/m, '');
-    
-    // Clean up extra newlines
-    about = about.replace(/^\n+/, '').trim();
-    
-    return {
-      title: title,
-      subtitle: subtitle,
-      about: about
-    };
-  } catch (error) {
-    console.error(`❌ Error reading About.md:`, error.message);
-    return null;
-  }
-}
 
 // Function to read quotes JSON file
 function readQuotesJson() {
@@ -274,21 +163,6 @@ function readQuotesJson() {
   }
 }
 
-// Function to read formations markdown file
-function readFormationsMarkdown() {
-  try {
-    if (!fs.existsSync(sourceFormationsFile)) {
-      console.log(`⚠️  Formations file not found: ${sourceFormationsFile}, using empty string`);
-      return '';
-    }
-    
-    const markdownContent = fs.readFileSync(sourceFormationsFile, 'utf8');
-    return markdownContent.trim();
-  } catch (error) {
-    console.error(`❌ Error reading Formations.md:`, error.message);
-    return '';
-  }
-}
 
 // Function to copy directory recursively
 function copyDirectory(src, dest) {
@@ -355,10 +229,24 @@ function buildPortfolioJson() {
 
   // Read about data
   console.log('📄 Reading about data...');
-  const profileData = readAboutMarkdown();
+  if (!fs.existsSync(sourceAboutFile)) {
+    console.error(`❌ About file not found: ${sourceAboutFile}`);
+    return;
+  }
+  
+  const profileData = readMarkdownFile(sourceAboutFile);
+  
   if (!profileData) {
     console.error('❌ Failed to read about data');
     return;
+  }
+  
+  // Set default values if not found
+  if (!profileData.title) {
+    profileData.title = 'Olivier Rouiller';
+  }
+  if (!profileData.subtitle) {
+    profileData.subtitle = 'Étudiant en L3 de Psychologie';
   }
   console.log(`  ✅ About loaded: ${profileData.title}`);
 
@@ -380,7 +268,7 @@ function buildPortfolioJson() {
         console.log(`📄 Processing interest: ${file}`);
 
         const markdownPath = path.join(sourceInterestsDir, file);
-        const interestData = readInterestMarkdown(markdownPath);
+        const interestData = readMarkdownFile(markdownPath);
         
         if (interestData) {
           // Create output directory for this interest
@@ -433,7 +321,7 @@ function buildPortfolioJson() {
             const experiencePath = path.join(sourceExperiencesDir, file);
             console.log(`📄 Processing experience: ${file}`);
 
-            const experienceData = readExperienceMarkdown(experiencePath);
+            const experienceData = readMarkdownFile(experiencePath);
             if (experienceData) {
               const experience = {
                 id: experienceId++,
@@ -441,7 +329,7 @@ function buildPortfolioJson() {
                 subtitle: experienceData.subtitle || '',
                 start_date: experienceData.start_date || null,
                 end_date: experienceData.end_date || null,
-                description: experienceData.description || ''
+                description: experienceData.content || ''
               };
 
               experiences.push(experience);
@@ -463,7 +351,13 @@ function buildPortfolioJson() {
 
     // Read formations data
     console.log('🎓 Reading formations data...');
-    const formations = readFormationsMarkdown();
+    let formations = '';
+    if (fs.existsSync(sourceFormationsFile)) {
+      const formationsData = readMarkdownFile(sourceFormationsFile);
+      formations = formationsData ? formationsData.content : '';
+    } else {
+      console.log(`⚠️  Formations file not found: ${sourceFormationsFile}, using empty string`);
+    }
     console.log(`  ✅ Loaded formations content`);
 
     // Read readings data
@@ -479,7 +373,7 @@ function buildPortfolioJson() {
             const readingPath = path.join(sourceReadingsDir, file);
             console.log(`📄 Processing reading: ${file}`);
 
-            const readingData = readReadingMarkdown(readingPath);
+            const readingData = readMarkdownFile(readingPath);
             if (readingData) {
               // Handle cover image
               let coverPath = null;
@@ -500,7 +394,7 @@ function buildPortfolioJson() {
                 id: readingData.id || 0,
                 title: readingData.title || path.basename(file, '.md'),
                 author: readingData.author || '',
-                description: readingData.description || '',
+                description: readingData.content || '',
                 cover: coverPath,
                 // Add any other fields from front matter (excluding cover to avoid override)
                 ...Object.fromEntries(
@@ -527,7 +421,10 @@ function buildPortfolioJson() {
 
     // Build portfolio object
     const portfolio = {
-      profile: profileData,
+      profile: {
+        ...profileData,
+        about: profileData.content
+      },
       quotes: quotes,
       interests: interests,
       experiences: experiences,

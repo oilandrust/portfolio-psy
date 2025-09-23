@@ -4,3 +4,8 @@
 - 2022 – Somatic Attachment Therapy Certificate with [Embody Lab](https://www.theembodylab.com/).
 - 2020-2021 – Non-Duality, Meditation and Non-Symbolic States of Consciousness with the [Center for the Study of  Non-Symbolic Consciousness](https://www.nonsymbolic.org/) (Jeffery A. Martin).
 - 2020 – Introduction to Transpersonal Psychology and Hypnotherapy with [Teadlik Mina](https://teadlikmina.ee/en/).
+
+## Cours
+- 2025 - Embodied Intimacy: Addressing Sexuality in Hakomi Therapy. Maci Daye
+- 2025 - Authentic Relating Level 1. 
+- 2023 - Shame and Self-Loathing in the Treatment of Trauma. Janina Fisher, PhD
