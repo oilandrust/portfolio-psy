@@ -14,9 +14,6 @@ const Footer = () => {
         <div>
           © Olivier Rouiller
         </div>
-        <div>
-          Site codé avec l'IA, écrit sans.
-        </div>
       </div>
     </footer>
   );
