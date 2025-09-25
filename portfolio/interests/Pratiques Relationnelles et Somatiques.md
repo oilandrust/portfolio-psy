@@ -1,5 +1,6 @@
 ---
 thumbnail: media/mindfulness.png
+id: 4
 ---
 
 ## Pratiques Relationnelles et Somatiques

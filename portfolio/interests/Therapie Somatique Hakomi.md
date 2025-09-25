@@ -1,5 +1,6 @@
 ---
 thumbnail: media/crane.png
+id: 2
 ---
 Hakomi est la modalite de therapie principale dans laquelle je suis forme, elle fonde en grande partie l'idee de la psychotherapie que je veux pratiquer.
 

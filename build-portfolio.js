@@ -294,7 +294,7 @@ function buildPortfolioJson() {
 
           // Build the interest object
           const interest = {
-            id: interestId++,
+            id: interestData.id || interestId++,
             title: interestName, // Use filename as title
             subtitle: interestData.subtitle || null,
             description: interestData.content || '',
@@ -306,6 +306,10 @@ function buildPortfolioJson() {
         }
       }
     });
+
+    // Sort interests by ID
+    interests.sort((a, b) => (a.id || 0) - (b.id || 0));
+    console.log(`  ✅ Sorted ${interests.length} interests by ID`);
 
     // Read experiences data
     console.log('🔍 Scanning for experiences...');

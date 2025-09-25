@@ -1,5 +1,6 @@
 ---
 thumbnail: media/unconscious.png
+id: 1
 ---
 Mon intérêt actuel en Psychothérapie est nourri par les approches psychanalytiques et psychodynamiques bien que ma conception de la psychothérapie peut diverger de certaines formulations, ayant etait influences par des formulations americaines recentes.
 
