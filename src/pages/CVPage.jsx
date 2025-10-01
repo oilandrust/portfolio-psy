@@ -4,7 +4,7 @@ import { FETCH_STRATEGIES } from '../config/constants.js';
 import html2pdf from 'html2pdf.js';
 
 const CVPage = () => {
-  const [cvContent, setCvContent] = useState('');
+  const [portfolioData, setPortfolio] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
@@ -40,7 +40,7 @@ const CVPage = () => {
             const data = await response.json();
             
             if (data && data.cv) {
-              setCvContent(data.cv);
+              setPortfolio(data);
               dataLoaded = true;
               console.log(`Successfully loaded CV data from: ${strategy}`);
               break;
@@ -57,10 +57,10 @@ const CVPage = () => {
         if (!dataLoaded) {
           throw lastError || new Error('Failed to load CV data');
         }
-      } catch (error) {
-        setError(error);
-        setCvContent(''); // Set empty content on error
-      } finally {
+        } catch (error) {
+          setError(error);
+          setPortfolio({}); // Set empty data on error
+        } finally {
         setLoading(false);
       }
     };
@@ -229,7 +229,7 @@ const CVPage = () => {
               </div>
               <div style={{ flex: 1 }}>
                 <h1 style={{ 
-                  fontSize: '1.4rem', 
+                  fontSize: '1.0rem', 
                   fontWeight: '700', 
                   margin: '0 0 0.25rem 0',
                   lineHeight: '1.2'
@@ -290,7 +290,7 @@ const CVPage = () => {
       <div style={{ 
         maxWidth: '794px', 
         margin: '0 auto', 
-        padding: '0 2rem 2rem 2rem'
+        padding: '0 4rem 4rem 4rem'
       }}>
         {/* CV Content Section */}
         <div style={{ 
@@ -320,7 +320,7 @@ const CVPage = () => {
             </div>
           ) : (
             <div style={{ fontSize: '0.7rem', lineHeight: '1.4' }}>
-              {parseMarkdown(cvContent)}
+              {parseMarkdown(portfolioData.cv || '')}
             </div>
           )}
         </div>
