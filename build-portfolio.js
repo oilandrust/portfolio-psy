@@ -14,6 +14,7 @@ const sourceReadingsDir = 'portfolio/readings';
 const sourceAboutFile = 'portfolio/About.md';
 const sourceQuotesFile = 'portfolio/quotes.json';
 const sourceFormationsFile = 'portfolio/Formations.md';
+const sourceCVFile = 'portfolio/CV.md';
 const sourceIconsDir = 'portfolio/icons';
 const sourceProfileDir = 'portfolio/profile';
 const sourceFavicon = 'portfolio/O.svg';
@@ -364,6 +365,17 @@ function buildPortfolioJson() {
     }
     console.log(`  ✅ Loaded formations content`);
 
+    // Read CV data
+    console.log('📄 Reading CV data...');
+    let cv = '';
+    if (fs.existsSync(sourceCVFile)) {
+      const cvData = readMarkdownFile(sourceCVFile);
+      cv = cvData ? cvData.content : '';
+    } else {
+      console.log(`⚠️  CV file not found: ${sourceCVFile}, using empty string`);
+    }
+    console.log(`  ✅ Loaded CV content`);
+
     // Read readings data
     console.log('📚 Reading readings data...');
     const readings = [];
@@ -433,6 +445,7 @@ function buildPortfolioJson() {
       interests: interests,
       experiences: experiences,
       formations: formations,
+      cv: cv,
       readings: readings
     };
 
@@ -440,7 +453,7 @@ function buildPortfolioJson() {
     const outputPath = 'public/data/portfolio.json';
     fs.writeFileSync(outputPath, JSON.stringify(portfolio, null, 2));
 
-    console.log(`\n🎉 Successfully built portfolio with ${interests.length} interests, ${experiences.length} experiences, ${readings.length} readings, ${quotes.length} quotes, and formations!`);
+    console.log(`\n🎉 Successfully built portfolio with ${interests.length} interests, ${experiences.length} experiences, ${readings.length} readings, ${quotes.length} quotes, formations, and CV!`);
     console.log(`📄 Output: ${outputPath}`);
     console.log(`📁 Data copied to: public/data/`);
 

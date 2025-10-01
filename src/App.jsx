@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Tabs from './components/Tabs';
 import AboutTab from './components/AboutTab';
 import InterestsTab from './components/InterestsTab';
@@ -10,6 +11,7 @@ import Hero from './components/Hero';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingSpinner from './components/LoadingSpinner';
+import CVPage from './pages/CVPage';
 import { FETCH_STRATEGIES, ERROR_MESSAGES, LOADING_STATES } from './config/constants.js';
 import { handleAsyncOperation, retryOperation, fetchWithTimeout } from './utils/errorHandling.js';
 
@@ -134,56 +136,65 @@ function App() {
     fetchPortfolio();
   }, [fetchPortfolio]);
 
-  if (loadingState === LOADING_STATES.LOADING) {
-    return (
-      <div className='container'>
-        <LoadingSpinner 
-          size="large" 
-          message="Loading portfolio..." 
-        />
-      </div>
-    );
-  }
-
   return (
-    <div className='App'>
-      <ErrorBoundary fallbackMessage={ERROR_MESSAGES.FALLBACK_MESSAGES.COMPONENT}>
-        <Hero profile={portfolio.profile} quotes={portfolio.quotes || []} />
-      </ErrorBoundary>
+    <Router>
+      <div className='App'>
+        <Routes>
+          <Route path="/cv" element={<CVPage />} />
+          <Route path="/" element={
+            <>
+              {loadingState === LOADING_STATES.LOADING ? (
+                <div className='container'>
+                  <LoadingSpinner 
+                    size="large" 
+                    message="Loading portfolio..." 
+                  />
+                </div>
+              ) : (
+                <>
+                  <ErrorBoundary fallbackMessage={ERROR_MESSAGES.FALLBACK_MESSAGES.COMPONENT}>
+                    <Hero profile={portfolio.profile} quotes={portfolio.quotes || []} />
+                  </ErrorBoundary>
 
-      <div className='container'>
-        {error && (
-          <div style={{
-            padding: '1rem',
-            margin: '1rem 0',
-            backgroundColor: '#fef2f2',
-            border: '1px solid #fecaca',
-            borderRadius: '8px',
-            color: '#991b1b'
-          }}>
-            <p style={{ margin: '0 0 0.5rem 0', fontWeight: 'bold' }}>
-              ⚠️ {error.message}
-            </p>
-            <p style={{ margin: 0, fontSize: '0.875rem' }}>
-              Showing fallback data. You can try refreshing the page.
-            </p>
-          </div>
-        )}
+                  <div className='container'>
+                    {error && (
+                      <div style={{
+                        padding: '1rem',
+                        margin: '1rem 0',
+                        backgroundColor: '#fef2f2',
+                        border: '1px solid #fecaca',
+                        borderRadius: '8px',
+                        color: '#991b1b'
+                      }}>
+                        <p style={{ margin: '0 0 0.5rem 0', fontWeight: 'bold' }}>
+                          ⚠️ {error.message}
+                        </p>
+                        <p style={{ margin: 0, fontSize: '0.875rem' }}>
+                          Showing fallback data. You can try refreshing the page.
+                        </p>
+                      </div>
+                    )}
 
-        <ErrorBoundary fallbackMessage="Unable to load tabs. Please refresh the page.">
-          <Tabs>
-            <AboutTab profile={portfolio.profile} />
-            <InterestsTab interests={interests} />
-            <FormationsTab formations={formations} />
-            <ExperienceTab experiences={experiences} />
-            <LecturesTab readings={readings} />
-            <ContactTab />
-          </Tabs>
-        </ErrorBoundary>
+                    <ErrorBoundary fallbackMessage="Unable to load tabs. Please refresh the page.">
+                      <Tabs>
+                        <AboutTab profile={portfolio.profile} />
+                        <InterestsTab interests={interests} />
+                        <FormationsTab formations={formations} />
+                        <ExperienceTab experiences={experiences} />
+                        <LecturesTab readings={readings} />
+                        <ContactTab />
+                      </Tabs>
+                    </ErrorBoundary>
 
-        <Footer />
+                    <Footer />
+                  </div>
+                </>
+              )}
+            </>
+          } />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 
