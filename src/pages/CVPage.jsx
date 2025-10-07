@@ -199,23 +199,28 @@ const CVPage = () => {
           boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)' // Optional: add shadow to simulate document
         }}
       >
+        <style>{`
+         
+        `}</style>
       <div className='hero' style={{ 
-          padding: 0
+          padding: '1.5rem 1.5rem 0.7rem 1.5rem'
         }}>
         <div style={{ 
           maxWidth: '794px', 
           margin: '0 auto', 
-          padding: '1.5rem'
+          padding: '1.5rem 1.5rem 1.5rem 1.5rem'
         }}>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem' }}>
             {/* Left side - Profile and basic info */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flex: 1 }}>
               <div style={{ 
-                width: '80px', 
-                height: '80px', 
+                width: '120px', 
+                height: '120px', 
                 borderRadius: '50%', 
                 overflow: 'hidden',
-                flexShrink: 0
+                flexShrink: 0,
+                border: '3px solid white',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
               }}>
                 <img
                   src='/portfolio-psy/data/profile/IMG-20250419-WA0003 (2).jpg'
