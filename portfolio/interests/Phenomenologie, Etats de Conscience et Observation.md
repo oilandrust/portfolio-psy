@@ -2,14 +2,14 @@
 id: 4
 ---
 
-Ce n'est selon moi pas un hazard si la pleine conscience fait son chemin dans la psychotherapie. En effet, les deux disciplines s'emploient a complrendre l'experience humaine, comment elle produit de la soufrance et comment on peut la reduire.
+Ce n'est selon moi pas un hasard si la pleine conscience fait son chemin dans la psychothérapie. En effet, les deux disciplines s'emploient à comprendre l'expérience humaine, comment elle produit de la souffrance et comment on peut la réduire.
 
-Au coeur de la pleine conscience est selon moi une approche phenomenologique: quels sont les objects de notre experience. En observant le contenu de notre experience on distingue ainsi sensations, pensees et emotions. Dans la pratique de l'insight meditation, on s'emploie simplement a noter ces phenomener: "tien, une pensee", "une emotion", "une sensation corporelle", ... On peut etendre ces classifications et remarquer des phenomenes plus subtils: une intention, un souvenir, une image, un souvenir d'une emotion. Ou bien s'interesser aux qualites des phenomenes: "cette tristesse est resentie dans le corps, de la , a la, elle me fait penser a quelquechose de mouille et froid."
+Au cœur de la pleine conscience est selon moi une approche phénoménologique: quels sont les objets de notre expérience. En observant le contenu de notre expérience on distingue ainsi sensations, pensées et émotions. Dans la pratique de l'insight meditation, on s'emploie simplement à noter ces phénomènes: "tiens, une pensée", "une émotion", "une sensation corporelle", ... On peut étendre ces classifications et remarquer des phénomènes plus subtils: une intention, un souvenir, une image, un souvenir d'une émotion. Ou bien s'intéresser aux qualités des phénomènes: "cette tristesse est ressentie dans le corps, de là, à là, elle me fait penser à quelque chose de mouillé et froid."
 
-On peut encore aller dans la direction opposee et noter nos etats de conscience: eveil, reveil, somnolence. Quand on continue a deconstruire l'experience on peut noter d'autres aspect comme le sens d'etre separe, ou bien le sens de ne faire qu'un avec quelquechose, le sens d'etre identifie avec ses pensees ou au contraire la desentification avec celles-ci.
+On peut encore aller dans la direction opposée et noter nos états de conscience: éveil, réveil, somnolence. Quand on continue à déconstruire l'expérience on peut noter d'autres aspects comme le sens d'être séparé, ou bien le sens de ne faire qu'un avec quelque chose, le sens d'être identifié avec ses pensées ou au contraire la désidentification avec celles-ci.
 
-En psychotherapie, nos patients vont faire l'experience de toute une gamme d'experience, certaines que l'on connait, d'autre peut etre moins. Comment c'est que de resentir le sentiment de vide interieur decrit dans l'organisation psychique borderline?
+En psychothérapie, nos patients vont faire l'expérience de toute une gamme d'expériences, certaines que l'on connaît, d'autres peut-être moins. Comment c'est que de ressentir le sentiment de vide intérieur décrit dans l'organisation psychique borderline?
 
-Aussi pendant la psychotherapie analytique on oververa differents etats de conscience: Est-ce que la persone est la comme un adulte ou bien est elle regressee a un stade plus jeune de development? Comment le reconnaitre et comment repondre? Peut etre est-elle dissociee, ou figee.
+Aussi pendant la psychothérapie analytique on observera différents états de conscience: Est-ce que la personne est là comme un adulte ou bien est-elle régressée à un stade plus jeune de développement? Comment le reconnaître et comment répondre? Peut-être est-elle dissociée, ou figée.
 
-Avoir explore pour soi la diversite des experiences humaines et s'entrainer par l'observation est selon moi un chemin valide vers la psychotherapie.
+Avoir exploré pour soi la diversité des expériences humaines et s'entraîner par l'observation est selon moi un chemin valide vers la psychothérapie.
