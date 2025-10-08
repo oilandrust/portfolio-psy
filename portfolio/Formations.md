@@ -5,7 +5,8 @@
 - 2020 – Introduction to Transpersonal Psychology and Hypnotherapy with [Teadlik Mina](https://teadlikmina.ee/en/).
 
 ### Autres cours et formations
-- 2025 – The Briliant Lab - Somatic Relational Trauma-informed Practices for Medicine-assisted Facilitation. Taught by [Rita Bozi](https://linktr.ee/ritabozi)
-- 2025 - Embodied Intimacy: Addressing Sexuality in Hakomi Therapy. Maci Daye
-- 2025 - Authentic Relating Level 1. [ART International](https://authenticrelating.co/)
-- 2023 - Shame and Self-Loathing in the Treatment of Trauma. Janina Fisher, PhD
+- 2025 – Thérapie Somatic Experiencing: Restauration physiologique de la désorganisation traumatique. Michel Schittecatte.
+- 2025 – The Brilliant Lab - Somatic Relational Trauma-informed Practices for Medicine-assisted Facilitation. Taught by [Rita Bozi](https://linktr.ee/ritabozi)
+- 2025 – Embodied Intimacy: Addressing Sexuality in Hakomi Therapy. Maci Daye
+- 2025 – Authentic Relating Level 1. [ART International](https://authenticrelating.co/)
+- 2023 – Shame and Self-Loathing in the Treatment of Trauma. Janina Fisher, PhD
