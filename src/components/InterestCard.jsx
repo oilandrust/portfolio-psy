@@ -1,6 +1,6 @@
 import { STYLES } from '../config/constants.js';
 
-const InterestCard = ({ interest, onClick, isExpanded = false }) => {
+const InterestCard = ({ interest, onClick }) => {
   return (
     <div
       className='interest-card'

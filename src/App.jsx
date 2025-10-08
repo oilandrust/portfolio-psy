@@ -195,6 +195,7 @@ function App() {
         <Routes>
           <Route path="/cv" element={<CVPage />} />
           <Route path="/about" element={<PortfolioLayout />} />
+          <Route path="/interests/:id" element={<PortfolioLayout />} />
           <Route path="/interests" element={<PortfolioLayout />} />
           <Route path="/formations" element={<PortfolioLayout />} />
           <Route path="/experience" element={<PortfolioLayout />} />

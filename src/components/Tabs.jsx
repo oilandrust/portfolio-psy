@@ -14,7 +14,14 @@ const Tabs = ({ children }) => {
   ];
 
   // Determine active tab based on current path
-  const activeTabIndex = tabs.findIndex(tab => location.pathname === tab.path);
+  // Special handling for interests detail pages (e.g., /interests/1)
+  let activeTabIndex;
+  if (location.pathname.startsWith('/interests')) {
+    // If path is /interests or /interests/:id, activate interests tab
+    activeTabIndex = tabs.findIndex(tab => tab.id === 'interests');
+  } else {
+    activeTabIndex = tabs.findIndex(tab => location.pathname === tab.path);
+  }
   const currentTab = activeTabIndex >= 0 ? activeTabIndex : 0;
 
   const handleTabClick = (path) => {
