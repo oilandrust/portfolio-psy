@@ -287,6 +287,18 @@ const CVPage = () => {
                   o.rouiller@gmail.com
                 </a>
               </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'flex-end' }}>
+                <a 
+                  href="https://oilandrust.github.io/portfolio-psy/"
+                  style={{ 
+                    color: 'var(--primary)', 
+                    textDecoration: 'none',
+                    fontSize: '0.75rem'
+                  }}
+                >
+                  Portfolio
+                </a>
+              </div>
             </div>
           </div>
         </div>
