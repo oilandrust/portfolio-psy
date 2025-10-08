@@ -14,11 +14,14 @@ const Tabs = ({ children }) => {
   ];
 
   // Determine active tab based on current path
-  // Special handling for interests detail pages (e.g., /interests/1)
+  // Special handling for detail pages (e.g., /interests/1, /lectures/1)
   let activeTabIndex;
   if (location.pathname.startsWith('/interests')) {
     // If path is /interests or /interests/:id, activate interests tab
     activeTabIndex = tabs.findIndex(tab => tab.id === 'interests');
+  } else if (location.pathname.startsWith('/lectures')) {
+    // If path is /lectures or /lectures/:id, activate lectures tab
+    activeTabIndex = tabs.findIndex(tab => tab.id === 'lectures');
   } else {
     activeTabIndex = tabs.findIndex(tab => location.pathname === tab.path);
   }

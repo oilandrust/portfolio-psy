@@ -199,6 +199,7 @@ function App() {
           <Route path="/interests" element={<PortfolioLayout />} />
           <Route path="/formations" element={<PortfolioLayout />} />
           <Route path="/experience" element={<PortfolioLayout />} />
+          <Route path="/lectures/:id" element={<PortfolioLayout />} />
           <Route path="/lectures" element={<PortfolioLayout />} />
           <Route path="/contact" element={<PortfolioLayout />} />
           <Route path="/" element={<Navigate to="/about" replace />} />

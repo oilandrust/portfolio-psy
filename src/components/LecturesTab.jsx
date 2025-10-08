@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import ReadingModal from './ReadingModal';
+import { useParams, useNavigate } from 'react-router-dom';
+import ReadingDetail from './ReadingDetail';
 
 const LecturesTab = ({ readings = [] }) => {
-  const [selectedReading, setSelectedReading] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   // Sort readings by ID (ascending order)
   const sortedReadings = [...readings].sort((a, b) => {
@@ -13,15 +13,15 @@ const LecturesTab = ({ readings = [] }) => {
   });
 
   const handleReadingClick = (reading) => {
-    setSelectedReading(reading);
-    setIsModalOpen(true);
+    navigate(`/lectures/${reading.id}`);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedReading(null);
-  };
+  // If there's an ID in the URL, show the detail view
+  if (id) {
+    return <ReadingDetail readings={readings} />;
+  }
 
+  // Otherwise show the grid
   return (
     <div className='section'>
       <h2>Lectures</h2>
@@ -103,13 +103,6 @@ const LecturesTab = ({ readings = [] }) => {
           Toutes les couvertures © leurs éditeurs respectifs, utilisées à des fins de citation et de critique
         </p>
       )}
-
-      {/* Reading Modal */}
-      <ReadingModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        reading={selectedReading}
-      />
     </div>
   );
 };
