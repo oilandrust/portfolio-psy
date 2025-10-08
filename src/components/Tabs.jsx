@@ -1,16 +1,25 @@
-import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-const Tabs = ({ children, defaultTab = 0 }) => {
-  const [activeTab, setActiveTab] = useState(defaultTab);
+const Tabs = ({ children }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const tabs = [
-    { id: 'about', label: 'À propos' },
-    { id: 'interests', label: 'Intérêts' },
-    { id: 'formations', label: 'Formations' },
-    { id: 'experience', label: 'Expérience' },
-    { id: 'lectures', label: 'Lectures' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'about', label: 'À propos', path: '/about' },
+    { id: 'interests', label: 'Intérêts', path: '/interests' },
+    { id: 'formations', label: 'Formations', path: '/formations' },
+    { id: 'experience', label: 'Expérience', path: '/experience' },
+    { id: 'lectures', label: 'Lectures', path: '/lectures' },
+    { id: 'contact', label: 'Contact', path: '/contact' }
   ];
+
+  // Determine active tab based on current path
+  const activeTabIndex = tabs.findIndex(tab => location.pathname === tab.path);
+  const currentTab = activeTabIndex >= 0 ? activeTabIndex : 0;
+
+  const handleTabClick = (path) => {
+    navigate(path);
+  };
 
   return (
     <div className="tabs-container">
@@ -18,15 +27,15 @@ const Tabs = ({ children, defaultTab = 0 }) => {
         {tabs.map((tab, index) => (
           <button
             key={tab.id}
-            className={`tab-button ${activeTab === index ? 'active' : ''}`}
-            onClick={() => setActiveTab(index)}
+            className={`tab-button ${currentTab === index ? 'active' : ''}`}
+            onClick={() => handleTabClick(tab.path)}
           >
             {tab.label}
           </button>
         ))}
       </div>
       <div className="tab-content">
-        {children[activeTab]}
+        {children[currentTab]}
       </div>
     </div>
   );
