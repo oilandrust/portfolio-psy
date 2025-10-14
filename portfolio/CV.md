@@ -4,6 +4,7 @@
 - **2015 - 2022: Développeur de logiciel.** J'ai travaillé en Allemagne et en Suède en tant que développeur, dans des start-ups et dans le jeu vidéo, notamment à **Ubisoft** pour le jeu vidéo **Avatar: Frontiers of Pandora**. Travail en anglais. J'ai travaillé dans des équipes internationales, en collaboration avec des artistes et managers.
 - **2011 - 2015:** **Assistant de recherche et d'enseignement à l'Université Technique de Berlin.** J'ai travaillé sur des projets de recherche en informatique et publié un article dans un journal international. J'étais assistant pour l'enseignement des cours de licence et de master. 
 ### Education
+- **2025 - 2026: L3 de Psychologie à l'Université de Strasbourg.**
 - **2024 - 2025: L2 de Psychologie à l'Université de Strasbourg.** J'ai entrepris le cursus de Psychologie en reprise d'étude. Mention assez bien, classement dans les 6% des moyennes les plus hautes. 
 - **2009 - 2011: M.Sc. in Software Engineering à l'Université Technique du Danemark.**
 - **2007 - 2009: Diplôme d'Ingénieur, Ecole Centrale de Lille.** J’ai reçu mon diplôme d'ingénieur généraliste de l'Ecole Centrale de Lille.

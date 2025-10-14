@@ -59,3 +59,4 @@ const absolutePath = path.resolve(imagePath);
 
 cropToSquare(absolutePath);
 
+
