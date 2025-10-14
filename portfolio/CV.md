@@ -19,5 +19,5 @@
 - **Allemand:** Niveau courant (B1)
 - **Suédois:** Niveau courant (B2)
 ### Activités et Engagements
-- **Pratiques Relationelles et Somatiques**. Depuis plusieurs années j'ai participe a des ateliers de pratiques relationelles telles que **Authentic Relating**. Cela ma permi d'approfondir mon ecoute, de rencontrer en pleine conscience de nombreuse persones. J'ai aussi pu a plusieur reprises animer des ateliers de movement conscient ou de pleine conscience.
+- **Pratiques Relationelles et Somatiques**. Depuis plusieurs années j'ai participe a des ateliers de pratiques relationelles telles que *Authentic Relating*. Cela ma permi d'approfondir mon ecoute, de rencontrer en pleine conscience de nombreuse persones. J'ai aussi pu a plusieur reprises animer des ateliers de movement conscient ou de pleine conscience.
 - **Danse Contact Improvisation.** Je pratique la danse 'improvisation de contact' et suis aussi engagé dans l'organisation d'événements.
