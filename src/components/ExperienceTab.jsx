@@ -1,3 +1,5 @@
+import { parseMarkdown } from '../utils/markdown.jsx';
+
 const ExperienceTab = ({ experiences = [] }) => {
   // Group experiences by date range (similar to projects)
   const groupExperiencesByPeriod = experiences => {
@@ -116,7 +118,9 @@ const ExperienceTab = ({ experiences = [] }) => {
                     </div>
         
                     {experience.description && (
-                      <p className="experience-description">{experience.description}</p>
+                      <div className="experience-description">
+                        {parseMarkdown(experience.description)}
+                      </div>
                     )}
 
                   </div>

@@ -13,6 +13,8 @@ En étudiant les phénomènes manifestes en pleine conscience et en immergeant l
 
 *Donner un exemple*
 
+Here is a two part Hakomi demo by the founder of the method, Ron Kurtz.
+
 ![](https://www.youtube.com/watch?v=Sm6ayJTG-tM)
 
 Ainsi une session suivra un arc général: Étude, exploration, process, transformation, intégration.
