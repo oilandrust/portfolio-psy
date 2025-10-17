@@ -1,7 +1,7 @@
 
 ### Expérience Professionnelle 
 - **2022 - 2025: Praticien en Thérapie Somatique.** Depuis plusieurs années j'ai pour projet de devenir psychothérapeute et en parallèle de mes formations, j'ai travaillé avec des clients en tant que psychopraticien. J'ai suivi certains clients régulièrement pendant plus d'une année. Cela m'a permis d'approfondir ma réflexion sur la psychothérapie ainsi que d'avoir une expérience des méthodes que j'ai apprises. J'ai travaillé notamment avec 2 clients présentant des organisations narcissiques avec qui j'ai fait du travail sur de fortes voix critiques et pour l'un deux à augmenter sa capacité à ressentir ses émotions.
-- **2015 - 2022: Développeur de logiciel.** J'ai travaillé en Allemagne et en Suède en tant que développeur, dans des start-ups et dans le jeu vidéo, notamment à **Ubisoft** pour le jeu vidéo **Avatar: Frontiers of Pandora**. Travail en anglais. J'ai travaillé dans des équipes internationales, en collaboration avec des artistes et managers.
+- **2015 - 2022: Développeur de logiciel.** J'ai travaillé en Allemagne et en Suède en tant que développeur, dans des start-ups et dans le jeu vidéo, notamment à *Ubisoft* pour le jeu vidéo *Avatar: Frontiers of Pandora*. Travail en anglais. J'ai travaillé dans des équipes internationales, en collaboration avec des artistes et managers.
 - **2011 - 2015:** **Assistant de recherche et d'enseignement à l'Université Technique de Berlin.** J'ai travaillé sur des projets de recherche en informatique et publié un article dans un journal international. J'étais assistant pour l'enseignement des cours de licence et de master. 
 ### Education
 - **2025 - 2026: L3 de Psychologie à l'Université de Strasbourg.**
