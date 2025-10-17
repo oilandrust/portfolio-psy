@@ -8,12 +8,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Directories
-const sourceInterestsDir = 'portfolio/interests';
-const sourceExperiencesDir = 'portfolio/experiences';
-const sourceReadingsDir = 'portfolio/readings';
-const sourceAboutFile = 'portfolio/About.md';
+const sourceInterestsDir = 'portfolio/Intérêts';
+const sourceExperiencesDir = 'portfolio/Experiences';
+const sourceReadingsDir = 'portfolio/Lectures';
+const sourceAboutFile = 'portfolio/À propos/À propos.md';
 const sourceQuotesFile = 'portfolio/quotes.json';
-const sourceFormationsFile = 'portfolio/Formations.md';
+const sourceFormationsFile = 'portfolio/Formations/Formations.md';
 const sourceCVFile = 'portfolio/CV.md';
 const sourceIconsDir = 'portfolio/icons';
 const sourceProfileDir = 'portfolio/profile';
