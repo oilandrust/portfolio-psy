@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // Directories
 const sourceInterestsDir = 'portfolio/Intérêts';
-const sourceExperiencesDir = 'portfolio/Experiences';
+const sourceExperiencesDir = 'portfolio/Expérience';
 const sourceReadingsDir = 'portfolio/Lectures';
 const sourceAboutFile = 'portfolio/À propos/À propos.md';
 const sourceQuotesFile = 'portfolio/quotes.json';
