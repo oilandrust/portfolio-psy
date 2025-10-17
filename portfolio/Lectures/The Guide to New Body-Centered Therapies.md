@@ -2,7 +2,7 @@
 title: The Guide to New Body-Centered Therapies
 author: Christine Caldwell
 id: 3
-cover: 510Eukn4b3L._AC_UL640_FMwebp_QL65_.webp
+thumbnail: 510Eukn4b3L._AC_UL640_FMwebp_QL65_.webp
 ---
 # The Guide to New Body-Centered Therapies
 

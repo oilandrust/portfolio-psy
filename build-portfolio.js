@@ -391,18 +391,18 @@ function buildPortfolioJson() {
 
             const readingData = readMarkdownFile(readingPath);
             if (readingData) {
-              // Handle cover image
-              let coverPath = null;
-              if (readingData.cover) {
-                const coverSrcPath = path.join(sourceReadingsDir, 'covers', readingData.cover);
-                const coverDestPath = path.join(outputReadingsCoversDir, readingData.cover);
+              // Handle thumbnail image
+              let thumbnailPath = null;
+              if (readingData.thumbnail) {
+                const thumbnailSrcPath = path.join(sourceReadingsDir, 'covers', readingData.thumbnail);
+                const thumbnailDestPath = path.join(outputReadingsCoversDir, readingData.thumbnail);
                 
-                if (fs.existsSync(coverSrcPath)) {
-                  fs.copyFileSync(coverSrcPath, coverDestPath);
-                  coverPath = `/portfolio-psy/data/readings/covers/${readingData.cover}`;
-                  console.log(`  📸 Copied cover: ${readingData.cover}`);
+                if (fs.existsSync(thumbnailSrcPath)) {
+                  fs.copyFileSync(thumbnailSrcPath, thumbnailDestPath);
+                  thumbnailPath = `/portfolio-psy/data/readings/covers/${readingData.thumbnail}`;
+                  console.log(`  📸 Copied thumbnail: ${readingData.thumbnail}`);
                 } else {
-                  console.warn(`  ⚠️  Cover not found: ${readingData.cover}`);
+                  console.warn(`  ⚠️  Thumbnail not found: ${readingData.thumbnail}`);
                 }
               }
 
@@ -411,10 +411,10 @@ function buildPortfolioJson() {
                 title: readingData.title || path.basename(file, '.md'),
                 author: readingData.author || '',
                 description: readingData.content || '',
-                cover: coverPath,
-                // Add any other fields from front matter (excluding cover to avoid override)
+                thumbnail: thumbnailPath,
+                // Add any other fields from front matter (excluding thumbnail to avoid override)
                 ...Object.fromEntries(
-                  Object.entries(readingData).filter(([key]) => key !== 'cover')
+                  Object.entries(readingData).filter(([key]) => key !== 'thumbnail')
                 )
               };
 

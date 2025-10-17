@@ -116,20 +116,20 @@ const ReadingModal = ({
         <div style={{ 
           padding: isMobile ? '0.3rem' : '2rem'
         }}>
-          {/* Float layout: Cover floats left, title/author on right, text wraps around cover */}
+          {/* Float layout: Thumbnail floats left, title/author on right, text wraps around thumbnail */}
           <div style={{
             fontSize: '1rem',
             lineHeight: '1.6',
             color: '#374151'
           }}>
-            {/* Floating cover image only */}
+            {/* Floating thumbnail image only */}
             <div style={{
               float: 'left',
               marginRight: '2rem',
               marginBottom: '1rem'
             }}>
               <img 
-                src={reading.cover || '/portfolio-psy/data/readings/placeholder.jpg'} 
+                src={reading.thumbnail || '/portfolio-psy/data/readings/placeholder.jpg'} 
                 alt={reading.title}
                 style={{
                   width: '200px',
@@ -163,7 +163,7 @@ const ReadingModal = ({
               </p>
             </div>
 
-            {/* Review content that wraps around the floated cover */}
+            {/* Review content that wraps around the floated thumbnail */}
             <div>
               {reading.description ? parseMarkdown(reading.description) : (
                 <p style={{ fontStyle: 'italic', color: '#666' }}>
