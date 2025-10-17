@@ -112,8 +112,7 @@ const InterestDetail = ({ interests }) => {
         style={{
           fontSize: '1rem',
           lineHeight: '1.6',
-          color: '#374151',
-          maxWidth: '900px'
+          color: '#374151'
         }}
       >
         {parseMarkdown(interest.description)}
