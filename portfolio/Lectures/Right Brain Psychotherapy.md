@@ -2,7 +2,7 @@
 title: Right Brain Psychotherapy
 author: Allan Schore
 id: 1
-thumbnail: 71QlD7qq+ZL._AC_UL640_FMwebp_QL65_.webp
+thumbnail: media/71QlD7qq+ZL._AC_UL640_FMwebp_QL65_.webp
 ---
 # Right Brain Psychotherapy
 

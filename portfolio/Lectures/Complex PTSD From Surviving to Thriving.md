@@ -2,7 +2,7 @@
 title: 'Complex PTSD: From Surviving to Thriving'
 author: Pete Walker
 id: 7
-thumbnail: 51qeE3CiTsL._SY400_.jpg
+thumbnail: media/51qeE3CiTsL._SY400_.jpg
 ---
 # Complex PTSD: From Surviving to Thriving
 

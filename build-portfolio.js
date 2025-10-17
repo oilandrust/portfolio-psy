@@ -21,7 +21,6 @@ const sourceFavicon = 'portfolio/O.svg';
 
 const outputDataDir = 'public/data';
 const outputInterestsDir = 'public/data/interests';
-const outputReadingsDir = 'public/data/readings';
 const outputReadingsCoversDir = 'public/data/readings/covers';
 const outputIconsDir = 'public/data/icons';
 const outputProfileDir = 'public/data/profile';
@@ -394,12 +393,12 @@ function buildPortfolioJson() {
               // Handle thumbnail image
               let thumbnailPath = null;
               if (readingData.thumbnail) {
-                const thumbnailSrcPath = path.join(sourceReadingsDir, 'covers', readingData.thumbnail);
-                const thumbnailDestPath = path.join(outputReadingsCoversDir, readingData.thumbnail);
+                const thumbnailSrcPath = path.join(sourceReadingsDir, readingData.thumbnail);
+                const thumbnailDestPath = path.join(outputReadingsCoversDir, path.basename(readingData.thumbnail));
                 
                 if (fs.existsSync(thumbnailSrcPath)) {
                   fs.copyFileSync(thumbnailSrcPath, thumbnailDestPath);
-                  thumbnailPath = `/portfolio-psy/data/readings/covers/${readingData.thumbnail}`;
+                  thumbnailPath = `/portfolio-psy/data/readings/covers/${path.basename(readingData.thumbnail)}`;
                   console.log(`  📸 Copied thumbnail: ${readingData.thumbnail}`);
                 } else {
                   console.warn(`  ⚠️  Thumbnail not found: ${readingData.thumbnail}`);
