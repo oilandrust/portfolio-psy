@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Hero = ({ profile, quotes = [] }) => {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
@@ -25,6 +26,9 @@ const Hero = ({ profile, quotes = [] }) => {
         <div className='hero-content'>
           <h1>{profile?.title || 'John Doe'}</h1>
           <p>{profile?.subtitle || 'Full Stack Developer'}</p>
+          <Link to="/cv" className="button primary">
+            CV Complet
+          </Link>
         </div>
       </div>
       {quotes.length > 0 && (
