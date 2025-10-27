@@ -1,6 +1,7 @@
 ---
 thumbnail: media/group.png
 id: 5
+subtitle: En étant là avec toi je remarque...
 ---
 Ayant vécu en Suède et étant connecté aux communautés de pleine conscience internationales en ligne, j'ai été exposé à une diversité de pratiques dites *Relationnelles* ou *Somatiques* qui selon moi ont un intérêt pour faire évoluer le champ de la psychothérapie et des relations à l'échelle de la société.
 
