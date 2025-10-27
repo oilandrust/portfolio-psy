@@ -8,7 +8,7 @@ Au cœur de la pleine conscience est d'un certain point de vue une approche phé
 
 On peut encore aller dans la direction opposée et noter nos états de conscience: d'abord grossiers: éveil, réveil, somnolence. Quand on continue à déconstruire l'expérience on peut noter d'autres aspects comme *le sens d'être séparé*, ou bien *le sens de ne faire qu'un avec quelque chose* (Non-dualisme), le sens d'être identifié avec ses pensées ou au contraire la désidentification avec celles-ci.
 
- La meditation *Insight*, d'ou vient en grande partie la pleine conscience nous offre une voie a travers les objects d'experience vers des etats de conscience non-duels, qui peuvent etre analogues aux etats non differencies des premieres annees du developpement. C'est peut etre l'un des liens les plus frapants dans les correspondances entre psychologie de l'est et de l'ouest, avec des implications importantes pour la psychotherapie.
+ La meditation *Insight*, d'ou vient en grande partie la pleine conscience nous offre une voie a travers les objects d'experience vers des etats de conscience non-duels, qui peuvent etre analogues aux etats non differencies des premieres annees du developpement. C'est peut etre l'un des liens les plus frapants dans les correspondances entre psychologie de l'est et de l'ouest, avec des implications importantes pour la psychotherapie. Jeffery A. Martin, an american Psychologist and researcher has established classification of such experiences.
 
 En psychothérapie, nos patients vont faire l'expérience de toute une gamme d'expériences, certaines que l'on connaît, d'autres peut-être moins. Comment c'est que de ressentir le sentiment de vide intérieur décrit dans l'organisation psychique borderline?
 

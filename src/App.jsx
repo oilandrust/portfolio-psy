@@ -11,6 +11,7 @@ import Hero from './components/Hero';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingSpinner from './components/LoadingSpinner';
+import LanguageSwitcher from './components/LanguageSwitcher';
 import CVPage from './pages/CVPage';
 import { FETCH_STRATEGIES, ERROR_MESSAGES, LOADING_STATES } from './config/constants.js';
 import { handleAsyncOperation, retryOperation, fetchWithTimeout } from './utils/errorHandling.js';
@@ -68,6 +69,8 @@ function App() {
     formations: ''
   }), []);
 
+  const [currentLang, setCurrentLang] = useState('fr');
+  const [portfolioData, setPortfolioData] = useState({ fr: fallbackPortfolio, en: fallbackPortfolio });
   const [portfolio, setPortfolio] = useState(fallbackPortfolio);
   const [interests, setInterests] = useState(fallbackPortfolio.interests);
   const [formations, setFormations] = useState(fallbackPortfolio.formations);
@@ -90,7 +93,20 @@ function App() {
             const response = await fetchWithTimeout(strategy, {}, 5000);
             const data = await response.json();
             
-            if (data && data.profile && data.interests && Array.isArray(data.interests)) {
+            // Handle both bilingual format (with fr/en) and legacy format
+            if (data && data.fr && data.en) {
+              // New bilingual format
+              setPortfolioData({ fr: data.fr, en: data.en });
+              setPortfolio(data[currentLang] || data.fr);
+              setInterests(data[currentLang]?.interests || data.fr.interests);
+              setFormations(data[currentLang]?.formations || data.fr.formations || '');
+              setExperiences(data[currentLang]?.experiences || data.fr.experiences || []);
+              setReadings(data[currentLang]?.readings || data.fr.readings || []);
+              portfolioLoaded = true;
+              break;
+            } else if (data && data.profile && data.interests && Array.isArray(data.interests)) {
+              // Legacy format - use for both languages
+              setPortfolioData({ fr: data, en: data });
               setPortfolio(data);
               setInterests(data.interests);
               setFormations(data.formations || '');
@@ -130,11 +146,29 @@ function App() {
       setReadings(fallbackPortfolio.readings || []);
       setLoadingState(LOADING_STATES.ERROR);
     }
-  }, [fallbackPortfolio]);
+  }, [fallbackPortfolio, currentLang]);
+
+  // Function to switch language
+  const switchLanguage = useCallback((lang) => {
+    setCurrentLang(lang);
+    const langData = portfolioData[lang] || portfolioData.fr;
+    setPortfolio(langData);
+    setInterests(langData.interests);
+    setFormations(langData.formations || '');
+    setExperiences(langData.experiences || []);
+    setReadings(langData.readings || []);
+  }, [portfolioData]);
 
   useEffect(() => {
     fetchPortfolio();
   }, [fetchPortfolio]);
+
+  // Update portfolio when language changes
+  useEffect(() => {
+    if (portfolioData.fr && portfolioData.en) {
+      switchLanguage(currentLang);
+    }
+  }, [currentLang, portfolioData, switchLanguage]);
 
   // Shared layout component for all tab routes
   const PortfolioLayout = () => (
@@ -184,6 +218,8 @@ function App() {
 
             <Footer />
           </div>
+          
+          <LanguageSwitcher currentLang={currentLang} onSwitch={switchLanguage} />
         </>
       )}
     </>

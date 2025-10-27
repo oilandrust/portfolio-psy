@@ -1,0 +1,44 @@
+.language-switcher {
+  position: fixed;
+  bottom: 0;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-bottom: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.language-switcher:hover {
+  transform: translateY(-4px);
+}
+
+.language-switcher:active {
+  transform: translateY(-2px);
+}
+
+.flag-emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .language-switcher {
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .flag-emoji {
+    font-size: 1.5rem;
+  }
+}

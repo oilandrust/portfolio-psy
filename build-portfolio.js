@@ -7,14 +7,24 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Directories
-const sourceInterestsDir = 'portfolio/Intérêts';
-const sourceExperiencesDir = 'portfolio/Expérience';
-const sourceReadingsDir = 'portfolio/Lectures';
-const sourceAboutFile = 'portfolio/À propos/À propos.md';
-const sourceQuotesFile = 'portfolio/quotes.json';
-const sourceFormationsFile = 'portfolio/Formations/Formations.md';
-const sourceCVFile = 'portfolio/CV.md';
+// Helper function to get paths for a language
+function getPathsForLanguage(lang) {
+  const langDir = lang === 'en' ? 'portfolio/en' : 'portfolio/fr';
+  const interestsSubfolder = lang === 'en' ? 'Interests' : 'Intérêts';
+  const experienceSubfolder = lang === 'en' ? 'Experience' : 'Expérience';
+  const aboutSubfolder = lang === 'en' ? 'About' : 'À propos';
+  const aboutFile = lang === 'en' ? 'About.md' : 'À propos.md';
+  
+  return {
+    interestsDir: `${langDir}/${interestsSubfolder}`,
+    experiencesDir: `${langDir}/${experienceSubfolder}`,
+    readingsDir: `${langDir}/Lectures`,
+    aboutFile: `${langDir}/${aboutSubfolder}/${aboutFile}`,
+    quotesFile: `${langDir}/quotes.json`,
+    formationsFile: `${langDir}/Formations/Formations.md`,
+    cvFile: `${langDir}/CV.md`
+  };
+}
 const sourceIconsDir = 'portfolio/icons';
 const sourceProfileDir = 'portfolio/profile';
 const sourceFavicon = 'portfolio/O.svg';
@@ -124,14 +134,14 @@ function scanInterestMedia(interestPath) {
 
 
 // Function to read quotes JSON file
-function readQuotesJson() {
+function readQuotesJson(quotesFile) {
   try {
-    if (!fs.existsSync(sourceQuotesFile)) {
-      console.log(`⚠️  Quotes file not found: ${sourceQuotesFile}, using empty array`);
+    if (!fs.existsSync(quotesFile)) {
+      console.log(`⚠️  Quotes file not found: ${quotesFile}, using empty array`);
       return [];
     }
     
-    const jsonContent = fs.readFileSync(sourceQuotesFile, 'utf8');
+    const jsonContent = fs.readFileSync(quotesFile, 'utf8');
     return JSON.parse(jsonContent);
   } catch (error) {
     console.error(`❌ Error reading quotes.json:`, error.message);
@@ -180,41 +190,22 @@ function copyFile(src, dest) {
   fs.copyFileSync(src, dest);
 }
 
-// Main function to build portfolio.json
-function buildPortfolioJson() {
-  console.log('🔍 Building portfolio...');
-
-  // Create output directories
-  console.log('📁 Creating output directories...');
-  if (!fs.existsSync(outputDataDir)) {
-    fs.mkdirSync(outputDataDir, { recursive: true });
-  }
-
-  // Copy static assets
-  console.log('📋 Copying static assets...');
-  copyDirectory(sourceIconsDir, outputIconsDir);
-  copyDirectory(sourceProfileDir, outputProfileDir);
-  copyFile(sourceFavicon, 'public/O.svg');
-  
-  // Create readings covers directory
-  if (!fs.existsSync(outputReadingsCoversDir)) {
-    fs.mkdirSync(outputReadingsCoversDir, { recursive: true });
-  }
-  
-  console.log('  ✅ Icons, profile images, and favicon copied');
+// Function to build portfolio for a specific language
+function buildPortfolioForLanguage(lang, paths) {
+  console.log(`\n🔍 Building ${lang.toUpperCase()} portfolio...`);
 
   // Read about data
   console.log('📄 Reading about data...');
-  if (!fs.existsSync(sourceAboutFile)) {
-    console.error(`❌ About file not found: ${sourceAboutFile}`);
-    return;
+  if (!fs.existsSync(paths.aboutFile)) {
+    console.error(`❌ About file not found: ${paths.aboutFile}`);
+    return null;
   }
   
-  const profileData = readMarkdownFile(sourceAboutFile);
+  const profileData = readMarkdownFile(paths.aboutFile);
   
   if (!profileData) {
     console.error('❌ Failed to read about data');
-    return;
+    return null;
   }
   
   // Set default values if not found
@@ -222,28 +213,28 @@ function buildPortfolioJson() {
     profileData.title = 'Olivier Rouiller';
   }
   if (!profileData.subtitle) {
-    profileData.subtitle = 'Étudiant en L3 de Psychologie';
+    profileData.subtitle = lang === 'en' ? 'L3 Psychology Student' : 'Étudiant en L3 de Psychologie';
   }
   console.log(`  ✅ About loaded: ${profileData.title}`);
 
   // Read interests data
   console.log('🔍 Scanning for interests...');
-  if (!fs.existsSync(sourceInterestsDir)) {
-    console.error(`❌ Interests directory not found: ${sourceInterestsDir}`);
-    return;
+  if (!fs.existsSync(paths.interestsDir)) {
+    console.error(`❌ Interests directory not found: ${paths.interestsDir}`);
+    return null;
   }
 
   const interests = [];
   let interestId = 1;
 
   try {
-    const interestFiles = fs.readdirSync(sourceInterestsDir);
+    const interestFiles = fs.readdirSync(paths.interestsDir);
 
     interestFiles.forEach(file => {
       if (file.endsWith('.md')) {
         console.log(`📄 Processing interest: ${file}`);
 
-        const markdownPath = path.join(sourceInterestsDir, file);
+        const markdownPath = path.join(paths.interestsDir, file);
         const interestData = readMarkdownFile(markdownPath);
         
         if (interestData) {
@@ -257,7 +248,7 @@ function buildPortfolioJson() {
           // Copy thumbnail if specified
           let thumbnailPath = null;
           if (interestData.thumbnail) {
-            const thumbnailSrc = path.join(sourceInterestsDir, interestData.thumbnail);
+            const thumbnailSrc = path.join(paths.interestsDir, interestData.thumbnail);
             if (fs.existsSync(thumbnailSrc)) {
               const thumbnailDest = path.join(outputInterestPath, path.basename(interestData.thumbnail));
               fs.copyFileSync(thumbnailSrc, thumbnailDest);
@@ -292,13 +283,13 @@ function buildPortfolioJson() {
     const experiences = [];
     let experienceId = 1;
 
-    if (fs.existsSync(sourceExperiencesDir)) {
+    if (fs.existsSync(paths.experiencesDir)) {
       try {
-        const experienceFiles = fs.readdirSync(sourceExperiencesDir);
+        const experienceFiles = fs.readdirSync(paths.experiencesDir);
         
         experienceFiles.forEach(file => {
           if (file.endsWith('.md')) {
-            const experiencePath = path.join(sourceExperiencesDir, file);
+            const experiencePath = path.join(paths.experiencesDir, file);
             console.log(`📄 Processing experience: ${file}`);
 
             const experienceData = readMarkdownFile(experiencePath);
@@ -326,28 +317,28 @@ function buildPortfolioJson() {
 
     // Read quotes data
     console.log('📖 Reading quotes data...');
-    const quotes = readQuotesJson();
+    const quotes = readQuotesJson(paths.quotesFile);
     console.log(`  ✅ Loaded ${quotes.length} quotes`);
 
     // Read formations data
     console.log('🎓 Reading formations data...');
     let formations = '';
-    if (fs.existsSync(sourceFormationsFile)) {
-      const formationsData = readMarkdownFile(sourceFormationsFile);
+    if (fs.existsSync(paths.formationsFile)) {
+      const formationsData = readMarkdownFile(paths.formationsFile);
       formations = formationsData ? formationsData.content : '';
     } else {
-      console.log(`⚠️  Formations file not found: ${sourceFormationsFile}, using empty string`);
+      console.log(`⚠️  Formations file not found: ${paths.formationsFile}, using empty string`);
     }
     console.log(`  ✅ Loaded formations content`);
 
     // Read CV data
     console.log('📄 Reading CV data...');
     let cv = '';
-    if (fs.existsSync(sourceCVFile)) {
-      const cvData = readMarkdownFile(sourceCVFile);
+    if (fs.existsSync(paths.cvFile)) {
+      const cvData = readMarkdownFile(paths.cvFile);
       cv = cvData ? cvData.content : '';
     } else {
-      console.log(`⚠️  CV file not found: ${sourceCVFile}, using empty string`);
+      console.log(`⚠️  CV file not found: ${paths.cvFile}, using empty string`);
     }
     console.log(`  ✅ Loaded CV content`);
 
@@ -355,13 +346,13 @@ function buildPortfolioJson() {
     console.log('📚 Reading readings data...');
     const readings = [];
     
-    if (fs.existsSync(sourceReadingsDir)) {
+    if (fs.existsSync(paths.readingsDir)) {
       try {
-        const readingFiles = fs.readdirSync(sourceReadingsDir);
+        const readingFiles = fs.readdirSync(paths.readingsDir);
         
         readingFiles.forEach(file => {
           if (file.endsWith('.md')) {
-            const readingPath = path.join(sourceReadingsDir, file);
+            const readingPath = path.join(paths.readingsDir, file);
             console.log(`📄 Processing reading: ${file}`);
 
             const readingData = readMarkdownFile(readingPath);
@@ -369,7 +360,7 @@ function buildPortfolioJson() {
               // Handle thumbnail image
               let thumbnailPath = null;
               if (readingData.thumbnail) {
-                const thumbnailSrcPath = path.join(sourceReadingsDir, readingData.thumbnail);
+                const thumbnailSrcPath = path.join(paths.readingsDir, readingData.thumbnail);
                 const thumbnailDestPath = path.join(outputReadingsCoversDir, path.basename(readingData.thumbnail));
                 
                 if (fs.existsSync(thumbnailSrcPath)) {
@@ -424,13 +415,7 @@ function buildPortfolioJson() {
       readings: readings
     };
 
-    // Write portfolio.json
-    const outputPath = 'public/data/portfolio.json';
-    fs.writeFileSync(outputPath, JSON.stringify(portfolio, null, 2));
-
-    console.log(`\n🎉 Successfully built portfolio with ${interests.length} interests, ${experiences.length} experiences, ${readings.length} readings, ${quotes.length} quotes, formations, and CV!`);
-    console.log(`📄 Output: ${outputPath}`);
-    console.log(`📁 Data copied to: public/data/`);
+    console.log(`\n🎉 Successfully built ${lang} portfolio with ${interests.length} interests, ${experiences.length} experiences, ${readings.length} readings, ${quotes.length} quotes, formations, and CV!`);
 
     // Display summary
     console.log('\n📚 Interests:');
@@ -456,8 +441,59 @@ function buildPortfolioJson() {
     quotes.forEach(quote => {
       console.log(`  • "${quote.text}" - ${quote.author}`);
     });
+    
+    return portfolio;
   } catch (error) {
     console.error('❌ Error building portfolio.json:', error.message);
+    return null;
+  }
+}
+
+// Main function to build portfolio.json
+function buildPortfolioJson() {
+  console.log('🔍 Building bilingual portfolio...');
+
+  // Create output directories
+  console.log('📁 Creating output directories...');
+  if (!fs.existsSync(outputDataDir)) {
+    fs.mkdirSync(outputDataDir, { recursive: true });
+  }
+
+  // Copy static assets (shared between languages)
+  console.log('📋 Copying static assets...');
+  copyDirectory(sourceIconsDir, outputIconsDir);
+  copyDirectory(sourceProfileDir, outputProfileDir);
+  copyFile(sourceFavicon, 'public/O.svg');
+  
+  // Create readings covers directory
+  if (!fs.existsSync(outputReadingsCoversDir)) {
+    fs.mkdirSync(outputReadingsCoversDir, { recursive: true });
+  }
+  
+  console.log('  ✅ Icons, profile images, and favicon copied');
+
+  // Build French portfolio
+  const frPaths = getPathsForLanguage('fr');
+  const frPortfolio = buildPortfolioForLanguage('fr', frPaths);
+
+  // Build English portfolio
+  const enPaths = getPathsForLanguage('en');
+  const enPortfolio = buildPortfolioForLanguage('en', enPaths);
+
+  // Combine both languages into one portfolio object
+  if (frPortfolio && enPortfolio) {
+    const portfolio = {
+      fr: frPortfolio,
+      en: enPortfolio
+    };
+
+    // Write combined portfolio.json
+    const outputPath = 'public/data/portfolio.json';
+    fs.writeFileSync(outputPath, JSON.stringify(portfolio, null, 2));
+    console.log(`\n🎉 Successfully created bilingual portfolio!`);
+    console.log(`📄 Output: ${outputPath}`);
+  } else {
+    console.error('❌ Failed to build portfolio');
   }
 }
 

@@ -1,6 +1,7 @@
 ---
 thumbnail: media/unconscious.png
 id: 1
+subtitle: A quoi pensez vous?
 ---
 Mon intérêt actuel en psychothérapie est nourri par les approches psychanalytiques et psychodynamiques avec pour influence la psychanalyse française et des formulations américaines récentes.
 
