@@ -39,7 +39,15 @@ const CVPage = () => {
             
             const data = await response.json();
             
-            if (data && data.cv) {
+            // Handle both bilingual format (with fr/en) and legacy format
+            if (data && data.fr && data.en) {
+              // Bilingual format - default to French
+              setPortfolio(data.fr);
+              dataLoaded = true;
+              console.log(`Successfully loaded CV data from: ${strategy}`);
+              break;
+            } else if (data && data.cv) {
+              // Legacy format
               setPortfolio(data);
               dataLoaded = true;
               console.log(`Successfully loaded CV data from: ${strategy}`);
