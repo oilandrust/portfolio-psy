@@ -97,21 +97,11 @@ function App() {
             if (data && data.fr && data.en) {
               // New bilingual format
               setPortfolioData({ fr: data.fr, en: data.en });
-              setPortfolio(data[currentLang] || data.fr);
-              setInterests(data[currentLang]?.interests || data.fr.interests);
-              setFormations(data[currentLang]?.formations || data.fr.formations || '');
-              setExperiences(data[currentLang]?.experiences || data.fr.experiences || []);
-              setReadings(data[currentLang]?.readings || data.fr.readings || []);
               portfolioLoaded = true;
               break;
             } else if (data && data.profile && data.interests && Array.isArray(data.interests)) {
               // Legacy format - use for both languages
               setPortfolioData({ fr: data, en: data });
-              setPortfolio(data);
-              setInterests(data.interests);
-              setFormations(data.formations || '');
-              setExperiences(data.experiences || []);
-              setReadings(data.readings || []);
               portfolioLoaded = true;
               break;
             }
@@ -139,6 +129,7 @@ function App() {
       ).catch(e => e);
       
       setError(userFriendlyError);
+      setPortfolioData({ fr: fallbackPortfolio, en: fallbackPortfolio });
       setPortfolio(fallbackPortfolio);
       setInterests(fallbackPortfolio.interests);
       setFormations(fallbackPortfolio.formations);
