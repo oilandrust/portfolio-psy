@@ -4,6 +4,4 @@ author: David Richo
 id: 10
 thumbnail: media/41XGhLugAHS._SY400_.jpg
 ---
-# How to Be an Adult in Relationships
-
 *Review to be written...*

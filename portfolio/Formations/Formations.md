@@ -4,7 +4,7 @@
 - 2020-2021 – Non-Duality, Meditation and Non-Symbolic States of Consciousness with the [Center for the Study of  Non-Symbolic Consciousness](https://www.nonsymbolic.org/) (Jeffery A. Martin).
 - 2020 – Introduction to Transpersonal Psychology and Hypnotherapy with [Teadlik Mina](https://teadlikmina.ee/en/).
 
-### Autres cours et formations
+# Autres cours et formations
 - 2025 – Thérapie Somatic Experiencing: Restauration physiologique de la désorganisation traumatique. Michel Schittecatte.
 - 2025 – The Brilliant Lab - Somatic Relational Trauma-informed Practices for Medicine-assisted Facilitation. Taught by [Rita Bozi](https://linktr.ee/ritabozi)
 - 2025 – Embodied Intimacy: Addressing Sexuality in Hakomi Therapy. Maci Daye

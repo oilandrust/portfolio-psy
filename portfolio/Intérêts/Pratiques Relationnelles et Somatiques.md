@@ -2,9 +2,6 @@
 thumbnail: media/group.png
 id: 5
 ---
-
-## Pratiques Relationnelles et Somatiques
-
 Ayant vécu en Suède et étant connecté aux communautés de pleine conscience internationales en ligne, j'ai été exposé à une diversité de pratiques dites *Relationnelles* ou *Somatiques* qui selon moi ont un intérêt pour faire évoluer le champ de la psychothérapie et des relations à l'échelle de la société.
 
 Ces pratiques sont très fortes en Californie ou au Colorado et aussi présentes en Scandinavie et en Allemagne. Elles sont en revanche rares et émergentes en France, peut-être car les Français sont plus lents à adopter les innovations, ou peut-être à cause de la langue, ces pratiques étant en général transmises en anglais.

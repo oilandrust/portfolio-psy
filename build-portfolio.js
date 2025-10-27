@@ -50,32 +50,8 @@ function readMarkdownFile(markdownPath) {
     
     let result = { ...frontMatter };
     
-    // Extract title from first # heading
-    const titleMatch = markdownBody.match(/^#\s+(.+)$/m);
-    const title = titleMatch ? titleMatch[1].trim() : null;
     
-    // Remove image references like ![[image.jpg]]
-    const cleanTitle = title ? title.replace(/!\[\[.*?\]\]/g, '').trim() : null;
-    
-    if (cleanTitle) {
-      result.title = cleanTitle;
-    }
-    
-    // Extract subtitle from first ## heading
-    const subtitleMatch = markdownBody.match(/^##\s+(.+)$/m);
-    const subtitle = subtitleMatch ? subtitleMatch[1].trim() : null;
-    
-    if (subtitle) {
-      result.subtitle = subtitle;
-    }
-    
-    // Process content - remove extracted headings
     let content = markdownBody;
-    
-    // Remove the first # heading line if it exists
-    content = content.replace(/^#\s+.*$/m, '');
-    // Remove the first ## heading line if it exists
-    content = content.replace(/^##\s+.*$/m, '');
     
     // Clean up extra newlines
     content = content.replace(/^\n+/, '').trim();

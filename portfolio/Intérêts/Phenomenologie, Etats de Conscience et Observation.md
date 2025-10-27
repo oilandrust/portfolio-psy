@@ -2,7 +2,6 @@
 id: 4
 thumbnail: media/focus.png
 ---
-
 Ce n'est selon moi pas un hasard si la pleine conscience fait son chemin dans la psychothérapie. En effet, les deux disciplines (Est-Ouest) s'emploient à comprendre l'expérience humaine, comment elle produit de la souffrance et comment on peut la réduire.
 
 Au cœur de la pleine conscience est d'un certain point de vue une approche phénoménologique: *quels sont les objets de notre expérience*. En observant le contenu de notre expérience on distingue ainsi sensations, pensées et émotions. Dans la pratique de l'**insight meditation**, on s'emploie simplement à noter ces phénomènes: "tiens, une pensée", "une émotion", "une sensation corporelle", ... On peut étendre ces classifications et remarquer des phénomènes plus subtils: une intention, un souvenir, une image, un souvenir d'une émotion. Ou bien s'intéresser aux qualités des phénomènes: "cette tristesse est ressentie dans le corps, de là, à là, elle me fait penser à quelque chose de mouillé et froid."

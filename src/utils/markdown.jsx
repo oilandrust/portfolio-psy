@@ -173,7 +173,7 @@ export const parseMarkdown = (text, fallbackText = 'Aucune information disponibl
       const processedContent = processLine(headerText);
       
       elements.push(
-        <h3 key={`h3-${index}`} style={{ marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '1.25rem', fontWeight: '600' }}>
+        <h3 key={`h3-${index}`} style={{ marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '1.25rem', fontWeight: '600', color: '#1f2937' }}>
           {processedContent}
         </h3>
       );
@@ -185,7 +185,7 @@ export const parseMarkdown = (text, fallbackText = 'Aucune information disponibl
       const processedContent = processLine(headerText);
       
       elements.push(
-        <h2 key={`h2-${index}`} style={{ marginTop: '2rem', marginBottom: '0.75rem', fontSize: '1.5rem', fontWeight: '600' }}>
+        <h2 key={`h2-${index}`} style={{ marginTop: '2rem', marginBottom: '0.75rem', fontSize: '1.5rem', fontWeight: '600', color: '#1f2937' }}>
           {processedContent}
         </h2>
       );
@@ -197,7 +197,7 @@ export const parseMarkdown = (text, fallbackText = 'Aucune information disponibl
       const processedContent = processLine(headerText);
       
       elements.push(
-        <h1 key={`h1-${index}`} style={{ marginTop: '2.5rem', marginBottom: '1rem', fontSize: '2rem', fontWeight: '700' }}>
+        <h1 key={`h1-${index}`} style={{ marginTop: '2.5rem', marginBottom: '1rem', fontSize: '2rem', fontWeight: '700', color: '#1f2937' }}>
           {processedContent}
         </h1>
       );

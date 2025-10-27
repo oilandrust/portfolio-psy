@@ -4,8 +4,6 @@ author: Deirdre Fay
 id: 5
 thumbnail: media/81eSmzsZoML._AC_UL640_FMwebp_QL65_.webp
 ---
-# Becoming Safely Embodied
-
 Comment traduire 'Embodied' ? Incarné pourrait passer mais je ne suis pas satisfait. Ici on fait référence à tout un mouvement du développement personnel à l'international et dominé par l'anglais, le concept d'Embodiment, que je traduirais simplement par... Embodiment.
 
 L'Embodiment c'est l'art et la pratique de se reconnecter à son corps, à ses sensations, instincts, etc. Cela passe par les pratiques de mouvement comme le yoga, la danse, différentes formes de mouvement conscient. Cela passe aussi par le travail sur le trauma, car pour survivre dans notre société, et sous l'influence d'une enfance traumatique par exemple, on apprend à se dissocier, on devient 'numb', car on évite les émotions, les sensations déplaisantes.

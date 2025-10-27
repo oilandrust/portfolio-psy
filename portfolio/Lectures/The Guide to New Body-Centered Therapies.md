@@ -4,8 +4,6 @@ author: Christine Caldwell
 id: 3
 thumbnail: media/510Eukn4b3L._AC_UL640_FMwebp_QL65_.webp
 ---
-# The Guide to New Body-Centered Therapies
-
 Cet ouvrage de Christine Caldwell est une bonne introduction pour se faire une idée de ce que peuvent être les thérapies somatiques.
 
 Christine Caldwell est notamment fondatrice du département de psychologie somatique à l'université Naropa de Boulder, Colorado, qui offre un des rares Masters en Psychothérapie Somatique.
