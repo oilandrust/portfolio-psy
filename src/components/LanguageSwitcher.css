@@ -2,12 +2,12 @@
   position: fixed;
   bottom: 0;
   right: 2rem;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 0;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  background: #f9fafb;
+  background: #ffffff;
   border: 1px solid #e5e7eb;
   border-bottom: none;
   cursor: pointer;
@@ -20,7 +20,7 @@
 
 .language-switcher:hover {
   transform: translateY(-3px);
-  background: #f3f4f6;
+  background: #ffffff;
 }
 
 .language-switcher:active {
@@ -30,7 +30,8 @@
 .flag-emoji {
   font-size: 1.6rem;
   line-height: 1;
-  filter: saturate(0.7) brightness(0.95);
+  filter: saturate(0.3) brightness(1.3);
+  opacity: 0.7;
 }
 
 @media (max-width: 768px) {
@@ -41,6 +42,6 @@
   }
   
   .flag-emoji {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 }
