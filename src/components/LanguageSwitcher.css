@@ -2,13 +2,13 @@
   position: fixed;
   bottom: 0;
   right: 2rem;
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   border-radius: 0;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  background: white;
-  border: 1px solid #d1d5db;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
   border-bottom: none;
   cursor: pointer;
   display: flex;
@@ -19,26 +19,28 @@
 }
 
 .language-switcher:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
+  background: #f3f4f6;
 }
 
 .language-switcher:active {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .flag-emoji {
-  font-size: 2rem;
+  font-size: 1.6rem;
   line-height: 1;
+  filter: saturate(0.7) brightness(0.95);
 }
 
 @media (max-width: 768px) {
   .language-switcher {
     right: 1rem;
-    width: 50px;
-    height: 50px;
+    width: 42px;
+    height: 42px;
   }
   
   .flag-emoji {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 }
