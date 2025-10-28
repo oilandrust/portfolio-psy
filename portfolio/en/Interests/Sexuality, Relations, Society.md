@@ -1,7 +1,7 @@
 ---
 thumbnail: media/heart.png
 id: 6
-subtitle: Being here with you...
+subtitle:
 ---
 I am interested in questions related to relationships, sexuality and society. How these questions articulate at different levels and through different lenses, from somatic psychology, attachment theory to economics and psychoanalysis.
 
