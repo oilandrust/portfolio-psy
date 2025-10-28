@@ -1,7 +1,7 @@
 ---
 thumbnail: media/group.png
 id: 5
-subtitle: En étant là avec vous je remarque...
+subtitle: En étant là avec toi je remarque...
 ---
 Ayant vécu en Suède et étant connecté aux communautés de pleine conscience internationales en ligne, j'ai été exposé à une diversité de pratiques dites *Relationnelles* ou *Somatiques* qui selon moi ont un intérêt pour faire évoluer le champ de la psychothérapie et des relations à l'échelle de la société.
 
@@ -11,7 +11,7 @@ Ces pratiques, qui peuvent être affiliées à l'écoute active ou la communicat
 
 Elles sont intéressantes pour moi non seulement car elles m'ont apporté dans mon processus de maturité et de guérison, mais aussi car elles ont le potentiel de transformer la manière dont on est en relation dans la société et fait sortir certaines qualités relationnelles du cadre fermé de la psychothérapie. Elles sont aussi pour moi un terrain de jeu pour pratiquer mes compétences relationnelles et thérapeutiques.
 
-Mon but ici n'est pas de décrire ces pratiques de manière précise mais de donner un goût de 3 principales pratiques : Le Circling (BENETEAU, 2021), l'Authentic Relating (Kestano, 2022) ou Relations Authentiques et enfin les pratiques somatiques qui englobent une variété de pratiques.
+Mon but ici n'est pas de décrire ces pratiques de manière précise mais de donner un goût de 3 principales pratiques : Le Circling (Beneteau, 2021), l'Authentic Relating (Kestano, 2022) ou Relations Authentiques et enfin les pratiques somatiques qui englobent une variété de pratiques.
 
 ### Le Circling, pleine conscience relationnelle
 
@@ -25,6 +25,6 @@ Ainsi on pourra dire "En étant là avec vous, je remarque une envie de parler e
 
 **Bibliographie**
 
-BENETEAU, M. (2021). *CIRCLING AND AUTHENTIC RELATING PRACTICE GUIDE (2ND EDITION) : Learn the group conversation... practice that will transform all of your*. ADMIT HUB REF SERVICE PR.
+Beneteau, M. (2021). *Circling and authentic relating practice guide (2nd edition) : Learn the group conversation... practice that will transform all of your*. ADMIT HUB REF SERVICE PR.
 
 Kestano, R. (2022). *Authentic relating : A guide to rich, meaningful, nourishing relationships*. ART International.

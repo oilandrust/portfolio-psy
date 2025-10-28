@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://oilandrust.github.io/portfolio-psy",
+  "homepage": "https://www.olivier-psy.fr",
   "scripts": {
     "dev": "vite",
     "build": "npm run build-portfolio && vite build",

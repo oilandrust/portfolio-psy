@@ -3,7 +3,6 @@
 // API and Data Fetching
 export const FETCH_STRATEGIES = [
   './data/portfolio.json',
-  '/portfolio-psy/data/portfolio.json',
   '/data/portfolio.json',
   'data/portfolio.json',
 ];

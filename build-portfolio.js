@@ -94,8 +94,8 @@ function scanInterestMedia(interestPath) {
       if (imageExtensions.includes(ext)) {
         media.push({
           type: 'image',
-          path: `/portfolio-psy/data/interests/${path.basename(interestPath)}/${file}`,
-          thumbnail: `/portfolio-psy/data/interests/${path.basename(interestPath)}/${file}`,
+          path: `/data/interests/${path.basename(interestPath)}/${file}`,
+          thumbnail: `/data/interests/${path.basename(interestPath)}/${file}`,
           name: baseName,
         });
       } else if (videoExtensions.includes(ext)) {
@@ -108,14 +108,14 @@ function scanInterestMedia(interestPath) {
           const thumbFile = `${baseName}-thumb${thumbExt}`;
           const thumbPath = path.join(interestPath, thumbFile);
           if (fs.existsSync(thumbPath)) {
-            thumbnailPath = `/portfolio-psy/data/interests/${path.basename(interestPath)}/${thumbFile}`;
+            thumbnailPath = `/data/interests/${path.basename(interestPath)}/${thumbFile}`;
             break;
           }
         }
 
         media.push({
           type: 'video',
-          path: `/portfolio-psy/data/interests/${path.basename(interestPath)}/${file}`,
+          path: `/data/interests/${path.basename(interestPath)}/${file}`,
           thumbnail: thumbnailPath,
           name: baseName,
         });
@@ -252,7 +252,7 @@ function buildPortfolioForLanguage(lang, paths) {
             if (fs.existsSync(thumbnailSrc)) {
               const thumbnailDest = path.join(outputInterestPath, path.basename(interestData.thumbnail));
               fs.copyFileSync(thumbnailSrc, thumbnailDest);
-              thumbnailPath = `/portfolio-psy/data/interests/${interestName}/${path.basename(interestData.thumbnail)}`;
+              thumbnailPath = `/data/interests/${interestName}/${path.basename(interestData.thumbnail)}`;
               console.log(`  📸 Copied thumbnail: ${interestData.thumbnail}`);
             } else {
               console.warn(`  ⚠️  Thumbnail not found: ${interestData.thumbnail}`);
@@ -365,7 +365,7 @@ function buildPortfolioForLanguage(lang, paths) {
                 
                 if (fs.existsSync(thumbnailSrcPath)) {
                   fs.copyFileSync(thumbnailSrcPath, thumbnailDestPath);
-                  thumbnailPath = `/portfolio-psy/data/readings/covers/${path.basename(readingData.thumbnail)}`;
+                  thumbnailPath = `/data/readings/covers/${path.basename(readingData.thumbnail)}`;
                   console.log(`  📸 Copied thumbnail: ${readingData.thumbnail}`);
                 } else {
                   console.warn(`  ⚠️  Thumbnail not found: ${readingData.thumbnail}`);
