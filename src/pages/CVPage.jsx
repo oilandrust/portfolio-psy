@@ -303,7 +303,7 @@ const CVPage = () => {
                     fontSize: '0.75rem'
                   }}
                 >
-                  Portfolio
+                  Portfolio: olivier-psy.fr
                 </a>
               </div>
             </div>
