@@ -11,8 +11,12 @@ const Footer = () => {
         fontSize: '0.9rem',
         color: '#666'
       }}>
+        <div>© Olivier Rouiller</div>
+        <div style={{ textAlign: 'center' }}>
+          Ecrit en Francais, traduit en Englais avec IA.
+        </div>
         <div>
-          © Olivier Rouiller
+          Powered by <a href="https://www.lefolio.fr" target="_blank" rel="noopener noreferrer">lefolio.fr</a>
         </div>
       </div>
     </footer>
