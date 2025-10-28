@@ -4,7 +4,7 @@ author: Allan Schore
 id: 1
 thumbnail: media/71QlD7qq+ZL._AC_UL640_FMwebp_QL65_.webp
 ---
-Cet ouvrage assez dense de Allan Schore est une inspiration importante pour mon orientation thérapeutique. Il me permet de me donne de la curiosité pour une pratique de la psychanalyse ou le contact émotionnel est central.
+Cet ouvrage assez dense de Allan Schore est une inspiration importante pour mon orientation thérapeutique. Il me permet de me donne de la curiosité pour une pratique de la psychanalyse ou le contact affectif est central.
 
 Allan présente la thérapie comme un processus de synchronisation de nos cerveaux droit, en mettant en avant le fait que les aspects affectifs et non-verbaux dans une relation sont traités par les parties droites du cortex frontal.
 

@@ -1,6 +1,7 @@
 ---
 id: 4
 thumbnail: media/focus.png
+subtitle: '"Pensée, Sensation, Pensée, Image, Emotion, ..."'
 ---
 Ce n'est selon moi pas un hasard si la pleine conscience fait son chemin dans la psychothérapie. En effet, les deux disciplines (Est-Ouest) s'emploient à comprendre l'expérience humaine, comment elle produit de la souffrance et comment on peut la réduire.
 

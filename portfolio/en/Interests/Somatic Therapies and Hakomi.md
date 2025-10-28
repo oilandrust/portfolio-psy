@@ -1,7 +1,7 @@
 ---
 thumbnail: media/crane.png
 id: 2
-subtitle: And when you are in contact with that, what do you notice?
+subtitle: What do you feel in your body when you think that?
 ---
 # Somatic Therapies
 Somatic therapies have several origins which are presented in (Caldwell & Hendricks, 1997).

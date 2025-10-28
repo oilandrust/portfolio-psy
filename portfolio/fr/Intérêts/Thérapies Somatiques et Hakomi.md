@@ -1,7 +1,7 @@
 ---
 thumbnail: media/crane.png
 id: 2
-subtitle: Et quand tu es en contact avec ca, qu'est-ce que tu remarques?
+subtitle: Qu'est ce que tu sent dans ton corps quand tu penses ca?
 ---
 # Thérapies Somatiques
 Les thérapies somatiques ont plusieurs origines qui sont presentees dans (Caldwell & Hendricks, 1997).

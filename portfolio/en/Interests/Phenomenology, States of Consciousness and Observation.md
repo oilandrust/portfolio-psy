@@ -1,6 +1,7 @@
 ---
 id: 4
 thumbnail: media/focus.png
+subtitle: '"Though, Sensation, Thought, Image, Emotion, ..."'
 ---
 It is in my view no accident that mindfulness is making its way into psychotherapy. Indeed, the two disciplines (East-West) are engaged in understanding human experience, how it produces suffering and how we can reduce it.
 

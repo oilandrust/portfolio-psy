@@ -1,7 +1,7 @@
 ---
 thumbnail: media/mindfulness.png
 id: 3
-subtitle: Ou Psychothérapie en Pleine Conscience ?
+subtitle: Et quand tu es en contact avec ca, qu'est-ce que tu remarques?
 ---
 Depuis la troisième vague des TCC, la pleine conscience a été largement adoptée comme un des outils pour la psychothérapie. On a pu montrer que la pratique de la pleine conscience ou Mindfulness avait des effets positifs sur la régulation émotionnelle, et en TCC, ces outils sont utilisés pour permettre aux patients de prendre du recul par rapport à leur expérience, de nommer leurs émotions, d'accepter l'inconfort et de reconnaître leurs pensées comme ce qu'elles sont: des pensées et non des réalités.
 

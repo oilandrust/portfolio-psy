@@ -1,7 +1,7 @@
 ---
 thumbnail: media/mindfulness.png
 id: 3
-subtitle: Or Psychotherapy in Mindfulness?
+subtitle: And when you are in contact with that, what do you notice?
 ---
 Since the third wave of CBT, mindfulness has been widely adopted as one of the tools for psychotherapy. It has been shown that the practice of mindfulness has positive effects on emotional regulation, and in CBT, these tools are used to allow patients to step back from their experience, to name their emotions, to accept discomfort and to recognize their thoughts as what they are: thoughts and not realities.
 
