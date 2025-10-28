@@ -19,7 +19,7 @@ const Hero = ({ profile, quotes = [] }) => {
       <div className='container'>
         <div className='hero-profile'>
           <img
-            src='/portfolio-psy/data/profile/IMG-20250419-WA0003 (2).jpg'
+            src='/data/profile/IMG-20250419-WA0003 (2).jpg'
             alt={profile?.title || 'John Doe'}
           />
         </div>

@@ -80,7 +80,7 @@ const ReadingDetail = ({ readings }) => {
           marginBottom: '1rem'
         }}>
           <img 
-            src={reading.thumbnail || '/portfolio-psy/data/readings/placeholder.jpg'} 
+            src={reading.thumbnail || '/data/readings/placeholder.jpg'} 
             alt={reading.title}
             style={{
               width: '200px',

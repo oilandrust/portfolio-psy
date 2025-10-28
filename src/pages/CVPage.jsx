@@ -21,7 +21,6 @@ const CVPage = () => {
 
         // Use absolute paths that work from any route
         const cvFetchStrategies = [
-          '/portfolio-psy/data/portfolio.json',
           '/data/portfolio.json',
           './data/portfolio.json',
           'data/portfolio.json',
@@ -231,7 +230,7 @@ const CVPage = () => {
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
               }}>
                 <img
-                  src='/portfolio-psy/data/profile/IMG-20250419-WA0003 (2).jpg'
+                  src='/data/profile/IMG-20250419-WA0003 (2).jpg'
                   alt="Olivier Rouiller"
                   style={{ 
                     width: '100%', 
@@ -297,7 +296,7 @@ const CVPage = () => {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'flex-end' }}>
                 <a 
-                  href="https://oilandrust.github.io/portfolio-psy/"
+                  href="https://www.olivier-psy.fr/"
                   style={{ 
                     color: 'var(--primary)', 
                     textDecoration: 'none',

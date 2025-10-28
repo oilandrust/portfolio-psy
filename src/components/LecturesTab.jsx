@@ -59,7 +59,7 @@ const LecturesTab = ({ readings = [] }) => {
               }}
             >
               <img 
-                src={reading.thumbnail || '/portfolio-psy/data/readings/placeholder.jpg'} 
+                src={reading.thumbnail || '/data/readings/placeholder.jpg'} 
                 alt={reading.title}
                 style={{
                   height: '200px',
