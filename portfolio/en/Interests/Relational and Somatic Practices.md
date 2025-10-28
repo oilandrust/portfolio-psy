@@ -11,7 +11,7 @@ These practices, which can be affiliated with active listening or non-violent co
 
 They are interesting for me not only because they have brought me in my process of maturity and healing, but also because they have the potential to transform how we are in relationship in society and bring out certain relational qualities from the closed frame of psychotherapy. They are also for me a playground to practice my relational and therapeutic skills.
 
-My goal here is not to describe these practices precisely but to give a taste of 3 main practices: Circling, Authentic Relating and finally somatic practices which encompass a variety of practices.
+My goal here is not to describe these practices precisely but to give a taste of 3 main practices: Circling (BENETEAU, 2021), Authentic Relating (Kestano, 2022) or Authentic Relations and finally somatic practices which encompass a variety of practices.
 
 ### Circling, relational mindfulness
 
@@ -23,6 +23,8 @@ So for me it is a relational or group mindfulness.
 
 So one could say "Being here with you, I notice a desire to speak and take space, but also shame. And now that I'm speaking I feel my hands becoming sweaty but seeing you attentive, I notice that I relax a bit", someone could continue by revealing how this sharing impacts them or by asking questions to learn more about this experience.
 
-### Authentic Relating
+**Bibliography**
 
-### Somatic Practices
+BENETEAU, M. (2021). *CIRCLING AND AUTHENTIC RELATING PRACTICE GUIDE (2ND EDITION) : Learn the group conversation... practice that will transform all of your*. ADMIT HUB REF SERVICE PR.
+
+Kestano, R. (2022). *Authentic relating : A guide to rich, meaningful, nourishing relationships*. ART International.

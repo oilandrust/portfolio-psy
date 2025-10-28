@@ -11,7 +11,7 @@ Ces pratiques, qui peuvent être affiliées à l'écoute active ou la communicat
 
 Elles sont intéressantes pour moi non seulement car elles m'ont apporté dans mon processus de maturité et de guérison, mais aussi car elles ont le potentiel de transformer la manière dont on est en relation dans la société et fait sortir certaines qualités relationnelles du cadre fermé de la psychothérapie. Elles sont aussi pour moi un terrain de jeu pour pratiquer mes compétences relationnelles et thérapeutiques.
 
-Mon but ici n'est pas de décrire ces pratiques de manière précise mais de donner un goût de 3 principales pratiques : Le Circling, l'Authentic Relating ou Relations Authentiques et enfin les pratiques somatiques qui englobent une variété de pratiques.
+Mon but ici n'est pas de décrire ces pratiques de manière précise mais de donner un goût de 3 principales pratiques : Le Circling (BENETEAU, 2021), l'Authentic Relating (Kestano, 2022) ou Relations Authentiques et enfin les pratiques somatiques qui englobent une variété de pratiques.
 
 ### Le Circling, pleine conscience relationnelle
 
@@ -23,6 +23,8 @@ Ainsi pour moi il s'agit d'une pleine conscience relationnelle ou de groupe.
 
 Ainsi on pourra dire "En étant là avec vous, je remarque une envie de parler et de prendre de l'espace, mais aussi de la honte. Et maintenant que je parle je sens mes mains qui deviennent moites mais en vous voyant attentifs, je remarque que je me détends un peu", quelqu'un pourra continuer en révélant comment ce partage l'impacte ou bien en posant des questions pour en savoir plus sur cette expérience.
 
-### Authentic Relating
+**Bibliographie**
 
-### Pratiques Somatiques
+BENETEAU, M. (2021). *CIRCLING AND AUTHENTIC RELATING PRACTICE GUIDE (2ND EDITION) : Learn the group conversation... practice that will transform all of your*. ADMIT HUB REF SERVICE PR.
+
+Kestano, R. (2022). *Authentic relating : A guide to rich, meaningful, nourishing relationships*. ART International.

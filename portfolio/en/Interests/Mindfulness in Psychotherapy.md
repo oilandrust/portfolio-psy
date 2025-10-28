@@ -13,4 +13,10 @@ This "two-person" mindfulness was glimpsed by Freud in free association. By free
 
 Moreover, the contribution of the therapist's presence allows the patient to have more capacity to be in contact with their experience. The therapist operating as the caregiver who helps the child to regulate their emotions.
 
-This approach to therapy, notably proposed by Hakomi, Daniel Siegel, allows for the study of the psycho-corporeal apparatus as Freud might have dreamed, not in analysis after the fact but in the present embodied moment. This also gives access to modified states of consciousness and neuroplasticity that allows rapid transformation of unconscious material, limiting schemas and working models of attachment.
+This approach to therapy, notably proposed by Hakomi (Kurtz 2015), Daniel Siegel (Siegel 2007), allows for the study of the psycho-corporeal apparatus as Freud might have dreamed, not in analysis after the fact but in the present embodied moment. This also gives access to modified states of consciousness and neuroplasticity that allows rapid transformation of unconscious material, limiting schemas and working models of attachment.
+
+**Bibliography**
+
+Kurtz, R. (2015). *Body-Centered Psychotherapy : The Hakomi Method*. LifeRhythm.
+
+Siegel, D. J. (2007). *The Mindful Brain*. W. W. Norton & Company, Incorporated.
