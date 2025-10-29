@@ -8,15 +8,12 @@ const Footer = () => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        fontSize: '0.9rem',
+        fontSize: '0.7rem',
         color: '#666'
       }}>
         <div>© Olivier Rouiller</div>
-        <div style={{ textAlign: 'center' }}>
-          Ecrit en Francais, traduit en Englais avec IA.
-        </div>
-        <div>
-          Powered by <a href="https://www.lefolio.fr" target="_blank" rel="noopener noreferrer">lefolio.fr</a>
+        <div style={{ textAlign: 'right' }}>
+          Ecrit en Francais, traduit en Englais avec l'IA.
         </div>
       </div>
     </footer>
