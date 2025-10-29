@@ -5,7 +5,7 @@ subtitle: '"Pensée, Sensation, Pensée, Image, Emotion, ..."'
 ---
 Ce n'est selon moi pas un hasard si la pleine conscience fait son chemin dans la psychothérapie. En effet, les deux disciplines (Est-Ouest) s'emploient à comprendre l'expérience humaine, comment elle produit de la souffrance et comment on peut la réduire.
 
-Au cœur de la pleine conscience est d'un certain point de vue une approche phénoménologique: *quels sont les objets de notre expérience*. En observant le contenu de notre expérience on distingue ainsi sensations, pensées et émotions. Dans la pratique de l'**insight meditation** (Kornfield, 1993), on s'emploie simplement à noter ces phénomènes: "tiens, une pensée", "une émotion", "une sensation corporelle", ... On peut étendre ces classifications et remarquer des phénomènes plus subtils: une intention, un souvenir, une image, un souvenir d'une émotion. Ou bien s'intéresser aux qualités des phénomènes: "cette tristesse est ressentie dans le corps, de là, à là, elle me fait penser à quelque chose de mouillé et froid."
+Au cœur de la pleine conscience est d'un certain point de vue une approche phénoménologique: *quels sont les objets de notre expérience*. En observant le contenu de notre expérience on distingue ainsi sensations, pensées et émotions. Dans la pratique de l'**insight meditation** (Kornfield, 1993; Young, 2018), on s'emploie simplement à noter ces phénomènes: "tiens, une pensée", "une émotion", "une sensation corporelle", ... On peut étendre ces classifications et remarquer des phénomènes plus subtils: une intention, un souvenir, une image, un souvenir d'une émotion. Ou bien s'intéresser aux qualités des phénomènes: "cette tristesse est ressentie dans le corps, de là, à là, elle me fait penser à quelque chose de mouillé et froid."
 
 On peut encore aller dans la direction opposée et noter nos états de conscience: d'abord grossiers: éveil, réveil, somnolence. Quand on continue à déconstruire l'expérience on peut noter d'autres aspects comme *le sens d'être séparé*, ou bien *le sens de ne faire qu'un avec quelque chose* (Non-dualisme), le sens d'être identifié avec ses pensées ou au contraire la désidentification avec celles-ci (Martin, 2019).
 
@@ -22,3 +22,5 @@ Avoir exploré pour soi la diversité des expériences humaines et s'entraîner 
 Martin, J. A. (2019). *The finders*. Integration Press.
 
 Kornfield, J. (1993). *A path with heart : A guide through the perils and promises of spiritual life*. Bantam Bks.
+
+Young, S. (2018). *The science of enlightenment : How meditation works*. Sounds True.

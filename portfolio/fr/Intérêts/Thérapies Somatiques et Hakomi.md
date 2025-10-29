@@ -12,9 +12,9 @@ Eugène Gendlin était probablement l'un des premiers à mettre l'accent sur *le
 
 Plus récemment, les sensations corporelles ont reçu plus d'attention grâce aux découvertes de Damasio et de sa **Théorie des Marqueurs Somatiques** (Bechara & Damasio, 2005). On a maintenant montré que l'intégration des sensations corporelles a un impact sur les comportements, et le traitement des émotions. Il est probable que les approches somatiques vont avoir un intérêt croissant de la part des TCC.
 
-Une autre influence majeure est la **Théorie Polyvagale** de Steven Porges (Porges, 2011), qui décrit les différents modes d'activation du système nerveux autonome, avec les branches sympathiques et parasympathiques du système de nerfs vagaux.
-Pour simplifier, il s'agit des modes *Fight*, *Flight*, *Freeze*.
-Peter Levine fut l'un des premiers à étudier les systèmes de régulation du système nerveux chez les animaux en conditions de stress. Il a ensuite appliqué ces observations pour sortir les patients de stress chronique lié, suivant son modèle, à un blocage du système nerveux autonome en mode Freeze. Ceci donna lieu à la thérapie **Somatic Experiencing** (Levine, 1997) qui est reconnue dans certains milieux comme une méthode efficace pour gérer le psychotrauma.
+Une autre influence majeure est la **Théorie Polyvagale** de Steven Porges (Porges, 2011), qui décrit les différents modes d'activation du système nerveux autonome, avec les branches sympathiques et parasympathiques du système de nerfs vagaux. Pour simplifier, il s'agit des modes *Fight*, *Flight*, *Freeze*.
+
+Peter Levine fut l'un des premiers à étudier les systèmes de régulation du système nerveux chez les animaux en conditions de danger. Il a ensuite appliqué ces observations pour sortir les patients de stress chronique lié, suivant son modèle, à un blocage du système nerveux autonome en mode Freeze. Ceci donna lieu à la thérapie **Somatic Experiencing** (Levine, 1997) qui est reconnue dans certains milieux comme une méthode efficace pour gérer le psychotrauma. Il éxiste déja des preuves de son efficacite pour traiter les **TSPT** (Brom et al. 2017), meme si plus de rechercher est nécessaire.
 
 On peut élargir les méthodes comme Somatic Experiencing pour prendre en charge non seulement les traumas de choc, comme les accidents, les violences, etc. mais aussi les traumatismes du développement où l'enfant est exposé à des situations de stress chroniques ou bien des conditions plus bénignes mais qui conduisent à une atrophie du *Self*, des limites poreuses, etc.
 
@@ -29,13 +29,15 @@ Premièrement, il y a une grande proximité émotionnelle entre le thérapeute e
 Une fois cette "bulle thérapeutique" établie, et suivant soit les observations du thérapeute soit un problème présenté par le client, le processus thérapeutique peut commencer. L'idée est d'étudier en pleine conscience comment le dit problème survient dans le patient. Quelles sont les pensées, émotions, sensations, mouvements, postures qui sont manifestes, et quels sont les mécanismes inconscients, croyances, apprentissages, traumatismes qui sont sous-jacents?
 En étudiant les phénomènes manifestes en pleine conscience et en immergeant le client dans cette expérience, on peut accéder aux structures plus inconscientes et les transformer.
 
-Voici un exemple commenté de session de thérapie Hakomi par le fondateur de la méthode, Ron Kurtz.
+Voici un exemple commenté de session de thérapie Hakomi par le fondateur de la méthode, Ron Kurtz ou un geste est utilise comme point d'entree pour l'access d'un evenement traumatique et la transformation de la memoire/croyance associee.
 
 ![](https://www.youtube.com/watch?v=Sm6ayJTG-tM)
 
 **Bibliographie**
 
-Bechara, A., & Damasio, A. R. (2005). The somatic marker hypothesis : A neural theory of economic decision. *Games and Economic Behavior*, *52*(2), 336‑372. [https://doi.org/10.1016/j.geb.2004.06.010](https://doi.org/10.1016/j.geb.2004.06.010)
+Bechara, A., & Damasio, A. R. (2005). The somatic marker hypothesis : A neural theory of economic decision. *Games and Economic Behavior*, *52*(2), 336‑372.
+
+Brom, D., Stokar, Y., Lawi, C., Nuriel‐Porat, V., Ziv, Y., Lerner, K., & Ross, G. (2017). Somatic Experiencing for Posttraumatic Stress Disorder : A Randomized Controlled Outcome Study. _Journal of Traumatic Stress_, _30_(3), 304‑312.
 
 Caldwell, C., & Hendricks, K. (Éds.). (1997). *Getting in touch : The guide to new body-centered therapies; \[founders and leaders in the field tell how Hakomi, Dreambodywork, The Moving Circle and other techniques can help you\]* (1. Quest ed). Quest Books.
 
