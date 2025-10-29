@@ -6,7 +6,7 @@ import React from 'react';
  * - Headers: # H1, ## H2, ### H3
  * - Lists: - item
  * - Bold text: **text**
- * - Italic text: *text*
+ * - Italic text: *text* or _text_
  * - Links: [text](url)
  * - YouTube embeds: ![](https://www.youtube.com/watch?v=VIDEO_ID)
  * @param {string} text - The markdown text to parse
@@ -67,7 +67,7 @@ export const parseMarkdown = (text, fallbackText = 'Aucune information disponibl
 
     // Process YouTube embeds, links, bold text, and italic text in the same pass
     // Order matters: YouTube embeds first, then links, then bold, then italic (to avoid conflicts)
-    const combinedRegex = /(!\[([^\]]*)\]\(([^)]+)\)|\[([^\]]+)\]\(([^)]+)\)|\*\*(.*?)\*\*|\*([^*]+)\*)/g;
+    const combinedRegex = /(!\[([^\]]*)\]\(([^)]+)\)|\[([^\]]+)\]\(([^)]+)\)|\*\*(.*?)\*\*|\*([^*]+)\*|_(.+?)_)/g;
     
     while ((match = combinedRegex.exec(line)) !== null) {
       // Add text before the match
@@ -115,11 +115,18 @@ export const parseMarkdown = (text, fallbackText = 'Aucune information disponibl
             {match[6]}
           </strong>
         );
-      } else if (match[0].startsWith('*') && match[0].endsWith('*') && match[0].length > 2) {
+      } else if (match[0].startsWith('*') && match[0].endsWith('*') && match[0].length > 2 && !match[0].startsWith('**')) {
         // It's italic text *text* (but not **bold**)
         parts.push(
           <em key={`italic-${elementIndex}-${match.index}`}>
             {match[7]}
+          </em>
+        );
+      } else if (match[0].startsWith('_') && match[0].endsWith('_') && match[0].length > 2) {
+        // It's italic text _text_
+        parts.push(
+          <em key={`italic-${elementIndex}-${match.index}`}>
+            {match[8]}
           </em>
         );
       }
