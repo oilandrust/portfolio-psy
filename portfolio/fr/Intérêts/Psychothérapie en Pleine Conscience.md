@@ -9,13 +9,15 @@ Cependant je voudrais mettre en avant que ces apports, certes importants ne sont
 
 Dans les psychothérapies en pleine conscience, on n'utilise pas la mindfulness comme outil de gestion du stress que les patients peuvent apprendre et utiliser eux-mêmes, mais on procède à la psychothérapie même dans un état de pleine conscience.
 
-Cette pleine conscience "à deux" fut entrevue par Freud dans l'association libre. En associant les idées librement et en remarquant simplement ce qui survient, pensées, émotions, etc., on pratique en effet la mindfulness.
+Cette pleine conscience "à deux" fut entrevue par Freud dans l'association libre (Freud 1895). En associant les idées librement et en remarquant simplement ce qui survient, pensées, émotions, etc., on pratique en effet la mindfulness.
 
 Qui plus est l'apport de la présence du thérapeute permet de donner plus de capacité au patient d'être en contact avec son expérience. Le thérapeute opérant comme le caregiver qui aide l'enfant à réguler ses émotions.
 
 Cette approche de la thérapie, notamment proposée par Hakomi (Kurtz 2015), Daniel Siegel (Siegel 2007), permet l'étude de l'appareil psycho-corporel comme Freud en aurait rêvé, non dans l'analyse après coup mais dans l'instant présent incarné. Cela donne aussi accès à des états modifiés de conscience et une neuroplasticité qui permet une transformation rapide du matériel inconscient, des schémas limitants et des *working models* d'attachement (Rhonda 2020).
 
 **Bibliographie**
+
+Freud, S., & Breuer, J. (1895/1956). _Études sur l’hystérie_ (J. Laplanche, Trad.). Presses Universitaires de France.
 
 Kurtz, R. (2015). *Body-Centered Psychotherapy : The Hakomi Method*. LifeRhythm.
 

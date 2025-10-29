@@ -17,7 +17,7 @@ Mon but ici n'est pas de décrire ces pratiques de manière précise mais de don
 
 Le Circling, aussi connu en Europe sous le nom Transformational Connection est l'une des pratiques phares.
 
-L'exercice dans le Circling c'est d'explorer, en groupe, comment est notre expérience dans l'instant présent. Il s'agit d'une part de révéler sa propre expérience mais aussi de s'intéresser à l'expérience de l'autre et ce ici et maintenant, non dans la narration d'une expérience passée ou d'une expérience de vie générale.
+L'exercice dans le Circling c'est d'explorer, en groupe, comment est notre expérience dans l'instant présent. Il s'agit d'une part de révéler sa propre expérience mais aussi de s'intéresser à l'expérience de l'autre et ce ici et maintenant (Rouiller 2025), non dans la narration d'une expérience passée ou d'une expérience de vie générale.
 
 Ainsi pour moi il s'agit d'une pleine conscience relationnelle ou de groupe.
 
@@ -28,3 +28,5 @@ Ainsi on pourra dire "En étant là avec vous, je remarque une envie de parler e
 Beneteau, M. (2021). *Circling and authentic relating practice guide (2nd edition) : Learn the group conversation... practice that will transform all of your*. ADMIT HUB REF SERVICE PR.
 
 Kestano, R. (2022). *Authentic relating : A guide to rich, meaningful, nourishing relationships*. ART International.
+
+Rouiller, O. (2025). *Les 5 principes du Circling*. (Re)Connected. [https://www.re-connected.fr/2025/02/28/les-5-principes-du-circling/](https://www.re-connected.fr/2025/02/28/les-5-principes-du-circling/?utm_source=chatgpt.com)

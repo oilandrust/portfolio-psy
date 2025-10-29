@@ -17,7 +17,7 @@ My goal here is not to describe these practices precisely but to give a taste of
 
 Circling, also known in Europe as Transformational Connection, is one of the flagship practices.
 
-The exercise in Circling is to explore, in a group, what our experience is in the present moment. It is about both revealing one's own experience and also being interested in the other's experience, here and now, not in the narration of a past experience or a general life experience.
+The exercise in Circling is to explore, in a group, what our experience is in the present moment. It is about both revealing one's own experience and also being interested in the other's experience, here and now (Rouiller 2025), not in the narration of a past experience or a general life experience.
 
 So for me it is a relational or group mindfulness.
 
@@ -28,3 +28,5 @@ So one could say "Being here with you, I notice a desire to speak and take space
 BENETEAU, M. (2021). *CIRCLING AND AUTHENTIC RELATING PRACTICE GUIDE (2ND EDITION) : Learn the group conversation... practice that will transform all of your*. ADMIT HUB REF SERVICE PR.
 
 Kestano, R. (2022). *Authentic relating : A guide to rich, meaningful, nourishing relationships*. ART International.
+
+Rouiller, O. (2025). *The 5 principles of Circling*. (Re)Connected. [https://www.re-connected.fr/2025/02/28/les-5-principes-du-circling/](https://www.re-connected.fr/2025/02/28/les-5-principes-du-circling/)
