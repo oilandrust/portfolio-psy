@@ -202,21 +202,27 @@ function buildPortfolioForLanguage(lang, paths) {
     return null;
   }
   
-  const profileData = readMarkdownFile(paths.mainAboutFile);
+  const profileInfoData = readMarkdownFile(paths.mainAboutFile);
   
-  if (!profileData) {
+  if (!profileInfoData) {
     console.error('❌ Failed to read about data');
     return null;
   }
   
   // Set default values if not found
-  if (!profileData.title) {
-    profileData.title = 'Olivier Rouiller';
+  if (!profileInfoData.title) {
+    profileInfoData.title = 'Olivier Rouiller';
   }
-  if (!profileData.subtitle) {
-    profileData.subtitle = lang === 'en' ? 'L3 Psychology Student' : 'Étudiant en L3 de Psychologie';
+  if (!profileInfoData.subtitle) {
+    profileInfoData.subtitle = lang === 'en' ? 'L3 Psychology Student' : 'Étudiant en L3 de Psychologie';
   }
-  console.log(`  ✅ About loaded: ${profileData.title}`);
+  console.log(`  ✅ About loaded: ${profileInfoData.title}`);
+
+  const profileData = readMarkdownFile(paths.aboutFile);
+  if (!profileData) {
+    console.error('❌ Failed to read about data');
+    return null;
+  }
 
   // Read interests data
   console.log('🔍 Scanning for interests...');
@@ -405,7 +411,7 @@ function buildPortfolioForLanguage(lang, paths) {
     // Build portfolio object
     const portfolio = {
       profile: {
-        ...profileData,
+        ...profileInfoData,
         about: profileData.content
       },
       quotes: quotes,

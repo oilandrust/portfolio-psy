@@ -35,19 +35,19 @@ Voici un exemple commenté de session de thérapie Hakomi par le fondateur de la
 
 **Bibliographie**
 
-Bechara, A., & Damasio, A. R. (2005). The somatic marker hypothesis : A neural theory of economic decision. _Games and Economic Behavior_, _52_(2), 336‑372. [https://doi.org/10.1016/j.geb.2004.06.010](https://doi.org/10.1016/j.geb.2004.06.010)
+Bechara, A., & Damasio, A. R. (2005). The somatic marker hypothesis : A neural theory of economic decision. *Games and Economic Behavior*, *52*(2), 336‑372. [https://doi.org/10.1016/j.geb.2004.06.010](https://doi.org/10.1016/j.geb.2004.06.010)
 
 Caldwell, C., & Hendricks, K. (Éds.). (1997). *Getting in touch : The guide to new body-centered therapies; \[founders and leaders in the field tell how Hakomi, Dreambodywork, The Moving Circle and other techniques can help you\]* (1. Quest ed). Quest Books.
 
 Heller, L. (avec LaPierre, A.). (2012). *Healing Developmental Trauma : How Early Trauma Affects Self-Regulation, Self-Image, and the Capacity for Relationship*. North Atlantic Books.
 
-Gendlin, E. T. (1981). _Focusing_ (2nd ed., new rev. instructions). Bantam Books.
+Gendlin, E. T. (1981). *Focusing* (2nd ed., new rev. instructions). Bantam Books.
 
 Kurtz, R. (2015). *Body-Centered Psychotherapy : The Hakomi Method*. LifeRhythm.
 
 Levine, P. A. (avec Frederick, A.). (1997). *Waking the Tiger : The Innate Capacity to Transform Overwhelming Experiences* (1st ed). North Atlantic Books.
 
-Ogden, P. (avec Fisher, J.). (2015). _Sensorimotor Psychotherapy_. W. W. Norton & Company, Incorporated.
+Ogden, P. (avec Fisher, J.). (2015). *Sensorimotor Psychotherapy*. W. W. Norton & Company, Incorporated.
 
 Porges, S. W. (2011). *The Polyvagal Theory*. W. W. Norton & Company, Incorporated.
 
