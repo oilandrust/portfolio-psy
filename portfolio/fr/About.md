@@ -1,2 +1,4 @@
-# Olivier Rouiller
-## Étudiant en L3 de Psychologie et Psychopraticien en Formation
+---
+title: Olivier Rouiller
+subtitle: Étudiant en L3 de Psychologie et Psychopraticien en Therapies Somatiques en Formation
+---

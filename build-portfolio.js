@@ -20,6 +20,7 @@ function getPathsForLanguage(lang) {
     experiencesDir: `${langDir}/${experienceSubfolder}`,
     readingsDir: `${langDir}/Lectures`,
     aboutFile: `${langDir}/${aboutSubfolder}/${aboutFile}`,
+    mainAboutFile: `${langDir}/About.md`,
     quotesFile: `${langDir}/quotes.json`,
     formationsFile: `${langDir}/Formations/Formations.md`,
     cvFile: `${langDir}/CV.md`
@@ -201,7 +202,7 @@ function buildPortfolioForLanguage(lang, paths) {
     return null;
   }
   
-  const profileData = readMarkdownFile(paths.aboutFile);
+  const profileData = readMarkdownFile(paths.mainAboutFile);
   
   if (!profileData) {
     console.error('❌ Failed to read about data');

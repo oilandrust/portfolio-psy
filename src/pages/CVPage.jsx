@@ -8,7 +8,34 @@ const CVPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+  const [currentLang, setCurrentLang] = useState('fr');
   const cvDocumentRef = useRef(null);
+
+  // Detect language from URL hash or localStorage
+  useEffect(() => {
+    // Check URL hash for language parameter (e.g., #/cv?lang=en)
+    const hash = window.location.hash;
+    let detectedLang = 'fr';
+    
+    // Try to get from URL
+    if (hash.includes('lang=en') || hash.includes('lang=eng')) {
+      detectedLang = 'en';
+    } else if (hash.includes('lang=fr')) {
+      detectedLang = 'fr';
+    } else {
+      // Try to get from localStorage (set by language switcher)
+      const savedLang = localStorage.getItem('portfolio-lang');
+      if (savedLang === 'en' || savedLang === 'fr') {
+        detectedLang = savedLang;
+      } else {
+        // Fallback to browser language
+        const browserLang = navigator.language || navigator.userLanguage;
+        detectedLang = browserLang.startsWith('en') ? 'en' : 'fr';
+      }
+    }
+    
+    setCurrentLang(detectedLang);
+  }, []);
 
   useEffect(() => {
     const fetchCVData = async () => {
@@ -40,10 +67,11 @@ const CVPage = () => {
             
             // Handle both bilingual format (with fr/en) and legacy format
             if (data && data.fr && data.en) {
-              // Bilingual format - default to French
-              setPortfolio(data.fr);
+              // Bilingual format - use detected language
+              const langData = data[currentLang] || data.fr;
+              setPortfolio(langData);
               dataLoaded = true;
-              console.log(`Successfully loaded CV data from: ${strategy}`);
+              console.log(`Successfully loaded CV data (${currentLang}) from: ${strategy}`);
               break;
             } else if (data && data.cv) {
               // Legacy format
@@ -73,7 +101,7 @@ const CVPage = () => {
     };
 
     fetchCVData();
-  }, []);
+  }, [currentLang]);
 
   const generatePDF = async () => {
     if (!cvDocumentRef.current) return;
@@ -82,7 +110,7 @@ const CVPage = () => {
     
     try {
       const opt = {
-        filename: 'CV_Olivier_Rouiller.pdf',
+        filename: currentLang === 'en' ? 'CV_Olivier_Rouiller_EN.pdf' : 'CV_Olivier_Rouiller.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { 
           useCORS: true,
@@ -98,7 +126,9 @@ const CVPage = () => {
       await html2pdf().set(opt).from(cvDocumentRef.current).save();
     } catch (error) {
       console.error('Error generating PDF:', error);
-      alert('Erreur lors de la génération du PDF. Veuillez réessayer.');
+      alert(currentLang === 'en' 
+        ? 'Error generating PDF. Please try again.' 
+        : 'Erreur lors de la génération du PDF. Veuillez réessayer.');
     } finally {
       setIsGeneratingPDF(false);
     }
@@ -146,12 +176,12 @@ const CVPage = () => {
         {isGeneratingPDF ? (
           <>
             <span>⏳</span>
-            Génération...
+            {currentLang === 'en' ? 'Generating...' : 'Génération...'}
           </>
         ) : (
           <>
             <span>📄</span>
-            Télécharger PDF
+            {currentLang === 'en' ? 'Download PDF' : 'Télécharger PDF'}
           </>
         )}
       </button>
@@ -193,7 +223,7 @@ const CVPage = () => {
         }}
       >
         <span>←</span>
-        Retour au portfolio
+        {currentLang === 'en' ? 'Back to portfolio' : 'Retour au portfolio'}
       </a>
 
       <div 
@@ -254,7 +284,9 @@ const CVPage = () => {
                   color: 'var(--text-secondary)',
                   lineHeight: '1.3'
                 }}>
-                  Étudiant en L3 de Psychologie et Psychopraticien en Formation
+                  {currentLang === 'en' 
+                    ? 'L3 Psychology Student and Psychotherapist in Training'
+                    : 'Étudiant en L3 de Psychologie et Psychopraticien en Formation'}
                 </p>
               </div>
             </div>
@@ -324,7 +356,7 @@ const CVPage = () => {
         }}>
           {loading ? (
             <div style={{ textAlign: 'center', padding: '2rem' }}>
-              <p>Chargement du CV...</p>
+              <p>{currentLang === 'en' ? 'Loading CV...' : 'Chargement du CV...'}</p>
             </div>
           ) : error ? (
             <div style={{ 
@@ -336,10 +368,12 @@ const CVPage = () => {
               color: '#991b1b'
             }}>
               <p style={{ margin: '0 0 0.5rem 0', fontWeight: 'bold' }}>
-                ⚠️ Erreur lors du chargement du CV
+                ⚠️ {currentLang === 'en' ? 'Error loading CV' : 'Erreur lors du chargement du CV'}
               </p>
               <p style={{ margin: 0, fontSize: '0.875rem' }}>
-                Impossible de charger le contenu du CV. Veuillez réessayer plus tard.
+                {currentLang === 'en' 
+                  ? 'Unable to load CV content. Please try again later.'
+                  : 'Impossible de charger le contenu du CV. Veuillez réessayer plus tard.'}
               </p>
             </div>
           ) : (

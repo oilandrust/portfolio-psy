@@ -69,7 +69,11 @@ function App() {
     formations: ''
   }), []);
 
-  const [currentLang, setCurrentLang] = useState('fr');
+  // Initialize language from localStorage or default to 'fr'
+  const [currentLang, setCurrentLang] = useState(() => {
+    const savedLang = localStorage.getItem('portfolio-lang');
+    return (savedLang === 'en' || savedLang === 'fr') ? savedLang : 'fr';
+  });
   const [portfolioData, setPortfolioData] = useState({ fr: fallbackPortfolio, en: fallbackPortfolio });
   const [portfolio, setPortfolio] = useState(fallbackPortfolio);
   const [interests, setInterests] = useState(fallbackPortfolio.interests);
@@ -142,6 +146,7 @@ function App() {
   // Function to switch language
   const switchLanguage = useCallback((lang) => {
     setCurrentLang(lang);
+    localStorage.setItem('portfolio-lang', lang);
     const langData = portfolioData[lang] || portfolioData.fr;
     setPortfolio(langData);
     setInterests(langData.interests);
