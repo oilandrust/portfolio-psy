@@ -84,8 +84,7 @@
   transition: all 0.2s ease;
 }
 
-.formation-item:hover,
-.experience-item:hover {
+.formation-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-color: var(--primary);
@@ -132,8 +131,7 @@
 
 .experience-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border-color: var(--primary);
+  /* No border or box-shadow changes */
 }
 
 .experience-header {

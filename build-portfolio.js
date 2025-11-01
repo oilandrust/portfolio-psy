@@ -244,6 +244,12 @@ function buildPortfolioForLanguage(lang, paths) {
         const markdownPath = path.join(paths.interestsDir, file);
         const interestData = readMarkdownFile(markdownPath);
         
+        // Skip if published is explicitly false
+        if (interestData && interestData.published === "false") {
+          console.log(`  ⏭️  Skipped (published: false): ${file}`);
+          return;
+        }
+        
         if (interestData) {
           // Create output directory for this interest
           const interestName = path.basename(file, '.md');
@@ -300,6 +306,13 @@ function buildPortfolioForLanguage(lang, paths) {
             console.log(`📄 Processing experience: ${file}`);
 
             const experienceData = readMarkdownFile(experiencePath);
+            
+            // Skip if published is explicitly false
+            if (experienceData && experienceData.published === "false") {
+              console.log(`  ⏭️  Skipped (published: false): ${file}`);
+              return;
+            }
+            
             if (experienceData) {
               const experience = {
                 id: experienceId++,
@@ -363,6 +376,13 @@ function buildPortfolioForLanguage(lang, paths) {
             console.log(`📄 Processing reading: ${file}`);
 
             const readingData = readMarkdownFile(readingPath);
+            
+            // Skip if published is explicitly false
+            if (readingData && readingData.published === "false") {
+              console.log(`  ⏭️  Skipped (published: false): ${file}`);
+              return;
+            }
+            
             if (readingData) {
               // Handle thumbnail image
               let thumbnailPath = null;
