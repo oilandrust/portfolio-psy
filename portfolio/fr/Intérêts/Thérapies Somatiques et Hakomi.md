@@ -5,7 +5,9 @@ subtitle: Qu'est-ce que tu ressens dans ton corps quand tu penses à ça?
 ---
 # Thérapies Somatiques
 
-Christine Caldwell, fondatrice du Department de Psychologie Somatique de l'Universite de Naropa à Boulder, Colorado retrace l'histoire des **méthodes orientées vers le corps en Psychanalyse** (Caldwell & Hendricks, 1997), en passant par Freud, Josef Breuer qui se concentrait sur le systeme nerveux, Ferenczi qui demandais a ses patients de s'abstenir de certains mouvements répétitifs pour exacerber la charge émotionnels qu'ils dissipaient, puis Reich qui avait identifie les névroses comme des armures de characteres qui se manifestaient par des tensions de certaines parties du corps.
+Christine Caldwell, fondatrice du Département de Psychologie Somatique de l'Université de Naropa à Boulder, Colorado retrace l'histoire des méthodes orientées vers le corps (Caldwell & Hendricks, 1997).
+
+Elle retrace notamment les origines des thérapies somatiques dans la Psychanalyse: en commençant par Freud, Josef Breuer qui se concentrait sur le système nerveux, Ferenczi qui demandait à ses patients de s'abstenir de certains mouvements répétitifs pour exacerber la charge émotionnels qu'ils dissipaient, puis Reich qui avait identifié les névroses comme des armures de caractères qui se manifestaient par des tensions de certaines parties du corps.
 
 Eugène Gendlin était probablement l'un des premiers à mettre l'accent sur *le ressenti des sensations corporelles* dans sa psychothérapie **Focusing** (Gendlin 1981). Le Focusing consiste à porter son attention sur les sensations corporelles associées à un problème ou une croyance et à laisser des symboles émerger. C'est déjà une exploration de l'inconscient par les sensations corporelles.
 
@@ -13,11 +15,13 @@ Plus récemment, les sensations corporelles ont reçu plus d'attention grâce au
 
 Une autre influence majeure est la **Théorie Polyvagale** de Steven Porges (Porges, 2011), qui décrit les différents modes d'activation du système nerveux autonome, avec les branches sympathiques et parasympathiques du système de nerfs vagaux. Pour simplifier, il s'agit des modes *Fight*, *Flight*, *Freeze*.
 
-Peter Levine fut l'un des premiers à étudier les systèmes de régulation du système nerveux chez les animaux en conditions de danger. Il a ensuite appliqué ces observations pour sortir les patients de stress chronique lié, suivant son modèle, à un blocage du système nerveux autonome en mode Freeze. Ceci donna lieu à la thérapie **Somatic Experiencing** (Levine, 1997) qui est reconnue dans certains milieux comme une méthode efficace pour gérer le psychotrauma. Il éxiste déja des preuves de son éfficacite pour traiter les **TSPT** (Brom et al. 2017), meme si plus de rechercher est nécessaire.
+Peter Levine fut l'un des premiers à étudier les systèmes de régulation du système nerveux chez les animaux en conditions de danger. Il a ensuite appliqué ces observations pour sortir les patients de stress chronique lié, suivant son modèle, à un blocage du système nerveux autonome en mode Freeze. Ceci donna lieu à la thérapie **Somatic Experiencing** (Levine, 1997) qui est reconnue comme une méthode efficace pour gérer le psychotrauma. Il existe des preuves de son efficacité pour traiter les **TSPT** (Brom et al. 2017).
 
-On peut élargir les méthodes comme Somatic Experiencing pour prendre en charge non seulement les traumas de choc, comme les accidents, les violences, etc. mais aussi les traumatismes du développement où l'enfant est exposé à des situations de stress chroniques ou bien des conditions plus bénignes mais qui conduisent à une atrophie du *Self*, des limites poreuses, etc.
+On peut élargir les méthodes comme Somatic Experiencing pour prendre en charge non seulement les traumas de choc, comme les accidents, les violences, etc. mais aussi les traumatismes du développement où l'enfant est exposé à des situations de stress chroniques ou bien des conditions plus bénignes, mais qui conduisent à une atrophie du *Self*, des limites poreuses, etc.
 
-Dans les méthodes qui traitent le trauma du développement ou les traumatismes d'enfance, on note le **NARM** (Neuro Affective Relational Model) (Heller, 2012), **Sensorimotor Psychotherapy** (Odgen 2015) et aussi **Hakomi** (Kurtz 2015).
+Dans les méthodes qui traitent le trauma du développement et d'attachement, on note le **NARM** (Neuro Affective Relational Model) (Heller, 2012), **Sensorimotor Psychotherapy** (Odgen 2015), **Hakomi** (Kurtz 2015) ou encore **Somatic Transformation** (Stanley 2025).
+
+Aujourd'hui les méthodes somatiques ont une très forte influence aux États-Unis, il existe 3 Masters se spécialisant en Psychothérapie Somatique, et ces méthodes sont utilisées pour les thérapies assistées par psychédéliques (Mischke-Reeds, 2025).
 # Thérapie Somatique Hakomi
 Hakomi (Kurtz, 2015; Weiss et al., 2015) est la modalité de thérapie principale dans laquelle je suis formé, elle fonde en grande partie l'idée de la psychothérapie que je veux pratiquer.
 
@@ -48,8 +52,12 @@ Kurtz, R. (2015). *Body-Centered Psychotherapy : The Hakomi Method*. LifeRhyth
 
 Levine, P. A. (avec Frederick, A.). (1997). *Waking the Tiger : The Innate Capacity to Transform Overwhelming Experiences* (1st ed). North Atlantic Books.
 
+Mischke-Reeds, M. (avec Sylvae, J.). (2025). _Embodied Psychedelic Therapy : A Somatic Guide_ (1st ed). W. W. Norton & Company, Incorporated.
+
 Ogden, P. (avec Fisher, J.). (2015). *Sensorimotor Psychotherapy*. W. W. Norton & Company, Incorporated.
 
 Porges, S. W. (2011). *The Polyvagal Theory*. W. W. Norton & Company, Incorporated.
+
+Stanley, S. (2025). _Relational and body-centered practices for healing trauma : Lifting the burdens of the past_ (Second edition). Routledge.
 
 Weiss, H., Johanson, G., & Monda, L. (2015). *Hakomi mindfulness-centered somatic psychotherapy : A comprehensive guide to theory and practice*. W. W. Norton & company.
