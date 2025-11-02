@@ -18,8 +18,13 @@ Enfin, lorsque les animaux et plus précisément les mammifères sont en état d
 
 ## The Psychotrauma suivant la Theorie Polyvagale
 
-Selon ce modele, le psychotrauma, et dans sa forme le plus aigue le TSPT est lie a un systeme qui est reste bloque en mode Freeze
+Selon ce modele, le psychotrauma, et dans sa forme le plus aigue le TSPT est lie a un systeme qui est reste bloque en mode Freeze.
 
+Levine remarque que quand le possum fait le mort, si par chance le predateur l'abandone, il sort spontanement de son immobilite avec des movements eratics qui ressemblent a des attaques non dirigees, ou des tremblemets. Il y a une decharge d'energie puis soudainement l'animal reprend son mode de fonctionement normal.
+
+Selon Levine, le psychotrauma chez l'humain est du au fait que lorsque nous sommes sorti de la situation traumatique, nous ne sortons pas tout le temps du mode freeze, il n'a a pas eu de decharge et notre systeme nerveux est soince en mode de survie. C'est comme si la menace etait toujours la.
+
+Levine fait l'hypothese que le cortex prefrontal inhiberai la decharge sympathetique que lon retrouve chez l'animal qui permetrai de completer le cycle de mobilisation. Ceci donna lieu a la therapie Somatic Experiencing.
 ## Le Somatic Experiencing
 
 A partir de ces observations, Peter Levine a develope sa therapie Somatic Experiencing.
