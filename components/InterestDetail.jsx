@@ -10,14 +10,16 @@ const InterestDetail = ({ interests, currentLang }) => {
   
   const interest = interests.find(int => int.id.toString() === id);
 
+  const handleBackToInterests = (e) => {
+    e.preventDefault();
+    router.push(`/${currentLang}/interests`, { scroll: false });
+  };
+
   if (!interest) {
     return (
       <div className='section'>
         <a
-          onClick={(e) => {
-            e.preventDefault();
-            router.push(`/${currentLang}/interests`);
-          }}
+          onClick={handleBackToInterests}
           href={`/${currentLang}/interests`}
           style={{
             display: 'inline-block',
@@ -43,13 +45,15 @@ const InterestDetail = ({ interests, currentLang }) => {
     );
   }
 
+  const handleBackClick = (e) => {
+    e.preventDefault();
+    router.push(`/${currentLang}/interests`, { scroll: false });
+  };
+
   return (
     <div className='section'>
       <a
-        onClick={(e) => {
-          e.preventDefault();
-          router.push(`/${currentLang}/interests`);
-        }}
+        onClick={handleBackClick}
         href="/interests"
         style={{
           display: 'inline-block',

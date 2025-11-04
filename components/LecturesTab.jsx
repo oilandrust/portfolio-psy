@@ -15,7 +15,7 @@ const LecturesTab = ({ readings = [] }) => {
   });
 
   const handleReadingClick = (reading) => {
-    router.push(`/${currentLang}/lectures/${reading.id}`);
+    router.push(`/${currentLang}/lectures/${reading.id}`, { scroll: false });
   };
 
   // Always show the grid - detail pages are separate routes

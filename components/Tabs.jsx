@@ -44,6 +44,7 @@ const Tabs = ({ children, currentLang }) => {
               key={tab.id}
               href={tab.path}
               className={`tab-button ${currentTab === index ? 'active' : ''}`}
+              scroll={false}
             >
               {label}
             </Link>

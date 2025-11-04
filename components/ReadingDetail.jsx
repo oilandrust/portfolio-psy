@@ -16,7 +16,7 @@ const ReadingDetail = ({ readings, currentLang }) => {
         <a
           onClick={(e) => {
             e.preventDefault();
-            router.push(`/${currentLang}/lectures`);
+            router.push(`/${currentLang}/lectures`, { scroll: false });
           }}
           href={`/${currentLang}/lectures`}
           style={{
@@ -48,7 +48,7 @@ const ReadingDetail = ({ readings, currentLang }) => {
       <a
         onClick={(e) => {
           e.preventDefault();
-          router.push(`/${currentLang}/lectures`);
+          router.push(`/${currentLang}/lectures`, { scroll: false });
         }}
         href={`/${currentLang}/lectures`}
         style={{

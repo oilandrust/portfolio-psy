@@ -9,7 +9,7 @@ const InterestsGrid = ({ interests }) => {
   const currentLang = params?.lang || 'fr';
 
   const handleInterestClick = (interest) => {
-    router.push(`/${currentLang}/interests/${interest.id}`);
+    router.push(`/${currentLang}/interests/${interest.id}`, { scroll: false });
   };
 
   return (
