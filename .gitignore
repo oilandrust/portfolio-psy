@@ -17,6 +17,7 @@ dist-ssr
 dist/
 build/
 out/
+.next/
 
 # Database
 *.db
