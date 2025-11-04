@@ -4,22 +4,38 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
+  const baseUrl = 'https://www.olivier-psy.fr';
+  
   if (lang === 'fr') {
     return {
       title: 'CV - Olivier Rouiller',
       description: 'CV complet d\'Olivier Rouiller, étudiant en L3 de psychologie et psychopraticien en formation',
-      canonical: 'https://www.olivier-psy.fr/fr/cv',
+      canonical: `${baseUrl}/fr/cv/`,
+      alternates: {
+        languages: {
+          'fr': `${baseUrl}/fr/cv/`,
+          'en': `${baseUrl}/en/cv/`,
+          'x-default': `${baseUrl}/fr/cv/`,
+        },
+      },
       openGraph: {
         title: 'CV - Olivier Rouiller',
         description: 'CV complet - Olivier Rouiller',
         locale: 'fr_FR',
-        url: 'https://www.olivier-psy.fr/fr/cv',
+        url: `${baseUrl}/fr/cv/`,
       },
     };
   }
   
   return {
     title: 'CV - Olivier Rouiller',
+    alternates: {
+      languages: {
+        'fr': `${baseUrl}/fr/cv/`,
+        'en': `${baseUrl}/en/cv/`,
+        'x-default': `${baseUrl}/fr/cv/`,
+      },
+    },
   };
 }
 

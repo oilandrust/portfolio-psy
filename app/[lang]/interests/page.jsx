@@ -16,22 +16,38 @@ export async function generateMetadata({ params }) {
   const portfolio = getPortfolioData();
   const langData = portfolio[lang] || portfolio.fr;
   
+  const baseUrl = 'https://www.olivier-psy.fr';
+  
   if (lang === 'fr') {
     return {
       title: `Intérêts - ${langData.profile?.title || 'Olivier Rouiller'}`,
       description: 'Découvrez les intérêts et domaines d\'expertise d\'Olivier Rouiller en psychologie',
-      canonical: 'https://www.olivier-psy.fr/fr/interests',
+      canonical: `${baseUrl}/fr/interests/`,
+      alternates: {
+        languages: {
+          'fr': `${baseUrl}/fr/interests/`,
+          'en': `${baseUrl}/en/interests/`,
+          'x-default': `${baseUrl}/fr/interests/`,
+        },
+      },
       openGraph: {
         title: 'Intérêts - Olivier Rouiller',
         description: 'Domaines d\'expertise et intérêts en psychologie',
         locale: 'fr_FR',
-        url: 'https://www.olivier-psy.fr/fr/interests',
+        url: `${baseUrl}/fr/interests/`,
       },
     };
   }
   
   return {
     title: `Interests - ${langData.profile?.title || 'Olivier Rouiller'}`,
+    alternates: {
+      languages: {
+        'fr': `${baseUrl}/fr/interests/`,
+        'en': `${baseUrl}/en/interests/`,
+        'x-default': `${baseUrl}/fr/interests/`,
+      },
+    },
   };
 }
 

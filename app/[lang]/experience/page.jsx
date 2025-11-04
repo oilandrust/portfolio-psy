@@ -16,22 +16,38 @@ export async function generateMetadata({ params }) {
   const portfolio = getPortfolioData();
   const langData = portfolio[lang] || portfolio.fr;
   
+  const baseUrl = 'https://www.olivier-psy.fr';
+  
   if (lang === 'fr') {
     return {
       title: `Expérience - ${langData.profile?.title || 'Olivier Rouiller'}`,
       description: 'Expérience professionnelle et parcours d\'Olivier Rouiller',
-      canonical: 'https://www.olivier-psy.fr/fr/experience',
+      canonical: `${baseUrl}/fr/experience/`,
+      alternates: {
+        languages: {
+          'fr': `${baseUrl}/fr/experience/`,
+          'en': `${baseUrl}/en/experience/`,
+          'x-default': `${baseUrl}/fr/experience/`,
+        },
+      },
       openGraph: {
         title: 'Expérience - Olivier Rouiller',
         description: 'Expérience professionnelle en psychothérapie',
         locale: 'fr_FR',
-        url: 'https://www.olivier-psy.fr/fr/experience',
+        url: `${baseUrl}/fr/experience/`,
       },
     };
   }
   
   return {
     title: `Experience - ${langData.profile?.title || 'Olivier Rouiller'}`,
+    alternates: {
+      languages: {
+        'fr': `${baseUrl}/fr/experience/`,
+        'en': `${baseUrl}/en/experience/`,
+        'x-default': `${baseUrl}/fr/experience/`,
+      },
+    },
   };
 }
 

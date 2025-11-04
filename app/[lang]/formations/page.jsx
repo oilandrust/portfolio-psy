@@ -16,22 +16,38 @@ export async function generateMetadata({ params }) {
   const portfolio = getPortfolioData();
   const langData = portfolio[lang] || portfolio.fr;
   
+  const baseUrl = 'https://www.olivier-psy.fr';
+  
   if (lang === 'fr') {
     return {
       title: `Formations - ${langData.profile?.title || 'Olivier Rouiller'}`,
       description: 'Formations et parcours académique d\'Olivier Rouiller',
-      canonical: 'https://www.olivier-psy.fr/fr/formations',
+      canonical: `${baseUrl}/fr/formations/`,
+      alternates: {
+        languages: {
+          'fr': `${baseUrl}/fr/formations/`,
+          'en': `${baseUrl}/en/formations/`,
+          'x-default': `${baseUrl}/fr/formations/`,
+        },
+      },
       openGraph: {
         title: 'Formations - Olivier Rouiller',
         description: 'Parcours académique et formations',
         locale: 'fr_FR',
-        url: 'https://www.olivier-psy.fr/fr/formations',
+        url: `${baseUrl}/fr/formations/`,
       },
     };
   }
   
   return {
     title: `Education - ${langData.profile?.title || 'Olivier Rouiller'}`,
+    alternates: {
+      languages: {
+        'fr': `${baseUrl}/fr/formations/`,
+        'en': `${baseUrl}/en/formations/`,
+        'x-default': `${baseUrl}/fr/formations/`,
+      },
+    },
   };
 }
 

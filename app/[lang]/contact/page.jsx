@@ -16,22 +16,38 @@ export async function generateMetadata({ params }) {
   const portfolio = getPortfolioData();
   const langData = portfolio[lang] || portfolio.fr;
   
+  const baseUrl = 'https://www.olivier-psy.fr';
+  
   if (lang === 'fr') {
     return {
       title: `Contact - ${langData.profile?.title || 'Olivier Rouiller'}`,
       description: 'Contactez Olivier Rouiller',
-      canonical: 'https://www.olivier-psy.fr/fr/contact',
+      canonical: `${baseUrl}/fr/contact/`,
+      alternates: {
+        languages: {
+          'fr': `${baseUrl}/fr/contact/`,
+          'en': `${baseUrl}/en/contact/`,
+          'x-default': `${baseUrl}/fr/contact/`,
+        },
+      },
       openGraph: {
         title: 'Contact - Olivier Rouiller',
         description: 'Prenez contact',
         locale: 'fr_FR',
-        url: 'https://www.olivier-psy.fr/fr/contact',
+        url: `${baseUrl}/fr/contact/`,
       },
     };
   }
   
   return {
     title: `Contact - ${langData.profile?.title || 'Olivier Rouiller'}`,
+    alternates: {
+      languages: {
+        'fr': `${baseUrl}/fr/contact/`,
+        'en': `${baseUrl}/en/contact/`,
+        'x-default': `${baseUrl}/fr/contact/`,
+      },
+    },
   };
 }
 

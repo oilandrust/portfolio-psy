@@ -16,22 +16,38 @@ export async function generateMetadata({ params }) {
   const portfolio = getPortfolioData();
   const langData = portfolio[lang] || portfolio.fr;
   
+  const baseUrl = 'https://www.olivier-psy.fr';
+  
   if (lang === 'fr') {
     return {
       title: `Lectures - ${langData.profile?.title || 'Olivier Rouiller'}`,
       description: 'Lectures et références bibliographiques d\'Olivier Rouiller',
-      canonical: 'https://www.olivier-psy.fr/fr/lectures',
+      canonical: `${baseUrl}/fr/lectures/`,
+      alternates: {
+        languages: {
+          'fr': `${baseUrl}/fr/lectures/`,
+          'en': `${baseUrl}/en/lectures/`,
+          'x-default': `${baseUrl}/fr/lectures/`,
+        },
+      },
       openGraph: {
         title: 'Lectures - Olivier Rouiller',
         description: 'Bibliographie et lectures en psychologie',
         locale: 'fr_FR',
-        url: 'https://www.olivier-psy.fr/fr/lectures',
+        url: `${baseUrl}/fr/lectures/`,
       },
     };
   }
   
   return {
     title: `Readings - ${langData.profile?.title || 'Olivier Rouiller'}`,
+    alternates: {
+      languages: {
+        'fr': `${baseUrl}/fr/lectures/`,
+        'en': `${baseUrl}/en/lectures/`,
+        'x-default': `${baseUrl}/fr/lectures/`,
+      },
+    },
   };
 }
 

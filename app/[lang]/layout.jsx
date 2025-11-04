@@ -11,11 +11,20 @@ export async function generateMetadata({ params }) {
   const langData = portfolio[lang] || portfolio.fr;
   const profile = langData.profile || {};
   
+  const baseUrl = 'https://www.olivier-psy.fr';
+  
   // SEO optimization for French only
   if (lang === 'fr') {
     return {
       title: `${profile.title || 'Olivier Rouiller'} - ${profile.subtitle || 'Psychologue'}`,
       description: profile.about?.substring(0, 160) || 'Portfolio professionnel d\'Olivier Rouiller',
+      alternates: {
+        languages: {
+          'fr': `${baseUrl}/fr/`,
+          'en': `${baseUrl}/en/`,
+          'x-default': `${baseUrl}/fr/`,
+        },
+      },
       openGraph: {
         title: profile.title || 'Olivier Rouiller',
         description: profile.about?.substring(0, 160) || '',
@@ -28,6 +37,13 @@ export async function generateMetadata({ params }) {
   
   return {
     title: `${profile.title || 'Olivier Rouiller'} - ${profile.subtitle || 'Psychologist'}`,
+    alternates: {
+      languages: {
+        'fr': `${baseUrl}/fr/`,
+        'en': `${baseUrl}/en/`,
+        'x-default': `${baseUrl}/fr/`,
+      },
+    },
   };
 }
 

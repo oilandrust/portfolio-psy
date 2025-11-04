@@ -37,23 +37,39 @@ export async function generateMetadata({ params }) {
     };
   }
   
+  const baseUrl = 'https://www.olivier-psy.fr';
+  
   if (lang === 'fr') {
     return {
       title: `${interest.title} - Olivier Rouiller`,
       description: interest.description?.substring(0, 160) || interest.subtitle || '',
-      canonical: `https://www.olivier-psy.fr/fr/interests/${id}`,
+      canonical: `${baseUrl}/fr/interests/${id}/`,
+      alternates: {
+        languages: {
+          'fr': `${baseUrl}/fr/interests/${id}/`,
+          'en': `${baseUrl}/en/interests/${id}/`,
+          'x-default': `${baseUrl}/fr/interests/${id}/`,
+        },
+      },
       openGraph: {
         title: interest.title,
         description: interest.description?.substring(0, 160) || interest.subtitle || '',
         locale: 'fr_FR',
         type: 'website',
-        url: `https://www.olivier-psy.fr/fr/interests/${id}`,
+        url: `${baseUrl}/fr/interests/${id}/`,
       },
     };
   }
   
   return {
     title: `${interest.title} - Olivier Rouiller`,
+    alternates: {
+      languages: {
+        'fr': `${baseUrl}/fr/interests/${id}/`,
+        'en': `${baseUrl}/en/interests/${id}/`,
+        'x-default': `${baseUrl}/fr/interests/${id}/`,
+      },
+    },
   };
 }
 

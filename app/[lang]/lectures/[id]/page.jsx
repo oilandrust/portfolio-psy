@@ -37,23 +37,39 @@ export async function generateMetadata({ params }) {
     };
   }
   
+  const baseUrl = 'https://www.olivier-psy.fr';
+  
   if (lang === 'fr') {
     return {
       title: `${reading.title} - Olivier Rouiller`,
       description: `${reading.author} - ${reading.title}`,
-      canonical: `https://www.olivier-psy.fr/fr/lectures/${id}`,
+      canonical: `${baseUrl}/fr/lectures/${id}/`,
+      alternates: {
+        languages: {
+          'fr': `${baseUrl}/fr/lectures/${id}/`,
+          'en': `${baseUrl}/en/lectures/${id}/`,
+          'x-default': `${baseUrl}/fr/lectures/${id}/`,
+        },
+      },
       openGraph: {
         title: reading.title,
         description: `${reading.author} - ${reading.title}`,
         locale: 'fr_FR',
         type: 'website',
-        url: `https://www.olivier-psy.fr/fr/lectures/${id}`,
+        url: `${baseUrl}/fr/lectures/${id}/`,
       },
     };
   }
   
   return {
     title: `${reading.title} - Olivier Rouiller`,
+    alternates: {
+      languages: {
+        'fr': `${baseUrl}/fr/lectures/${id}/`,
+        'en': `${baseUrl}/en/lectures/${id}/`,
+        'x-default': `${baseUrl}/fr/lectures/${id}/`,
+      },
+    },
   };
 }
 
