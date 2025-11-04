@@ -1,6 +1,7 @@
 ---
 subtitle: Can you feel the ground under your feet?
 published: "false"
+id: 7
 ---
 *En cours de rédaction...*
 
@@ -30,7 +31,8 @@ Selon Levine, le psychotrauma chez l'humain est dû au fait que, lorsque nous so
 
 A partir de ces observations, Peter Levine a develope sa therapie Somatic Experiencing.
 
-Modeles Polyvagal, Somatic Experiencing, window of tolerance, dissociation, fragmentation, integration, honte comme reponse physiologique, memoire procedural, controle cortical 
+TODO:
+Somatic Experiencing, window of tolerance, dissociation, fragmentation, integration, honte comme reponse physiologique, memoire procedural, controle cortical 
 
 
 **Bibliographie**

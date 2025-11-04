@@ -11,7 +11,6 @@ const CVPage = () => {
   const [portfolioData, setPortfolio] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const cvDocumentRef = useRef(null);
 
   useEffect(() => {
@@ -65,28 +64,14 @@ const CVPage = () => {
     fetchCVData();
   }, [currentLang]);
 
-  const generatePDF = async () => {
-    if (!cvDocumentRef.current) return;
-
-    setIsGeneratingPDF(true);
-    try {
-      // Dynamically import html2pdf only on client side
-      const html2pdf = (await import('html2pdf.js')).default;
-
-      const opt = {
-        filename: currentLang === 'en' ? 'CV_Olivier_Rouiller_EN.pdf' : 'CV_Olivier_Rouiller.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { useCORS: true, letterRendering: true, scale: 2 },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-      };
-
-      await html2pdf().set(opt).from(cvDocumentRef.current).save();
-    } catch (err) {
-      console.error('Error generating PDF:', err);
-      alert(currentLang === 'en' ? 'Error generating PDF' : 'Erreur lors de la génération du PDF');
-    } finally {
-      setIsGeneratingPDF(false);
-    }
+  const handleDownloadPDF = () => {
+    const pdfUrl = currentLang === 'en' ? '/CV_Olivier_Rouiller_EN.pdf' : '/CV_Olivier_Rouiller.pdf';
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = currentLang === 'en' ? 'CV_Olivier_Rouiller_EN.pdf' : 'CV_Olivier_Rouiller.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const profile = portfolioData.profile || {};
@@ -96,8 +81,8 @@ const CVPage = () => {
     <div style={{ position: 'relative' }}>
       {/* Fixed actions on the right */}
       <button
-        onClick={generatePDF}
-        disabled={isGeneratingPDF || loading}
+        onClick={handleDownloadPDF}
+        disabled={loading}
         aria-label={currentLang === 'en' ? 'Download PDF' : 'Télécharger PDF'}
         title={currentLang === 'en' ? 'Download PDF' : 'Télécharger PDF'}
         style={{
@@ -111,8 +96,8 @@ const CVPage = () => {
           borderRadius: '50%',
           width: '48px',
           height: '48px',
-          cursor: isGeneratingPDF ? 'not-allowed' : 'pointer',
-          opacity: isGeneratingPDF ? 0.7 : 1,
+          cursor: loading ? 'not-allowed' : 'pointer',
+          opacity: loading ? 0.7 : 1,
           boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
           transition: 'all 0.2s ease',
           display: 'flex',
@@ -121,7 +106,7 @@ const CVPage = () => {
           padding: 0
         }}
         onMouseOver={(e) => {
-          if (!isGeneratingPDF) {
+          if (!loading) {
             e.currentTarget.style.transform = 'translateY(-2px)';
             e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
             e.currentTarget.style.backgroundColor = '#f5f5f5';
@@ -129,7 +114,7 @@ const CVPage = () => {
           }
         }}
         onMouseOut={(e) => {
-          if (!isGeneratingPDF) {
+          if (!loading) {
             e.currentTarget.style.transform = 'translateY(0)';
             e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
             e.currentTarget.style.backgroundColor = 'white';
@@ -137,18 +122,11 @@ const CVPage = () => {
           }
         }}
       >
-        {isGeneratingPDF ? (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 6v6l4 2"/>
-          </svg>
-        ) : (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
-        )}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
       </button>
 
       <Link

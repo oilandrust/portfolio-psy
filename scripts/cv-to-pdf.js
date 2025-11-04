@@ -6,11 +6,19 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-async function generateCVPDF() {
+const baseUrl = 'http://localhost:3000';
+const publicDir = path.join(__dirname, '../public');
+
+// Ensure public directory exists
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir, { recursive: true });
+}
+
+async function generateCVPDFForLanguage(lang) {
   let browser;
   
   try {
-    console.log('🚀 Starting Puppeteer...');
+    console.log(`🚀 Starting Puppeteer for ${lang.toUpperCase()} CV...`);
     browser = await puppeteer.launch({
       headless: 'new',
       args: [
@@ -28,17 +36,17 @@ async function generateCVPDF() {
     // Set viewport for consistent rendering
     await page.setViewport({ width: 1200, height: 800 });
     
-    // Navigate to your CV page
-    const cvUrl = 'http://localhost:3000/fr/cv';
+    // Navigate to deployed CV page
+    const cvUrl = `${baseUrl}/${lang}/cv/`;
     
-    console.log('🌐 Navigating to CV page...');
+    console.log(`🌐 Navigating to ${cvUrl}...`);
     await page.goto(cvUrl, { 
       waitUntil: 'networkidle0',
       timeout: 30000 
     });
 
     console.log('⏳ Waiting for content to load...');
-    // Wait for content to load using Promise-based delay
+    // Wait for content to load
     await new Promise(resolve => setTimeout(resolve, 3000));
     
     // Try to wait for CV content
@@ -87,7 +95,6 @@ async function generateCVPDF() {
       // Remove all box shadows from elements
       const allElements = document.querySelectorAll('*');
       allElements.forEach(el => {
-    
         // Remove any shadow-related classes or attributes
         el.classList.remove('shadow', 'box-shadow', 'drop-shadow');
       });
@@ -126,21 +133,22 @@ async function generateCVPDF() {
 
     console.log('📄 Generating PDF...');
     
-    // Generate PDF
-    const outputPath = path.join(__dirname, '../CV_Olivier_Rouiller.pdf');
+    // Generate PDF with appropriate filename
+    const filename = lang === 'en' ? 'CV_Olivier_Rouiller_EN.pdf' : 'CV_Olivier_Rouiller.pdf';
+    const outputPath = path.join(publicDir, filename);
     
     const pdfOptions = {
       path: outputPath,
       format: 'A4',
       printBackground: true,
       margin: {
-        top: '0.7in',      // 1 inch top margin for new pages
+        top: '0.7in',
         right: '0',
         bottom: '0',
         left: '0'
       },
       displayHeaderFooter: false,
-      preferCSSPageSize: true,  // This allows @page CSS to override margins
+      preferCSSPageSize: true,
       scale: 1.0,
       landscape: false
     };
@@ -154,8 +162,10 @@ async function generateCVPDF() {
     const fileSizeInMB = (stats.size / (1024 * 1024)).toFixed(2);
     console.log(`📊 File size: ${fileSizeInMB} MB`);
     
+    return outputPath;
+    
   } catch (error) {
-    console.error('❌ Error generating PDF:', error);
+    console.error(`❌ Error generating PDF for ${lang}:`, error);
     
     // Take a screenshot for debugging if possible
     try {
@@ -163,7 +173,7 @@ async function generateCVPDF() {
         const pages = await browser.pages();
         if (pages.length > 0) {
           const page = pages[0];
-          const screenshotPath = path.join(__dirname, '../debug-screenshot.png');
+          const screenshotPath = path.join(__dirname, `../debug-screenshot-${lang}.png`);
           await page.screenshot({ path: screenshotPath, fullPage: true });
           console.log(`🔍 Debug screenshot saved: ${screenshotPath}`);
         }
@@ -180,10 +190,25 @@ async function generateCVPDF() {
   }
 }
 
+async function generateCVPDF(lang = 'all') {
+  const languages = lang === 'all' ? ['fr', 'en'] : [lang];
+  
+  for (const language of languages) {
+    try {
+      await generateCVPDFForLanguage(language);
+    } catch (error) {
+      console.error(`Failed to generate PDF for ${language}:`, error);
+      throw error;
+    }
+  }
+  
+  console.log('🎉 All PDFs generated successfully!');
+}
 
 // Run if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
-  generateCVPDF().catch(console.error);
+  const lang = process.argv[2] || 'all';
+  generateCVPDF(lang).catch(console.error);
 }
 
 export { generateCVPDF };
