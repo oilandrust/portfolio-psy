@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///Users/olivier/Projects/portfolio-psy/app/page.jsx"],"sourcesContent":["import { redirect } from 'next/navigation';\n\nexport default function RootPage() {\n  // Default to French for SEO\n  redirect('/fr');\n}\n\n"],"names":[],"mappings":";;;;AAAA;AAAA;;AAEe,SAAS;IACtB,4BAA4B;IAC5B,IAAA,iMAAQ,EAAC;AACX","debugId":null}}]
+}

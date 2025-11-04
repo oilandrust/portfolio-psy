@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/olivier/Projects/portfolio-psy/app/%5Blang%5D/page.jsx"],"sourcesContent":["import { redirect } from 'next/navigation';\n\nexport async function generateStaticParams() {\n  return [{ lang: 'fr' }, { lang: 'en' }];\n}\n\nexport default async function LangPage({ params }) {\n  const { lang } = await params;\n  redirect(`/${lang}/about`);\n}\n\n"],"names":[],"mappings":";;;;;;AAAA;AAAA;;AAEO,eAAe;IACpB,OAAO;QAAC;YAAE,MAAM;QAAK;QAAG;YAAE,MAAM;QAAK;KAAE;AACzC;AAEe,eAAe,SAAS,EAAE,MAAM,EAAE;IAC/C,MAAM,EAAE,IAAI,EAAE,GAAG,MAAM;IACvB,IAAA,iMAAQ,EAAC,CAAC,CAAC,EAAE,KAAK,MAAM,CAAC;AAC3B","debugId":null}}]
+}

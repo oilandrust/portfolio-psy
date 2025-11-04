@@ -1,0 +1,566 @@
+/* [project]/app/globals.css [app-client] (css) */
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-focxus: #2563eb20;
+  --primary-inverse: #fff;
+  --success: #059669;
+  --success-hover: #047857;
+}
+
+.tabs-container {
+  margin-top: 2rem;
+}
+
+.tabs-header {
+  border-bottom: 2px solid #e2e8f0;
+  width: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  overflow-x: auto;
+}
+
+.tabs-header a, .tabs-header a:link, .tabs-header a:visited, .tabs-header a:hover, .tabs-header a:active {
+  text-decoration: none !important;
+}
+
+.tab-button, .tabs-header .tab-button, .tabs-header a.tab-button, .tabs-header a.tab-button:link, .tabs-header a.tab-button:visited {
+  color: #6b7280;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  min-height: 60px;
+  box-shadow: none;
+  border-radius: 0;
+  outline: none;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all .2s;
+  display: flex;
+  text-underline-offset: 0 !important;
+  text-underline-position: from-font !important;
+  background: none !important;
+  border: none !important;
+  border-bottom: 3px solid #0000 !important;
+  text-decoration: none !important;
+}
+
+.tab-button:hover, .tabs-header .tab-button:hover, .tabs-header a.tab-button:hover {
+  color: #374151;
+  background-color: #0000;
+  text-underline-offset: 0 !important;
+  text-underline-position: from-font !important;
+  text-decoration: none !important;
+}
+
+.tab-button.active, .tabs-header .tab-button.active, .tabs-header a.tab-button.active {
+  color: var(--primary);
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 3px solid var(--primary) !important;
+  text-underline-offset: 0 !important;
+  text-underline-position: from-font !important;
+  background-color: #0000 !important;
+  text-decoration: none !important;
+}
+
+.tab-content {
+  min-height: 400px;
+}
+
+.formations-list, .experience-list {
+  flex-direction: column;
+  gap: 1.5rem;
+  display: flex;
+}
+
+.formation-item, .experience-item {
+  background: #fafafa;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all .2s;
+}
+
+.formation-item:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px #0000001a;
+}
+
+.formation-item h3, .experience-item h3 {
+  color: #1f2937;
+  margin: 0 0 .5rem;
+  font-size: 1.1rem;
+}
+
+.formation-institution, .formation-period, .experience-company, .experience-period {
+  color: #6b7280;
+  margin: .25rem 0;
+  font-size: .9rem;
+}
+
+.formation-description, .experience-description {
+  color: #374151;
+  margin: .75rem 0 0;
+  line-height: 1.5;
+}
+
+.experiences-grid {
+  flex-direction: column;
+  gap: 2rem;
+  display: flex;
+}
+
+.experience-item {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all .2s;
+  box-shadow: 0 1px 3px #0000001a;
+}
+
+.experience-item:hover {
+  transform: translateY(-2px);
+}
+
+.experience-header {
+  margin-bottom: 1rem;
+}
+
+.experience-title {
+  color: #1e293b;
+  margin: 0 0 .5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.experience-meta {
+  flex-direction: column;
+  gap: .25rem;
+  display: flex;
+}
+
+.experience-subtitle {
+  color: #374151;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.experience-description {
+  color: #374151;
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.formation-instructor, .formation-links {
+  color: #6b7280;
+  margin: .5rem 0 0;
+  font-size: .9rem;
+}
+
+.formation-links ul {
+  margin: .25rem 0 0 1rem;
+  padding: 0;
+}
+
+.formation-links li {
+  margin: .25rem 0;
+}
+
+.formation-links a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.formation-links a:hover {
+  text-decoration: underline;
+}
+
+.markdown-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.markdown-list-item {
+  color: #374151;
+  margin: 1rem 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.formation-link {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.formation-link:hover {
+  text-decoration: underline;
+}
+
+body {
+  color: #1f2937;
+  background: #fff;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-bottom: 1px solid #e2e8f0;
+  padding: 4rem 0;
+}
+
+.hero .container {
+  text-align: left;
+  align-items: center;
+  gap: 2rem;
+  display: flex;
+}
+
+.hero-profile {
+  flex-shrink: 0;
+}
+
+.hero-profile img {
+  object-fit: cover;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 4px 12px #0000001a;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero h1 {
+  color: #1e293b;
+  margin-bottom: .5rem;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero p {
+  color: #64748b;
+  margin-bottom: 0;
+  font-size: 1.25rem;
+}
+
+.hero-button {
+  flex-shrink: 0;
+}
+
+.quote-carousel {
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+
+.quote-content {
+  text-align: center;
+  background: none;
+  border: none;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  min-height: 80px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.quote-text {
+  color: #374151;
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.quote-author {
+  color: #6b7280;
+  font-size: .95rem;
+  font-style: normal;
+  font-weight: 500;
+  display: block;
+}
+
+.quote-nav {
+  color: #6b7280;
+  cursor: pointer;
+  border-radius: 50%;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: .5rem;
+  font-size: 2rem;
+  transition: all .2s;
+  display: flex;
+  box-shadow: none !important;
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.quote-nav:focus, .quote-nav:active, .quote-nav:focus-visible {
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.quote-nav:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.quote-nav:active {
+  transform: scale(.95);
+}
+
+.section {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin: 2rem 0;
+  padding: 2.5rem;
+  box-shadow: 0 1px 3px #0000001a;
+}
+
+.section h2 {
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.skills-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+  display: grid;
+}
+
+.skill-card {
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all .2s;
+  box-shadow: 0 1px 3px #0000001a;
+}
+
+.skill-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px #00000026;
+}
+
+.projects-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 1.5rem 0;
+  display: grid;
+}
+
+.project-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  transition: all .2s;
+  overflow: hidden;
+  box-shadow: 0 1px 3px #0000001a;
+}
+
+.project-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px #00000026;
+}
+
+.project-card img {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+
+.project-card article {
+  padding: 1.5rem;
+}
+
+.contact-info {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+  display: grid;
+}
+
+.contact-item {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  align-items: center;
+  gap: .5rem;
+  padding: 1rem;
+  display: flex;
+  box-shadow: 0 1px 3px #0000001a;
+}
+
+.social-links {
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  display: flex;
+}
+
+.social-links a {
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+  transition: all .2s;
+  display: inline-flex;
+}
+
+.social-links a:hover {
+  background: var(--primary-hover);
+  transform: scale(1.1);
+}
+
+p {
+  color: #374151;
+  line-height: 1.6;
+}
+
+.project-card h3 {
+  color: #1e293b;
+}
+
+.project-card p, #contact p {
+  color: #6b7280;
+}
+
+.project-media-float {
+  float: right;
+  clear: right;
+  margin: 0 0 1rem 1.5rem;
+}
+
+.project-content {
+  overflow: visible;
+}
+
+@media (max-width: 768px) {
+  .hero .container {
+    text-align: center;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-profile img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero-quote {
+    margin-top: 1.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .quote-carousel {
+    gap: 1rem;
+  }
+
+  .quote-nav {
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+  }
+
+  .quote-text {
+    padding: 0 1rem;
+    font-size: 1rem;
+  }
+
+  .quote-author {
+    font-size: .9rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .section {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
+
+  .project-media-float {
+    order: 1;
+    display: block;
+    float: none !important;
+    clear: none !important;
+    margin: 0 0 1.5rem !important;
+  }
+
+  .project-content {
+    flex-direction: column;
+    display: flex;
+  }
+
+  .project-content > div:nth-child(2) {
+    order: 2;
+  }
+
+  .project-urls {
+    flex-direction: column !important;
+    gap: .5rem !important;
+  }
+}
+
+.interests-row {
+  align-items: flex-start;
+  gap: 1rem;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .interests-row {
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=app_globals_css_bad6b30c._.single.css.map*/

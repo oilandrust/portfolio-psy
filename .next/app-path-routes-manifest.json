@@ -1,0 +1,15 @@
+{
+  "/[lang]/about/page": "/[lang]/about",
+  "/[lang]/contact/page": "/[lang]/contact",
+  "/[lang]/cv/page": "/[lang]/cv",
+  "/[lang]/experience/page": "/[lang]/experience",
+  "/[lang]/formations/page": "/[lang]/formations",
+  "/[lang]/interests/[id]/page": "/[lang]/interests/[id]",
+  "/[lang]/interests/page": "/[lang]/interests",
+  "/[lang]/lectures/[id]/page": "/[lang]/lectures/[id]",
+  "/[lang]/lectures/page": "/[lang]/lectures",
+  "/[lang]/page": "/[lang]",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/page": "/"
+}
