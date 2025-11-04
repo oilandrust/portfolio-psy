@@ -7,7 +7,7 @@ subtitle: Qu'est-ce que tu ressens dans ton corps quand tu penses à ça?
 
 Christine Caldwell, fondatrice du Département de Psychologie Somatique de l'Université de Naropa à Boulder, Colorado retrace l'histoire des méthodes orientées vers le corps (Caldwell & Hendricks, 1997).
 
-Elle retrace notamment les origines des thérapies somatiques dans la Psychanalyse: en commençant par Freud, Josef Breuer qui se concentrait sur le système nerveux, Ferenczi qui demandait à ses patients de s'abstenir de certains mouvements répétitifs pour exacerber la charge émotionnels qu'ils dissipaient, puis Reich qui avait identifié les névroses comme des armures de caractères qui se manifestaient par des tensions de certaines parties du corps.
+Elle retrace notamment les origines des thérapies somatiques dans la Psychanalyse: en commençant par Freud, Josef Breuer qui se concentrait sur le système nerveux, Ferenczi qui demandait à ses patients de s'abstenir de certains mouvements répétitifs pour exacerber la charge émotionnels qu'ils dissipaient, puis Reich qui avait identifié les névroses comme des armures de caractères qui se manifestaient par des tensions de certaines parties du corps (Reich 1949).
 
 Eugène Gendlin était probablement l'un des premiers à mettre l'accent sur *le ressenti des sensations corporelles* dans sa psychothérapie **Focusing** (Gendlin 1981). Le Focusing consiste à porter son attention sur les sensations corporelles associées à un problème ou une croyance et à laisser des symboles émerger. C'est déjà une exploration de l'inconscient par les sensations corporelles.
 
@@ -57,6 +57,8 @@ Mischke-Reeds, M. (avec Sylvae, J.). (2025). _Embodied Psychedelic Therapy : A
 Ogden, P. (avec Fisher, J.). (2015). *Sensorimotor Psychotherapy*. W. W. Norton & Company, Incorporated.
 
 Porges, S. W. (2011). *The Polyvagal Theory*. W. W. Norton & Company, Incorporated.
+
+Reich, W. (1949). _Character-analysis, 3rd ed._ (p. xxvi, 519). Orgone Institute Press.
 
 Stanley, S. (2025). _Relational and body-centered practices for healing trauma : Lifting the burdens of the past_ (Second edition). Routledge.
 
