@@ -24,7 +24,13 @@
   width: 100%;
 }
 
-.tab-button {
+.tabs-header a {
+  text-decoration: none !important;
+}
+
+.tab-button,
+.tabs-header .tab-button,
+.tabs-header a.tab-button {
   background: none !important;
   border: none !important;
   border-top: none !important;
@@ -47,20 +53,33 @@
   justify-content: center;
   outline: none;
   box-shadow: none;
+  text-decoration: none !important;
+  text-underline-offset: 0 !important;
+  text-underline-position: from-font !important;
 }
 
-.tab-button:hover {
+.tab-button:hover,
+.tabs-header .tab-button:hover,
+.tabs-header a.tab-button:hover {
   color: #374151;
   background-color: transparent;
+  text-decoration: none !important;
+  text-underline-offset: 0 !important;
+  text-underline-position: from-font !important;
 }
 
-.tab-button.active {
+.tab-button.active,
+.tabs-header .tab-button.active,
+.tabs-header a.tab-button.active {
   color: var(--primary);
   border-top: none !important;
   border-left: none !important;
   border-right: none !important;
   border-bottom: 3px solid var(--primary) !important;
   background-color: transparent !important;
+  text-decoration: none !important;
+  text-underline-offset: 0 !important;
+  text-underline-position: from-font !important;
 }
 
 .tab-content {

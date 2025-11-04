@@ -1,0 +1,3 @@
+module.exports=[46122,a=>{a.n(a.i(98421))},43619,a=>{a.n(a.i(79962))},13718,a=>{a.n(a.i(85523))},18198,a=>{a.n(a.i(45518))},62212,a=>{a.n(a.i(66114))},12423,a=>{a.n(a.i(2320))},1212,a=>{"use strict";a.i(70396);var b=a.i(73727);async function c(){return[{lang:"fr"},{lang:"en"}]}async function d({params:a}){let{lang:c}=await a;(0,b.redirect)(`/${c}/about`)}a.s(["default",()=>d,"generateStaticParams",()=>c])}];
+
+//# sourceMappingURL=_dc84db1c._.js.map

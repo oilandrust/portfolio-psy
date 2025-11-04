@@ -1,0 +1,13 @@
+{
+  "/[lang]/about/page": "app/[lang]/about/page.js",
+  "/[lang]/cv/page": "app/[lang]/cv/page.js",
+  "/[lang]/experience/page": "app/[lang]/experience/page.js",
+  "/[lang]/formations/page": "app/[lang]/formations/page.js",
+  "/[lang]/interests/[id]/page": "app/[lang]/interests/[id]/page.js",
+  "/[lang]/interests/page": "app/[lang]/interests/page.js",
+  "/[lang]/lectures/[id]/page": "app/[lang]/lectures/[id]/page.js",
+  "/[lang]/lectures/page": "app/[lang]/lectures/page.js",
+  "/[lang]/page": "app/[lang]/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js"
+}
