@@ -29,7 +29,7 @@ async function generateCVPDF() {
     await page.setViewport({ width: 1200, height: 800 });
     
     // Navigate to your CV page
-    const cvUrl = 'http://localhost:5173/#/cv';
+    const cvUrl = 'http://localhost:3000/fr/cv';
     
     console.log('🌐 Navigating to CV page...');
     await page.goto(cvUrl, { 
@@ -53,9 +53,29 @@ async function generateCVPDF() {
 
     // Add CSS for proper page margins and remove unwanted elements
     await page.evaluate(() => {
-      // Remove fixed buttons and navigation
-      const fixedElements = document.querySelectorAll('[style*="position: fixed"]');
-      fixedElements.forEach(el => el.remove());
+      // Remove language switcher
+      const languageSwitcher = document.querySelector('.language-switcher');
+      if (languageSwitcher) {
+        languageSwitcher.remove();
+      }
+      
+      // Remove fixed navigation buttons (Download PDF and Back to portfolio)
+      const fixedButtons = document.querySelectorAll('[style*="position: fixed"]');
+      fixedButtons.forEach(el => el.remove());
+      
+      // Also try to find buttons by their text content as fallback
+      const allButtons = document.querySelectorAll('button, a.button');
+      allButtons.forEach(button => {
+        const text = button.textContent || button.innerText || '';
+        if (text.includes('PDF') || text.includes('Télécharger') || 
+            text.includes('Back') || text.includes('Retour')) {
+          // Check if it's fixed positioned
+          const style = window.getComputedStyle(button);
+          if (style.position === 'fixed') {
+            button.remove();
+          }
+        }
+      });
       
       // Remove any hover effects
       const hoverElements = document.querySelectorAll('[onmouseover], [onmouseout]');
@@ -85,6 +105,14 @@ async function generateCVPDF() {
     // Inject CSS for page margins and remove shadows
     await page.addStyleTag({
       content: `
+        /* Hide navigation and language switcher */
+        .language-switcher,
+        button[style*="position: fixed"],
+        a[style*="position: fixed"] {
+          display: none !important;
+          visibility: hidden !important;
+        }
+        
         /* Method 1: Using @page rules */
         @page :first {
           margin-top: 0.0in;
