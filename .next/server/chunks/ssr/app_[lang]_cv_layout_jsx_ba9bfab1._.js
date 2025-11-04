@@ -1,3 +1,0 @@
-module.exports=[75192,a=>{"use strict";async function b(){return[{lang:"fr"},{lang:"en"}]}async function c({params:a}){let{lang:b}=await a;return"fr"===b?{title:"CV - Olivier Rouiller",description:"CV complet d'Olivier Rouiller, étudiant en L3 de psychologie et psychopraticien en formation",canonical:"https://www.olivier-psy.fr/fr/cv",openGraph:{title:"CV - Olivier Rouiller",description:"CV complet - Olivier Rouiller",locale:"fr_FR",url:"https://www.olivier-psy.fr/fr/cv"}}:{title:"CV - Olivier Rouiller"}}function d({children:a}){return a}a.s(["default",()=>d,"generateMetadata",()=>c,"generateStaticParams",()=>b])}];
-
-//# sourceMappingURL=app_%5Blang%5D_cv_layout_jsx_ba9bfab1._.js.map
