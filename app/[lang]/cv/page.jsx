@@ -98,89 +98,99 @@ const CVPage = () => {
       <button
         onClick={generatePDF}
         disabled={isGeneratingPDF || loading}
+        aria-label={currentLang === 'en' ? 'Download PDF' : 'Télécharger PDF'}
+        title={currentLang === 'en' ? 'Download PDF' : 'Télécharger PDF'}
         style={{
           position: 'fixed',
           top: '2rem',
           right: '2rem',
           zIndex: 1000,
-          backgroundColor: 'var(--primary)',
-          color: 'white',
-          border: 'none',
-          borderRadius: '8px',
-          padding: '0.75rem 1.5rem',
-          fontSize: '0.9rem',
-          fontWeight: 600,
+          backgroundColor: 'white',
+          border: '1px solid rgba(0, 0, 0, 0.1)',
+          color: '#666',
+          borderRadius: '50%',
+          width: '48px',
+          height: '48px',
           cursor: isGeneratingPDF ? 'not-allowed' : 'pointer',
           opacity: isGeneratingPDF ? 0.7 : 1,
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
           transition: 'all 0.2s ease',
           display: 'flex',
           alignItems: 'center',
-          gap: '0.5rem'
+          justifyContent: 'center',
+          padding: 0
         }}
         onMouseOver={(e) => {
           if (!isGeneratingPDF) {
             e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 6px 16px rgba(0, 0, 0, 0.2)';
+            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+            e.currentTarget.style.backgroundColor = '#f5f5f5';
+            e.currentTarget.style.color = '#333';
           }
         }}
         onMouseOut={(e) => {
           if (!isGeneratingPDF) {
             e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+            e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+            e.currentTarget.style.backgroundColor = 'white';
+            e.currentTarget.style.color = '#666';
           }
         }}
       >
         {isGeneratingPDF ? (
-          <>
-            <span>⏳</span>
-            {currentLang === 'en' ? 'Generating...' : 'Génération...'}
-          </>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
         ) : (
-          <>
-            <span>📄</span>
-            {currentLang === 'en' ? 'Download PDF' : 'Télécharger PDF'}
-          </>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
         )}
       </button>
 
       <Link
         href={`/${currentLang}/about`}
-        className="button outline"
+        aria-label={currentLang === 'en' ? 'Back to portfolio' : 'Retour au portfolio'}
+        title={currentLang === 'en' ? 'Back to portfolio' : 'Retour au portfolio'}
         style={{
           position: 'fixed',
           top: '6rem',
           right: '2rem',
           zIndex: 1000,
           textDecoration: 'none',
-          padding: '0.75rem 1.5rem',
-          borderRadius: '8px',
-          fontSize: '0.9rem',
-          fontWeight: 600,
+          borderRadius: '50%',
+          width: '48px',
+          height: '48px',
           transition: 'all 0.2s ease',
           display: 'flex',
           alignItems: 'center',
-          gap: '0.5rem',
+          justifyContent: 'center',
           backgroundColor: 'white',
-          border: '2px solid var(--primary)',
-          color: 'var(--primary)',
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+          border: '1px solid rgba(0, 0, 0, 0.1)',
+          color: '#666',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+          padding: 0
         }}
         onMouseOver={(e) => {
           e.currentTarget.style.transform = 'translateY(-2px)';
-          e.currentTarget.style.boxShadow = '0 6px 16px rgba(0, 0, 0, 0.15)';
-          e.currentTarget.style.backgroundColor = 'var(--primary)';
-          e.currentTarget.style.color = 'white';
+          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+          e.currentTarget.style.backgroundColor = '#f5f5f5';
+          e.currentTarget.style.color = '#333';
         }}
         onMouseOut={(e) => {
           e.currentTarget.style.transform = 'translateY(0)';
-          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+          e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
           e.currentTarget.style.backgroundColor = 'white';
-          e.currentTarget.style.color = 'var(--primary)';
+          e.currentTarget.style.color = '#666';
         }}
       >
-        <span>←</span>
-        {currentLang === 'en' ? 'Back to portfolio' : 'Retour au portfolio'}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"/>
+          <polyline points="12 19 5 12 12 5"/>
+        </svg>
       </Link>
 
       {/* Document container */}
