@@ -29,12 +29,20 @@ export async function generateMetadata({ params }) {
   
   return {
     title: 'CV - Olivier Rouiller',
+    description: 'Complete CV of Olivier Rouiller, Psychology student and psychotherapist in training',
+    canonical: `${baseUrl}/en/cv/`,
     alternates: {
       languages: {
         'fr': `${baseUrl}/fr/cv/`,
         'en': `${baseUrl}/en/cv/`,
         'x-default': `${baseUrl}/fr/cv/`,
       },
+    },
+    openGraph: {
+      title: 'CV - Olivier Rouiller',
+      description: 'Complete CV - Olivier Rouiller',
+      locale: 'en_US',
+      url: `${baseUrl}/en/cv/`,
     },
   };
 }

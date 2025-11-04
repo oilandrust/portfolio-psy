@@ -41,12 +41,20 @@ export async function generateMetadata({ params }) {
   
   return {
     title: `Experience - ${langData.profile?.title || 'Olivier Rouiller'}`,
+    description: 'Professional experience and background of Olivier Rouiller',
+    canonical: `${baseUrl}/en/experience/`,
     alternates: {
       languages: {
         'fr': `${baseUrl}/fr/experience/`,
         'en': `${baseUrl}/en/experience/`,
         'x-default': `${baseUrl}/fr/experience/`,
       },
+    },
+    openGraph: {
+      title: 'Experience - Olivier Rouiller',
+      description: 'Professional experience in psychotherapy',
+      locale: 'en_US',
+      url: `${baseUrl}/en/experience/`,
     },
   };
 }

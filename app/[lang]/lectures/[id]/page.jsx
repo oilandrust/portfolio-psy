@@ -63,12 +63,21 @@ export async function generateMetadata({ params }) {
   
   return {
     title: `${reading.title} - Olivier Rouiller`,
+    description: `${reading.author} - ${reading.title}`,
+    canonical: `${baseUrl}/en/lectures/${id}/`,
     alternates: {
       languages: {
         'fr': `${baseUrl}/fr/lectures/${id}/`,
         'en': `${baseUrl}/en/lectures/${id}/`,
         'x-default': `${baseUrl}/fr/lectures/${id}/`,
       },
+    },
+    openGraph: {
+      title: reading.title,
+      description: `${reading.author} - ${reading.title}`,
+      locale: 'en_US',
+      type: 'website',
+      url: `${baseUrl}/en/lectures/${id}/`,
     },
   };
 }

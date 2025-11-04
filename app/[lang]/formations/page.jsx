@@ -41,12 +41,20 @@ export async function generateMetadata({ params }) {
   
   return {
     title: `Education - ${langData.profile?.title || 'Olivier Rouiller'}`,
+    description: 'Education and academic background of Olivier Rouiller',
+    canonical: `${baseUrl}/en/formations/`,
     alternates: {
       languages: {
         'fr': `${baseUrl}/fr/formations/`,
         'en': `${baseUrl}/en/formations/`,
         'x-default': `${baseUrl}/fr/formations/`,
       },
+    },
+    openGraph: {
+      title: 'Education - Olivier Rouiller',
+      description: 'Academic background and education',
+      locale: 'en_US',
+      url: `${baseUrl}/en/formations/`,
     },
   };
 }

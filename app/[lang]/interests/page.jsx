@@ -41,12 +41,20 @@ export async function generateMetadata({ params }) {
   
   return {
     title: `Interests - ${langData.profile?.title || 'Olivier Rouiller'}`,
+    description: 'Discover the interests and areas of expertise of Olivier Rouiller in psychology',
+    canonical: `${baseUrl}/en/interests/`,
     alternates: {
       languages: {
         'fr': `${baseUrl}/fr/interests/`,
         'en': `${baseUrl}/en/interests/`,
         'x-default': `${baseUrl}/fr/interests/`,
       },
+    },
+    openGraph: {
+      title: 'Interests - Olivier Rouiller',
+      description: 'Areas of expertise and interests in psychology',
+      locale: 'en_US',
+      url: `${baseUrl}/en/interests/`,
     },
   };
 }

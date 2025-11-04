@@ -63,12 +63,21 @@ export async function generateMetadata({ params }) {
   
   return {
     title: `${interest.title} - Olivier Rouiller`,
+    description: interest.description?.substring(0, 160) || interest.subtitle || '',
+    canonical: `${baseUrl}/en/interests/${id}/`,
     alternates: {
       languages: {
         'fr': `${baseUrl}/fr/interests/${id}/`,
         'en': `${baseUrl}/en/interests/${id}/`,
         'x-default': `${baseUrl}/fr/interests/${id}/`,
       },
+    },
+    openGraph: {
+      title: interest.title,
+      description: interest.description?.substring(0, 160) || interest.subtitle || '',
+      locale: 'en_US',
+      type: 'website',
+      url: `${baseUrl}/en/interests/${id}/`,
     },
   };
 }

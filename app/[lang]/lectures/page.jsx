@@ -41,12 +41,20 @@ export async function generateMetadata({ params }) {
   
   return {
     title: `Readings - ${langData.profile?.title || 'Olivier Rouiller'}`,
+    description: 'Readings and bibliographic references of Olivier Rouiller',
+    canonical: `${baseUrl}/en/lectures/`,
     alternates: {
       languages: {
         'fr': `${baseUrl}/fr/lectures/`,
         'en': `${baseUrl}/en/lectures/`,
         'x-default': `${baseUrl}/fr/lectures/`,
       },
+    },
+    openGraph: {
+      title: 'Readings - Olivier Rouiller',
+      description: 'Bibliography and readings in psychology',
+      locale: 'en_US',
+      url: `${baseUrl}/en/lectures/`,
     },
   };
 }
