@@ -259,18 +259,74 @@ const parseMarkdown = (text, fallbackText = 'Aucune information disponible.')=>{
         } else {
             // This is a regular paragraph - flush any current list first
             flushCurrentList();
-            const processedContent = processLine(line);
-            elements.push(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                style: {
-                    marginBottom: '1rem',
-                    lineHeight: '1.6'
-                },
-                children: processedContent
-            }, `p-${index}`, false, {
-                fileName: "[project]/utils/markdown.jsx",
-                lineNumber: 217,
-                columnNumber: 9
-            }, ("TURBOPACK compile-time value", void 0)));
+            // Check if the line contains only a YouTube embed (or mostly just a YouTube embed)
+            const youtubeRegex = /!\[([^\]]*)\]\(([^)]+)\)/;
+            const youtubeMatch = trimmedLine.match(youtubeRegex);
+            const videoId = youtubeMatch ? extractYouTubeVideoId(youtubeMatch[2]) : null;
+            // If it's a YouTube video and the line is mostly just that, add it as a block element
+            if (videoId && trimmedLine.replace(youtubeRegex, '').trim().length === 0) {
+                elements.push(createYouTubeEmbed(videoId, elementIndex++));
+            } else {
+                // Regular paragraph
+                const processedContent = processLine(line);
+                // Check if processedContent contains a div (YouTube embed) - if so, split it
+                const hasDiv = Array.isArray(processedContent) && processedContent.some((part)=>/*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].isValidElement(part) && part.type === 'div');
+                if (hasDiv && Array.isArray(processedContent)) {
+                    // Split content: text parts go in <p>, div parts go as separate elements
+                    let currentTextParts = [];
+                    processedContent.forEach((part, partIndex)=>{
+                        if (/*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].isValidElement(part) && part.type === 'div') {
+                            // Flush any accumulated text into a paragraph
+                            if (currentTextParts.length > 0) {
+                                elements.push(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    style: {
+                                        marginBottom: '1rem',
+                                        lineHeight: '1.6'
+                                    },
+                                    children: currentTextParts
+                                }, `p-${index}-${partIndex}`, false, {
+                                    fileName: "[project]/utils/markdown.jsx",
+                                    lineNumber: 241,
+                                    columnNumber: 19
+                                }, ("TURBOPACK compile-time value", void 0)));
+                                currentTextParts = [];
+                            }
+                            // Add the div as a separate element
+                            elements.push(part);
+                        } else {
+                            // Accumulate text parts
+                            currentTextParts.push(part);
+                        }
+                    });
+                    // Flush any remaining text parts
+                    if (currentTextParts.length > 0) {
+                        elements.push(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            style: {
+                                marginBottom: '1rem',
+                                lineHeight: '1.6'
+                            },
+                            children: currentTextParts
+                        }, `p-${index}-final`, false, {
+                            fileName: "[project]/utils/markdown.jsx",
+                            lineNumber: 258,
+                            columnNumber: 15
+                        }, ("TURBOPACK compile-time value", void 0)));
+                    }
+                } else {
+                    // Normal case: wrap in paragraph
+                    elements.push(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        style: {
+                            marginBottom: '1rem',
+                            lineHeight: '1.6'
+                        },
+                        children: processedContent
+                    }, `p-${index}`, false, {
+                        fileName: "[project]/utils/markdown.jsx",
+                        lineNumber: 266,
+                        columnNumber: 13
+                    }, ("TURBOPACK compile-time value", void 0)));
+                }
+            }
         }
     });
     // Flush any remaining list items

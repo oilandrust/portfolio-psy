@@ -409,20 +409,15 @@ const CVPage = ()=>{
             // Dynamically import html2pdf only on client side
             const html2pdf = (await __turbopack_context__.A("[project]/node_modules/html2pdf.js/dist/html2pdf.js [app-client] (ecmascript, async loader)")).default;
             const opt = {
-                margin: [
-                    10,
-                    10,
-                    10,
-                    10
-                ],
                 filename: currentLang === 'en' ? 'CV_Olivier_Rouiller_EN.pdf' : 'CV_Olivier_Rouiller.pdf',
                 image: {
                     type: 'jpeg',
                     quality: 0.98
                 },
                 html2canvas: {
-                    scale: 2,
-                    useCORS: true
+                    useCORS: true,
+                    letterRendering: true,
+                    scale: 2
                 },
                 jsPDF: {
                     unit: 'mm',
@@ -438,197 +433,466 @@ const CVPage = ()=>{
             setIsGeneratingPDF(false);
         }
     };
-    if (loading) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            style: {
-                padding: '2rem',
-                textAlign: 'center'
-            },
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                children: currentLang === 'en' ? 'Loading CV...' : 'Chargement du CV...'
-            }, void 0, false, {
-                fileName: "[project]/app/[lang]/cv/page.jsx",
-                lineNumber: 99,
-                columnNumber: 9
-            }, ("TURBOPACK compile-time value", void 0))
-        }, void 0, false, {
-            fileName: "[project]/app/[lang]/cv/page.jsx",
-            lineNumber: 98,
-            columnNumber: 7
-        }, ("TURBOPACK compile-time value", void 0));
-    }
-    if (error) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            style: {
-                padding: '2rem',
-                textAlign: 'center'
-            },
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    children: currentLang === 'en' ? 'Error loading CV' : 'Erreur lors du chargement du CV'
-                }, void 0, false, {
-                    fileName: "[project]/app/[lang]/cv/page.jsx",
-                    lineNumber: 107,
-                    columnNumber: 9
-                }, ("TURBOPACK compile-time value", void 0)),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                    href: `/${currentLang}/about`,
-                    style: {
-                        marginTop: '1rem',
-                        display: 'inline-block'
-                    },
-                    children: currentLang === 'en' ? 'Back to portfolio' : 'Retour au portfolio'
-                }, void 0, false, {
-                    fileName: "[project]/app/[lang]/cv/page.jsx",
-                    lineNumber: 108,
-                    columnNumber: 9
-                }, ("TURBOPACK compile-time value", void 0))
-            ]
-        }, void 0, true, {
-            fileName: "[project]/app/[lang]/cv/page.jsx",
-            lineNumber: 106,
-            columnNumber: 7
-        }, ("TURBOPACK compile-time value", void 0));
-    }
-    const cvData = portfolioData.cv || '';
     const profile = portfolioData.profile || {};
+    const cvData = portfolioData.cv || '';
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         style: {
-            padding: '2rem',
-            maxWidth: '800px',
-            margin: '0 auto'
+            position: 'relative'
         },
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                onClick: generatePDF,
+                disabled: isGeneratingPDF || loading,
                 style: {
-                    marginBottom: '2rem',
+                    position: 'fixed',
+                    top: '2rem',
+                    right: '2rem',
+                    zIndex: 1000,
+                    backgroundColor: 'var(--primary)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    padding: '0.75rem 1.5rem',
+                    fontSize: '0.9rem',
+                    fontWeight: 600,
+                    cursor: isGeneratingPDF ? 'not-allowed' : 'pointer',
+                    opacity: isGeneratingPDF ? 0.7 : 1,
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                    transition: 'all 0.2s ease',
                     display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                },
+                onMouseOver: (e)=>{
+                    if (!isGeneratingPDF) {
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.boxShadow = '0 6px 16px rgba(0, 0, 0, 0.2)';
+                    }
+                },
+                onMouseOut: (e)=>{
+                    if (!isGeneratingPDF) {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+                    }
+                },
+                children: isGeneratingPDF ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            children: "⏳"
+                        }, void 0, false, {
+                            fileName: "[project]/app/[lang]/cv/page.jsx",
+                            lineNumber: 136,
+                            columnNumber: 13
+                        }, ("TURBOPACK compile-time value", void 0)),
+                        currentLang === 'en' ? 'Generating...' : 'Génération...'
+                    ]
+                }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            children: "📄"
+                        }, void 0, false, {
+                            fileName: "[project]/app/[lang]/cv/page.jsx",
+                            lineNumber: 141,
+                            columnNumber: 13
+                        }, ("TURBOPACK compile-time value", void 0)),
+                        currentLang === 'en' ? 'Download PDF' : 'Télécharger PDF'
+                    ]
+                }, void 0, true)
+            }, void 0, false, {
+                fileName: "[project]/app/[lang]/cv/page.jsx",
+                lineNumber: 98,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                href: `/${currentLang}/about`,
+                className: "button outline",
+                style: {
+                    position: 'fixed',
+                    top: '6rem',
+                    right: '2rem',
+                    zIndex: 1000,
+                    textDecoration: 'none',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '8px',
+                    fontSize: '0.9rem',
+                    fontWeight: 600,
+                    transition: 'all 0.2s ease',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    backgroundColor: 'white',
+                    border: '2px solid var(--primary)',
+                    color: 'var(--primary)',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+                },
+                onMouseOver: (e)=>{
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(0, 0, 0, 0.15)';
+                    e.currentTarget.style.backgroundColor = 'var(--primary)';
+                    e.currentTarget.style.color = 'white';
+                },
+                onMouseOut: (e)=>{
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                    e.currentTarget.style.backgroundColor = 'white';
+                    e.currentTarget.style.color = 'var(--primary)';
                 },
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                        href: `/${currentLang}/about`,
-                        style: {
-                            color: '#6b7280',
-                            textDecoration: 'none'
-                        },
-                        children: [
-                            "← ",
-                            currentLang === 'en' ? 'Back to portfolio' : 'Retour au portfolio'
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/app/[lang]/cv/page.jsx",
-                        lineNumber: 121,
-                        columnNumber: 9
-                    }, ("TURBOPACK compile-time value", void 0)),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                        onClick: generatePDF,
-                        disabled: isGeneratingPDF,
-                        className: "button primary",
-                        children: isGeneratingPDF ? currentLang === 'en' ? 'Generating...' : 'Génération...' : currentLang === 'en' ? 'Download PDF' : 'Télécharger PDF'
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        children: "←"
                     }, void 0, false, {
                         fileName: "[project]/app/[lang]/cv/page.jsx",
-                        lineNumber: 124,
+                        lineNumber: 182,
                         columnNumber: 9
-                    }, ("TURBOPACK compile-time value", void 0))
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    currentLang === 'en' ? 'Back to portfolio' : 'Retour au portfolio'
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/[lang]/cv/page.jsx",
-                lineNumber: 120,
+                lineNumber: 147,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 ref: cvDocumentRef,
                 style: {
+                    maxWidth: '794px',
+                    margin: '0 auto',
                     backgroundColor: 'white',
-                    padding: '2rem',
-                    color: '#000',
-                    fontFamily: 'Arial, sans-serif'
+                    minHeight: '100vh',
+                    boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)'
                 },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "hero",
                         style: {
-                            textAlign: 'center',
-                            marginBottom: '2rem'
+                            padding: '1.5rem 1.5rem 0.7rem 1.5rem'
                         },
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: "/data/profile/IMG-20250419-WA0003 (2).jpg",
-                                alt: profile?.title || 'Olivier Rouiller',
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                maxWidth: '794px',
+                                margin: '0 auto',
+                                padding: '1.5rem'
+                            },
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 style: {
-                                    width: '150px',
-                                    height: '150px',
-                                    borderRadius: '50%',
-                                    objectFit: 'cover',
-                                    marginBottom: '1rem'
-                                }
-                            }, void 0, false, {
-                                fileName: "[project]/app/[lang]/cv/page.jsx",
-                                lineNumber: 146,
-                                columnNumber: 11
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                style: {
-                                    margin: '0.5rem 0',
-                                    fontSize: '2rem'
+                                    display: 'flex',
+                                    alignItems: 'flex-start',
+                                    gap: '1.5rem'
                                 },
-                                children: profile?.title || 'Olivier Rouiller'
-                            }, void 0, false, {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '1.5rem',
+                                            flex: 1
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    width: '120px',
+                                                    height: '120px',
+                                                    borderRadius: '50%',
+                                                    overflow: 'hidden',
+                                                    flexShrink: 0,
+                                                    border: '3px solid white',
+                                                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                                                },
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                    src: "/data/profile/IMG-20250419-WA0003 (2).jpg",
+                                                    alt: profile?.title || 'Olivier Rouiller',
+                                                    style: {
+                                                        width: '100%',
+                                                        height: '100%',
+                                                        objectFit: 'cover'
+                                                    }
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                    lineNumber: 204,
+                                                    columnNumber: 19
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                lineNumber: 203,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    flex: 1
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                                        style: {
+                                                            fontSize: '1rem',
+                                                            fontWeight: 700,
+                                                            margin: '0 0 0.25rem 0',
+                                                            lineHeight: '1.2'
+                                                        },
+                                                        children: profile?.title || 'Olivier Rouiller'
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                        lineNumber: 211,
+                                                        columnNumber: 19
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: '0.875rem',
+                                                            margin: 0,
+                                                            color: 'var(--text-secondary)',
+                                                            lineHeight: '1.3'
+                                                        },
+                                                        children: currentLang === 'en' ? 'L3 Psychology Student and Psychotherapist in Training' : 'Étudiant en L3 de Psychologie et Psychopraticien en Formation'
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                        lineNumber: 214,
+                                                        columnNumber: 19
+                                                    }, ("TURBOPACK compile-time value", void 0))
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                lineNumber: 210,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0))
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/[lang]/cv/page.jsx",
+                                        lineNumber: 202,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            gap: '0.25rem',
+                                            textAlign: 'right',
+                                            flexShrink: 0
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem',
+                                                    justifyContent: 'flex-end'
+                                                },
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    style: {
+                                                        fontSize: '0.75rem',
+                                                        lineHeight: '1.3'
+                                                    },
+                                                    children: [
+                                                        "14 rue Saint Erhard",
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                                            fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                            lineNumber: 225,
+                                                            columnNumber: 40
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        "67100 Strasbourg"
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                    lineNumber: 224,
+                                                    columnNumber: 19
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                lineNumber: 223,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem',
+                                                    justifyContent: 'flex-end'
+                                                },
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    style: {
+                                                        textDecoration: 'none',
+                                                        fontSize: '0.75rem'
+                                                    },
+                                                    children: "06 62 91 32 03"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                    lineNumber: 229,
+                                                    columnNumber: 19
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                lineNumber: 228,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem',
+                                                    justifyContent: 'flex-end'
+                                                },
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                    href: "mailto:o.rouiller@gmail.com",
+                                                    style: {
+                                                        color: 'var(--primary)',
+                                                        textDecoration: 'none',
+                                                        fontSize: '0.75rem'
+                                                    },
+                                                    children: "o.rouiller@gmail.com"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                    lineNumber: 234,
+                                                    columnNumber: 19
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                lineNumber: 233,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem',
+                                                    justifyContent: 'flex-end'
+                                                },
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                    href: "https://www.olivier-psy.fr/",
+                                                    style: {
+                                                        color: 'var(--primary)',
+                                                        textDecoration: 'none',
+                                                        fontSize: '0.75rem'
+                                                    },
+                                                    children: "Portfolio: olivier-psy.fr"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                    lineNumber: 239,
+                                                    columnNumber: 19
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/[lang]/cv/page.jsx",
+                                                lineNumber: 238,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0))
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/[lang]/cv/page.jsx",
+                                        lineNumber: 222,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0))
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/app/[lang]/cv/page.jsx",
-                                lineNumber: 157,
-                                columnNumber: 11
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                style: {
-                                    margin: '0.5rem 0',
-                                    fontSize: '1.1rem',
-                                    color: '#666'
-                                },
-                                children: currentLang === 'en' ? 'L3 Psychology Student and Psychotherapist in Training' : 'Étudiant en L3 de Psychologie et Psychopraticien en Formation'
-                            }, void 0, false, {
-                                fileName: "[project]/app/[lang]/cv/page.jsx",
-                                lineNumber: 158,
-                                columnNumber: 11
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                style: {
-                                    margin: '0.5rem 0',
-                                    fontSize: '0.9rem'
-                                },
-                                children: currentLang === 'en' ? `Website: https://www.olivier-psy.fr/` : `Site web : https://www.olivier-psy.fr/`
-                            }, void 0, false, {
-                                fileName: "[project]/app/[lang]/cv/page.jsx",
-                                lineNumber: 163,
-                                columnNumber: 11
+                                lineNumber: 200,
+                                columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
-                        ]
-                    }, void 0, true, {
+                        }, void 0, false, {
+                            fileName: "[project]/app/[lang]/cv/page.jsx",
+                            lineNumber: 199,
+                            columnNumber: 11
+                        }, ("TURBOPACK compile-time value", void 0))
+                    }, void 0, false, {
                         fileName: "[project]/app/[lang]/cv/page.jsx",
-                        lineNumber: 145,
+                        lineNumber: 198,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         style: {
-                            lineHeight: '1.6',
-                            fontSize: '0.95rem'
+                            maxWidth: '794px',
+                            margin: '0 auto',
+                            padding: '0 4rem 4rem 4rem'
                         },
-                        children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$markdown$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["parseMarkdown"])(cvData)
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                marginTop: '2rem',
+                                padding: 0,
+                                border: 'none'
+                            },
+                            children: loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    textAlign: 'center',
+                                    padding: '2rem'
+                                },
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    children: currentLang === 'en' ? 'Loading CV...' : 'Chargement du CV...'
+                                }, void 0, false, {
+                                    fileName: "[project]/app/[lang]/cv/page.jsx",
+                                    lineNumber: 253,
+                                    columnNumber: 17
+                                }, ("TURBOPACK compile-time value", void 0))
+                            }, void 0, false, {
+                                fileName: "[project]/app/[lang]/cv/page.jsx",
+                                lineNumber: 252,
+                                columnNumber: 15
+                            }, ("TURBOPACK compile-time value", void 0)) : error ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    padding: '1rem',
+                                    margin: '1rem 0',
+                                    backgroundColor: '#fef2f2',
+                                    border: '1px solid #fecaca',
+                                    borderRadius: '8px',
+                                    color: '#991b1b'
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        style: {
+                                            margin: '0 0 0.5rem 0',
+                                            fontWeight: 'bold'
+                                        },
+                                        children: [
+                                            "⚠️ ",
+                                            currentLang === 'en' ? 'Error loading CV' : 'Erreur lors du chargement du CV'
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/[lang]/cv/page.jsx",
+                                        lineNumber: 257,
+                                        columnNumber: 17
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        style: {
+                                            margin: 0,
+                                            fontSize: '0.875rem'
+                                        },
+                                        children: currentLang === 'en' ? 'Unable to load CV content. Please try again later.' : 'Impossible de charger le contenu du CV. Veuillez réessayer plus tard.'
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/[lang]/cv/page.jsx",
+                                        lineNumber: 260,
+                                        columnNumber: 17
+                                    }, ("TURBOPACK compile-time value", void 0))
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/[lang]/cv/page.jsx",
+                                lineNumber: 256,
+                                columnNumber: 15
+                            }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    fontSize: '0.7rem',
+                                    lineHeight: '1.4'
+                                },
+                                children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$utils$2f$markdown$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["parseMarkdown"])(cvData)
+                            }, void 0, false, {
+                                fileName: "[project]/app/[lang]/cv/page.jsx",
+                                lineNumber: 267,
+                                columnNumber: 15
+                            }, ("TURBOPACK compile-time value", void 0))
+                        }, void 0, false, {
+                            fileName: "[project]/app/[lang]/cv/page.jsx",
+                            lineNumber: 250,
+                            columnNumber: 11
+                        }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/app/[lang]/cv/page.jsx",
-                        lineNumber: 170,
+                        lineNumber: 249,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/[lang]/cv/page.jsx",
-                lineNumber: 136,
+                lineNumber: 187,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/app/[lang]/cv/page.jsx",
-        lineNumber: 119,
+        lineNumber: 96,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };

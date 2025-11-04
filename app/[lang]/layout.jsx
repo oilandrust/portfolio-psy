@@ -1,9 +1,5 @@
 import { getPortfolioData } from '../../lib/portfolio';
-import Hero from '../../components/Hero';
-import Footer from '../../components/Footer';
-import LanguageSwitcher from '../../components/LanguageSwitcher';
-import ErrorBoundary from '../../components/ErrorBoundary';
-import { ERROR_MESSAGES } from '../../config/constants';
+import PortfolioLayout from '../../components/PortfolioLayout';
 
 export async function generateStaticParams() {
   return [{ lang: 'fr' }, { lang: 'en' }];
@@ -42,19 +38,13 @@ export default async function LangLayout({ children, params }) {
   const currentLang = lang || 'fr';
   
   return (
-    <div className='App'>
-      <ErrorBoundary fallbackMessage={ERROR_MESSAGES.FALLBACK_MESSAGES.COMPONENT}>
-        <Hero profile={langData.profile} quotes={langData.quotes || []} currentLang={currentLang} />
-      </ErrorBoundary>
-
-      <div className='container'>
-        {children}
-      </div>
-      
-      <Footer />
-      
-      <LanguageSwitcher currentLang={currentLang} />
-    </div>
+    <PortfolioLayout 
+      profile={langData.profile} 
+      quotes={langData.quotes || []} 
+      currentLang={currentLang}
+    >
+      {children}
+    </PortfolioLayout>
   );
 }
 
