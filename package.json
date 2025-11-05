@@ -19,7 +19,10 @@
     "pdf:cv:en": "node scripts/cv-to-pdf.js en",
     "pdf:cv:all": "node scripts/cv-to-pdf.js all",
     "crop-square": "node scripts/crop-square.js",
-    "img:resize": "node scripts/resize-image.js"
+    "img:resize": "node scripts/resize-image.js",
+    "img:resize:interests": "node scripts/batch-resize-interests.js"
+    ,
+    "fix:md-frontmatter-media": "node scripts/fix-md-frontmatter-media.js"
   },
   "dependencies": {
     "@picocss/pico": "^2.1.1",

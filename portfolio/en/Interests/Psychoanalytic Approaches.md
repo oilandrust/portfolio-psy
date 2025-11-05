@@ -1,5 +1,5 @@
 ---
-thumbnail: (media/unconscious_300x300.png)
+thumbnail: media/unconscious_300x300.png
 id: 1
 subtitle: What are you thinking about?
 ---
@@ -26,3 +26,5 @@ Bowlby, J. (2008). *Attachment : Second Edition.* Basic Books.
 Freud, S. (1912/1954). _The dynamics of transference_. In J. Strachey (Ed. & Trans.), _The standard edition of the complete psychological works of Sigmund Freud_ (Vol. 12, pp. 99-108). Hogarth Press.
 
 Schore, A. N. (2019). *Right Brain Psychotherapy (Norton Series on Interpersonal Neurobiology)*. W. W. Norton & Company, Incorporated.
+
+---

@@ -1,5 +1,5 @@
 ---
-thumbnail: (media/group_300x300.png)
+thumbnail: media/group_300x300.png
 id: 5
 subtitle: En étant là avec toi je remarque...
 ---
@@ -32,3 +32,4 @@ Beneteau, M. (2021). *Circling and authentic relating practice guide (2nd editio
 Kestano, R. (2022). *Authentic relating : A guide to rich, meaningful, nourishing relationships*. ART International.
 
 Rouiller, O. (2025). *Les 5 principes du Circling*. (Re)Connected. [https://www.re-connected.fr/2025/02/28/les-5-principes-du-circling/](https://www.re-connected.fr/2025/02/28/les-5-principes-du-circling/?utm_source=chatgpt.com)
+---

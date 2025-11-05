@@ -1,5 +1,5 @@
 ---
-thumbnail: (media/mindfulness_300x300.png)
+thumbnail: media/mindfulness_300x300.png
 id: 3
 subtitle: And when you are in contact with that, what do you notice?
 ---
@@ -26,3 +26,5 @@ Rhonda Mattern. (2020). *The Brain’s Requirements for Spontaneous Transformati
 Segal, Z. V., Williams, J. M. G., Teasdale, J. D., & Kabat-Zinn, J. (2018). *Mindfulness-based cognitive therapy for depression* (Second edition, paperback edition). The Guilford Press.
 
 Siegel, D. J. (2007). *The Mindful Brain*. W. W. Norton & Company, Incorporated.
+
+---

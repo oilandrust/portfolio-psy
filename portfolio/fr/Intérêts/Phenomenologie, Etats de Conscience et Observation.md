@@ -1,6 +1,6 @@
 ---
 id: 4
-thumbnail: (media/focus_300x300.png)
+thumbnail: media/focus_300x300.png
 subtitle: '"Pensée, Sensation, Pensée, Image, Emotion, ..."'
 ---
 *En cours de rédaction...*
@@ -30,3 +30,4 @@ Martin, J. A. (2020). *Clusters of Individuals’ Experiences Form a Continuum o
 Kornfield, J. (1993). *A path with heart : A guide through the perils and promises of spiritual life*. Bantam Bks.
 
 Young, S. (2018). *The science of enlightenment : How meditation works*. Sounds True.
+---

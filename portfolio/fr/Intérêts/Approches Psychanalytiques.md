@@ -1,5 +1,5 @@
 ---
-thumbnail: (media/unconscious_300x300.png)
+thumbnail: media/unconscious_300x300.png
 id: 1
 subtitle: A quoi pensez vous?
 ---
@@ -26,3 +26,4 @@ Bowlby, J. (2008). *Attachment : Second Edition.* Basic Books.
 Freud, S. (1912/1954). _La dynamique du transfert_ (M. Bonaparte & A. Berman, Trad.). Presses Universitaires de France.
 
 Schore, A. N. (2019). *Right Brain Psychotherapy (Norton Series on Interpersonal Neurobiology)*. W. W. Norton & Company, Incorporated.
+---

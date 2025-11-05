@@ -1,5 +1,5 @@
 ---
-thumbnail: (media/crane_300x300.png)
+thumbnail: media/crane_300x300.png
 id: 2
 subtitle: Qu'est-ce que tu ressens dans ton corps quand tu penses à ça?
 ---
@@ -63,3 +63,4 @@ Reich, W. (1949). _Character-analysis, 3rd ed._ (p. xxvi, 519). Orgone Institute
 Stanley, S. (2025). _Relational and body-centered practices for healing trauma : Lifting the burdens of the past_ (Second edition). Routledge.
 
 Weiss, H., Johanson, G., & Monda, L. (2015). *Hakomi mindfulness-centered somatic psychotherapy : A comprehensive guide to theory and practice*. W. W. Norton & company.
+---

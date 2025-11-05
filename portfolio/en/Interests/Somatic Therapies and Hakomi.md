@@ -1,5 +1,5 @@
 ---
-thumbnail: (media/crane_300x300.png)
+thumbnail: media/crane_300x300.png
 id: 2
 subtitle: What do you feel in your body when you think that?
 ---
@@ -61,3 +61,5 @@ Porges, S. W. (2011). *The Polyvagal Theory*. W. W. Norton & Company, Incorporat
 Stanley, S. (2025). _Relational and body-centered practices for healing trauma : Lifting the burdens of the past_ (Second edition). Routledge.
 
 Weiss, H., Johanson, G., & Monda, L. (2015). *Hakomi mindfulness-centered somatic psychotherapy : A comprehensive guide to theory and practice*. W. W. Norton & company.
+
+---
