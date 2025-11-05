@@ -244,8 +244,8 @@ function buildPortfolioForLanguage(lang, paths) {
         const markdownPath = path.join(paths.interestsDir, file);
         const interestData = readMarkdownFile(markdownPath);
         
-        // Skip if published is explicitly false
-        if (interestData && interestData.published === "false") {
+        // Skip if published is explicitly false (handle both string and boolean)
+        if (interestData && (interestData.published === "false" || interestData.published === false)) {
           console.log(`  ⏭️  Skipped (published: false): ${file}`);
           return;
         }
@@ -307,8 +307,8 @@ function buildPortfolioForLanguage(lang, paths) {
 
             const experienceData = readMarkdownFile(experiencePath);
             
-            // Skip if published is explicitly false
-            if (experienceData && experienceData.published === "false") {
+            // Skip if published is explicitly false (handle both string and boolean)
+            if (experienceData && (experienceData.published === "false" || experienceData.published === false)) {
               console.log(`  ⏭️  Skipped (published: false): ${file}`);
               return;
             }
@@ -377,8 +377,8 @@ function buildPortfolioForLanguage(lang, paths) {
 
             const readingData = readMarkdownFile(readingPath);
             
-            // Skip if published is explicitly false
-            if (readingData && readingData.published === "false") {
+            // Skip if published is explicitly false (handle both string and boolean)
+            if (readingData && (readingData.published === "false" || readingData.published === false)) {
               console.log(`  ⏭️  Skipped (published: false): ${file}`);
               return;
             }
