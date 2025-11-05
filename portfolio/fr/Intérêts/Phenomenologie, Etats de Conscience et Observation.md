@@ -1,6 +1,6 @@
 ---
 id: 4
-thumbnail: media/focus.png
+thumbnail: (media/focus_300x300.png)
 subtitle: '"Pensée, Sensation, Pensée, Image, Emotion, ..."'
 ---
 *En cours de rédaction...*

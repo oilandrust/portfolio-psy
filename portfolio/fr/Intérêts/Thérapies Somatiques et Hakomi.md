@@ -1,5 +1,5 @@
 ---
-thumbnail: media/crane.png
+thumbnail: (media/crane_300x300.png)
 id: 2
 subtitle: Qu'est-ce que tu ressens dans ton corps quand tu penses à ça?
 ---

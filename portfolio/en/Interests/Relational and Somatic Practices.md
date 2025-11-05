@@ -1,5 +1,5 @@
 ---
-thumbnail: media/group.png
+thumbnail: (media/group_300x300.png)
 id: 5
 subtitle: Being here with you, I notice...
 ---

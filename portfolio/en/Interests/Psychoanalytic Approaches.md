@@ -1,5 +1,5 @@
 ---
-thumbnail: media/unconscious.png
+thumbnail: (media/unconscious_300x300.png)
 id: 1
 subtitle: What are you thinking about?
 ---

@@ -1,5 +1,5 @@
 ---
-thumbnail: media/heart.png
+thumbnail: (media/heart_300x300.png)
 id: 6
 subtitle:
 ---

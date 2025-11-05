@@ -1,5 +1,5 @@
 ---
-thumbnail: media/mindfulness.png
+thumbnail: (media/mindfulness_300x300.png)
 id: 3
 subtitle: Et quand tu es en contact avec ça , qu'est-ce que tu remarques?
 ---

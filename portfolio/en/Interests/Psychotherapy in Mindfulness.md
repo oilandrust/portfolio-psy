@@ -1,5 +1,5 @@
 ---
-thumbnail: media/mindfulness.png
+thumbnail: (media/mindfulness_300x300.png)
 id: 3
 subtitle: And when you are in contact with that, what do you notice?
 ---
