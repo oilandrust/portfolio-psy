@@ -18,7 +18,8 @@
     "pdf:cv:fr": "node scripts/cv-to-pdf.js fr",
     "pdf:cv:en": "node scripts/cv-to-pdf.js en",
     "pdf:cv:all": "node scripts/cv-to-pdf.js all",
-    "crop-square": "node scripts/crop-square.js"
+    "crop-square": "node scripts/crop-square.js",
+    "img:resize": "node scripts/resize-image.js"
   },
   "dependencies": {
     "@picocss/pico": "^2.1.1",
