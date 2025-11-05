@@ -75,6 +75,14 @@
     "experiences": [
       {
         "id": 1,
+        "title": "Accompagnement de Emil",
+        "subtitle": "Savoir etre en soutien.",
+        "start_date": "2021-12-12T00:00:00.000Z",
+        "end_date": "2024-12-31T00:00:00.000Z",
+        "description": "Pendant plusieurs années, j'ai maintenu une relation avec Emil, un jeune homme vivant dans mon quartier avec une situation relativement précaire et peu de soutien.\n\nEmil était étranger vivant en Suède depuis son adolescence mais était peu intègre dans la société, en rupture avec les milieux scolaires et professionnels et avec peu de contact avec ses parents. Il était relativement isolé et avais des visions du monde plutôt conservatrices, en rupture avec l'attitude suédoise. Il avait des tendances à ne pas faire confiance, avec parfois des raisonnements noir et blanc et une certaine adhésion a des théories du complot. Ces idées et attitudes avaient tendance à le mettre en conflit avec les gens qu'il côtoyait.\n\nPendant plusieurs années j'ai entretenu une relation amicale et de soutien avec lui, durant des périodes je le rencontrais une fois par semaine pour un café ou une balade dans lequel j'avais en grande partie un rôle d'écoute. Je ne suis pas allé en conflit de ses opinions peu populaires, sans pour autant y adhérer, ce qui m'a permis de gagner sa confiance. J'ai pu observer ses biais et comprendre comment ils s'articulaient autour de sentiments de méfiance plus fondamentaux, sans entreprendre de changer ces croyances car je n'étais pas son thérapeute, simplement un soutien et amis.\n\nDans cette relation j'ai développé mon écoute et une attitude de soutien bienveillant, je suis heureux d'avoir pu être un soutien pour lui pendant cette période. J'ai appris à être dans une relation ou je donnais plus d'attention que je n'en recevais et j'ai appris à apprécier cette position. Aujourd'hui il est rentré dans son pays d'origine et s'y sent mieux, ironiquement son déménagement s'est fait à un mois d'écart avec mon déménagement pour la France!"
+      },
+      {
+        "id": 2,
         "title": "Psychothérapie Somatique Hakomi",
         "subtitle": "Pratique de la thérapie Hakomi en conditions réelles",
         "start_date": "2024-09-01T00:00:00.000Z",
@@ -82,11 +90,11 @@
         "description": "Alors que je complétais le premier niveau de ma formation en psychothérapie somatique Hakomi, j'ai commencé à travailler avec des clients en conditions réelles. Ma pratique est restée modeste, à la hauteur de mes capacités mais j'ai eu l'honneur de rencontrer de nombreux systèmes différents et de suivre deux patients de manière régulière. Les clients avec qui j'ai travaillé sont en général des personnes ayant une expérience extensive de la psychothérapie, parfois eux-mêmes psychologues et qui se tournent vers la thérapie somatique.\n\nNotamment 'N', que j'ai suivi pendant plus d'un an avec des sessions quasi hebdomadaires qui présentait un style d'attachement évitant. Nous avons travaillé pour lui permettre de se connecter à ses besoins d'attachement et à ressentir plus d'émotions.\n\nJ'ai aussi travaillé régulièrement avec 'H' qui est à la fois un ami, méditant et apprenti en thérapie et autres pratiques somatiques. Avec lui le travail relevait plus du développement personnel mais nous avons travaillé sur des traumatismes assez jeunes."
       },
       {
-        "id": 2,
+        "id": 3,
         "title": "Psychothérapie Focusing et 'Parts Work'",
         "subtitle": "Premiers essais en psychothérapie",
-        "start_date": "2022-03-01T00:00:00.000Z",
-        "end_date": "2022-12-31T00:00:00.000Z",
+        "start_date": "2022-09-01T00:00:00.000Z",
+        "end_date": "2023-12-31T00:00:00.000Z",
         "description": "Après avoir complété un certificat en Thérapie Somatique de l'Attachement, j'ai travaillé avec mon premier client 'L'. Nous avons travaillé ensemble pendant un an et demi de manière régulière et hebdomadaire."
       }
     ],

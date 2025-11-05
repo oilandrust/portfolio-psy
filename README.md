@@ -1,23 +1,23 @@
-# Modern Portfolio Website
+# Portfolio Website - Olivier Rouiller
 
-A beautiful, responsive portfolio website built with the latest web technologies.
+A professional portfolio website built with Next.js, featuring bilingual content (French/English) and static export for GitHub Pages.
 
 ## 🚀 Tech Stack
 
-- **Vite** 7.1.2 - Fast build tool and dev server
-- **React** 19.1.1 - Latest React with modern features
+- **Next.js** 16.0.1 - React framework with static export
+- **React** 19.2.0 - Latest React with modern features
 - **Pico CSS** 2.1.1 - Minimal CSS framework for semantic HTML
-- **Modern JavaScript** - ES6+ features and modern syntax
+- **Markdown** - Content management with YAML front matter
 
 ## ✨ Features
 
-- 🎨 Modern, responsive design with glassmorphism effects
-- 📱 Mobile-first responsive layout
-- 🎯 Tab-based navigation for different sections
-- 💼 Skills showcase with visual indicators
-- 🚀 Project portfolio with tech stack tags
-- 📞 Contact information and social links
-- 🌈 Beautiful gradient background and animations
+- 🌍 Bilingual support (French/English)
+- 📱 Mobile-first responsive design
+- 📄 Dynamic CV page with PDF generation
+- 📚 Interests and readings sections
+- 💼 Experience and formations showcase
+- 🎨 Clean, modern design with Pico CSS
+- 📊 Static site generation for GitHub Pages
 
 ## 🛠️ Getting Started
 
@@ -32,7 +32,7 @@ A beautiful, responsive portfolio website built with the latest web technologies
 
 ```bash
 git clone <your-repo-url>
-cd portfolio
+cd portfolio-psy
 ```
 
 2. Install dependencies
@@ -41,19 +41,30 @@ cd portfolio
 npm install
 ```
 
-3. Start development server
+3. Build portfolio data
+
+```bash
+npm run build-portfolio
+```
+
+4. Start development server
 
 ```bash
 npm run dev
 ```
 
-4. Open your browser and navigate to `http://localhost:5173`
+5. Open your browser and navigate to `http://localhost:3000`
 
 ### Build for Production
 
 ```bash
 npm run build
 ```
+
+This will:
+1. Build the portfolio data from markdown files
+2. Generate static Next.js pages
+3. Output to the `out/` directory
 
 ### Preview Production Build
 
@@ -64,43 +75,47 @@ npm run preview
 ## 📁 Project Structure
 
 ```
-src/
-├── App.jsx          # Main application component
-├── main.jsx         # Application entry point
-├── index.css        # Global styles and Pico CSS import
-└── assets/          # Static assets
+portfolio-psy/
+├── app/                  # Next.js app directory
+│   ├── [lang]/          # Language-specific routes
+│   │   ├── about/       # About page
+│   │   ├── cv/          # CV page
+│   │   ├── experience/  # Experience page
+│   │   ├── interests/   # Interests pages
+│   │   └── lectures/    # Readings/lectures pages
+│   └── layout.jsx       # Root layout
+├── components/          # React components
+├── lib/                 # Utility functions
+├── portfolio/           # Source markdown content
+│   ├── en/             # English content
+│   └── fr/             # French content
+├── public/             # Static assets
+│   ├── data/           # Generated portfolio data
+│   └── O.svg           # Favicon
+├── scripts/            # Build and utility scripts
+└── build-portfolio.js  # Main build script
 ```
 
-## 🎨 Customization
+## 📝 Content Management
 
-- Update personal information in `App.jsx`
-- Modify colors in `src/index.css` CSS variables
-- Add/remove skills and projects
-- Customize the hero section content
-- Update contact information and social links
-
-## 📱 Responsive Design
-
-The website is fully responsive and works great on:
-
-- Desktop computers
-- Tablets
-- Mobile phones
-- All modern browsers
+Content is managed through markdown files in the `portfolio/` directory:
+- Each language has its own subdirectory (`en/`, `fr/`)
+- Markdown files support YAML front matter for metadata
+- Images and media are stored alongside markdown files
 
 ## 🚀 Deployment
 
-This project can be easily deployed to:
+This project is configured for static export and can be deployed to:
+
+- **GitHub Pages** (current setup)
+  ```bash
+  npm run deploy
+  ```
 
 - Vercel
 - Netlify
-- GitHub Pages
 - Any static hosting service
 
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.

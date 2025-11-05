@@ -32,13 +32,13 @@ const ExperienceTab = ({ experiences = [] }) => {
       grouped[periodKey].push(experience);
     });
 
-    // Sort experiences within each period by end_date (most recent first)
+    // Sort experiences within each period by start_date (most recent first)
     Object.keys(grouped).forEach(period => {
       grouped[period].sort((a, b) => {
-        if (!a.end_date && !b.end_date) return 0;
-        if (!a.end_date) return 1;
-        if (!b.end_date) return -1;
-        return new Date(b.end_date) - new Date(a.end_date);
+        if (!a.start_date && !b.start_date) return 0;
+        if (!a.start_date) return 1;
+        if (!b.start_date) return -1;
+        return new Date(b.start_date) - new Date(a.start_date);
       });
     });
 
@@ -77,14 +77,14 @@ const ExperienceTab = ({ experiences = [] }) => {
     if (b === 'Ongoing') return -1;
     
     // Extract the end year from the period string for comparison
-    const getEndYear = (period) => {
+    const getStartYear = (period) => {
       if (period.includes(' - ')) {
-        return parseInt(period.split(' - ')[1]);
+        return parseInt(period.split(' - ')[0]);
       }
       return parseInt(period);
     };
     
-    return getEndYear(b) - getEndYear(a);
+    return getStartYear(b) - getStartYear(a);
   });
 
   return (

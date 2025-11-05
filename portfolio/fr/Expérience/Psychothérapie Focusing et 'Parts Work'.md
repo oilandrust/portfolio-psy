@@ -1,6 +1,6 @@
 ---
-start_date: 2022-03-01
-end_date: 2022-12-31
+start_date: 2022-09-01
+end_date: 2023-12-31
 title: Psychothérapie Focusing et 'Parts Work'
 subtitle: Premiers essais en psychothérapie
 ---
