@@ -4,4 +4,4 @@ En parallèle de mon cursus universitaire, j'ai suivi des formations professionn
 
 L'orientation clinique qui m'inspire est influencée par les **Approches Psychanalytiques et Psychodynamiques**, par les approches Somatiques de traitement des **Psychotrauma** (Théorie Polyvagale, Somatic Experiencing), par la **Pleine Conscience** et les **Approches Relationnelles**. Je suis aussi intéressé par les apports des **Neurosciences** pour comprendre les mécanismes de changement, et pour comprendre les fondements neuropsychologiques et développementaux de ces thérapies.
 
-Bien que j'aie un esprit scientifique et un intérêt pour la recherche en psychologie et neuropsychologie, mon intérêt est d'utiliser les modèles pour éclairer une pratique de **Psychothérapie** dont l'essence est **Expérientielle**.
+Bien que j'aie un esprit scientifique et un intérêt pour la recherche en psychologie et neuropsychologie, mon intérêt est d'utiliser les modèles pour éclairer une pratique de **Psychothérapie** dont l'essence est **Expérientielle**. Par ailleurs cette recherche est animée par un besoin personnel et une experience de la thérapie.
