@@ -61,5 +61,3 @@ Porges, S. W. (2011). *The Polyvagal Theory*. W. W. Norton & Company, Incorporat
 Stanley, S. (2025). _Relational and body-centered practices for healing trauma : Lifting the burdens of the past_ (Second edition). Routledge.
 
 Weiss, H., Johanson, G., & Monda, L. (2015). *Hakomi mindfulness-centered somatic psychotherapy : A comprehensive guide to theory and practice*. W. W. Norton & company.
-
----

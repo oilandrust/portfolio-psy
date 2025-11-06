@@ -9,7 +9,7 @@ These approaches have in my view highlighted central aspects for healing, first 
 
 Psychoanalysis gave rise to Bowlby's theory of **attachment** (Bowlby 2008), which clearly showed the importance of the quality of the bond in the first years of life for the establishment of *Inner Working Models*, another model of the unconscious.
 
-I am also particularly interested in the modern contributions made by Allan Schore (Schore 2019), an American Psychoanalyst who explains the relational affective unconscious as a way of being with the other that is **implicit**, **non-verbal**, and therefore unconscious, and whose neural substrates can be observed activating in relationship.
+I am also particularly interested in the modern contributions made by Allan Schore (Schore 2019), an American Psychoanalyst who explains the relational affective unconscious as a way of being with the other that is **implicit**, **non-verbal**, and therefore unconscious, and whose neural substrates can be observed activating in relationship (Dumas 2011).
 
 Another fundamental contribution from Freud's work is the notion of **transference** (Freud 1912), where these implicit and unconscious models play out in the dyadic patient-therapist relationship, offering the possibility of a corrective experience leading to a new way of being with the other and the emergence of the ego or *Self*.
 
@@ -23,8 +23,8 @@ Bergeret, J. (2021). *La personnalité normale et pathologique : Les structures 
 
 Bowlby, J. (2008). *Attachment : Second Edition.* Basic Books.
 
+Dumas, G. (2011). Towards a two-body neuroscience. _Communicative & Integrative Biology_, _4_(3), 349‑352.
+
 Freud, S. (1912/1954). _The dynamics of transference_. In J. Strachey (Ed. & Trans.), _The standard edition of the complete psychological works of Sigmund Freud_ (Vol. 12, pp. 99-108). Hogarth Press.
 
 Schore, A. N. (2019). *Right Brain Psychotherapy (Norton Series on Interpersonal Neurobiology)*. W. W. Norton & Company, Incorporated.
-
----

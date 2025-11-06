@@ -63,4 +63,3 @@ Reich, W. (1949). _Character-analysis, 3rd ed._ (p. xxvi, 519). Orgone Institute
 Stanley, S. (2025). _Relational and body-centered practices for healing trauma : Lifting the burdens of the past_ (Second edition). Routledge.
 
 Weiss, H., Johanson, G., & Monda, L. (2015). *Hakomi mindfulness-centered somatic psychotherapy : A comprehensive guide to theory and practice*. W. W. Norton & company.
----

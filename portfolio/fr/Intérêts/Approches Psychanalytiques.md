@@ -9,7 +9,7 @@ Ces approches ont selon moi mis en lumière des aspects centraux pour la guéris
 
 La psychanalyse a donné lieu à la théorie de l'**attachement** de Bowlby (Bowlby 2008) qui a montré l'importance de la qualité du lien dans les premières années de la vie pour la mise en place des *Inner Working Models*, un autre modele de l'inconscient.
 
-Je suis aussi particulièrement intéressé par les apports modernes faits par Allan Schore (Schore 2019), Psychanalyste américain qui explique l'inconscient affectif relationnel comme une manière d'être avec l'autre qui est **implicite**, **non-verbale**, et donc inconsciente, et dont on peut observer les substrats neuronaux s'activer dans la relation.
+Je suis aussi particulièrement intéressé par les apports modernes faits par Allan Schore (Schore 2019), Psychanalyste américain qui explique l'inconscient affectif relationnel comme une manière d'être avec l'autre qui est **implicite**, **non-verbale** (Lyons‐Ruth 1999), et donc inconsciente, et dont on peut observer les substrats neuronaux s'activer dans la relation (Dumas 2011).
 
 Un autre apport fondamental de l'œuvre freudienne est la notion de **transfert** (Freud 1912), où ces modèles implicites et inconscients se jouent dans la relation dyadique patient thérapeute, offrant ainsi la possibilité d'une expérience corrective menant à une nouvelle manière d'être avec l'autre et l'émergence du moi ou *Self*.
 
@@ -23,7 +23,10 @@ Bergeret, J. (2021). *La personnalité normale et pathologique : Les structure
 
 Bowlby, J. (2008). *Attachment : Second Edition.* Basic Books.
 
+Dumas, G. (2011). Towards a two-body neuroscience. _Communicative & Integrative Biology_, _4_(3), 349‑352.
+
 Freud, S. (1912/1954). _La dynamique du transfert_ (M. Bonaparte & A. Berman, Trad.). Presses Universitaires de France.
 
+Lyons‐Ruth, K. (1999). The two‐person unconscious : Intersubjective dialogue, enactive relational representation, and the emergence of new forms of relational organization. _Psychoanalytic Inquiry_, _19_(4), 576‑617.
+
 Schore, A. N. (2019). *Right Brain Psychotherapy (Norton Series on Interpersonal Neurobiology)*. W. W. Norton & Company, Incorporated.
----

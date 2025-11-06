@@ -28,5 +28,3 @@ Martin, J. A. (2020). *Clusters of Individuals' Experiences Form a Continuum of 
 Kornfield, J. (1993). *A path with heart : A guide through the perils and promises of spiritual life*. Bantam Bks.
 
 Young, S. (2018). *The science of enlightenment : How meditation works*. Sounds True.
-
----

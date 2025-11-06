@@ -16,8 +16,8 @@ export async function generateMetadata({ params }) {
   // SEO optimization for French only
   if (lang === 'fr') {
     return {
-      title: `${profile.title || 'Olivier Rouiller'} - ${profile.subtitle || 'Psychologue'}`,
-      description: profile.about?.substring(0, 160) || 'Portfolio professionnel d\'Olivier Rouiller',
+      title: `${profile.title || 'Olivier Rouiller'} - ${profile.subtitle || 'Etudiant en Psychologie'}`,
+      description: profile.about?.substring(0, 160) || 'Portfolio d\'Olivier Rouiller',
       alternates: {
         languages: {
           'fr': `${baseUrl}/fr/`,

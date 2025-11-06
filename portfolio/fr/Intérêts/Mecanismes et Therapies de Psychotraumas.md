@@ -36,4 +36,3 @@ Somatic Experiencing, window of tolerance, dissociation, fragmentation, integrat
 
 
 **Bibliographie**
----

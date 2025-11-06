@@ -30,5 +30,3 @@ BENETEAU, M. (2021). *CIRCLING AND AUTHENTIC RELATING PRACTICE GUIDE (2ND EDITIO
 Kestano, R. (2022). *Authentic relating : A guide to rich, meaningful, nourishing relationships*. ART International.
 
 Rouiller, O. (2025). *The 5 principles of Circling*. (Re)Connected. [https://www.re-connected.fr/2025/02/28/les-5-principes-du-circling/](https://www.re-connected.fr/2025/02/28/les-5-principes-du-circling/)
-
----

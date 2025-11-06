@@ -12,5 +12,3 @@ Today there is a strong polarization between the sexes and genders. In my view, 
 The work is not only to dialogue, to set new boundaries, to learn to respect them but also to regulate this charge to gradually also let go of defense and domination strategies.
 
 In my view, somatic approaches have an important role to play as they provide a framework to welcome emotions, energies, charges, etc. that arise when we approach these issues, to regulate them and to return to society, not in Fight or Flight, not in Freeze or Collapse, but with empathy, curiosity and capacity for connection.
-
----
