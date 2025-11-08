@@ -2,6 +2,7 @@
 id: 4
 thumbnail: media/focus_300x300.png
 subtitle: '"Pensée, Sensation, Pensée, Image, Emotion, ..."'
+published: "false"
 ---
 *En cours de rédaction...*
 

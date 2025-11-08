@@ -1,7 +1,8 @@
 ---
 subtitle: Can you feel the ground under your feet?
-published: "false"
-id: 7
+published: "true"
+id: 4
+thumbnail: media/focus_300x300.png
 ---
 *En cours de rédaction...*
 
