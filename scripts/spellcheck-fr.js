@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import 'dotenv/config';
 import { GoogleGenerativeAI } from '@google/generative-ai';
@@ -10,6 +11,7 @@ const projectRoot = path.resolve(__dirname, '..');
 const targetDirectory = path.join(projectRoot, 'portfolio', 'fr');
 const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const dryRun = process.argv.includes('--dry-run');
+const onlyChanged = process.argv.includes('--changed');
 
 if (!process.env.GEMINI_API_KEY) {
   console.error('❌ Missing GEMINI_API_KEY environment variable.');
@@ -45,6 +47,51 @@ async function getMarkdownFiles(directory) {
   );
 
   return files.flat();
+}
+
+async function getChangedMarkdownFiles() {
+  try {
+    const output = execSync('git status --porcelain', {
+      cwd: projectRoot,
+      encoding: 'utf8'
+    });
+
+    const lines = output
+      .split('\n')
+      .map(line => line.trim())
+      .filter(Boolean);
+
+    const files = new Set();
+
+    for (const line of lines) {
+      if (line.length < 4) continue;
+      const pathPart = line.substring(3).trim();
+      const candidate = pathPart.includes(' -> ')
+        ? pathPart.split(' -> ').pop()
+        : pathPart;
+      if (!candidate) continue;
+      const normalized = candidate.replace(/\\/g, '/');
+      if (!normalized.toLowerCase().endsWith('.md')) continue;
+      if (!normalized.startsWith('portfolio/fr/')) continue;
+      files.add(path.join(projectRoot, normalized));
+    }
+
+    const existingFiles = [];
+    for (const filePath of files) {
+      try {
+        await fs.access(filePath);
+        existingFiles.push(filePath);
+      } catch {
+        // ignore removed files
+      }
+    }
+
+    return existingFiles;
+  } catch (error) {
+    console.error('❌ Impossible de récupérer la liste des fichiers modifiés :', error);
+    console.error('Assurez-vous que ce script est exécuté dans un dépôt git.');
+    process.exit(1);
+  }
 }
 
 async function spellcheckFile(filePath) {
@@ -89,14 +136,21 @@ async function spellcheckFile(filePath) {
 
 async function main() {
   try {
-    const markdownFiles = await getMarkdownFiles(targetDirectory);
+    const markdownFiles = onlyChanged
+      ? await getChangedMarkdownFiles()
+      : await getMarkdownFiles(targetDirectory);
 
     if (markdownFiles.length === 0) {
-      console.log('Aucun fichier Markdown trouvé dans portfolio/fr.');
+      if (onlyChanged) {
+        console.log('Aucun fichier Markdown modifié trouvé dans portfolio/fr.');
+      } else {
+        console.log('Aucun fichier Markdown trouvé dans portfolio/fr.');
+      }
       return;
     }
 
-    console.log(`🔍 ${markdownFiles.length} fichier(s) Markdown trouvé(s).`);
+    const scopeLabel = onlyChanged ? 'modifié(s)' : 'Markdown trouvé(s)';
+    console.log(`🔍 ${markdownFiles.length} fichier(s) ${scopeLabel}.`);
 
     for (const filePath of markdownFiles) {
       await spellcheckFile(filePath);

@@ -20,7 +20,8 @@
     "pdf:cv:all": "node scripts/cv-to-pdf.js all",
     "crop-square": "node scripts/crop-square.js",
     "img:resize": "node scripts/resize-image.js",
-    "spellcheck:fr": "node scripts/spellcheck-fr.js",
+    "spellcheck:fr": "node scripts/spellcheck-fr.js --changed",
+    "spellcheck:fr:all": "node scripts/spellcheck-fr.js",
     "fix:md-frontmatter-media": "node scripts/fix-md-frontmatter-media.js"
   },
   "dependencies": {

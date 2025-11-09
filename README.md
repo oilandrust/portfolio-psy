@@ -118,9 +118,10 @@ This project is configured for static export and can be deployed to:
 
 ## 🔧 Utility Scripts
 
-- `npm run spellcheck:fr` — Corrects spelling mistakes in all Markdown files under `portfolio/fr`.  
+- `npm run spellcheck:fr` — Corrects spelling mistakes in modified Markdown files under `portfolio/fr` (based on git status).  
+- `npm run spellcheck:fr:all` — Runs the spellcheck on every Markdown file under `portfolio/fr`.  
   Requires a `GEMINI_API_KEY`. Optionally set `GEMINI_MODEL` (defaults to `gemini-1.5-flash`).  
-  Pass `--dry-run` to preview changes without modifying files.
+  Pass `--dry-run` to preview changes without modifying files, or append `--changed`/`--dry-run` to either command for custom behaviour.
 
 ## 📄 License
 
