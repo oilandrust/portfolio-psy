@@ -116,6 +116,12 @@ This project is configured for static export and can be deployed to:
 - Netlify
 - Any static hosting service
 
+## 🔧 Utility Scripts
+
+- `npm run spellcheck:fr` — Corrects spelling mistakes in all Markdown files under `portfolio/fr`.  
+  Requires a `GEMINI_API_KEY`. Optionally set `GEMINI_MODEL` (defaults to `gemini-1.5-flash`).  
+  Pass `--dry-run` to preview changes without modifying files.
+
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).

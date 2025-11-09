@@ -7,7 +7,7 @@ subtitle: Qu'est-ce que tu ressens dans ton corps quand tu penses à ça?
 
 Christine Caldwell, fondatrice du Département de Psychologie Somatique de l'Université de Naropa à Boulder, Colorado retrace l'histoire des méthodes orientées vers le corps (Caldwell & Hendricks, 1997).
 
-Elle retrace notamment les origines des thérapies somatiques dans la Psychanalyse: en commençant par Freud, Josef Breuer qui se concentrait sur le système nerveux, Ferenczi qui demandait à ses patients de s'abstenir de certains mouvements répétitifs pour exacerber la charge émotionnels qu'ils dissipaient, puis Reich qui avait identifié les névroses comme des armures de caractères qui se manifestaient par des tensions de certaines parties du corps (Reich 1949).
+Elle retrace notamment les origines des thérapies somatiques dans la Psychanalyse: en commençant par Freud, Josef Breuer qui se concentrait sur le système nerveux, Ferenczi qui demandait à ses patients de s'abstenir de certains mouvements répétitifs pour exacerber la charge émotionnelle qu'ils dissipaient, puis Reich qui avait identifié les névroses comme des armures de caractère qui se manifestaient par des tensions de certaines parties du corps (Reich 1949).
 
 Eugène Gendlin était probablement l'un des premiers à mettre l'accent sur *le ressenti des sensations corporelles* dans sa psychothérapie **Focusing** (Gendlin 1981). Le Focusing consiste à porter son attention sur les sensations corporelles associées à un problème ou une croyance et à laisser des symboles émerger. C'est déjà une exploration de l'inconscient par les sensations corporelles.
 
@@ -19,7 +19,7 @@ Peter Levine fut l'un des premiers à étudier les systèmes de régulation du s
 
 On peut élargir les méthodes comme Somatic Experiencing pour prendre en charge non seulement les traumas de choc, comme les accidents, les violences, etc. mais aussi les traumatismes du développement où l'enfant est exposé à des situations de stress chroniques ou bien des conditions plus bénignes, mais qui conduisent à une atrophie du *Self*, des limites poreuses, etc.
 
-Dans les méthodes qui traitent le trauma du développement et d'attachement, on note le **NARM** (Neuro Affective Relational Model) (Heller, 2012), **Sensorimotor Psychotherapy** (Odgen 2015), **Hakomi** (Kurtz 2015) ou encore **Somatic Transformation** (Stanley 2025).
+Dans les méthodes qui traitent le trauma du développement et d'attachement, on note le **NARM** (Neuro Affective Relational Model) (Heller, 2012), **Sensorimotor Psychotherapy** (Ogden 2015), **Hakomi** (Kurtz 2015) ou encore **Somatic Transformation** (Stanley 2025).
 
 Aujourd'hui les méthodes somatiques ont une très forte influence aux États-Unis, il existe 3 Masters se spécialisant en Psychothérapie Somatique, et ces méthodes sont utilisées pour les thérapies assistées par psychédéliques (Mischke-Reeds, 2025).
 # Thérapie Somatique Hakomi
@@ -29,10 +29,10 @@ C'est difficile de décrire les processus qui sont en jeu dans une session Hakom
 
 Premièrement, il y a une grande proximité émotionnelle entre le thérapeute et le client, un thérapeute Hakomi apprend à être très finement accordé à l'état intérieur du patient et s'adapte en temps réel à ses changements. Ceci est analogue à l'accordage que l'on observe entre un caregiver et un bébé. Cet accordage très fin permet une grande sécurité chez le client et l'ouverture progressive des défenses. Cela permet d'accueillir et de réguler tous les états qui peuvent survenir.
 
-Une fois cette "bulle thérapeutique" établie, et suivant soit les observations du thérapeute soit un problème présenté par le client, le processus thérapeutique peut commencer. L'idée est d'étudier en pleine conscience comment le dit problème survient dans le patient. Quelles sont les pensées, émotions, sensations, mouvements, postures qui sont manifestes, et quels sont les mécanismes inconscients, croyances, apprentissages, traumatismes qui sont sous-jacents?
+Une fois cette "bulle thérapeutique" établie, et suivant soit les observations du thérapeute soit un problème présenté par le client, le processus thérapeutique peut commencer. L'idée est d'étudier en pleine conscience comment ledit problème survient dans le patient. Quelles sont les pensées, émotions, sensations, mouvements, postures qui sont manifestes, et quels sont les mécanismes inconscients, croyances, apprentissages, traumatismes qui sont sous-jacents?
 En étudiant les phénomènes manifestes en pleine conscience et en immergeant le client dans cette expérience, on peut accéder aux structures plus inconscientes et les transformer.
 
-Voici un exemple commenté de session de thérapie Hakomi par le fondateur de la méthode, Ron Kurtz ou un geste est utilise comme point d'entree pour l'access d'un évènement traumatique et la transformation de la memoire/croyance associée.
+Voici un exemple commenté de session de thérapie Hakomi par le fondateur de la méthode, Ron Kurtz ou un geste est utilisé comme point d'entrée pour l'accès d'un évènement traumatique et la transformation de la mémoire/croyance associée.
 
 ![](https://www.youtube.com/watch?v=Sm6ayJTG-tM)
 

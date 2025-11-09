@@ -7,4 +7,4 @@ published: "false"
 ---
 Après avoir complété un certificat en Thérapie Somatique de l'Attachement, j'ai travaillé avec mon premier client Lewin. Nous avons travaillé ensemble pendant un an et demi de manière régulière et hebdomadaire.
 
-Lewin était dans la soixantaine, independant financierement et voulais trouver un partenaire
+Lewin était dans la soixantaine, indépendant financièrement et voulait trouver un partenaire

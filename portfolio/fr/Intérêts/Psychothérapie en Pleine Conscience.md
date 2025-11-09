@@ -1,13 +1,13 @@
 ---
 thumbnail: media/mindfulness_300x300.png
 id: 3
-subtitle: Et quand tu es en contact avec ça , qu'est-ce que tu remarques?
+subtitle: Et quand tu es en contact avec ça, qu'est-ce que tu remarques?
 ---
 *En cours de rédaction...*
 
-Depuis la troisième vague des TCC, la pleine conscience a été largement adoptée comme un des outils pour la psychothérapie (Segal et al. 2018). On a pu montrer que la pratique de la pleine conscience ou Mindfulness avait des effets positifs sur la régulation émotionnelle, et en TCC, ces outils sont utilisés pour permettre aux patients de prendre du recul par rapport à leur expérience, de nommer leurs émotions, d'accepter l'inconfort et de reconnaître leurs pensées comme ce qu'elles sont: des pensées et non des réalités.
+Depuis la troisième vague des TCC, la pleine conscience a été largement adoptée comme un des outils pour la psychothérapie (Segal et al. 2018). On a pu montrer que la pratique de la pleine conscience ou Mindfulness avait des effets positifs sur la régulation émotionnelle, et en TCC, ces outils sont utilisés pour permettre aux patients de prendre du recul par rapport à leur expérience, de nommer leurs émotions, d'accepter l'inconfort et de reconnaître leurs pensées comme ce qu'elles sont : des pensées et non des réalités.
 
-Cependant je voudrais mettre en avant que ces apports, certes importants ne sont qu'une partie de ce que peut apporter la pleine conscience à la Psychothérapie.
+Cependant je voudrais mettre en avant que ces apports, certes importants ne sont qu'une partie de ce que peut apporter la pleine conscience à la psychothérapie.
 
 Dans les psychothérapies en pleine conscience, on n'utilise pas la mindfulness comme outil de gestion du stress que les patients peuvent apprendre et utiliser eux-mêmes, mais on procède à la psychothérapie même dans un état de pleine conscience.
 

@@ -12,7 +12,7 @@ Right to right brain sync (Right temporo-parietal)
 Stolk and his colleagues (2014).
 “both partners mutually learned to adjust to each other”
 right temporal lobes
-interpersonal synchro-nization occurred only in pairs with shared communicative history
+interpersonal synchronization occurred only in pairs with shared communicative history
 These authors documented that in this nonverbal intersubjective communication, the processing of novelty and meaning is generated in the right (and not left) hemisphere.
 
 neural activity in the right temporal lobe and right ventromedial cortex (both limbic structures) when two individuals generate and understand novel shared symbols during live communicative interactions (Stolk et al., 2013).
@@ -49,7 +49,7 @@ Nummenmaa et al., 2012: Nummenmaa, L., Glerean, E., Viinikainen, M., Jaaskelaine
 
 Ray and colleagues (2017): Ray, D., Roy, D., Sindhu, B., Sharan, P., & Banerjee, A. (2017). Neural substrate of group mental health: Insights from multi-brain reference frame in functional neuroimaging. Frontiers in Psychology, 8, 1627. doi:10.3389/fpsyg.2017.01627
 
-Redcay et al., 2010: Redcay, E., Dodell-Feder, D., Pearrow, M. J., Manros, P. L., Kleiner, M., Gasbrielli, J. D. E., & Saxe, R. (2010). Live face-to-face interaction during fMRI: A new tool for social cognitive neuroscience. NeuroImage, 50, 1639–1647.
+Redcay et al., 2010: Redcay, E., Dodell-Feder, D., Pearrow, M. J., Manros, P. L., Kleiner, M., Gabrielli, J. D. E., & Saxe, R. (2010). Live face-to-face interaction during fMRI: A new tool for social cognitive neuroscience. NeuroImage, 50, 1639–1647.
 
 Sabbagh, 1999: Sabbagh, M. A. (1999). Communicative intentions and language: Evidence from right-hemispheric damage and autism. Brain and Language, 70, 29–69.
 
@@ -57,10 +57,8 @@ Saxe & Wexler, 2005: Saxe, R., & Wexler, A. (2005). Making sense of another mind
 
 Semrud-Clikeman, Fine, & Zhu, 2011: Semrud-Clikeman, M., Fine, J. G., & Zhu, D. C. (2011). The role of the right hemisphere for processing of social interactions in normal adults using functional magnetic resonance imaging. Neuropsychobiology, 64, 47–51.
 
-Stolk et al., 2013: Stolk, A., Verhagen, L., Schoffelen, J.-M., Osstenveld, R., Blokpoel, M., Hagoort, M. L., van Rooij, I., & Toni, I. (2013). Neural mechanisms of communicative innovation. Proceedings of the National Academy of Sciences USA, 110, 14574–14579.
+Stolk et al., 2013: Stolk, A., Verhagen, L., Schoffelen, J.-M., Oostenveld, R., Blokpoel, M., Hagoort, M. L., van Rooij, I., & Toni, I. (2013). Neural mechanisms of communicative innovation. Proceedings of the National Academy of Sciences USA, 110, 14574–14579.
 
-Stolk and colleagues (2014): Stolk, A., Noordzij, M. L., Verhagen, L., Volman, I., Schloffen, J.-M., Oostenveld, R., Hagoort, P., & Toni, I. (2014). Cerebral coherence between communicators marks the emergence of meaning. Proceedings of the National Academy of Sciences USA, 111, 18183–18188.
+Stolk and colleagues (2014): Stolk, A., Noordzij, M. L., Verhagen, L., Volman, I., Schoffelen, J.-M., Oostenveld, R., Hagoort, P., & Toni, I. (2014). Cerebral coherence between communicators marks the emergence of meaning. Proceedings of the National Academy of Sciences USA, 111, 18183–18188.
 
 Wolfe & Goldfried, 1988: Wolfe, B. E., & Goldfried, M. R. (1988). Research on psychotherapy integration: Recommendations and conclusions from an NIMH workshop. Journal of Consulting and Clinical Psychology, 56, 448–451.
-
-

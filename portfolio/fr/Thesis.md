@@ -6,9 +6,8 @@
 
 ![[Intérêts/Psychothérapie en Pleine Conscience]]
 
-![[Intérêts/Phenomenologie, Etats de Conscience et Observation]]
+![[Intérêts/Phénoménologie, États de Conscience et Observation]]
 
 ![[Intérêts/Pratiques Relationnelles et Somatiques]]
 
 ![[Intérêts/Sexualité, Relations, Société]]
-

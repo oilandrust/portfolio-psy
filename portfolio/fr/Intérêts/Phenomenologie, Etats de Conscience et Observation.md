@@ -1,7 +1,7 @@
 ---
 id: 4
 thumbnail: media/focus_300x300.png
-subtitle: '"Pensée, Sensation, Pensée, Image, Emotion, ..."'
+subtitle: '"Pensée, Sensation, Pensée, Image, Émotion, ..."'
 published: "false"
 ---
 *En cours de rédaction...*

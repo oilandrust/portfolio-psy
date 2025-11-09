@@ -4,9 +4,9 @@ author: Allan Schore
 id: 1
 thumbnail: media/71QlD7qq+ZL._AC_UL640_FMwebp_QL65_.webp
 ---
-Cet ouvrage assez dense de Allan Schore est une inspiration importante pour mon orientation thérapeutique. Il me permet de me donne de la curiosité pour une pratique de la psychanalyse ou le contact affectif est central.
+Cet ouvrage assez dense de Allan Schore est une inspiration importante pour mon orientation thérapeutique. Il me permet de me donner de la curiosité pour une pratique de la psychanalyse où le contact affectif est central.
 
-Allan présente la thérapie comme un processus de synchronisation de nos cerveaux droit, en mettant en avant le fait que les aspects affectifs et non-verbaux dans une relation sont traités par les parties droites du cortex frontal.
+Allan présente la thérapie comme un processus de synchronisation de nos cerveaux droits, en mettant en avant le fait que les aspects affectifs et non-verbaux dans une relation sont traités par les parties droites du cortex frontal.
 
 À la lumière de ces découvertes neurologiques, Allan nous apprend comment on peut expliquer l'inconscient. Celui-ci se manifeste dans les réponses et représentations implicites qui entrent en jeu dans la relation thérapeutique. Le travail du thérapeute étant alors d'être à l'écoute de ces affects parfois dissociés et d'aider les patients à les réguler pour atteindre une nouvelle manière d'être avec l'autre.
 

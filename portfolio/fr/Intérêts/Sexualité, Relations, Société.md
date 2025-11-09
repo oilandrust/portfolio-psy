@@ -13,4 +13,4 @@ Il y a aujourd'hui une forte polarisation entre les sexes et genres. Selon moi, 
 
 Le travail est non seulement de dialoguer, de poser des nouvelles limites, d'apprendre à les respecter mais aussi de réguler cette charge pour petit à petit aussi laisser tomber les stratégies de défense et de domination.
 
-Selon moi, les approches somatiques ont un rôle important à jouer car elles fournissent un cadre pour accueillir les émotions, énergies, charges, etc. qui surviennent quand on aborde ces problématiques, de le réguler et de retourner en société, non en Fight or Flight, non en Freeze ou Collapse, mais avec empathie, curiosité et capacité pour le lien.
+Selon moi, les approches somatiques ont un rôle important à jouer car elles fournissent un cadre pour accueillir les émotions, énergies, charges, etc. qui surviennent quand on aborde ces problématiques, de les réguler et de retourner en société, non en Fight or Flight, non en Freeze ou Collapse, mais avec empathie, curiosité et capacité pour le lien.
