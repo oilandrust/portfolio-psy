@@ -4,7 +4,7 @@ published: "true"
 id: 4
 thumbnail: media/focus_300x300.png
 ---
-*En cours de rédaction...*
+*Rédaction en cours...*
 
 Je suis influencé par les courants actuels de thérapie qui font une part importante au trauma dans la compréhension des difficultés psychologiques ainsi que dans l'approche utilisée pour les adresser. Par ailleurs, on retrouve l'idée que les traumatismes laissent leur trace dans le corps.
 

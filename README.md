@@ -120,6 +120,7 @@ This project is configured for static export and can be deployed to:
 
 - `npm run spellcheck:fr` — Corrects spelling mistakes in modified Markdown files under `portfolio/fr` (based on git status).  
 - `npm run spellcheck:fr:all` — Runs the spellcheck on every Markdown file under `portfolio/fr`.  
+- `npm run translate:fr-en` — Translates modified French markdown cards (default) into the English counterparts using Gemini. Pass `--all` to translate every file or `--dry-run` to preview changes. Metadata is preserved except for the subtitle, which is updated with the translation.
   Requires a `GEMINI_API_KEY`. Optionally set `GEMINI_MODEL` (defaults to `gemini-1.5-flash`).  
   Pass `--dry-run` to preview changes without modifying files, or append `--changed`/`--dry-run` to either command for custom behaviour.
 

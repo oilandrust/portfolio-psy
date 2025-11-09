@@ -49,6 +49,35 @@ async function getMarkdownFiles(directory) {
   return files.flat();
 }
 
+function unescapeGitPath(input) {
+  let str = input;
+  if (str.startsWith('"') && str.endsWith('"')) {
+    str = str.slice(1, -1);
+  }
+
+  const bytes = [];
+  for (let i = 0; i < str.length; i += 1) {
+    const char = str[i];
+    if (char === '\\') {
+      const next = str[i + 1];
+      if (next && /[0-7]/.test(next)) {
+        const octal = str.slice(i + 1, i + 4);
+        bytes.push(parseInt(octal, 8));
+        i += 3;
+        continue;
+      }
+      if (next === '\\' || next === '"' || next === ' ') {
+        bytes.push(next.charCodeAt(0));
+        i += 1;
+        continue;
+      }
+    }
+    bytes.push(char.charCodeAt(0));
+  }
+
+  return Buffer.from(bytes).toString('utf8');
+}
+
 async function getChangedMarkdownFiles() {
   try {
     const output = execSync('git status --porcelain', {
@@ -66,9 +95,12 @@ async function getChangedMarkdownFiles() {
     for (const line of lines) {
       if (line.length < 4) continue;
       const pathPart = line.substring(3).trim();
-      const candidate = pathPart.includes(' -> ')
+      let candidate = pathPart.includes(' -> ')
         ? pathPart.split(' -> ').pop()
         : pathPart;
+      if (!candidate) continue;
+      candidate = unescapeGitPath(candidate);
+
       if (!candidate) continue;
       const normalized = candidate.replace(/\\/g, '/');
       if (!normalized.toLowerCase().endsWith('.md')) continue;
