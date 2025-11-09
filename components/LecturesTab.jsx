@@ -15,7 +15,8 @@ const LecturesTab = ({ readings = [] }) => {
   });
 
   const handleReadingClick = (reading) => {
-    router.push(`/${currentLang}/lectures/${reading.id}`, { scroll: false });
+    if (!reading?.slug) return;
+    router.push(`/${currentLang}/lectures/${reading.slug}`, { scroll: false });
   };
 
   // Always show the grid - detail pages are separate routes
@@ -31,7 +32,7 @@ const LecturesTab = ({ readings = [] }) => {
         }}>
           {sortedReadings.map((reading, index) => (
             <div 
-              key={index} 
+              key={reading.slug || reading.id || index} 
               className="reading-item" 
               style={{
                 border: '1px solid #e2e8f0',

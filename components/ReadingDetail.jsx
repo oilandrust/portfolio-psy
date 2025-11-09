@@ -6,9 +6,18 @@ import { parseMarkdown } from '../utils/markdown.jsx';
 const ReadingDetail = ({ readings, currentLang }) => {
   const params = useParams();
   const router = useRouter();
-  const id = params?.id;
+  const slugParam = params?.slug;
+  const legacyIdParam = params?.id;
   
-  const reading = readings.find(r => r.id?.toString() === id);
+  const reading = readings.find(r => {
+    if (slugParam && r.slug) {
+      return r.slug === slugParam;
+    }
+    if (legacyIdParam) {
+      return r.id?.toString() === legacyIdParam;
+    }
+    return false;
+  });
 
   if (!reading) {
     return (

@@ -15,9 +15,11 @@ export async function generateStaticParams() {
   languages.forEach(lang => {
     const readings = portfolio[lang]?.readings || [];
     readings.forEach(reading => {
+      const slug = reading.slug || reading.id?.toString();
+      if (!slug) return;
       params.push({
-        lang: lang,
-        id: reading.id.toString()
+        lang,
+        slug,
       });
     });
   });
@@ -26,10 +28,14 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const { lang, id } = await params;
+  const resolvedParams = await params;
+  const { lang, slug, id } = resolvedParams;
+  const slugOrId = slug ?? id;
   const portfolio = getPortfolioData();
   const langData = portfolio[lang] || portfolio.fr;
-  const reading = langData.readings?.find(r => r.id?.toString() === id);
+  const reading = langData.readings?.find(
+    r => r.slug === slugOrId || r.id?.toString() === slugOrId
+  );
   
   if (!reading) {
     return {
@@ -38,17 +44,18 @@ export async function generateMetadata({ params }) {
   }
   
   const baseUrl = 'https://www.olivier-psy.fr';
+  const readingSlug = reading.slug || reading.id?.toString();
   
   if (lang === 'fr') {
     return {
       title: `${reading.title} - Olivier Rouiller`,
       description: `${reading.author} - ${reading.title}`,
-      canonical: `${baseUrl}/fr/lectures/${id}/`,
+      canonical: `${baseUrl}/fr/lectures/${readingSlug}/`,
       alternates: {
         languages: {
-          'fr': `${baseUrl}/fr/lectures/${id}/`,
-          'en': `${baseUrl}/en/lectures/${id}/`,
-          'x-default': `${baseUrl}/fr/lectures/${id}/`,
+          'fr': `${baseUrl}/fr/lectures/${readingSlug}/`,
+          'en': `${baseUrl}/en/lectures/${readingSlug}/`,
+          'x-default': `${baseUrl}/fr/lectures/${readingSlug}/`,
         },
       },
       openGraph: {
@@ -56,7 +63,7 @@ export async function generateMetadata({ params }) {
         description: `${reading.author} - ${reading.title}`,
         locale: 'fr_FR',
         type: 'website',
-        url: `${baseUrl}/fr/lectures/${id}/`,
+        url: `${baseUrl}/fr/lectures/${readingSlug}/`,
       },
     };
   }
@@ -64,12 +71,12 @@ export async function generateMetadata({ params }) {
   return {
     title: `${reading.title} - Olivier Rouiller`,
     description: `${reading.author} - ${reading.title}`,
-    canonical: `${baseUrl}/en/lectures/${id}/`,
+    canonical: `${baseUrl}/en/lectures/${readingSlug}/`,
     alternates: {
       languages: {
-        'fr': `${baseUrl}/fr/lectures/${id}/`,
-        'en': `${baseUrl}/en/lectures/${id}/`,
-        'x-default': `${baseUrl}/fr/lectures/${id}/`,
+        'fr': `${baseUrl}/fr/lectures/${readingSlug}/`,
+        'en': `${baseUrl}/en/lectures/${readingSlug}/`,
+        'x-default': `${baseUrl}/fr/lectures/${readingSlug}/`,
       },
     },
     openGraph: {
@@ -77,17 +84,21 @@ export async function generateMetadata({ params }) {
       description: `${reading.author} - ${reading.title}`,
       locale: 'en_US',
       type: 'website',
-      url: `${baseUrl}/en/lectures/${id}/`,
+      url: `${baseUrl}/en/lectures/${readingSlug}/`,
     },
   };
 }
 
 export default async function ReadingDetailPage({ params }) {
-  const { lang, id } = await params;
+  const resolvedParams = await params;
+  const { lang, slug, id } = resolvedParams;
+  const slugOrId = slug ?? id;
   const portfolio = getPortfolioData();
   const langData = portfolio[lang] || portfolio.fr;
   const currentLang = lang || 'fr';
-  const reading = langData.readings?.find(r => r.id?.toString() === id);
+  const reading = langData.readings?.find(
+    r => r.slug === slugOrId || r.id?.toString() === slugOrId
+  );
   
   // Show grid if reading not found
   if (!reading) {

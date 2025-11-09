@@ -15,9 +15,11 @@ export async function generateStaticParams() {
   languages.forEach(lang => {
     const interests = portfolio[lang]?.interests || [];
     interests.forEach(interest => {
+      const slug = interest.slug || interest.id?.toString();
+      if (!slug) return;
       params.push({
-        lang: lang,
-        id: interest.id.toString()
+        lang,
+        slug,
       });
     });
   });
@@ -26,10 +28,14 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const { lang, id } = await params;
+  const resolvedParams = await params;
+  const { lang, slug, id } = resolvedParams;
+  const slugOrId = slug ?? id;
   const portfolio = getPortfolioData();
   const langData = portfolio[lang] || portfolio.fr;
-  const interest = langData.interests?.find(i => i.id.toString() === id);
+  const interest = langData.interests?.find(
+    i => i.slug === slugOrId || i.id?.toString() === slugOrId
+  );
   
   if (!interest) {
     return {
@@ -38,17 +44,18 @@ export async function generateMetadata({ params }) {
   }
   
   const baseUrl = 'https://www.olivier-psy.fr';
+  const interestSlug = interest.slug || interest.id?.toString();
   
   if (lang === 'fr') {
     return {
       title: `${interest.title} - Olivier Rouiller`,
       description: interest.description?.substring(0, 160) || interest.subtitle || '',
-      canonical: `${baseUrl}/fr/interests/${id}/`,
+      canonical: `${baseUrl}/fr/interests/${interestSlug}/`,
       alternates: {
         languages: {
-          'fr': `${baseUrl}/fr/interests/${id}/`,
-          'en': `${baseUrl}/en/interests/${id}/`,
-          'x-default': `${baseUrl}/fr/interests/${id}/`,
+          'fr': `${baseUrl}/fr/interests/${interestSlug}/`,
+          'en': `${baseUrl}/en/interests/${interestSlug}/`,
+          'x-default': `${baseUrl}/fr/interests/${interestSlug}/`,
         },
       },
       openGraph: {
@@ -56,7 +63,7 @@ export async function generateMetadata({ params }) {
         description: interest.description?.substring(0, 160) || interest.subtitle || '',
         locale: 'fr_FR',
         type: 'website',
-        url: `${baseUrl}/fr/interests/${id}/`,
+        url: `${baseUrl}/fr/interests/${interestSlug}/`,
       },
     };
   }
@@ -64,12 +71,12 @@ export async function generateMetadata({ params }) {
   return {
     title: `${interest.title} - Olivier Rouiller`,
     description: interest.description?.substring(0, 160) || interest.subtitle || '',
-    canonical: `${baseUrl}/en/interests/${id}/`,
+    canonical: `${baseUrl}/en/interests/${interestSlug}/`,
     alternates: {
       languages: {
-        'fr': `${baseUrl}/fr/interests/${id}/`,
-        'en': `${baseUrl}/en/interests/${id}/`,
-        'x-default': `${baseUrl}/fr/interests/${id}/`,
+        'fr': `${baseUrl}/fr/interests/${interestSlug}/`,
+        'en': `${baseUrl}/en/interests/${interestSlug}/`,
+        'x-default': `${baseUrl}/fr/interests/${interestSlug}/`,
       },
     },
     openGraph: {
@@ -77,17 +84,21 @@ export async function generateMetadata({ params }) {
       description: interest.description?.substring(0, 160) || interest.subtitle || '',
       locale: 'en_US',
       type: 'website',
-      url: `${baseUrl}/en/interests/${id}/`,
+      url: `${baseUrl}/en/interests/${interestSlug}/`,
     },
   };
 }
 
 export default async function InterestDetailPage({ params }) {
-  const { lang, id } = await params;
+  const resolvedParams = await params;
+  const { lang, slug, id } = resolvedParams;
+  const slugOrId = slug ?? id;
   const portfolio = getPortfolioData();
   const langData = portfolio[lang] || portfolio.fr;
   const currentLang = lang || 'fr';
-  const interest = langData.interests?.find(i => i.id.toString() === id);
+  const interest = langData.interests?.find(
+    i => i.slug === slugOrId || i.id?.toString() === slugOrId
+  );
   
   // Show grid if interest not found
   if (!interest) {

@@ -9,7 +9,8 @@ const InterestsGrid = ({ interests }) => {
   const currentLang = params?.lang || 'fr';
 
   const handleInterestClick = (interest) => {
-    router.push(`/${currentLang}/interests/${interest.id}`, { scroll: false });
+    if (!interest?.slug) return;
+    router.push(`/${currentLang}/interests/${interest.slug}`, { scroll: false });
   };
 
   return (
@@ -53,7 +54,7 @@ const InterestsGrid = ({ interests }) => {
                   
                   return (
                     <div
-                      key={interest.id}
+                      key={interest.slug || interest.id}
                       style={{
                         flex: 1,
                         display: 'flex',

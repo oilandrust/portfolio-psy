@@ -48,8 +48,10 @@ export default function sitemap() {
   languages.forEach(lang => {
     const interests = portfolio[lang]?.interests || [];
     interests.forEach(interest => {
+      const slug = interest.slug || interest.id?.toString();
+      if (!slug) return;
       urls.push({
-        url: `${baseUrl}/${lang}/interests/${interest.id}/`,
+        url: `${baseUrl}/${lang}/interests/${slug}/`,
         lastModified: currentDate,
         changeFrequency: 'monthly',
         priority: 0.6,
@@ -61,8 +63,10 @@ export default function sitemap() {
   languages.forEach(lang => {
     const readings = portfolio[lang]?.readings || [];
     readings.forEach(reading => {
+      const slug = reading.slug || reading.id?.toString();
+      if (!slug) return;
       urls.push({
-        url: `${baseUrl}/${lang}/lectures/${reading.id}/`,
+        url: `${baseUrl}/${lang}/lectures/${slug}/`,
         lastModified: currentDate,
         changeFrequency: 'monthly',
         priority: 0.6,

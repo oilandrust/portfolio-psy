@@ -6,9 +6,18 @@ import { parseMarkdown } from '../utils/markdown.jsx';
 const InterestDetail = ({ interests, currentLang }) => {
   const params = useParams();
   const router = useRouter();
-  const id = params?.id;
+  const slugParam = params?.slug;
+  const legacyIdParam = params?.id;
   
-  const interest = interests.find(int => int.id.toString() === id);
+  const interest = interests.find(int => {
+    if (slugParam && int.slug) {
+      return int.slug === slugParam;
+    }
+    if (legacyIdParam) {
+      return int.id?.toString() === legacyIdParam;
+    }
+    return false;
+  });
 
   const handleBackToInterests = (e) => {
     e.preventDefault();
@@ -54,7 +63,7 @@ const InterestDetail = ({ interests, currentLang }) => {
     <div className='section'>
       <a
         onClick={handleBackClick}
-        href="/interests"
+        href={`/${currentLang}/interests`}
         style={{
           display: 'inline-block',
           marginBottom: '1.5rem',

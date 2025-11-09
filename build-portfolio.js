@@ -32,6 +32,36 @@ const sourceFavicon = 'portfolio/O.svg';
 
 const outputDataDir = 'public/data';
 const outputInterestsDir = 'public/data/interests';
+function slugify(value) {
+  return value
+    .toString()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .replace(/-{2,}/g, '-');
+}
+
+function createUniqueSlug(preferredValue, fallbackValue, usedSlugs, prefix = 'item') {
+  const baseValue = preferredValue || fallbackValue || `${prefix}`;
+  let candidate = slugify(baseValue);
+
+  if (!candidate) {
+    candidate = `${prefix}`;
+  }
+
+  let uniqueCandidate = candidate;
+  let counter = 2;
+
+  while (usedSlugs.has(uniqueCandidate)) {
+    uniqueCandidate = `${candidate}-${counter++}`;
+  }
+
+  usedSlugs.add(uniqueCandidate);
+  return uniqueCandidate;
+}
+
 const outputReadingsCoversDir = 'public/data/readings/covers';
 const outputIconsDir = 'public/data/icons';
 const outputProfileDir = 'public/data/profile';
@@ -233,6 +263,7 @@ function buildPortfolioForLanguage(lang, paths) {
 
   const interests = [];
   let interestId = 1;
+  const usedInterestSlugs = new Set();
 
   try {
     const interestFiles = fs.readdirSync(paths.interestsDir);
@@ -273,16 +304,21 @@ function buildPortfolioForLanguage(lang, paths) {
           }
 
           // Build the interest object
+          const resolvedId = interestData.id || interestId++;
+          const interestTitle = interestData.title || interestName;
+          const interestSlug = createUniqueSlug(interestData.slug, interestTitle, usedInterestSlugs, 'interest');
+
           const interest = {
-            id: interestData.id || interestId++,
-            title: interestName, // Use filename as title
+            id: resolvedId,
+            slug: interestSlug,
+            title: interestTitle,
             subtitle: interestData.subtitle || null,
             description: interestData.content || '',
             thumbnail: thumbnailPath,
           };
 
           interests.push(interest);
-          console.log(`  ✅ Added: ${interestName}`);
+          console.log(`  ✅ Added: ${interestName} (slug: ${interestSlug})`);
         }
       }
     });
@@ -365,6 +401,7 @@ function buildPortfolioForLanguage(lang, paths) {
     // Read readings data
     console.log('📚 Reading readings data...');
     const readings = [];
+    const usedReadingSlugs = new Set();
     
     if (fs.existsSync(paths.readingsDir)) {
       try {
@@ -399,20 +436,34 @@ function buildPortfolioForLanguage(lang, paths) {
                 }
               }
 
+              const readingTitle = readingData.title || path.basename(file, '.md');
+              const readingId = readingData.id || 0;
+              const readingSlug = createUniqueSlug(
+                readingData.slug,
+                readingTitle,
+                usedReadingSlugs,
+                'lecture'
+              );
+
               const reading = {
-                id: readingData.id || 0,
-                title: readingData.title || path.basename(file, '.md'),
+                id: readingId,
+                slug: readingSlug,
+                title: readingTitle,
                 author: readingData.author || '',
                 description: readingData.content || '',
                 thumbnail: thumbnailPath,
-                // Add any other fields from front matter (excluding thumbnail to avoid override)
+                // Add any other fields from front matter (excluding thumbnail and slug to avoid override)
                 ...Object.fromEntries(
-                  Object.entries(readingData).filter(([key]) => key !== 'thumbnail')
+                  Object.entries(readingData).filter(
+                    ([key]) => key !== 'thumbnail' && key !== 'slug'
+                  )
                 )
               };
 
+              reading.slug = readingSlug;
+
               readings.push(reading);
-              console.log(`  ✅ Added: ${reading.title}`);
+              console.log(`  ✅ Added: ${reading.title} (slug: ${readingSlug})`);
             }
           }
         });
