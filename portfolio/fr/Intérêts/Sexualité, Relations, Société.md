@@ -19,7 +19,9 @@ Je reprend les mots d'Ilan Stephanie, car je n'ai pas encore se clarete:
 
 "Peu importe de qui les limites ont été transgressées, peu importe de qui, on les répare simplement. Peut-on les répare?"
 
-Et ce passage: 
+Et ce passage:
+
+"Und auch wenn wir im Patriarchat ganz oft wahrgenommen haben an der Oberflache, 'also, ich glaube nicht, dass Männer sich abwerten, ich glaube, die überschätzen sich.' Alles verstanden, aber in der Tiefe ist es trotzdem kollektiver männlicher Selbsthass. Es ist trotzdem nicht ein Mann sein dürfen, und das lieben dürfen"
 
 “Et même si dans le patriarcat, on a bien compris en apparence: ‘Je ne crois pas que les hommes se dévaluent, je pense qu’ils se surestiment.’ Bien sûr, mais en profondeur, il y a une haine propre des hommes envers eux-mêmes. Il n’est pas autorisé d’être un homme et d’aimer ca.”
 
