@@ -13,4 +13,18 @@ Il y a aujourd'hui une forte polarisation entre les sexes et genres. Selon moi, 
 
 Le travail est non seulement de dialoguer, de poser des nouvelles limites, d'apprendre à les respecter mais aussi de réguler cette charge pour petit à petit aussi laisser tomber les stratégies de défense et de domination.
 
-Selon moi, les approches somatiques ont un rôle important à jouer car elles fournissent un cadre pour accueillir les émotions, énergies, charges, etc. qui surviennent quand on aborde ces problématiques, de les réguler et de retourner en société, non en Fight or Flight, non en Freeze ou Collapse, mais avec empathie, curiosité et capacité pour le lien.
+Je reprend les mots d'Ilan Stephanie, car je n'ai pas encore se clarete:
+
+"Egal wessen Grenzen, wie verletzt wurden, wir reparieren erstmal einfach Grenzen. Können wir die reparieren"
+
+"Peu importe de qui les limites ont été transgressées, peu importe de qui, on les répare simplement. Peut-on les répare?"
+
+Et ce passage: 
+
+“Et même si dans le patriarcat, on a bien compris en apparence: ‘Je ne crois pas que les hommes se dévaluent, je pense qu’ils se surestiment.’ Bien sûr, mais en profondeur, il y a une haine propre des hommes envers eux-mêmes. Il n’est pas autorisé d’être un homme et d’aimer ca.”
+
+Les postures qu'on attribue à la masculinité et aux hommes et qu'on condamne (a raison), ne sont pas authentiques, il s’agit là du faux self cachant la honte d’être un mauvais objet.
+
+
+
+![](https://www.youtube.com/watch?v=L8hBln6ZOUI)

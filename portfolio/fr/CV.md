@@ -1,13 +1,13 @@
-### Expérience Professionnelle
-- **2022 - Present: Praticien en Thérapie Somatique à temps partiel.** En parallèle de mes formations, j'ai travaillé avec des clients, certains régulièrement pendant plus d'une année. Cela m'a permis d'approfondir ma réflexion sur la psychothérapie. Travail sur de fortes voix critiques avec un client. Travail pour augmenter sa capacité à ressentir ses émotions pour un autre.
-- **2015 - 2022: Développeur de logiciel.** J'ai travaillé en Allemagne et en Suède, dans des start-ups et dans le jeu vidéo, notamment à *Ubisoft* pour le jeu vidéo *Avatar: Frontiers of Pandora*. Travail en anglais, dans des équipes internationales, en collaboration avec des développeurs, artistes et managers.
-- **2011 - 2015:** **Assistant de recherche et d'enseignement à l'Université Technique de Berlin.** J'ai travaillé sur des projets de recherche en informatique et publié un article dans un journal international. J'étais assistant pour l'enseignement des cours de licence et de master.
 ### Education
 - **2025 - 2026: L3 de Psychologie à l'Université de Strasbourg.**
 - **2024 - 2025: L2 de Psychologie à l'Université de Strasbourg.** J'ai entrepris le cursus de Psychologie en reprise d'études. Mention assez bien, classement dans les 6% des moyennes les plus hautes.
 - **2009 - 2011: M.Sc. in Software Engineering à l'Université Technique du Danemark.**
 - **2007 - 2009: Diplôme d'Ingénieur, École Centrale de Lille.** J’ai reçu mon diplôme d'ingénieur généraliste de l'École Centrale de Lille.
 - **2005 - 2007: Classe Préparatoire aux Grandes Écoles**, Spécialisation Maths/Physique, Lycée Camille Guérin à Poitiers
+### Expérience Professionnelle
+- **2022 - Present: Praticien en Thérapie Somatique à temps partiel.** En parallèle de mes formations, j'ai travaillé avec des clients, certains régulièrement pendant plus d'une année. Cela m'a permis d'approfondir ma réflexion sur la psychothérapie. Travail sur de fortes voix critiques avec un client. Travail pour augmenter sa capacité à ressentir ses émotions pour un autre.
+- **2015 - 2022: Développeur de logiciel.** J'ai travaillé en Allemagne et en Suède, dans des start-ups et dans le jeu vidéo, notamment à *Ubisoft* pour le jeu vidéo *Avatar: Frontiers of Pandora*. Travail en anglais, dans des équipes internationales, en collaboration avec des développeurs, artistes et managers.
+- **2011 - 2015:** **Assistant de recherche et d'enseignement à l'Université Technique de Berlin.** J'ai travaillé sur des projets de recherche en informatique et publié un article dans un journal international. J'étais assistant pour l'enseignement des cours de licence et de master.
 ### Formations en Psychothérapie
 - **2024 - 2025: Hakomi Somatic Mindful Psychotherapy Professional Training Level 2, Hakomi Institute of California (en ligne).** Deuxième niveau de formation pratique en thérapie somatique des traumatismes du développement. Processus de transformation et d'intégration, travail sur le transfert en pleine conscience, modèle de caractères de Lowen (dérive des classifications psychanalytiques).
 - **2023 - 2024: Hakomi Professional Training Level 1, Hakomi Institute of California (en ligne).** Focus sur la relation thérapeutique, le tracking de l'expérience du patient et des indicateurs somatiques de l'inconscient. Exploration en pleine conscience et transformation de processus inconscients. Formation dispensée sur 7 week-ends avec de la pratique supervisée.
@@ -23,4 +23,3 @@
 ### Activités et Engagements
 - **Pratiques Relationnelles et Somatiques**. Depuis plusieurs années, j'ai participé à des ateliers de pratiques relationnelles telles que *Authentic Relating* et *Circling*. J'ai aussi pu, à plusieurs reprises, animer des ateliers de mouvement conscient ou de pleine conscience.
 - **Danse Contact Improvisation.** Je pratique la danse 'improvisation de contact' et suis parfois aussi engagé dans l'organisation d'événements au niveau associatif.
-- **Programmation.** À mes heures perdues, je continue à entretenir ma carrière passée et travaille sur des projets en informatique qui pourraient aboutir à la création d'entreprises. Je travaille actuellement sur une plateforme de publication d'e-portfolio (lefolio.fr)
