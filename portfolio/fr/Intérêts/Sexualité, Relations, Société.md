@@ -25,7 +25,9 @@ Et ce passage:
 
 “Et même si dans le patriarcat, on a bien compris en apparence: ‘Je ne crois pas que les hommes se dévaluent, je pense qu’ils se surestiment.’ Bien sûr, mais en profondeur, il y a une haine des hommes envers eux-mêmes. Il n’est pas autorisé d’être un homme et d’aimer ca.”
 
-Les postures qu'on attribue à la masculinité et aux hommes et qu'on condamne (a raison), ne sont pas authentiques, il s’agit là du faux self cachant la honte d’être un mauvais objet.
+Les postures qu'on attribue à la masculinité et aux hommes et qu'on condamne (à raison), ne sont pas authentiques, il s’agit là du faux self cachant la honte d’être un mauvais objet.
+
+Males are simply not allowed to admit they are victims and are not perceived as such. As a result, males who have been sexually abused have to struggle not only with their sexual violation but also with a society that ignores the existence of male victims. A male who wishes to disclose his victimization may find it very difficult because boys, unlike girls, are usually not encouraged to seek help and protection (Fischer, 1991; Nasjleti, 1980; Singer, 1989), and they are often not believed (Hindman, 1989; Hunter, 1991; Krug, 1989; Lew, 2004a; Lew, 1988; Meyer, 1993; Nasjleti, 1980; Vander Mey, 1988).
 
 
 
