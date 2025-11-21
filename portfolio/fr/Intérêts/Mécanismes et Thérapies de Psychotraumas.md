@@ -2,7 +2,7 @@
 subtitle: Can you feel the ground under your feet?
 published: "true"
 id: 4
-thumbnail: media/focus_300x300.png
+thumbnail: media/trauma_300x300.png
 ---
 *Rédaction en cours...*
 
