@@ -15,7 +15,7 @@ const Footer = () => {
           lineHeight: '1.5',
           textAlign: 'center'
         }}>
-          *Les idées, théories et opinions présentées ici le sont à titre exploratoire et ne doivent pas être considérées comme des vérités établies. Elles reflètent mon état actuel de réflexion, s'accompagnant à la fois de prudence et d'un certain degré de confiance fondé sur mon expérience.
+          *Les idées, théories et opinions présentées ici le sont à titre exploratoire. Elles reflètent une réflexion s'accompagnant à la fois de prudence et d'un certain degré de confiance fondé sur mon expérience.
         </div>
         <div style={{
           display: 'flex',

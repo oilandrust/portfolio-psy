@@ -52,11 +52,14 @@ const InterestsGrid = ({ interests }) => {
                   
                   if (!interest) return null;
                   
+                  // Check if this is the last row with only one item
+                  const isLastRowWithOneItem = rowInterests.length === 1 && colIndex === 0;
+                  
                   return (
                     <div
                       key={interest.slug || interest.id}
                       style={{
-                        flex: 1,
+                        flex: isLastRowWithOneItem ? '0 0 calc(50% - 0.5rem)' : 1,
                         display: 'flex',
                         flexDirection: 'column'
                       }}
