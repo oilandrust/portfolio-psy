@@ -5,7 +5,7 @@
 - **2007 - 2009: Diplôme d'Ingénieur, École Centrale de Lille.** J’ai reçu mon diplôme d'ingénieur généraliste de l'École Centrale de Lille.
 - **2005 - 2007: Classe Préparatoire aux Grandes Écoles**, Spécialisation Maths/Physique, Lycée Camille Guérin à Poitiers
 ### Expérience Professionnelle
-- **2022 - Present: Praticien en Thérapie Somatique à temps partiel.** En parallèle de mes formations, j'ai travaillé avec des clients, certains régulièrement pendant plus d'une année. Cela m'a permis d'approfondir ma réflexion sur la psychothérapie. Travail sur de fortes voix critiques avec un client. Travail pour augmenter sa capacité à ressentir ses émotions pour un autre.
+- **2022 - 2025: Praticien en Thérapie Somatique à temps partiel.** En parallèle de mes formations, j'ai travaillé avec des clients, certains régulièrement pendant plus d'une année. Cela m'a permis d'approfondir ma réflexion sur la psychothérapie. Travail sur de fortes voix critiques avec un client. Travail pour augmenter sa capacité à ressentir ses émotions pour un autre.
 - **2015 - 2022: Développeur de logiciel.** J'ai travaillé en Allemagne et en Suède, dans des start-ups et dans le jeu vidéo, notamment à *Ubisoft* pour le jeu vidéo *Avatar: Frontiers of Pandora*. Travail en anglais, dans des équipes internationales, en collaboration avec des développeurs, artistes et managers.
 - **2011 - 2015:** **Assistant de recherche et d'enseignement à l'Université Technique de Berlin.** J'ai travaillé sur des projets de recherche en informatique et publié un article dans un journal international. J'étais assistant pour l'enseignement des cours de licence et de master.
 ### Formations en Psychothérapie
