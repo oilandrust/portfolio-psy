@@ -23,7 +23,7 @@ Dans les méthodes qui traitent le trauma du développement et d'attachement, on
 
 Aujourd'hui les méthodes somatiques ont une très forte influence aux États-Unis, il existe 3 Masters se spécialisant en Psychothérapie Somatique, et ces méthodes sont utilisées pour les thérapies assistées par psychédéliques (Mischke-Reeds, 2025).
 # Thérapie Somatique Hakomi
-Hakomi (Kurtz, 2015; Weiss et al., 2015) est la modalité de thérapie principale dans laquelle je suis formé, elle fonde en grande partie l'idée de la psychothérapie que je veux pratiquer.
+Hakomi (Kurtz, 2015; Weiss et al., 2015) est une modalité de thérapie dans laquelle je suis en formation, c'est une large inspiration dans mon orientation.
 
 C'est difficile de décrire les processus qui sont en jeu dans une session Hakomi et je pense qu'il faut en faire l'expérience pour se le représenter mais je vais essayer de donner quelques principes.
 
