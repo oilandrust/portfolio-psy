@@ -23,7 +23,7 @@ Dans ce cas, une idée centrale des thérapies somatiques est l'idée que notre 
 
 Dans les méthodes qui traitent le trauma du développement et d'attachement, on note le **NARM** (Neuro Affective Relational Model) (Heller, 2012), **Sensorimotor Psychotherapy** (Ogden 2015), **Hakomi** (Kurtz 2015) ou encore **Somatic Transformation** (Stanley 2025).
 
-Aujourd'hui les méthodes somatiques ont une très forte influence aux États-Unis, il existe 3 Masters se spécialisant en Psychothérapie Somatique, et ces méthodes sont utilisées pour les thérapies assistées par psychédéliques (Mischke-Reeds, 2025).
+Aujourd'hui les méthodes somatiques ont une certaine influence aux États-Unis, il existe 3 Masters se spécialisant en Psychothérapie Somatique, et ces méthodes sont utilisées pour les thérapies assistées par psychédéliques (Mischke-Reeds, 2025). Certains ouvrages sont traduits en Français avec quelques [formations disponibles en France](https://quantum-way.com/).
 # Thérapie Somatique Hakomi
 Hakomi (Kurtz, 2015; Weiss et al., 2015) est une modalité de thérapie dans laquelle je suis en formation, c'est une large inspiration dans mon orientation.
 
