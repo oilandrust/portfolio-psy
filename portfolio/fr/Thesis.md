@@ -1,4 +1,4 @@
-## Fichiers d'intérêts
+	## Fichiers d'intérêts
 
 ![[Intérêts/Approches Psychanalytiques]]
 
@@ -11,3 +11,4 @@
 ![[Intérêts/Pratiques Relationnelles et Somatiques]]
 
 ![[Intérêts/Sexualité, Relations, Société]]
+![[Mécanismes et Thérapies des Psychotraumas]]

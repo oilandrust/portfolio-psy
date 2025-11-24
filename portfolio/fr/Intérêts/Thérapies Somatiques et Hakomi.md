@@ -19,6 +19,8 @@ Peter Levine fut l'un des premiers à étudier les systèmes de régulation du s
 
 On peut élargir les méthodes comme Somatic Experiencing pour prendre en charge non seulement les traumas de choc, comme les accidents, les violences, etc. mais aussi les traumatismes du développement où l'enfant est exposé à des situations de stress chroniques ou bien des conditions plus bénignes, mais qui conduisent à une atrophie du *Self*, des limites poreuses, etc.
 
+Dans ce cas, une idée centrale des thérapies somatiques est l'idée que notre expérience est organisée en système faisant intervenir différents canaux, comme les sensations, émotions, pensées, vue, etc., les mouvements, tensions et postures, et les croyances fondamentales telles que "je suis digne d'amour", ou au contraire "je suis un mauvais objet". Pat Ogden parle de **Core Organisers** de l'expérience (Ogden 1997), une idée centrale en thérapie Hakomi. Ces organisateurs de notre expérience sont intimement liés: avec une croyance comme "je suis un mauvais objet" sont associées des pensées, sensations corporelles, tensions musculaires et postures. On ne peut adresser la croyance sans faire intervenir les autre organisateurs, c'est pourquoi la restructuration cognitive seule ne fonctionne pas (selon des témoignages praticiens en TCC). Dans la thérapie somatique on active tous ces organisateurs pour accéder à une plasticité des organisateurs profonds et inconscients. En général on apporte de la pleine conscience pour étudier les organisateurs et leurs interconnexion, c'est typiquement comment on adresse les traumatismes du développement.
+
 Dans les méthodes qui traitent le trauma du développement et d'attachement, on note le **NARM** (Neuro Affective Relational Model) (Heller, 2012), **Sensorimotor Psychotherapy** (Ogden 2015), **Hakomi** (Kurtz 2015) ou encore **Somatic Transformation** (Stanley 2025).
 
 Aujourd'hui les méthodes somatiques ont une très forte influence aux États-Unis, il existe 3 Masters se spécialisant en Psychothérapie Somatique, et ces méthodes sont utilisées pour les thérapies assistées par psychédéliques (Mischke-Reeds, 2025).
@@ -32,7 +34,7 @@ Premièrement, il y a une grande proximité émotionnelle entre le thérapeute e
 Une fois cette "bulle thérapeutique" établie, et suivant soit les observations du thérapeute soit un problème présenté par le client, le processus thérapeutique peut commencer. L'idée est d'étudier en pleine conscience comment ledit problème survient dans le patient. Quelles sont les pensées, émotions, sensations, mouvements, postures qui sont manifestes, et quels sont les mécanismes inconscients, croyances, apprentissages, traumatismes qui sont sous-jacents?
 En étudiant les phénomènes manifestes en pleine conscience et en immergeant le client dans cette expérience, on peut accéder aux structures plus inconscientes et les transformer.
 
-Voici un exemple commenté de session de thérapie Hakomi par le fondateur de la méthode, Ron Kurtz ou un geste est utilisé comme point d'entrée pour l'accès d'un évènement traumatique et la transformation de la mémoire/croyance associée.
+Voici un exemple commenté de session de thérapie Hakomi par le fondateur de la méthode, Ron Kurtz où un geste est utilisé comme point d'entrée pour l'accès d'un évènement traumatique et la transformation de la mémoire/croyance associée.
 
 ![](https://www.youtube.com/watch?v=Sm6ayJTG-tM)
 
@@ -55,6 +57,8 @@ Levine, P. A. (avec Frederick, A.). (1997). *Waking the Tiger : The Innate Cap
 Mischke-Reeds, M. (avec Sylvae, J.). (2025). _Embodied Psychedelic Therapy : A Somatic Guide_ (1st ed). W. W. Norton & Company, Incorporated.
 
 Ogden, P. (avec Fisher, J.). (2015). *Sensorimotor Psychotherapy*. W. W. Norton & Company, Incorporated.
+
+Ogden, P. (1997). Hakomi Integrative Somatics : Hands-On Psychotherapy. In _Getting in touch : The guide to new body-centered therapies; (1. Quest ed). Quest Books.
 
 Porges, S. W. (2011). *The Polyvagal Theory*. W. W. Norton & Company, Incorporated.
 
