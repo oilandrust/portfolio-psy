@@ -9,3 +9,5 @@ Alors que je complétais le premier niveau de ma formation en psychothérapie so
 Notamment 'N', que j'ai suivi pendant plus d'un an avec des sessions quasi hebdomadaires qui présentait un style d'attachement évitant. Nous avons travaillé pour lui permettre de se connecter à ses besoins d'attachement et à ressentir plus d'émotions.
 
 J'ai aussi travaillé régulièrement avec 'H' qui est à la fois un ami, méditant et apprenti en thérapie et autres pratiques somatiques. Avec lui le travail relevait plus du développement personnel mais nous avons travaillé sur des traumatismes assez jeunes.
+
+Le site de ma pratique est en ligne www.re-connected.fr
