@@ -55,6 +55,12 @@ const createYouTubeEmbed = (videoId, elementIndex) => {
 export const parseMarkdown = (text, fallbackText = 'Aucune information disponible.') => {
   if (!text) return fallbackText;
 
+  // Remove HTML comments (<!--- --->) before parsing
+  text = text.replace(/<!---[\s\S]*?--->/g, '');
+  
+  // Remove Obsidian comments (%% text %%) before parsing
+  text = text.replace(/%%[\s\S]*?%%/g, '');
+
   const lines = text.split('\n');
   const elements = [];
   let currentListItems = [];

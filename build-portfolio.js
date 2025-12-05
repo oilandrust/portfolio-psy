@@ -94,6 +94,12 @@ function readMarkdownFile(markdownPath) {
     
     let content = markdownBody;
     
+    // Remove HTML comments (<!--- --->)
+    content = content.replace(/<!---[\s\S]*?--->/g, '');
+    
+    // Remove Obsidian comments (%% text %%)
+    content = content.replace(/%%[\s\S]*?%%/g, '');
+    
     // Clean up extra newlines
     content = content.replace(/^\n+/, '').trim();
     
