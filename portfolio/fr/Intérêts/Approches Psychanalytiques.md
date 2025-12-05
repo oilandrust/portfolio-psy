@@ -5,11 +5,11 @@ subtitle: À quoi pensez-vous ?
 ---
 Mon intérêt actuel en psychothérapie est nourri par les approches psychanalytiques et psychodynamiques avec pour influence la psychanalyse française et des formulations américaines récentes.
 
-Ces approches ont selon moi mis en lumière des aspects centraux pour la guérison, premièrement la notion d'**inconscient affectif**, d'abord mise en avant par Freud puis repris dans des contextes plus modernes.
+Ces approches ont selon moi mis en lumière des aspects centraux pour la guérison, premièrement la notion d'**inconscient affectif**, d'abord mise en avant par Freud puis reprise dans des contextes plus modernes.
 
 La psychanalyse a donné lieu à la théorie de l'**attachement** de Bowlby (Bowlby 2008) qui a montré l'importance de la qualité du lien dans les premières années de la vie pour la mise en place des *Inner Working Models*, un autre modèle de l'inconscient.
 
-Je suis aussi particulièrement intéressé par les apports modernes faits par Allan Schore (Schore 2019), psychanalyste américain qui explique l'inconscient affectif relationnel comme une manière d'être avec l'autre qui est **implicite**, **non-verbale** (Lyons‐Ruth 1999), et donc inconsciente, et dont on peut observer les substrats neuronaux s'activer dans la relation (Dumas 2011).
+Je suis aussi particulièrement intéressé par les apports modernes faits par Allan Schore (Schore 2019), psychanalyste américain qui explique l'inconscient affectif relationnel comme une manière d'être avec l'autre qui est **implicite**, **non-verbale** (Lyons‐Ruth 1999), et donc inconsciente, et dont on peut observer les substrats neuronaux s'activer dans la relation (Dumas 2011). On retrouve une idée proche dans la psychanalyse Française, notamment chez Marie Dessons qui nous invite à être à l'écoute du subtil (Dessons & Mazéas, 2024) lorsque l'on est en contact avec du matériel archaïque.
 
 Un autre apport fondamental de l'œuvre freudienne est la notion de **transfert** (Freud 1912), où ces modèles implicites et inconscients se jouent dans la relation dyadique patient-thérapeute, offrant ainsi la possibilité d'une expérience corrective menant à une nouvelle manière d'être avec l'autre et l'émergence du moi ou *Self*.
 
@@ -22,6 +22,8 @@ Selon moi, les concepts d'inconscient, de modèles d'attachement, de transfert e
 Bergeret, J. (2021). *La personnalité normale et pathologique : Les structures mentales, le caractère, les symptômes*. Dunod.
 
 Bowlby, J. (2008). *Attachment : Second Edition.* Basic Books.
+
+Dessons, M., & Mazéas, D. (2024). _À l’écoute du subtil : Clinique des états archaïques de la psyché_. les Éd. d’Ithaque.
 
 Dumas, G. (2011). Towards a two-body neuroscience. _Communicative & Integrative Biology_, _4_(3), 349‑352.
 
