@@ -100,7 +100,7 @@ async function generateCVPDFForLanguage(lang) {
       });
       
       // Specifically target the CV container
-      const cvContainer = document.querySelector('[style*="box-shadow"]') || 
+      const cvContainer = document.querySelector('div[style*="box-shadow"]') || 
                          document.querySelector('[style*="shadow"]') ||
                          document.querySelector('div[style*="0 0 20px"]');
       if (cvContainer) {
@@ -109,13 +109,20 @@ async function generateCVPDFForLanguage(lang) {
       }
     });
 
-    // Inject CSS for page margins and remove shadows
+    // Inject CSS for page margins and hide fixed buttons
     await page.addStyleTag({
       content: `
         /* Hide navigation and language switcher */
-        .language-switcher,
+        .language-switcher {
+          display: none !important;
+          visibility: hidden !important;
+        }
+        
+        /* Hide fixed positioned buttons/links in top-right (PDF and Back buttons) */
         button[style*="position: fixed"],
-        a[style*="position: fixed"] {
+        button[style*="position:fixed"],
+        a[style*="position: fixed"],
+        a[style*="position:fixed"] {
           display: none !important;
           visibility: hidden !important;
         }

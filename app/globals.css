@@ -259,6 +259,11 @@ body {
   border-bottom: 1px solid #e2e8f0;
 }
 
+/* CV page hero - solid background for better print quality */
+.cv-hero {
+  background: #e2e8f0 !important;
+}
+
 .hero .container {
   display: flex;
   align-items: center;

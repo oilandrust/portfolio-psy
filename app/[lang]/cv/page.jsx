@@ -183,7 +183,7 @@ const CVPage = () => {
         }}
       >
         {/* Header */}
-        <div className='hero' style={{ padding: '1.5rem 1.5rem 0.7rem 1.5rem' }}>
+        <div className='hero cv-hero' style={{ padding: '1.5rem 1.5rem 0.7rem 1.5rem' }}>
           <div style={{ maxWidth: '794px', margin: '0 auto', padding: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem' }}>
               {/* Left - avatar and name */}
