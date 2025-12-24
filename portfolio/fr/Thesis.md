@@ -10,5 +10,4 @@
 
 ![[Intérêts/Pratiques Relationnelles et Somatiques]]
 
-![[Intérêts/Sexualité, Relations, Société]]
 ![[Mécanismes et Thérapies des Psychotraumas]]
