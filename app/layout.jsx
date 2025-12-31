@@ -1,5 +1,6 @@
 import './globals.css';
 import Script from 'next/script';
+import GoogleAnalytics from '../components/GoogleAnalytics';
 
 export const metadata = {
   title: 'Olivier Rouiller - Etudiant en Psychologie',
@@ -53,6 +54,7 @@ export default function RootLayout({ children }) {
             }
           `}
         </Script>
+        <GoogleAnalytics />
         {children}
       </body>
     </html>
