@@ -1,13 +1,12 @@
 'use client';
 
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
 const GA_MEASUREMENT_ID = 'G-FNBWP8C58K';
 
 export default function GoogleAnalytics() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const isInitialMount = useRef(true);
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function GoogleAnalytics() {
     };
 
     sendPageView();
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return null;
 }

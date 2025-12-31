@@ -32,7 +32,7 @@ export async function generateMetadata({ params }) {
       },
       openGraph: {
         title: 'Expérience - Olivier Rouiller',
-        description: 'Expérience professionnelle en psychothérapie',
+        description: 'Expérience',
         locale: 'fr_FR',
         url: `${baseUrl}/fr/experience/`,
       },
