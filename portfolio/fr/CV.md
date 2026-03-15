@@ -1,13 +1,13 @@
 ### Education
-- **2024 - 2026: L2 et L3 de Psychologie à l'Université de Strasbourg.** J'ai entrepris le cursus de Psychologie en reprise d'études. Mention assez bien, classement dans les 6% des moyennes les plus hautes.
+- **2024 - 2026: L2 et L3 de Psychologie à l'Université de Strasbourg.** J'ai entrepris le cursus de Psychologie en reprise d'études.
 - **2009 - 2011: M.Sc. in Software Engineering à l'Université Technique du Danemark.**
 - **2007 - 2009: Diplôme d'Ingénieur Généraliste, École Centrale de Lille.**
 - **2005 - 2007: Classe Préparatoire Math-Physique aux Grandes Écoles à Poitiers**
 ### Stage Clinique
 - **Janvier - Mars 2026: Stage de L3 à l'ITEP Les Mouettes à Strasbourg.** Stage de 70h avec des adolescents présentant des troubles du comportement. J'ai assisté aux reunions de service, à des groupes d'activités sportives et à des temps de repas et d'activités diverses. J'ai pu réfléchir aux fonctions du psychologue, des éducateurs et de l'institution pour accompagner les jeunes qui ont souvent des troubles psychiques et développementaux. J'ai pu construire un lien avec certains.
 ### Expérience Professionnelle
-- **Mai - Août 2025: Airbnb Host à Strasbourg.** J'ai accueilli des voyageurs un l'appartement où je vivais avec 4 chambres à louer. J'ai accueilli 130 voyageurs ou couples. J'ai assuré toutes les fonctions des opérations, fait des améliorations et ai cohabité avec les voyageurs. J'ai appris à être en position d'accueil et de laisser de l'espace aux voyageurs tout en étant disponible.
-- **2022 - 2025: Praticien en Thérapie Somatique.** En parallèle de mes formations, j'ai travaillé avec des clients, certains régulièrement pendant plus d'une année. Travail sur de fortes voix critiques avec un client. Travail pour augmenter sa capacité à ressentir ses émotions pour un autre.
+- **Mai - Août 2025: Airbnb Host à Strasbourg.** Host pour un appartement avec 4 chambres à louer. J'ai accueilli 130 voyageurs ou couples. J'ai assuré les opérations, fait des améliorations et ai cohabité avec les voyageurs. J'ai appris à être en position d'accueil et de laisser de l'espace aux voyageurs tout en étant disponible.
+- **2022 - 2025: Praticien en Thérapie Somatique.** En parallèle de mes formations, j'ai travaillé avec des clients, certains régulièrement pendant plus d'une année. Pratique inspirée de Focusing, Internal Familly System et Hakomi.
 - **2015 - 2022: Développeur de logiciel.** J'ai travaillé en Allemagne et en Suède, dans des start-ups et dans le jeu vidéo, notamment à *Ubisoft*. Travail en anglais, dans des équipes internationales, en collaboration avec des développeurs, artistes et managers.
 - **2011 - 2015:** **Assistant de recherche et d'enseignement à l'Université Technique de Berlin.** J'ai travaillé sur des projets de recherche en informatique et publié un article dans un journal international. J'étais assistant pour l'enseignement des cours de licence et de master.
 ### Formations en Psychothérapie
@@ -17,7 +17,7 @@
 - **2020 - 2021: Psychologie Transpersonnelle et Hypnothérapie, Tallinn Estonie**. J'ai étudié les bases de la thérapie lors de séminaires pendant un semestre. Histoire de la thérapie: Freud, Jung, Adler. Hypnose Ericksonienne, Neuro Linguistic Programming, Constellations familiales, Imagination Active.
 ### Travail Personnel et Guérison
 - **2019 - Présent: Psychothérapie personnelle.** J'ai été, avec plus ou moins de régularité, en thérapie depuis 2019; j'ai travaillé avec des thérapeutes transpersonnels, somatiques (sensorimoteur, Hakomi) ou psychanalytiques.
-- **2020 - Présent: Embodiment, Conscience Corporelle et Relationnelle.** J'ai exploré les pratiques de Conscience Corporelle ou d'*Embodiment*, ainsi que les pratiques relationnelles. Ces approches m'ont permis de contenir des traumas, d'apprendre à réguler mes émotions et de me décentrer.
+- **2020 - Présent: Pratiques d'Embodiment, Conscience Corporelle et Relationnelle.** Ces approches m'ont permis de contenir des traumas, d'apprendre à réguler mes émotions, de developer mon écoute et de me décentrer.
 - **2016 - 2018: Méditation et Pleine Conscience.** J'ai pratiqué régulièrement la méditation en pleine conscience et participé à 2 retraites de méditation Vipassana. Ces méthodes m'ont appris à prendre du recul par rapport à mes pensées, à observer la connexion entre émotions et pensées, et à gérer des comportements addictifs (cigarette).
 ### Langues Vivantes
 - **Anglais:** Courant et compétences professionnelles.
