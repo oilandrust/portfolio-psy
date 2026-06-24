@@ -201,8 +201,8 @@ const CVPage = () => {
                   </h1>
                   <p style={{ fontSize: '0.875rem', margin: 0, color: 'var(--text-secondary)', lineHeight: '1.3' }}>
                     {currentLang === 'en'
-                      ? 'L3 Psychology Student and Psychotherapist in Training'
-                      : 'Étudiant en L3 de Psychologie et Psychopraticien en Formation'}
+                      ? '3D software and video game engineer retraining in clinical psychology, interested in psychotherapy'
+                      : 'Ingénieur en logiciel 3D et jeu vidéo en reconversion en psychologie clinique, intéressé par la psychothérapie'}
                   </p>
                 </div>
               </div>

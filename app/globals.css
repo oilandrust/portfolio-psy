@@ -215,8 +215,8 @@
 
 /* Markdown-style formations list */
 .markdown-list {
-  list-style: none;
-  padding: 0;
+  list-style-type: square;
+  padding-left: 1.25em;
   margin: 0;
 }
 
@@ -225,6 +225,12 @@
   padding: 0;
   line-height: 1.6;
   color: #374151;
+  display: list-item;
+}
+
+.markdown-list .markdown-list {
+  margin: 0.25rem 0 0;
+  list-style-type: square;
 }
 
 .formation-link {

@@ -63,8 +63,27 @@ export const parseMarkdown = (text, fallbackText = 'Aucune information disponibl
 
   const lines = text.split('\n');
   const elements = [];
-  let currentListItems = [];
+  let listRoots = [];
+  let listStack = [];
   let elementIndex = 0;
+
+  const getListIndentLevel = (line) => {
+    const leadingWhitespace = line.match(/^(\s*)/)?.[1] ?? '';
+    const tabs = (leadingWhitespace.match(/\t/g) || []).length;
+    const spaces = leadingWhitespace.length - tabs;
+    return tabs + Math.floor(spaces / 2);
+  };
+
+  const renderListTree = (nodes, keyPrefix) => (
+    <ul key={keyPrefix} className="markdown-list">
+      {nodes.map((node, i) => (
+        <li key={`${keyPrefix}-li-${i}`} className="markdown-list-item">
+          {node.content}
+          {node.children.length > 0 && renderListTree(node.children, `${keyPrefix}-nested-${i}`)}
+        </li>
+      ))}
+    </ul>
+  );
   
   const processLine = (line) => {
     const parts = [];
@@ -149,13 +168,10 @@ export const parseMarkdown = (text, fallbackText = 'Aucune information disponibl
   };
 
   const flushCurrentList = () => {
-    if (currentListItems.length > 0) {
-      elements.push(
-        <ul key={`list-${elementIndex++}`} className="markdown-list">
-          {currentListItems}
-        </ul>
-      );
-      currentListItems = [];
+    if (listRoots.length > 0) {
+      elements.push(renderListTree(listRoots, `list-${elementIndex++}`));
+      listRoots = [];
+      listStack = [];
     }
   };
 
@@ -169,15 +185,22 @@ export const parseMarkdown = (text, fallbackText = 'Aucune information disponibl
     }
 
     if (trimmedLine.startsWith('- ')) {
-      // This is a list item
-      const cleanLine = line.replace(/^-\s*/, '');
+      const indentLevel = getListIndentLevel(line);
+      const cleanLine = trimmedLine.replace(/^-\s*/, '');
       const processedContent = processLine(cleanLine);
-      
-      currentListItems.push(
-        <li key={`li-${index}`} className="markdown-list-item">
-          {processedContent}
-        </li>
-      );
+      const node = { content: processedContent, children: [] };
+
+      while (listStack.length > 0 && listStack[listStack.length - 1].indent >= indentLevel) {
+        listStack.pop();
+      }
+
+      if (listStack.length === 0) {
+        listRoots.push(node);
+      } else {
+        listStack[listStack.length - 1].node.children.push(node);
+      }
+
+      listStack.push({ indent: indentLevel, node });
     } else if (trimmedLine.startsWith('### ')) {
       // This is an H3 header - flush any current list first
       flushCurrentList();
