@@ -7,7 +7,7 @@ import React from 'react';
  * - Lists: - item
  * - Bold text: **text**
  * - Italic text: *text* or _text_
- * - Links: [text](url)
+ * - Links: [text](url) and bare URLs (https://... or www....)
  * - YouTube embeds: ![](https://www.youtube.com/watch?v=VIDEO_ID)
  * @param {string} text - The markdown text to parse
  * @param {string} fallbackText - Text to show when input is empty (default: 'Aucune information disponible.')
@@ -20,7 +20,128 @@ const extractYouTubeVideoId = (url) => {
   return match ? match[1] : null;
 };
 
-// Helper function to create YouTube embed iframe
+// Helper function to normalize URLs (add https:// for www. links)
+const normalizeUrl = (url) => (url.startsWith('www.') ? `https://${url}` : url);
+
+const URL_REGEX = /https?:\/\/[^\s<>,.;:!?)]+|www\.[^\s<>,.;:!?)]+/g;
+
+const createMarkdownLink = (href, children, key) => (
+  <a
+    key={key}
+    href={normalizeUrl(href)}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="markdown-link"
+  >
+    {children}
+  </a>
+);
+
+const linkifyPlainText = (text, keyPrefix) => {
+  if (!text) return [];
+
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+  let idx = 0;
+
+  URL_REGEX.lastIndex = 0;
+  while ((match = URL_REGEX.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    const url = match[0];
+    parts.push(createMarkdownLink(url, url, `${keyPrefix}-url-${idx++}`));
+    lastIndex = match.index + url.length;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts.length > 0 ? parts : [text];
+};
+
+const processInline = (text, keyPrefix = 'inline') => {
+  const parts = [];
+  let i = 0;
+  let partIndex = 0;
+
+  const pushPlain = (segment) => {
+    if (!segment) return;
+    linkifyPlainText(segment, `${keyPrefix}-plain-${partIndex}`).forEach((part) => parts.push(part));
+  };
+
+  while (i < text.length) {
+    const linkMatch = text.slice(i).match(/^\[([^\]]+)\]\(([^)]+)\)/);
+    if (linkMatch) {
+      parts.push(createMarkdownLink(linkMatch[2], linkMatch[1], `${keyPrefix}-link-${partIndex++}`));
+      i += linkMatch[0].length;
+      continue;
+    }
+
+    if (text.startsWith('**', i)) {
+      const end = text.indexOf('**', i + 2);
+      if (end !== -1) {
+        parts.push(
+          <strong key={`${keyPrefix}-bold-${partIndex++}`}>
+            {processInline(text.slice(i + 2, end), `${keyPrefix}-bold-${partIndex}`)}
+          </strong>
+        );
+        i = end + 2;
+        continue;
+      }
+    }
+
+    if (text[i] === '*' && text[i + 1] !== '*') {
+      const end = text.indexOf('*', i + 1);
+      if (end !== -1) {
+        parts.push(
+          <em key={`${keyPrefix}-em-${partIndex++}`}>
+            {processInline(text.slice(i + 1, end), `${keyPrefix}-em-${partIndex}`)}
+          </em>
+        );
+        i = end + 1;
+        continue;
+      }
+    }
+
+    if (text[i] === '_') {
+      const end = text.indexOf('_', i + 1);
+      if (end !== -1) {
+        parts.push(
+          <em key={`${keyPrefix}-em-${partIndex++}`}>
+            {processInline(text.slice(i + 1, end), `${keyPrefix}-em-${partIndex}`)}
+          </em>
+        );
+        i = end + 1;
+        continue;
+      }
+    }
+
+    let next = text.length;
+    for (const marker of ['[', '**', '*', '_']) {
+      const pos = text.indexOf(marker, i);
+      if (pos !== -1 && pos < next) next = pos;
+    }
+
+    const urlMatch = text.slice(i).match(URL_REGEX);
+    if (urlMatch?.index !== undefined) {
+      const urlPos = i + urlMatch.index;
+      if (urlPos < next) next = urlPos;
+    }
+
+    if (next > i) {
+      pushPlain(text.slice(i, next));
+      i = next;
+    } else {
+      pushPlain(text[i]);
+      i += 1;
+    }
+  }
+
+  return parts.length > 0 ? parts : text;
+};
 const createYouTubeEmbed = (videoId, elementIndex) => {
   return (
     <div
@@ -85,83 +206,47 @@ export const parseMarkdown = (text, fallbackText = 'Aucune information disponibl
     </ul>
   );
   
-  const processLine = (line) => {
+  const appendInline = (parts, text, keyPrefix) => {
+    const result = processInline(text, keyPrefix);
+    if (Array.isArray(result)) {
+      parts.push(...result);
+    } else if (result) {
+      parts.push(result);
+    }
+  };
+
+  const processLine = (line, keyPrefix = 'line') => {
     const parts = [];
     let lastIndex = 0;
     let match;
+    const embedRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
 
-    // Process YouTube embeds, links, bold text, and italic text in the same pass
-    // Order matters: YouTube embeds first, then links, then bold, then italic (to avoid conflicts)
-    const combinedRegex = /(!\[([^\]]*)\]\(([^)]+)\)|\[([^\]]+)\]\(([^)]+)\)|\*\*(.*?)\*\*|\*([^*]+)\*|_(.+?)_)/g;
-    
-    while ((match = combinedRegex.exec(line)) !== null) {
-      // Add text before the match
+    while ((match = embedRegex.exec(line)) !== null) {
       if (match.index > lastIndex) {
-        parts.push(line.slice(lastIndex, match.index));
+        appendInline(parts, line.slice(lastIndex, match.index), `${keyPrefix}-text-${lastIndex}`);
       }
-      
-      // Check what type of match this is
-      if (match[0].startsWith('![')) {
-        // It's an image/embed link ![](url) or ![alt](url)
-        const url = match[3];
-        const videoId = extractYouTubeVideoId(url);
-        
-        if (videoId) {
-          // It's a YouTube video - create embed
-          parts.push(createYouTubeEmbed(videoId, elementIndex++));
-        } else {
-          // It's a regular image - create img tag
-          parts.push(
-            <img 
-              key={`img-${elementIndex}-${match.index}`}
-              src={url} 
-              alt={match[2] || ''} 
-              style={{ maxWidth: '100%', height: 'auto', margin: '1rem 0' }}
-            />
-          );
-        }
-      } else if (match[0].startsWith('[')) {
-        // It's a link [text](url)
+
+      const url = match[2];
+      const videoId = extractYouTubeVideoId(url);
+
+      if (videoId) {
+        parts.push(createYouTubeEmbed(videoId, elementIndex++));
+      } else {
         parts.push(
-          <a 
-            key={`link-${elementIndex}-${match.index}`}
-            href={match[5]} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="markdown-link"
-          >
-            {match[4]}
-          </a>
-        );
-      } else if (match[0].startsWith('**')) {
-        // It's bold text **text**
-        parts.push(
-          <strong key={`bold-${elementIndex}-${match.index}`}>
-            {match[6]}
-          </strong>
-        );
-      } else if (match[0].startsWith('*') && match[0].endsWith('*') && match[0].length > 2 && !match[0].startsWith('**')) {
-        // It's italic text *text* (but not **bold**)
-        parts.push(
-          <em key={`italic-${elementIndex}-${match.index}`}>
-            {match[7]}
-          </em>
-        );
-      } else if (match[0].startsWith('_') && match[0].endsWith('_') && match[0].length > 2) {
-        // It's italic text _text_
-        parts.push(
-          <em key={`italic-${elementIndex}-${match.index}`}>
-            {match[8]}
-          </em>
+          <img
+            key={`img-${elementIndex++}`}
+            src={url}
+            alt={match[1] || ''}
+            style={{ maxWidth: '100%', height: 'auto', margin: '1rem 0' }}
+          />
         );
       }
-      
+
       lastIndex = match.index + match[0].length;
     }
-    
-    // Add remaining text after the last match
+
     if (lastIndex < line.length) {
-      parts.push(line.slice(lastIndex));
+      appendInline(parts, line.slice(lastIndex), `${keyPrefix}-text-${lastIndex}`);
     }
 
     return parts.length > 0 ? parts : line;

@@ -75,7 +75,19 @@ const CVPage = () => {
   };
 
   const profile = portfolioData.profile || {};
-  const cvData = portfolioData.cv || '';
+  const cv = portfolioData.cv || {};
+  const cvData = typeof cv === 'string' ? cv : (cv.content || '');
+  const cvTitle = typeof cv === 'string' ? '' : (cv.title || '');
+  const cvPortfolio = typeof cv === 'string' ? '' : (cv.portfolio || '');
+
+  const getPortfolioLabel = (url) => {
+    try {
+      const hostname = new URL(url).hostname.replace(/^www\./, '');
+      return `Portfolio: ${hostname}`;
+    } catch {
+      return url;
+    }
+  };
 
   return (
     <div style={{ position: 'relative' }}>
@@ -200,9 +212,7 @@ const CVPage = () => {
                     {profile?.title || 'Olivier Rouiller'}
                   </h1>
                   <p style={{ fontSize: '0.875rem', margin: 0, color: 'var(--text-secondary)', lineHeight: '1.3' }}>
-                    {currentLang === 'en'
-                      ? '3D software and video game engineer retraining in clinical psychology, interested in psychotherapy'
-                      : 'Ingénieur en logiciel 3D et jeu vidéo en reconversion en psychologie clinique, intéressé par la psychothérapie'}
+                    {cvTitle || profile?.subtitle}
                   </p>
                 </div>
               </div>
@@ -223,11 +233,13 @@ const CVPage = () => {
                     o.rouiller@gmail.com
                   </a>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'flex-end' }}>
-                  <a href='https://www.olivier-psy.fr/' style={{ color: 'var(--primary)', textDecoration: 'none', fontSize: '0.75rem' }}>
-                    Portfolio: olivier-psy.fr
-                  </a>
-                </div>
+                {cvPortfolio && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'flex-end' }}>
+                    <a href={cvPortfolio} style={{ color: 'var(--primary)', textDecoration: 'none', fontSize: '0.75rem' }}>
+                      {getPortfolioLabel(cvPortfolio)}
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           </div>

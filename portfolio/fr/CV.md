@@ -1,26 +1,29 @@
+---
+title: Pensée Critique et Résolution de problème web et 3D assistée par l'IA
+portfolio: https://oilandrust.github.io/portfolio/
+---
 ### Education
-- **2024 - 2026: Licence de Psychologie à l'Université de Strasbourg.** J'ai acquis une licence de psychologie en reprise d'études. Licence validée avec mention assez bien, avec un rang de 46/144. 
+- **2024 - 2026: Licence de Psychologie à l'Université de Strasbourg.** J'ai acquis une licence de psychologie en reprise d'études. Licence validée avec mention assez bien, avec un rang de 46/144.
 - **2009 - 2011: M.Sc. in Digital Media Engineering à l'Université Technique du Danemark.** Master en informatique spécialisé dans les médias digitaux, les applications 3D et les jeux vidéo.
 - **2007 - 2009: Diplôme d'Ingénieur Généraliste, École Centrale de Lille.**
 - **2005 - 2007: Classe Préparatoire Math-Physique aux Grandes Écoles à Poitiers**
-### Expérience Clinique
-- **Janvier - Mars 2026: Stage de L3 à l'ITEP Les Mouettes à Strasbourg.** Stage de 70h avec des adolescents présentant des troubles du comportement. J'ai assisté aux réunions de service, à des groupes d'activités sportives et à des temps de repas et d'activités diverses. J'ai pu réfléchir aux fonctions du psychologue, des éducateurs et de l'institution pour accompagner les jeunes, qui présentent souvent des troubles psychiques et développementaux, ainsi que des diagnostics tels que TDAH, trouble borderline, CPTSD, schizophrénie. J'ai pu établir un lien avec certains qui m'ont adopté rapidement.
-- **2022 - 2025: Praticien en thérapie somatique et en pleine conscience.** En parallèle de mes formations en thérapie, j'ai travaillé avec quelques clients pour m’entraîner aux méthodes enseignées, certains régulièrement pendant plus d'une année. Pratique inspirée par Focusing, Internal Family System, théorie polyvagale, théorie de l'attachement et de Hakomi.
 ### Expérience Professionnelle
-- **2011 - 2021: Développeur de logiciel.** J'ai travaillé en Allemagne et en Suède, dans des start-ups et dans le jeu vidéo. Travail en anglais, dans des équipes internationales, en collaboration avec des développeurs, artistes et managers. Plusieurs rôles en tant que programmeur dans le domaine de la 3D et des jeux vidéo:
-	- **2020-2021: Consultant pour RSXEngine** un moteur de jeu vidéo innovant, C++, Programmation 3D
-	- **2017-2019: Programmeur 3D pour Massive Entertainment, un studio d’Ubisoft.** C++, développement de technologies 3D pour le jeu Avatar: Frontiers of Pandora.
-	- **2016: Programmeur 3D pour 3DExcite**: Intégration du casque VR HTC Vive dans l'application Deltagen
-	- **2011 - 2015:** **Assistant de recherche et d'enseignement à l'Université Technique de Berlin.** Recherche en géométrie algorithmique et graphismes 3D sous la direction de Marc Alexa et Bernd Bickel. 
-### Formations en Psychothérapie
-- **2024 - 2025: Hakomi Somatic Mindful Psychotherapy Professional Training Level 2, Hakomi Institute of California (en ligne).** Deuxième niveau de formation pratique en thérapie somatique des traumatismes du développement. Processus de transformation et d'intégration, travail sur le transfert en pleine conscience, modèle de caractères de Lowen et Margaret Mahler.
-- **2023 - 2024: Hakomi Professional Training Level 1, Hakomi Institute of California (en ligne).** Focus sur la relation thérapeutique, le tracking de l'expérience du patient et des indicateurs somatiques de l'inconscient. Exploration en pleine conscience et transformation de processus inconscients. Formation dispensée sur 7 week-ends avec de la pratique supervisée.
-- **2022: Certificat en thérapie somatique de l'attachement, Embody Lab.** Cours avec focus sur la théorie de l'attachement et la maîtrise de Focusing, méthode inventée par Eugène Gendlin. Connaissances sur la présentation des troubles de l'attachement et des postures thérapeutiques adaptées aux différents styles d'attachement. Formation accompagnée d'une vingtaine d'heures de pratique avec les autres participants.
-- **2020 - 2021: Psychologie Transpersonnelle et Hypnothérapie, Tallinn Estonie**. J'ai étudié les bases de la thérapie lors de séminaires pendant un semestre. Histoire de la thérapie: Freud, Jung, Adler. Hypnose Ericksonienne, Neuro Linguistic Programming, Constellations familiales, Imagination Active.
-### Travail Personnel et Guérison
-- **2019 - Présent: Psychothérapie personnelle.** J'ai été, avec plus ou moins de régularité, en thérapie depuis 2019; j'ai travaillé avec des thérapeutes transpersonnels, somatiques (sensorimoteur, Hakomi) ou psychanalytiques.
-- **2020 - Présent: Pratiques d'Embodiment, Conscience Corporelle et Relationnelle.** Ces approches m'ont permis de contenir des traumas, d'apprendre à réguler mes émotions, de développer mon écoute et de me décentrer.
-- **2016 - 2018: Méditation et Pleine Conscience.** J'ai pratiqué régulièrement la méditation en pleine conscience et participé à 2 retraites de méditation Vipassana. Ces méthodes m'ont appris à prendre du recul par rapport à mes pensées, à observer la connexion entre émotions et pensées, et à gérer des comportements addictifs (cigarette).
+**2011 - 2021:** J'ai travaillé en Allemagne et en Suède comme programmeur, au sein de start-ups et du secteur du jeu vidéo. Travail en anglais, au sein d'équipes internationales, en collaboration avec des développeurs, des artistes et des managers. Plusieurs rôles en tant que programmeur dans le domaine de la 3D et des jeux vidéo:
+- **2020-2021: Consultant pour RSXEngine**, un moteur de jeu vidéo innovant. Développement et maintenance de fonctionnalités pour l'UI et la manipulation de la scène 3D. Responsable de la version macOS de l'application. C++, C#, programmation 3D.
+- **2017-2019: Programmeur 3D chez Massive Entertainment, un studio d’Ubisoft.** Développement de technologies et d'outils 3D pour le jeu Avatar: Frontiers of Pandora. Développement d'un système d'imposteur pour le rendu à longue distance des arbres. Développement d'outils pour Technical Art. C++, Shaders, 3D programming.
+- **2016: Programmeur 3D pour 3DExcite**: Intégration du casque VR HTC Vive dans l'application Deltagen. C++.
+- **2011 - 2014:** **Assistant de recherche et d'enseignement à l'Université Technique de Berlin.** Recherche en géométrie algorithmique et graphismes 3D sous la direction de Marc Alexa et Bernd Bickel. Publication d'un article dans une revue internationale.
+### Projets et expériences récents en informatique
+- **Résolution de problèmes et programmation assistée par l'IA.** Depuis août 2025, j'expérimente avec l'IA pour maîtriser les outils et nouvelles technologies et pour créer des produits susceptibles de mener à la création d'une entreprise, notamment:
+	- **Mai 2026 - présent: Préproduction du jeu vidéo [CatSnake](https://oliver-rust.itch.io/catsnake):** J'ai porté un prototype créé en 2022 avec Rust sur le moteur de jeu Unity. Programmation de fonctionnalités de gameplay et d'outils avec Cursor. Génération de concept art et de modèles 3D avec ChatGPT et Tripo3D.
+	- **Mai 2026 - présent: Création d'un outil pour publier facilement et gratuitement des notes créées avec Obsidian**: Analyse du problème, spécifications d'une solution minimale et implémentation d'un plugin pour Obsidian qui met en avant le confort d'utilisation en automatisant l'usage d'outils open source existants.
+	- **Octobre-Novembre 2025: Plateforme de création et de publication de portfolio:** www.lefolio.fr. En partant d'une solution pour un portfolio personnel, j'ai créé une plateforme de création de portfolio avec un éditeur en ligne et une publication instantanée.
+- **Mai 2026:** **Consultant pour Outlier.ai:** Préparation de scénarios de tests pour les IA génératives et agentives telles qu’OpenClaw. J'ai conçu des scénarios et des tests pour les IA agentives personnelles, par exemple: collecte de données personnelles telles que email, calendrier, finances personnelles, résumé de données, automatisation, planification d'événement, création de rappels, envoi d'email, etc.
+### Outils et Technologies en Programmation
+- **Langages de programmation:** Expérience et maîtrise sans IA avec les langages suivants: C/C++, C#, Python, JavaScript, Rust, Java.
+- **Outils:** Git, Visual Studio, VSCode, XCode, Cursor, CMake
+- **Technologies:** J'ai de l'expérience en programmation de moteur 3D, Unity, OpenGL, DirectX, Shaders (hlsl, glsl), Ui (Qt, in-house UI frameworks), Full Stack Web, Backend (Django, node.js), Frontend (React, Javascript), Amazon Web Services, Programmation mobile (Android et iOS).
+- **Programmation Assistée par IA:** J'utilise l'IA pour analyser et définir les problèmes, proposer des solutions architecturales, planifier, implémenter et déboguer les solutions. ChatGPT, Claude et Cursor.
 ### Langues Vivantes
 - **Anglais:** courant et compétences professionnelles.
 - **Allemand:** Niveau intermédiaire (B1), **Suédois:** Niveau courant (B2)

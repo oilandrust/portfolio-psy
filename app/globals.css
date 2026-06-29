@@ -233,6 +233,15 @@
   list-style-type: square;
 }
 
+.markdown-link {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.markdown-link:hover {
+  text-decoration: underline;
+}
+
 .formation-link {
   color: var(--primary);
   text-decoration: none;

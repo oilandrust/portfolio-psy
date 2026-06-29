@@ -395,12 +395,24 @@ function buildPortfolioForLanguage(lang, paths) {
 
     // Read CV data
     console.log('📄 Reading CV data...');
-    let cv = '';
+    let cv = { title: '', portfolio: '', content: '' };
     if (fs.existsSync(paths.cvFile)) {
       const cvData = readMarkdownFile(paths.cvFile);
-      cv = cvData ? cvData.content : '';
+      if (cvData) {
+        cv = {
+          title: cvData.title || '',
+          portfolio: cvData.portfolio || '',
+          content: cvData.content || '',
+        };
+      }
     } else {
       console.log(`⚠️  CV file not found: ${paths.cvFile}, using empty string`);
+    }
+    if (cv.title) {
+      console.log(`  ✅ Loaded CV title: ${cv.title}`);
+    }
+    if (cv.portfolio) {
+      console.log(`  ✅ Loaded CV portfolio link: ${cv.portfolio}`);
     }
     console.log(`  ✅ Loaded CV content`);
 
