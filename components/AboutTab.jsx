@@ -4,9 +4,9 @@ const AboutTab = ({ profile, currentLang = 'fr' }) => {
   const title = currentLang === 'en' ? 'About' : 'À propos';
 
   return (
-    <div className='section'>
+    <div className='section reading-content'>
       <h2>{title}</h2>
-      <div>
+      <div className="reading-body">
         {parseMarkdown(profile?.about)}
       </div>
     </div>

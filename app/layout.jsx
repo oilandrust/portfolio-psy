@@ -1,6 +1,13 @@
 import './globals.css';
 import Script from 'next/script';
+import { Source_Serif_4 } from 'next/font/google';
 import GoogleAnalytics from '../components/GoogleAnalytics';
+
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-serif',
+});
 
 export const metadata = {
   title: 'Olivier Rouiller - Etudiant en Psychologie',
@@ -15,7 +22,7 @@ const GA_MEASUREMENT_ID = 'G-FNBWP8C58K';
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body>
+      <body className={sourceSerif.variable}>
         {/* Google Analytics - Excludes tracking if exclusion flag is set */}
         <Script id="google-analytics-check" strategy="afterInteractive">
           {`

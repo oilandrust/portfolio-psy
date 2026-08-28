@@ -8,7 +8,7 @@ const InterestDetail = ({ interests, currentLang }) => {
   const router = useRouter();
   const slugParam = params?.slug;
   const legacyIdParam = params?.id;
-  
+
   const interest = interests.find(int => {
     if (slugParam && int.slug) {
       return int.slug === slugParam;
@@ -34,25 +34,11 @@ const InterestDetail = ({ interests, currentLang }) => {
 
   if (!interest) {
     return (
-      <div className='section'>
+      <div className='section reading-content'>
         <a
           onClick={handleBackToArticles}
           href={articlesPath}
-          style={{
-            display: 'inline-block',
-            marginBottom: '1rem',
-            color: '#6b7280',
-            fontSize: '0.9rem',
-            textDecoration: 'none',
-            cursor: 'pointer',
-            transition: 'color 0.2s ease'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.color = '#374151';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.color = '#6b7280';
-          }}
+          className="article-back-link"
         >
           {backLabel}
         </a>
@@ -68,77 +54,35 @@ const InterestDetail = ({ interests, currentLang }) => {
   };
 
   return (
-    <div className='section'>
+    <div className='section reading-content'>
       <a
         onClick={handleBackClick}
         href={articlesPath}
-        style={{
-          display: 'inline-block',
-          marginBottom: '1.5rem',
-          color: '#6b7280',
-          fontSize: '0.9rem',
-          textDecoration: 'none',
-          cursor: 'pointer',
-          transition: 'color 0.2s ease'
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.color = '#374151';
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.color = '#6b7280';
-        }}
+        className="article-back-link"
       >
         {backLabel}
       </a>
 
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: '1.5rem', 
-        marginBottom: '2rem' 
-      }}>
+      <div className="article-header">
         {interest.thumbnail && (
           <img
             src={interest.thumbnail}
             alt={interest.title}
-            style={{
-              height: '150px',
-              objectFit: 'contain',
-              borderRadius: '8px',
-              flexShrink: 0
-            }}
           />
         )}
-        
+
         <div>
-          <h2 style={{ 
-            margin: '0 0 0.5rem 0',
-            color: '#000000',
-            fontSize: '2rem'
-          }}>
-            {interest.title}
-          </h2>
-          
+          <h2>{interest.title}</h2>
+
           {interest.subtitle && (
-            <p style={{
-              margin: 0,
-              fontSize: '1.1rem',
-              color: 'var(--muted-color)',
-              fontStyle: 'italic'
-            }}>
+            <p className="article-subtitle">
               {interest.subtitle}
             </p>
           )}
         </div>
       </div>
 
-      <div
-        style={{
-          fontSize: '1rem',
-          lineHeight: '1.6',
-          color: '#374151'
-        }}
-      >
+      <div className="reading-body">
         {parseMarkdown(interest.description)}
       </div>
     </div>

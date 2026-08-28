@@ -8,7 +8,7 @@ const ReadingDetail = ({ readings, currentLang }) => {
   const router = useRouter();
   const slugParam = params?.slug;
   const legacyIdParam = params?.id;
-  
+
   const reading = readings.find(r => {
     if (slugParam && r.slug) {
       return r.slug === slugParam;
@@ -19,121 +19,67 @@ const ReadingDetail = ({ readings, currentLang }) => {
     return false;
   });
 
+  const lecturesPath = `/${currentLang}/lectures`;
+
+  const handleBackToLectures = (e) => {
+    e.preventDefault();
+    router.push(lecturesPath, { scroll: false });
+  };
+
+  const backLabel = currentLang === 'en' ? '← Back to readings' : '← Retour aux lectures';
+  const notFoundTitle = currentLang === 'en' ? 'Reading not found' : 'Lecture non trouvée';
+  const notFoundText = currentLang === 'en'
+    ? 'The requested reading does not exist.'
+    : "La lecture demandée n'existe pas.";
+  const noReviewText = currentLang === 'en'
+    ? 'No review available yet.'
+    : 'Aucun avis disponible pour le moment.';
+
   if (!reading) {
     return (
-      <div className='section'>
+      <div className='section reading-content'>
         <a
-          onClick={(e) => {
-            e.preventDefault();
-            router.push(`/${currentLang}/lectures`, { scroll: false });
-          }}
-          href={`/${currentLang}/lectures`}
-          style={{
-            display: 'inline-block',
-            marginBottom: '1rem',
-            color: '#6b7280',
-            fontSize: '0.9rem',
-            textDecoration: 'none',
-            cursor: 'pointer',
-            transition: 'color 0.2s ease'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.color = '#374151';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.color = '#6b7280';
-          }}
+          onClick={handleBackToLectures}
+          href={lecturesPath}
+          className="article-back-link"
         >
-          ← Retour aux lectures
+          {backLabel}
         </a>
-        <h2>Lecture non trouvée</h2>
-        <p>La lecture demandée n'existe pas.</p>
+        <h2>{notFoundTitle}</h2>
+        <p>{notFoundText}</p>
       </div>
     );
   }
 
   return (
-    <div className='section'>
+    <div className='section reading-content'>
       <a
-        onClick={(e) => {
-          e.preventDefault();
-          router.push(`/${currentLang}/lectures`, { scroll: false });
-        }}
-        href={`/${currentLang}/lectures`}
-        style={{
-          display: 'inline-block',
-          marginBottom: '1.5rem',
-          color: '#6b7280',
-          fontSize: '0.9rem',
-          textDecoration: 'none',
-          cursor: 'pointer',
-          transition: 'color 0.2s ease'
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.color = '#374151';
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.color = '#6b7280';
-        }}
+        onClick={handleBackToLectures}
+        href={lecturesPath}
+        className="article-back-link"
       >
-        ← Retour aux lectures
+        {backLabel}
       </a>
 
-      {/* Float layout: Thumbnail floats left, title/author on right, text wraps around thumbnail */}
-      <div style={{
-        fontSize: '1rem',
-        lineHeight: '1.6',
-        color: '#374151'
-      }}>
-        {/* Floating thumbnail image */}
-        <div style={{
-          float: 'left',
-          marginRight: '2rem',
-          marginBottom: '1rem'
-        }}>
-          <img 
-            src={reading.thumbnail || '/data/readings/placeholder.jpg'} 
-            alt={reading.title}
-            style={{
-              width: '200px',
-              height: '280px',
-              objectFit: 'contain',
-              borderRadius: '8px',
-              backgroundColor: '#f8f9fa'
-            }}
-          />
-        </div>
+      <div className="article-header reading-book-header">
+        <img
+          src={reading.thumbnail || '/data/readings/placeholder.jpg'}
+          alt={reading.title}
+          className="reading-cover"
+        />
 
-        {/* Title and author */}
-        <div style={{
-          marginBottom: '2rem'
-        }}>
-          <h2 style={{
-            margin: '0 0 0.5rem 0',
-            fontSize: '1.8rem',
-            lineHeight: '1.3',
-            color: '#000'
-          }}>
-            {reading.title}
-          </h2>
-          <p style={{
-            margin: '0',
-            fontSize: '1.1rem',
-            color: '#666',
-            fontStyle: 'italic'
-          }}>
-            {reading.author}
-          </p>
-        </div>
-
-        {/* Review content that wraps around the floated thumbnail */}
         <div>
-          {reading.description ? parseMarkdown(reading.description) : (
-            <p style={{ fontStyle: 'italic', color: '#666' }}>
-              Aucun avis disponible pour le moment.
-            </p>
-          )}
+          <h2>{reading.title}</h2>
+          <p className="article-subtitle">{reading.author}</p>
         </div>
+      </div>
+
+      <div className="reading-body">
+        {reading.description ? parseMarkdown(reading.description) : (
+          <p style={{ fontStyle: 'italic', color: '#64748b' }}>
+            {noReviewText}
+          </p>
+        )}
       </div>
     </div>
   );
