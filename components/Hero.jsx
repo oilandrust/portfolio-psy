@@ -1,9 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 
-const Hero = ({ profile, quotes = [], currentLang = 'fr' }) => {
+const Hero = ({ profile, quotes = [] }) => {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
 
   const nextQuote = () => {
@@ -19,18 +18,9 @@ const Hero = ({ profile, quotes = [], currentLang = 'fr' }) => {
   return (
     <div className='hero'>
       <div className='container'>
-        <div className='hero-profile'>
-          <img
-            src='/data/profile/IMG-20250419-WA0003 (2).jpg'
-            alt={profile?.title || 'John Doe'}
-          />
-        </div>
         <div className='hero-content'>
           <h1>{profile?.title || 'John Doe'}</h1>
           <p>{profile?.subtitle || 'Full Stack Developer'}</p>
-          <Link href={`/${currentLang}/cv`} className="button primary">
-            CV Complet
-          </Link>
         </div>
       </div>
       {quotes.length > 0 && (

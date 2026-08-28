@@ -11,18 +11,14 @@ export default function sitemap() {
   
   // Main pages (without dynamic params)
   const mainPages = [
-    { path: 'about', priority: 0.9 },
-    { path: 'interests', priority: 0.8 },
+    { path: 'articles', priority: 0.8 },
     { path: 'lectures', priority: 0.8 },
-    { path: 'formations', priority: 0.8 },
-    { path: 'experience', priority: 0.8 },
     { path: 'contact', priority: 0.7 },
-    { path: 'cv', priority: 0.7 },
   ];
   
   const urls = [];
   
-  // Add homepage redirects (these redirect to /about)
+  // Add homepage for each language
   languages.forEach(lang => {
     urls.push({
       url: `${baseUrl}/${lang}/`,
@@ -51,7 +47,7 @@ export default function sitemap() {
       const slug = interest.slug || interest.id?.toString();
       if (!slug) return;
       urls.push({
-        url: `${baseUrl}/${lang}/interests/${slug}/`,
+        url: `${baseUrl}/${lang}/articles/${slug}/`,
         lastModified: currentDate,
         changeFrequency: 'monthly',
         priority: 0.6,

@@ -73,7 +73,7 @@ function readMarkdownFile(markdownPath) {
     const markdownContent = fs.readFileSync(markdownPath, 'utf8');
     
     // Split content by YAML front matter
-    const frontMatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+    const frontMatterRegex = /^---\s*\n([\s\S]*?)\n---\s*(?:\n([\s\S]*))?$/;
     const match = markdownContent.match(frontMatterRegex);
     
     let frontMatter = {};
@@ -82,7 +82,7 @@ function readMarkdownFile(markdownPath) {
     if (match) {
       // Has YAML front matter
       const yamlContent = match[1];
-      markdownBody = match[2];
+      markdownBody = match[2] || '';
       
       // Parse YAML front matter
       frontMatter = yaml.load(yamlContent) || {};

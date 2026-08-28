@@ -19,17 +19,25 @@ const InterestDetail = ({ interests, currentLang }) => {
     return false;
   });
 
-  const handleBackToInterests = (e) => {
+  const articlesPath = `/${currentLang}/articles`;
+
+  const handleBackToArticles = (e) => {
     e.preventDefault();
-    router.push(`/${currentLang}/interests`, { scroll: false });
+    router.push(articlesPath, { scroll: false });
   };
+
+  const backLabel = currentLang === 'en' ? '← Back to articles' : '← Retour aux articles';
+  const notFoundTitle = currentLang === 'en' ? 'Article not found' : 'Article non trouvé';
+  const notFoundText = currentLang === 'en'
+    ? 'The requested article does not exist.'
+    : "L'article demandé n'existe pas.";
 
   if (!interest) {
     return (
       <div className='section'>
         <a
-          onClick={handleBackToInterests}
-          href={`/${currentLang}/interests`}
+          onClick={handleBackToArticles}
+          href={articlesPath}
           style={{
             display: 'inline-block',
             marginBottom: '1rem',
@@ -46,24 +54,24 @@ const InterestDetail = ({ interests, currentLang }) => {
             e.target.style.color = '#6b7280';
           }}
         >
-          ← Retour aux intérêts
+          {backLabel}
         </a>
-        <h2>Intérêt non trouvé</h2>
-        <p>L'intérêt demandé n'existe pas.</p>
+        <h2>{notFoundTitle}</h2>
+        <p>{notFoundText}</p>
       </div>
     );
   }
 
   const handleBackClick = (e) => {
     e.preventDefault();
-    router.push(`/${currentLang}/interests`, { scroll: false });
+    router.push(articlesPath, { scroll: false });
   };
 
   return (
     <div className='section'>
       <a
         onClick={handleBackClick}
-        href={`/${currentLang}/interests`}
+        href={articlesPath}
         style={{
           display: 'inline-block',
           marginBottom: '1.5rem',
@@ -80,7 +88,7 @@ const InterestDetail = ({ interests, currentLang }) => {
           e.target.style.color = '#6b7280';
         }}
       >
-        ← Retour aux intérêts
+        {backLabel}
       </a>
 
       <div style={{ 

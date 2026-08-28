@@ -1,11 +1,5 @@
 import { getPortfolioData } from '../../../lib/portfolio';
-import AboutTab from '../../../components/AboutTab';
-import Tabs from '../../../components/Tabs';
-import FormationsTab from '../../../components/FormationsTab';
-import ExperienceTab from '../../../components/ExperienceTab';
-import LecturesTab from '../../../components/LecturesTab';
 import ContactTab from '../../../components/ContactTab';
-import InterestsTab from '../../../components/InterestsTab';
 
 export async function generateStaticParams() {
   return [{ lang: 'fr' }, { lang: 'en' }];
@@ -15,9 +9,9 @@ export async function generateMetadata({ params }) {
   const { lang } = await params;
   const portfolio = getPortfolioData();
   const langData = portfolio[lang] || portfolio.fr;
-  
+
   const baseUrl = 'https://www.olivier-psy.fr';
-  
+
   if (lang === 'fr') {
     return {
       title: `Contact - ${langData.profile?.title || 'Olivier Rouiller'}`,
@@ -25,8 +19,8 @@ export async function generateMetadata({ params }) {
       canonical: `${baseUrl}/fr/contact/`,
       alternates: {
         languages: {
-          'fr': `${baseUrl}/fr/contact/`,
-          'en': `${baseUrl}/en/contact/`,
+          fr: `${baseUrl}/fr/contact/`,
+          en: `${baseUrl}/en/contact/`,
           'x-default': `${baseUrl}/fr/contact/`,
         },
       },
@@ -38,15 +32,15 @@ export async function generateMetadata({ params }) {
       },
     };
   }
-  
+
   return {
     title: `Contact - ${langData.profile?.title || 'Olivier Rouiller'}`,
     description: 'Contact Olivier Rouiller',
     canonical: `${baseUrl}/en/contact/`,
     alternates: {
       languages: {
-        'fr': `${baseUrl}/fr/contact/`,
-        'en': `${baseUrl}/en/contact/`,
+        fr: `${baseUrl}/fr/contact/`,
+        en: `${baseUrl}/en/contact/`,
         'x-default': `${baseUrl}/fr/contact/`,
       },
     },
@@ -60,20 +54,5 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ContactPage({ params }) {
-  const { lang } = await params;
-  const portfolio = getPortfolioData();
-  const langData = portfolio[lang] || portfolio.fr;
-  const currentLang = lang || 'fr';
-  
-  return (
-    <Tabs currentLang={currentLang}>
-      <AboutTab profile={langData.profile} />
-      <InterestsTab interests={langData.interests || []} />
-      <FormationsTab formations={langData.formations || ''} />
-      <ExperienceTab experiences={langData.experiences || []} />
-      <LecturesTab readings={langData.readings || []} />
-      <ContactTab />
-    </Tabs>
-  );
+  return <ContactTab />;
 }
-

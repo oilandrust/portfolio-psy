@@ -1,10 +1,11 @@
 import { parseMarkdown } from '../utils/markdown.jsx';
 
-const AboutTab = ({ profile }) => {
+const AboutTab = ({ profile, currentLang = 'fr' }) => {
+  const title = currentLang === 'en' ? 'About' : 'À propos';
 
   return (
     <div className='section'>
-      <h2>À propos</h2>
+      <h2>{title}</h2>
       <div>
         {parseMarkdown(profile?.about)}
       </div>

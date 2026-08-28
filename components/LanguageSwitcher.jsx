@@ -7,7 +7,7 @@ import './LanguageSwitcher.css';
 const LanguageSwitcher = ({ currentLang }) => {
   const pathname = usePathname();
   const newLang = currentLang === 'fr' ? 'en' : 'fr';
-  const newPath = pathname?.replace(`/${currentLang}`, `/${newLang}`) || `/${newLang}/about`;
+  const newPath = pathname?.replace(`/${currentLang}`, `/${newLang}`) || `/${newLang}/`;
 
   const flagEmoji = currentLang === 'fr' ? '🇫🇷' : '🇬🇧';
 

@@ -10,7 +10,7 @@ const InterestsGrid = ({ interests }) => {
 
   const handleInterestClick = (interest) => {
     if (!interest?.slug) return;
-    router.push(`/${currentLang}/interests/${interest.slug}`, { scroll: false });
+    router.push(`/${currentLang}/articles/${interest.slug}`, { scroll: false });
   };
 
   return (
@@ -20,7 +20,7 @@ const InterestsGrid = ({ interests }) => {
         color: '#000000',
         fontSize: '2rem'
       }}>
-        Intérêts
+        Articles
       </h2>
       
       <div
