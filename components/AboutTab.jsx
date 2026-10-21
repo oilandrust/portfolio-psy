@@ -1,4 +1,5 @@
 import { parseMarkdown } from '../utils/markdown.jsx';
+import SessionCta from './SessionCta';
 
 const AboutTab = ({ profile, currentLang = 'fr' }) => {
   const title = currentLang === 'en' ? 'About' : 'À propos';
@@ -9,6 +10,8 @@ const AboutTab = ({ profile, currentLang = 'fr' }) => {
       <div className="reading-body">
         {parseMarkdown(profile?.about)}
       </div>
+
+      <SessionCta currentLang={currentLang} />
     </div>
   );
 };

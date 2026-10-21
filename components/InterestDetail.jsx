@@ -2,6 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import { parseMarkdown } from '../utils/markdown.jsx';
+import SessionCta from './SessionCta';
 
 const InterestDetail = ({ interests, currentLang }) => {
   const params = useParams();
@@ -85,6 +86,8 @@ const InterestDetail = ({ interests, currentLang }) => {
       <div className="reading-body">
         {parseMarkdown(interest.description)}
       </div>
+
+      <SessionCta currentLang={currentLang} />
     </div>
   );
 };

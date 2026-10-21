@@ -581,6 +581,26 @@ body {
   font-style: italic;
 }
 
+.session-cta {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.session-cta-link {
+  display: inline-block;
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.session-cta-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
 .articles-page h2 {
   color: #1e293b;
   margin-bottom: 2rem;

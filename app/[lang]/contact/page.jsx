@@ -54,5 +54,6 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ContactPage({ params }) {
-  return <ContactTab />;
+  const { lang } = await params;
+  return <ContactTab currentLang={lang || 'fr'} />;
 }

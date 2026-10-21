@@ -1,7 +1,7 @@
 import Contact from './Contact';
 
-const ContactTab = () => {
-  return <Contact />;
+const ContactTab = ({ currentLang = 'fr' }) => {
+  return <Contact currentLang={currentLang} />;
 };
 
 export default ContactTab;
